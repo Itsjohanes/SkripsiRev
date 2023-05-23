@@ -85,6 +85,11 @@ class Siswa extends CI_Controller
                 array_push($data['tugasbelumselesai'], "Tugas 4");
             }
 
+            //mendapatkan data seluruh siswa
+
+            $data['siswa'] = $this->db->get_where('tb_akun', ['role' => 0])->result_array();
+            
+
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/index', $data);
