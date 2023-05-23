@@ -22,7 +22,7 @@
                         <div class="d-flex flex-row align-items-center question-title">
 
 
-                            <h5 class="text-danger">Q. <?php echo $no; ?></h5>
+                            <h5 class="text-danger"><?php echo $no; ?>.</h5>
                             <h5 class="mt-1 ml-2"><?php echo $data['soal']; ?></h5>
 
                         </div>

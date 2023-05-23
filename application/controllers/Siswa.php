@@ -162,11 +162,12 @@ class Siswa extends CI_Controller
             //mengambil data dari database apakah sudah pernah mengerjakan pretest
             $data['pretest'] = $this->db->get_where('tb_hasilpretest', ['id_siswa' => $this->session->userdata('id')])->num_rows();
             if ($data['pretest'] > 0) {
-                redirect('Auth/blocked');
+                //buatkan alert
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah pernah mengerjakan Pre-Test</div>');
+                redirect('Siswa/materi');
             } else {
                 $this->load->view('backend/siswa/header', $data);
                 $this->load->view('backend/siswa/sidebar', $data);
-                $this->load->view('backend/siswa/topbar', $data);
                 $this->load->view('backend/siswa/pretest', $data);
                 $this->load->view('backend/siswa/footer');
             }
@@ -230,7 +231,8 @@ class Siswa extends CI_Controller
                 'score' => $hasil
             ];
             $this->db->insert('tb_hasilpretest', $data);
-            redirect('Siswa');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah pernah mengerjakan Pre-Test</div>');
+            redirect('Siswa/materi');        
         } else {
             redirect('Auth/backlogin');
         }
@@ -244,14 +246,14 @@ class Siswa extends CI_Controller
             $data['jumlah'] = $this->db->get('tb_posttest')->num_rows();
             $data['posttest'] = $this->db->get_where('tb_hasilposttest', ['id_siswa' => $this->session->userdata('id')])->num_rows();
             if ($data['posttest'] > 0) {
-                redirect('Auth/blocked');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah mengerjakan Post-Test</div>');
+            redirect('Siswa/materi');
             } else {
                 $this->load->view('backend/siswa/header', $data);
                 $this->load->view('backend/siswa/sidebar', $data);
-                $this->load->view('backend/siswa/topbar', $data);
                 $this->load->view('backend/siswa/posttest', $data);
                 $this->load->view('backend/siswa/footer');
-            }
+            }   
         } else {
             redirect('Auth/backLogin');
         }
@@ -310,10 +312,33 @@ class Siswa extends CI_Controller
                 'score' => $hasil
             ];
             $this->db->insert('tb_hasilposttest', $data);
-            redirect('Siswa');
+             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah  mengerjakan Pre-Test</div>');
+            redirect('Siswa/materi');  
         } else {
             redirect('Auth/backlogin');
         }
+    }
+    public function materi(){
+         $data['title'] = "Materi";
+            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+            $data['jumlahSiswa'] = $this->db->get_where('tb_akun', ['role' => 0])->num_rows();
+            $pretest = $this->db->get_where('tb_hasilpretest', ['id_siswa' => $this->session->userdata('id')])->num_rows();
+            $posttest = $this->db->get_where('tb_hasilposttest', ['id_siswa' => $this->session->userdata('id')])->num_rows();
+            $tugas1 = $this->db->get_where('tb_hasiltugas', ['id_siswa' => $this->session->userdata('id'), 'pertemuan' => 1])->num_rows();
+            $tugas2 = $this->db->get_where('tb_hasiltugas', ['id_siswa' => $this->session->userdata('id'), 'pertemuan' => 2])->num_rows();
+            $tugas3 = $this->db->get_where('tb_hasiltugas', ['id_siswa' => $this->session->userdata('id'), 'pertemuan' => 3])->num_rows();
+            $tugas4 = $this->db->get_where('tb_hasiltugas', ['id_siswa' => $this->session->userdata('id'), 'pertemuan' => 4])->num_rows();
+            $data['pretest'] = $pretest;
+            $data['posttest'] = $posttest;
+            $data['tugas1'] = $tugas1;
+            $data['tugas2'] = $tugas2;
+            $data['tugas3'] = $tugas3;
+            $data['tugas4'] = $tugas4;
+            $data['siswa'] = $this->db->get_where('tb_akun', ['role' => 0])->result_array();
+            $this->load->view('backend/siswa/header', $data);
+            $this->load->view('backend/siswa/sidebar', $data);
+            $this->load->view('backend/siswa/materi', $data);
+            $this->load->view('backend/siswa/footer');
     }
     public function pertemuan1()
     {
@@ -326,13 +351,14 @@ class Siswa extends CI_Controller
             $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 1])->row_array();
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
-            $this->load->view('backend/siswa/topbar', $data);
             $this->load->view('backend/siswa/pertemuan1', $data);
             $this->load->view('backend/siswa/footer');
         } else {
             redirect('Auth/backLogin');
         }
     }
+
+    
     public function tambahTugas()
     {
         if ($this->session->userdata('email') != '') {
@@ -348,18 +374,10 @@ class Siswa extends CI_Controller
                 $config['max_size'] = '2048';
                 $config['upload_path'] = './assets/tugassiswa/';
                 $this->load->library('upload', $config);
-                //mendapatkan nama file yang diupload setelah diubah menjadi random
-
-
-
-
                 if ($this->upload->do_upload('upload')) {
                     $new_upload = $this->upload->data('file_name');
 
                     $this->db->set('upload', $new_upload);
-
-
-
                     $data = [
                         'id_siswa' => $id_siswa,
                         'pertemuan' => $pertemuan,
@@ -392,7 +410,6 @@ class Siswa extends CI_Controller
             $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 2])->row_array();
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
-            $this->load->view('backend/siswa/topbar', $data);
             $this->load->view('backend/siswa/pertemuan2', $data);
             $this->load->view('backend/siswa/footer');
         } else {
@@ -412,7 +429,6 @@ class Siswa extends CI_Controller
 
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
-            $this->load->view('backend/siswa/topbar', $data);
             $this->load->view('backend/siswa/pertemuan3', $data);
             $this->load->view('backend/siswa/footer');
         } else {
@@ -430,7 +446,6 @@ class Siswa extends CI_Controller
             $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 4])->row_array();
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
-            $this->load->view('backend/siswa/topbar', $data);
             $this->load->view('backend/siswa/pertemuan4', $data);
             $this->load->view('backend/siswa/footer');
         } else {

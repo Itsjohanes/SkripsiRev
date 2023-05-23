@@ -29,21 +29,23 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/tables.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+          <?php 
+            if($title == 'Materi'){
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Siswa/materi') . '">';
+
+               
+            }else{
+               echo '<a class="nav-link text-white " href="' . base_url('Siswa/materi') . '">';
+
+
+            }
+            ?>            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">task</i>
             </div>
             <span class="nav-link-text ms-1">Materi & Tugas</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/billing.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">quiz</i>
-            </div>
-            <span class="nav-link-text ms-1">Pre-Test & Post-Test</span>
-          </a>
-        </li>
+       
         <li class="nav-item">
 
           <?php 
