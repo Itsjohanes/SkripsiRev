@@ -1,16 +1,11 @@
-<!-- List dari Siswa -->
+<div class="container-fluid py-4">
+
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title"> Report Nilai </h4>
             </div>
-            <?php
-            if ($this->session->flashdata('message')) {
-
-                echo $this->session->flashdata('message');
-            }
-            ?>
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                 </div>
@@ -20,28 +15,14 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Pretest</th>
-                                    <th scope="col">Posttest</th>
+                                    <th scope="col">Pre-Test</th>
+                                    <th scope="col">Post-Test</th>
                                     <th scope="col">Tugas 1</th>
                                     <th scope="col">Tugas 2</th>
                                     <th scope="col">Tugas 3</th>
                                     <th scope="col">Tugas 4</th>
-
-
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Pretest</th>
-                                    <th scope="col">Posttest</th>
-                                    <th scope="col">Tugas 1</th>
-                                    <th scope="col">Tugas 2</th>
-                                    <th scope="col">Tugas 3</th>
-                                    <th scope="col">Tugas 4</th>
-
-                                </tr>
-                            </tfoot>
                             <tbody>
                                 <tr>
                                     <th scope="row">1</th>

@@ -13,24 +13,20 @@
 		border: 1.5px solid #f5f6fa;
 	}
 
-	body,
-	html {
-		height: 100%;
-		margin: 0;
-		background: #7F7FD5;
-		background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
-		background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
-	}
-
 	.chat {
 		margin-top: auto;
 		margin-bottom: auto;
 	}
 
 	.card {
+		
+	}
+	.card-warna{
+
 		height: 500px;
 		border-radius: 15px !important;
-		background-color: rgba(0, 0, 0, 0.4) !important;
+		background-color: rgba(34, 34, 36, 0.9) !important;
+
 	}
 
 	.contacts_body {
@@ -46,6 +42,8 @@
 	.card-header {
 		border-radius: 15px 15px 0 0 !important;
 		border-bottom: 0 !important;
+		background-color: rgba(34, 34, 36, 0) !important;
+
 	}
 
 	.card-footer {
@@ -118,7 +116,6 @@
 	}
 
 	.active {
-		background-color: rgba(0, 0, 0, 0.3);
 	}
 
 	.user_img {

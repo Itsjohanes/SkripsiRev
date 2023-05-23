@@ -1,6 +1,4 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
 <!DOCTYPE html>
@@ -26,7 +24,7 @@ $this->load->view('style');
 	<div class="container-fluid h-100">
 		<div class="row justify-content-center h-100">
 			<div class="col-md-4 col-xl-3 chat">
-				<div class="card mb-sm-3 mb-md-0 contacts_card">
+				<div class="card card-warna mb-sm-3 mb-md-0 contacts_card">
 					<div class="card-header">
 						<div class="input-group">
 							<input type="text" placeholder="Search..." name="" class="form-control search">
@@ -55,7 +53,7 @@ $this->load->view('style');
 				</div>
 			</div>
 			<div class="col-md-8 col-xl-6 chat">
-				<div class="card">
+				<div class="card card-warna">
 					<div class="card-header msg_head">
 						<div class="d-flex bd-highlight">
 							<div class="img_cont">

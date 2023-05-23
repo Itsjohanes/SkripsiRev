@@ -214,7 +214,7 @@
               <div class="timeline timeline-one-side">
                 <div class="timeline-block mb-3">
                   <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">code</i>
+                    <i class="material-icons text-danger text-gradient">filter_1</i>
                   </span>
                   <div class="timeline-content">
                     <h6 class="text-dark text-sm font-weight-bold mb-0">Flowchart Diagram</h6>
@@ -222,7 +222,7 @@
                 </div>
                 <div class="timeline-block mb-3">
                   <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">code</i>
+                    <i class="material-icons text-danger text-gradient">filter_2</i>
                   </span>
                   <div class="timeline-content">
                     <h6 class="text-dark text-sm font-weight-bold mb-0">Pseudocode</h6>
@@ -231,7 +231,7 @@
                 </div>
                 <div class="timeline-block mb-3">
                   <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">code</i>
+                    <i class="material-icons text-danger text-gradient">filter_3</i>
                   </span>
                   <div class="timeline-content">
                     <h6 class="text-dark text-sm font-weight-bold mb-0">Variable</h6>
@@ -240,7 +240,7 @@
                 </div>
                  <div class="timeline-block mb-3">
                   <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">code</i>
+                    <i class="material-icons text-danger text-gradient">filter_4</i>
                   </span>
                   <div class="timeline-content">
                     <h6 class="text-dark text-sm font-weight-bold mb-0">Tipe Data</h6>
@@ -249,7 +249,7 @@
                 </div>
                  <div class="timeline-block mb-3">
                   <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">code</i>
+                    <i class="material-icons text-danger text-gradient">filter_5</i>
                   </span>
                   <div class="timeline-content">
                     <h6 class="text-dark text-sm font-weight-bold mb-0">Input Output</h6>
@@ -258,7 +258,7 @@
                 </div>
                  <div class="timeline-block mb-3">
                   <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">code</i>
+                    <i class="material-icons text-danger text-gradient">filter_6</i>
                   </span>
                   <div class="timeline-content">
                     <h6 class="text-dark text-sm font-weight-bold mb-0">Operator</h6>
@@ -267,7 +267,7 @@
                 </div>
                  <div class="timeline-block mb-3">
                   <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">code</i>
+                    <i class="material-icons text-danger text-gradient">filter_7</i>
                   </span>
                   <div class="timeline-content">
                     <h6 class="text-dark text-sm font-weight-bold mb-0">Percabangan</h6>
@@ -276,7 +276,7 @@
                 </div>
                  <div class="timeline-block mb-3">
                   <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">code</i>
+                    <i class="material-icons text-danger text-gradient">filter_8</i>
                   </span>
                   <div class="timeline-content">
                     <h6 class="text-dark text-sm font-weight-bold mb-0">Perulangan</h6>

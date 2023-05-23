@@ -451,7 +451,6 @@ class Siswa extends CI_Controller
 
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
-            $this->load->view('backend/siswa/topbar', $data);
             $this->load->view('backend/siswa/report', $data);
             $this->load->view('backend/siswa/footer');
         } else {

@@ -31,13 +31,11 @@ class Chat extends CI_Controller
                 if ($data['user']['role'] == '1') {
                     $this->load->view('backend/admin/header', $data);
                     $this->load->view('backend/admin/sidebar');
-                    $this->load->view('backend/admin/topbar', $data);
                     $this->load->view('backend/chat/chat', $data);
                     $this->load->view('backend/admin/footer');
                 } else {
                     $this->load->view('backend/siswa/header', $data);
                     $this->load->view('backend/siswa/sidebar');
-                    $this->load->view('backend/siswa/topbar', $data);
                     $this->load->view('backend/chat/chat', $data);
                     $this->load->view('backend/siswa/footer');
                 }
@@ -51,13 +49,11 @@ class Chat extends CI_Controller
         if ($data['user']['role'] == '1') {
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar');
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/chat/dua');
             $this->load->view('backend/admin/footer');
         } else {
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar');
-            $this->load->view('backend/siswa/topbar', $data);
             $this->load->view('backend/chat/dua');
             $this->load->view('backend/siswa/footer');
         }
@@ -97,7 +93,7 @@ class Chat extends CI_Controller
         return true;
 
 
-        # code...
+       
     }
 
     public function GetAllOrang()
@@ -123,36 +119,17 @@ class Chat extends CI_Controller
             if ($data['user']['role'] == '1') {
                 $this->load->view('backend/admin/header', $data);
                 $this->load->view('backend/admin/sidebar');
-                $this->load->view('backend/admin/topbar', $data);
                 $this->load->view('backend/chat/menu');
                 $this->load->view('backend/admin/footer');
             } else {
                 $this->load->view('backend/siswa/header', $data);
                 $this->load->view('backend/siswa/sidebar');
-                $this->load->view('backend/siswa/topbar', $data);
                 $this->load->view('backend/chat/menu');
                 $this->load->view('backend/siswa/footer');
             }
         }
-        # code...
     }
-    public function logout()
-    {
-
-        $this->session->sess_destroy();
-        $pesan = "Berhasil Keluar, Anda Akan Diarahkan Ke Halaman Login";
-        $status = true;
-
-
-        echo json_encode(array(
-            'pesan' => $pesan,
-            'status' => $status
-        ));
-
-
-
-        # code...
-    }
+   
 }
         
-    /* End of file  Chat.php */
+
