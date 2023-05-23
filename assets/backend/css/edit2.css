@@ -1,0 +1,29 @@
+.rotated {
+	transform: rotate(0.15turn);
+}
+
+.bg-gradient {
+	background-color: #dda15e;
+}
+
+.collapse .bg {
+	background-color: #dda15e;
+}
+.bg-custom {
+	background-color: rgb(244, 223, 185);
+}
+.footerstyle {
+	background-color: rgb(244, 223, 185);
+}
+.concols {
+	background-color: #fefae0;
+}
+.custom-color-tabel {
+	background-color: #fefae0;
+}
+.custombtn {
+	background-color: #606c38;
+}
+.custombodycard {
+	background-color: #fefae0;
+}
