@@ -62,60 +62,61 @@ $id = $this->session->userdata('id');
 					id_lawan: id_lawan
 				},
 				dataType: "json",
-				success: function(r) {
-					var html = "";
-					var d = r.data;
-					id = '<?= $id ?>';
-					d.forEach(d => {
-						var today = new Date();
-						var dd = String(today.getDate()).padStart(2, '0');
-						var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-						var yyyy = today.getFullYear();
+			success: function(r) {
+    var messages = [];
+    var d = r.data;
+    id = '<?= $id ?>';
+    var today = new Date(); // Tanggal saat ini
 
-						today = dd + '-' + mm + '-' + yyyy;
-						// console.log(today);
+    d.forEach(d => {
+        var times = new Date(d.waktu);
+        var time = times.toLocaleTimeString();
+        var tanggal = String(times.getDate()).padStart(2, '0');
+        var bulan = String(times.getMonth() + 1).padStart(2, '0');
+        var tahun = times.getFullYear();
+        var lengkapDB = tanggal + '-' + bulan + '-' + tahun;
+        var kapan = "Today";
+        var tanggal_bulan = tanggal + "-" + bulan;
+        if (lengkapDB !== today.toLocaleDateString()) {
+            kapan = tanggal_bulan;
+        }
 
-						var times = new Date(d.waktu)
-						var time = times.toLocaleTimeString()
-						var tanggal = String(times.getDate()).padStart(2, '0');
-						var bulan = String(times.getMonth() + 1).padStart(2, '0');
-						var tahun = times.getFullYear()
-						var lengkapDB = tanggal + '-' + bulan + '-' + tahun
-						// console.log(lengkapDB == today)
-						var kapan = "Today"
-						var tanggal_bulan = tanggal + "-" + bulan
-						if (lengkapDB != today) {
-							kapan = tanggal_bulan
-						}
-						// console.log(kapan)
-						if (parseInt(d.id) == id) {
+        var message = {
+            id: d.id,
+            pesan: d.pesan,
+            waktu: times,
+            kapan: kapan,
+            time: time
+        };
 
+        messages.push(message);
+    });
 
+    messages.sort(function(a, b) {
+        return a.waktu - b.waktu;
+    });
 
-
-							html += `<div class="d-flex justify-content-end mb-4">
-							<div class="msg_cotainer_send">
-								${d.pesan}
-								<span class="msg_time">${kapan}, ${time}</span>
-							</div>
-						</div>`;
-
-						} else {
-							html += `<div class="d-flex justify-content-start mb-4">
-							<div class="img_cont_msg">
-								<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
-							</div>
-							<div class="msg_cotainer">
-								${d.pesan}								
-								<span class="msg_time">${kapan}, ${time}</span>
-
-							</div>
-						</div>`;
-
-
-						}
-
-					});
+    var html = "";
+    messages.forEach(message => {
+        if (parseInt(message.id) === parseInt(id)) {
+            html += `<div class="d-flex justify-content-end mb-4">
+                        <div class="msg_cotainer_send">
+                            ${message.pesan}
+                            <span class="msg_time">${message.kapan}, ${message.time}</span>
+                        </div>
+                    </div>`;
+        } else {
+            html += `<div class="d-flex justify-content-start mb-4">
+                        <div class="img_cont_msg">
+                            <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
+                        </div>
+                        <div class="msg_cotainer">
+                            ${message.pesan}                                
+                            <span class="msg_time">${message.kapan}, ${message.time}</span>
+                        </div>
+                    </div>`;
+        }
+    });
 					// console.log(html)
 					$('#letakpesan').html(html);
 

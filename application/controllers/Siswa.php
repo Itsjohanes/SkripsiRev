@@ -533,4 +533,21 @@ class Siswa extends CI_Controller
             redirect('Auth/backLogin');
         }
     }
+
+    public function profile(){
+
+         if ($this->session->userdata('email') != '') {
+            $data['title'] = "Profile";
+            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+
+            $this->load->view('backend/siswa/header', $data);
+            $this->load->view('backend/siswa/sidebar', $data);
+            $this->load->view('backend/siswa/profile', $data);
+            $this->load->view('backend/siswa/footer');
+
+        } else {
+            redirect('Auth/backLogin');
+        }
+
+    }
 }

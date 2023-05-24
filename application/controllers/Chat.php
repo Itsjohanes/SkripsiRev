@@ -31,6 +31,7 @@ class Chat extends CI_Controller
                 if ($data['user']['role'] == '1') {
                     $this->load->view('backend/admin/header', $data);
                     $this->load->view('backend/admin/sidebar');
+                    $this->load->view('backend/admin/topbar',$data);
                     $this->load->view('backend/chat/chat', $data);
                     $this->load->view('backend/admin/footer');
                 } else {
@@ -48,7 +49,8 @@ class Chat extends CI_Controller
         $data['title'] = 'Chat';
         if ($data['user']['role'] == '1') {
             $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar');
+            $this->load->view('backend/admin/sidebar',$data);
+            $this->load->view('backend/admin/topbar');
             $this->load->view('backend/chat/dua');
             $this->load->view('backend/admin/footer');
         } else {
@@ -119,6 +121,7 @@ class Chat extends CI_Controller
             if ($data['user']['role'] == '1') {
                 $this->load->view('backend/admin/header', $data);
                 $this->load->view('backend/admin/sidebar');
+                $this->load->view('backend/admin/topbar',$data);
                 $this->load->view('backend/chat/menu');
                 $this->load->view('backend/admin/footer');
             } else {
