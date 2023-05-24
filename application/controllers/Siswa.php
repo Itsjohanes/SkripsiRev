@@ -103,11 +103,10 @@ class Siswa extends CI_Controller
         //hanya bisa diakses jika memiliki session
 
         if ($this->session->userdata('email') != '') {
-            $data['title'] = "Home Siswa";
+            $data['title'] = "Profile";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
-            $this->load->view('backend/siswa/topbar', $data);
             $this->load->view('backend/siswa/editprofile', $data);
             $this->load->view('backend/siswa/footer');
         } else {
@@ -127,13 +126,14 @@ class Siswa extends CI_Controller
             $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
             if ($this->form_validation->run('runEdit') == false) {
-                $data['title'] = "Home Admin";
+                //kirimkan pesan error
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal mengubah data!</div>');
+                $data['title'] = "Profile";
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-                $this->load->view('backend/admin/header', $data);
-                $this->load->view('backend/admin/sidebar', $data);
-                $this->load->view('backend/admin/topbar', $data);
-                $this->load->view('backend/admin/editProfile', $data);
-                $this->load->view('backend/admin/footer');
+                $this->load->view('backend/siswa/header', $data);
+                $this->load->view('backend/siswa/sidebar', $data);
+                $this->load->view('backend/siswa/editprofile', $data);
+                $this->load->view('backend/siswa/footer');
             } else {
                 //data masuk ke db
                 $data = [
@@ -144,7 +144,7 @@ class Siswa extends CI_Controller
                 $this->db->where('email', $this->session->userdata('email'));
                 $this->db->update('tb_akun', $data);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been Edited</div>');
-                redirect('Siswa');
+                redirect('Siswa/profile');
             }
         } else {
             redirect('Auth/backLogin');
