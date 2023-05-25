@@ -65,6 +65,45 @@
             <span class="nav-link-text ms-1">Tugas</span>
           </a>
         </li>
+         <li class="nav-item">
+
+          <?php 
+            if($title == 'Pre-Test'){
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Admin/preTest') . '">';
+
+               
+            }else{
+               echo '<a class="nav-link text-white " href="' . base_url('Admin/preTest') . '">';
+
+
+            }
+            ?>
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">quiz</i>   
+            </div>
+            <span class="nav-link-text ms-1">Pre-Test</span>
+          </a>
+        </li>
+<li class="nav-item">
+
+          <?php 
+            if($title == 'Post-Test'){
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Admin/postTest') . '">';
+
+               
+            }else{
+               echo '<a class="nav-link text-white " href="' . base_url('Admin/postTest') . '">';
+
+
+            }
+            ?>
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">quiz</i>   
+            </div>
+            <span class="nav-link-text ms-1">Post-Test</span>
+          </a>
+        </li>
+        
 
          <li class="nav-item">
 
@@ -167,7 +206,7 @@
             </li>
            
             <li class="nav-item d-flex align-items-center">
-              <a href="<?php echo base_url('Siswa/profile');?>" class="nav-link text-body font-weight-bold px-0">
+              <a href="<?php echo base_url('Admin/profile');?>" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $user['nama'] ;?> </span>
               </a>

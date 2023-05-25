@@ -15,7 +15,7 @@
                  <?php echo $user['nama']; ?>
               </h5>
               <p class="mb-0 font-weight-normal text-sm">
-                Siswa 
+                Administrator 
               </p>
             </div>
           </div>

@@ -128,7 +128,7 @@ class Siswa extends CI_Controller
             if ($this->form_validation->run('runEdit') == false) {
                 //kirimkan pesan error
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal mengubah data!</div>');
-                $data['title'] = "Profile";
+                $data['title'] = "Edit Profile";
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $this->load->view('backend/siswa/header', $data);
                 $this->load->view('backend/siswa/sidebar', $data);

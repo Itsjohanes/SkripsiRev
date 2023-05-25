@@ -110,7 +110,7 @@ class Admin extends CI_Controller
             $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
             if ($this->form_validation->run('runEdit') == false) {
-                $data['title'] = "Home Admin";
+                $data['title'] = "Edit Profile";
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $this->load->view('backend/admin/header', $data);
                 $this->load->view('backend/admin/sidebar', $data);
@@ -126,7 +126,7 @@ class Admin extends CI_Controller
                 $this->db->where('email', $this->session->userdata('email'));
                 $this->db->update('tb_akun', $data);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been Edited</div>');
-                redirect('Admin');
+                redirect('Admin/profile');
             }
         } else {
             if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
