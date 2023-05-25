@@ -23,11 +23,11 @@
                             echo '<input type="hidden" name="id_hasiltugas" value="' . $hasiltugas['id_hasiltugas'] . '">';
                             echo '<input type="hidden" name="filelama" value="' . $hasiltugas['upload'] . '">';
                             echo '<label for="selectOption">Pertemuan</label>';
-                            echo '<input type = "text" name = "pertemuan" value = "4" class = "form-control" readonly>';
+                            echo '<input type = "text" name = "pertemuan" value = "4" class = "input-group input-group-outline mb-3" readonly>';
                             echo '</div>';
                             echo '<div class="form-group">';
                             echo '<label for="textArea">Text</label>';
-                            echo '<textarea class="form-control" id="textArea" name="text" rows="3">' . $hasiltugas['text'] . '</textarea>';
+                            echo '<textarea class="input-group input-group-outline mb-3" id="textArea" name="text" rows="3">' . $hasiltugas['text'] . '</textarea>';
                             echo '</div>';
                             echo '<div class="form-group">';
                             echo '<label for="fileUpload">Upload File (PDF)</label>';
@@ -46,12 +46,12 @@
                             echo '<div class="form-group">';
                             echo '<input type="hidden" name="slide" value="pertemuan4">';
                             echo '<label for="selectOption">Pertemuan</label>';
-                            echo '<input type = "text" name = "pertemuan" value = "4" class = "form-control" readonly>';
+                            echo '<input type = "text" name = "pertemuan" value = "4" class = "input-group input-group-outline mb-3" readonly>';
 
                             echo '</div>';
                             echo '<div class="form-group">';
                             echo '<label for="textArea">Text</label>';
-                            echo '<textarea class="form-control" id="textArea" name="text" rows="3"></textarea>';
+                            echo '<textarea class="input-group input-group-outline mb-3" id="textArea" name="text" rows="3"></textarea>';
                             echo '</div>';
                             echo '<div class="form-group">';
                             echo '<label for="fileUpload">Upload File (PDF)</label>';
