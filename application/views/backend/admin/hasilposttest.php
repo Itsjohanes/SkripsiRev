@@ -58,7 +58,7 @@
                                         <td><?= $j['salah']; ?></td>
                                         <td><?= $j['kosong']; ?></td>
                                         <td>
-                                            <a href="<?= base_url('Admin/hapusHasilPosttest/') . $j['id_hasilposttest']; ?>" class="badge badge-danger" onclick="return confirm('Yakin?');">Hapus</a>
+                                            <a href="<?= base_url('Admin/hapusHasilPosttest/') . $j['id_hasilposttest']; ?>"  onclick="return confirm('Yakin?');"><i class="fas fa-trash-alt"> </i></a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>

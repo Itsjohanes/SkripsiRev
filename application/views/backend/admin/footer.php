@@ -1,87 +1,110 @@
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Johannes Alexander Putra <?= date('Y'); ?> </span>
+<footer class="footer py-4  ">
+        <div class="container-fluid">
+          <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6 mb-lg-0 mb-4">
+              <div class="copyright text-center text-sm text-muted text-lg-start">
+                © <script>
+                  document.write(new Date().getFullYear())
+                </script>,
+                made with <i class="fa fa-heart"></i> by
+                <a href="https://www.johanesalexanderputra.my.id" class="font-weight-bold" target="_blank">Johannes Alexander Putra</a>
+               
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                <li class="nav-item">
+                  <a href="https://www.johanesalexanderputra.my.id" class="nav-link text-muted" target="_blank">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a href="http://jap.my.id" class="nav-link text-muted" target="_blank">Blog</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </footer>
     </div>
-</footer>
-<!-- End of Footer -->
-
-</div>
-<!-- End of Content Wrapper -->
-
-</div>
-<!-- End of Page Wrapper -->
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="<?= base_url('Auth/logout'); ?>">Logout</a>
-            </div>
+  </main>
+  <div class="fixed-plugin">
+    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+      <i class="material-icons py-2">settings</i>
+    </a>
+    <div class="card shadow-lg">
+      <div class="card-header pb-0 pt-3">
+        <div class="float-start">
+          <h5 class="mt-3 mb-0">Algoritma dan Pemrograman</h5>
         </div>
-    </div>
-</div>
-<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ada data yang mau diubah?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Pilih ubah jika anda mau merubah data profile</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="<?= base_url('Admin/editProfile'); ?>">Ubah</a>
-            </div>
+        <div class="float-end mt-4">
+          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+            <i class="material-icons">clear</i>
+          </button>
         </div>
+        <!-- End Toggle Button -->
+      </div>
+      <hr class="horizontal dark my-1">
+      <div class="card-body pt-sm-3 pt-0">
+        <!-- Sidebar Backgrounds -->
+        <div>
+          <h6 class="mb-0">Sidebar Colors</h6>
+        </div>
+        <a href="javascript:void(0)" class="switch-trigger background-color">
+          <div class="badge-colors my-2 text-start">
+            <span class="badge filter bg-gradient-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
+          </div>
+        </a>
+        <!-- Sidenav Type -->
+        <div class="mt-3">
+          <h6 class="mb-0">Sidenav Type</h6>
+          <p class="text-sm">Choose between 2 different sidenav types.</p>
+        </div>
+        <div class="d-flex">
+          <button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark" onclick="sidebarType(this)">Dark</button>
+          <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
+          <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
+        </div>
+        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+        <!-- Navbar Fixed -->
+        <div class="mt-3 d-flex">
+          <h6 class="mb-0">Navbar Fixed</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
+          </div>
+        </div>
+        <hr class="horizontal dark my-3">
+        <div class="mt-2 d-flex">
+          <h6 class="mb-0">Light / Dark</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
+          </div>
+        </div>
+        <hr class="horizontal dark my-sm-4">
+       
+        </div>
+      </div>
     </div>
-</div>
-<!-- Bootstrap core JavaScript-->
-<script src="<?= base_url('assets/backend/'); ?>vendor/jquery/jquery.min.js"></script>
-<script src="<?= base_url('assets/backend/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="<?php echo base_url('assets/js/core/popper.min.js');?>"></script>
+  <script src="<?php echo base_url('assets/js/core/bootstrap.min.js');?>"></script>
+  <script src="<?php echo base_url('assets/js/plugins/perfect-scrollbar.min.js');?>"></script>
+  <script src="<?php echo base_url('assets/js/plugins/smooth-scrollbar.min.js');?>"></script>
+  <script src="<?php echo base_url('assets/js/plugins/chartjs.min.js');?>"></script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script src="<?php echo base_url('assets/js/material-dashboard.min.js?v=3.1.0');?>"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="<?= base_url('assets/backend/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!--Data tables -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="<?= base_url('assets/backend/'); ?>js/sb-admin-2.min.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="<?= base_url('assets/backend/vendor/datatables/'); ?>jquery.dataTables.min.js"></script>
 <script src="<?= base_url('assets/backend/vendor/datatables/'); ?>dataTables.bootstrap4.min.js"></script>
-
-<!-- Page level custom scripts -->
 <script src="<?= base_url('assets/backend/js/demo/'); ?>datatables-demo.js"></script>
 
-
-<!-- js boostrap 5 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-<!--Jquery Form Validation-->
-<script>
-    $('.custom-file-input').on('change', function() {
-        let fileName = $(this).val().split('\\').pop();
-        $(this).next('.custom-file-label').addClass("selected").html(fileName);
-    });
-</script>
 </body>
 
 </html>

@@ -49,7 +49,6 @@ class Admin extends CI_Controller
 
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/index', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -60,16 +59,34 @@ class Admin extends CI_Controller
             }
         }
     }
+
+    public function profile(){
+
+         if ($this->session->userdata('email') != '') {
+            $data['title'] = "Profile";
+            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+
+            $this->load->view('backend/admin/header', $data);
+            $this->load->view('backend/admin/sidebar', $data);
+            $this->load->view('backend/admin/profile', $data);
+            $this->load->view('backend/admin/footer');
+
+        } else {
+            redirect('Auth/backLogin');
+        }
+
+    }
+
+
     public function editProfile()
     {
         //hanya bisa diakses jika memiliki session dan role nya adalah 
 
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
-            $data['title'] = "Home Admin";
+            $data['title'] = "Edit Profile";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/editprofile', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -97,7 +114,6 @@ class Admin extends CI_Controller
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $this->load->view('backend/admin/header', $data);
                 $this->load->view('backend/admin/sidebar', $data);
-                $this->load->view('backend/admin/topbar', $data);
                 $this->load->view('backend/admin/editProfile', $data);
                 $this->load->view('backend/admin/footer');
             } else {
@@ -129,7 +145,6 @@ class Admin extends CI_Controller
 
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/listsiswa', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -150,7 +165,6 @@ class Admin extends CI_Controller
 
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/editsiswa', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -230,7 +244,6 @@ class Admin extends CI_Controller
             $data['randoms'] = $this->db->get_where('tb_random')->result_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/random', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -297,7 +310,6 @@ class Admin extends CI_Controller
             $data['soal'] = $this->db->get('tb_pretest')->result_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/pretest', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -317,7 +329,6 @@ class Admin extends CI_Controller
 
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/posttest', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -405,7 +416,6 @@ class Admin extends CI_Controller
             $data['soal'] = $this->db->get_where('tb_pretest', ['id_pretest' => $id])->row_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/editPretest', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -546,7 +556,6 @@ class Admin extends CI_Controller
 
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/editPostTest', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -616,7 +625,6 @@ class Admin extends CI_Controller
             $data['materi'] = $this->db->get('tb_materi')->result_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/materi', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -672,7 +680,6 @@ class Admin extends CI_Controller
 
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/editMateri', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -704,6 +711,30 @@ class Admin extends CI_Controller
             }
         }
     }
+
+    public function menilai()
+    {
+        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+            //select siswa from db
+            $data['siswa'] = $this->db->get_where('tb_akun', ['role' => 0])->result_array();
+            $data['title'] = 'Menilai';
+            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+            $data['materi'] = $this->db->get('tb_materi')->result_array();
+            $this->load->view('backend/admin/header', $data);
+            $this->load->view('backend/admin/sidebar', $data);
+            $this->load->view('backend/admin/tugastes', $data);
+            $this->load->view('backend/admin/footer');
+        } else {
+            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
+                redirect('Auth/blocked');
+            } else {
+                redirect('Auth/backLogin');
+            }
+        }
+    }
+
+
+    
     public function hasilPretest()
     {
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
@@ -716,7 +747,6 @@ class Admin extends CI_Controller
             $data['pretest'] = $this->db->get()->result_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/hasilpretest', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -758,7 +788,6 @@ class Admin extends CI_Controller
             $data['posttest'] = $this->db->get()->result_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/hasilposttest', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -799,7 +828,6 @@ class Admin extends CI_Controller
             $data['hasiltugas'] = $this->db->get()->result_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/hasil1', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -824,7 +852,6 @@ class Admin extends CI_Controller
             $data['hasiltugas'] = $this->db->get()->result_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/hasil2', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -849,7 +876,6 @@ class Admin extends CI_Controller
             $data['hasiltugas'] = $this->db->get()->result_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/hasil3', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -874,7 +900,6 @@ class Admin extends CI_Controller
             $data['hasiltugas'] = $this->db->get()->result_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/hasil4', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -893,7 +918,6 @@ class Admin extends CI_Controller
             $data['tugas'] = $this->db->get('tb_tugas')->result_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/tugas', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -963,7 +987,6 @@ class Admin extends CI_Controller
             $data['tugas'] = $this->db->get_where('tb_tugas', ['id_tugas' => $id])->row_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/edittugas', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -1025,7 +1048,6 @@ class Admin extends CI_Controller
             $data['pertemuan1'] = $this->db->get_where('tb_hasiltugas', ['id_hasiltugas' => $id])->row_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/nilaitugas1', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -1090,7 +1112,6 @@ class Admin extends CI_Controller
             $data['pertemuan2'] = $this->db->get_where('tb_hasiltugas', ['id_hasiltugas' => $id])->row_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/nilaitugas2', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -1152,7 +1173,6 @@ class Admin extends CI_Controller
             $data['pertemuan3'] = $this->db->get_where('tb_hasiltugas', ['id_hasiltugas' => $id])->row_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/nilaitugas3', $data);
             $this->load->view('backend/admin/footer');
         } else {
@@ -1214,7 +1234,6 @@ class Admin extends CI_Controller
             $data['pertemuan4'] = $this->db->get_where('tb_hasiltugas', ['id_hasiltugas' => $id])->row_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/topbar', $data);
             $this->load->view('backend/admin/nilaitugas4', $data);
             $this->load->view('backend/admin/footer');
         } else {

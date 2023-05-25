@@ -52,10 +52,10 @@
                                         <td><?= $j['nilai']; ?></td>
                                         <td><?= $j['komentar']; ?></td>
                                         <td>
-                                            <a href="<?= base_url('Admin/menilaiPertemuan2ById/') . $j['id_hasiltugas']; ?>" class="badge badge-success">Edit</a>
+                                            <a href="<?= base_url('Admin/menilaiPertemuan2ById/') . $j['id_hasiltugas']; ?>" >Edit</a>
                                             <?php
                                             if ($j['nilai'] != null || $j['komentar'] != null) {
-                                                echo '<a href="' . base_url('Admin/deleteMenilaiPertemuan2/') . $j['id_hasiltugas'] . '" class="badge badge-danger" onclick="return confirm(\'Yakin nilai akan dihapus permanen?\');">Hapus</a>';
+                                                echo '<a href="' . base_url('Admin/deleteMenilaiPertemuan2/') . $j['id_hasiltugas'] . '"  onclick="return confirm(\'Yakin nilai akan dihapus permanen?\');">Hapus</a>';
                                             }
                                             ?>
                                         </td>

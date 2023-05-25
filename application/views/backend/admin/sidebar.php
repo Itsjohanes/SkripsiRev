@@ -1,214 +1,179 @@
- <!-- Sidebar -->
- <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+<body class="g-sidenav-show  bg-gray-200">
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0" href="" >
+        <img src="<?php echo base_url('assets/img/logo-ct.png');?>" class="navbar-brand-img h-100" alt="main_logo">
+        <span class="ms-1 font-weight-bold text-white">Algoritma & Pemrograman</span>
+      </a>
+    </div>
+    <hr class="horizontal light mt-0 mb-2">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <?php 
+            if($title == 'Home Admin'){
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Admin') . '">';
 
-     <!-- Sidebar - Brand -->
-     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
-         <div class="sidebar-brand-icon rotate-n-15">
-             <i class="fas fa-code"></i>
-         </div>
-         <div class="sidebar-brand-text mx-3">Algoritma & Pemrograman</div>
-     </a>
-
-     <!-- Divider -->
-     <hr class="sidebar-divider">
-
-
-     <!-- QUERY MENU -->
-
-     <?php
-        if ($title == 'Home Admin') {
-            echo "<li class='nav-item active'>";
-        } else {
-            echo "<li class='nav-item'>";
-        }
-        ?> <a class="nav-link" href="<?= base_url('Admin'); ?>">
-         <i class="fas fa-address-card"></i>
-         <span>Dashboard Admin</span></a>
-     </li>
-     <hr class="sidebar-divider d-none d-md-block">
+               
+            }else{
+               echo '<a class="nav-link text-white " href="' . base_url('Admin') . '">';
 
 
-     <?php
-        if ($title == 'List Siswa') {
-            echo "<li class='nav-item active'>";
-        } else {
-            echo "<li class='nav-item'>";
-        }
-        ?>
-     <a class="nav-link" href="<?= base_url('Admin/ListSiswa'); ?>">
-         <i class="fas fa-users"></i>
-         <span>ListSiswa</span></a>
-     </li>
-
-
-     <hr class="sidebar-divider d-none d-md-block">
-
-     <?php
-        if ($title == 'Random') {
-            echo "<li class='nav-item active'>";
-        } else {
-            echo "<li class='nav-item'>";
-        }
-        ?> <a class="nav-link" href="<?= base_url('Admin/random'); ?>">
-         <i class="fas fa-random"></i> <span>Random Siswa</span></a>
-     </li>
-
-
-
-     <hr class="sidebar-divider d-none d-md-block">
-     <?php
-        if ($title == 'Chat') {
-            echo "<li class='nav-item active'>";
-        } else {
-            echo "<li class='nav-item'>";
-        }
-        ?> <a class="nav-link" href="<?= base_url('Chat/menu'); ?>">
-         <i class="fas fa-comment-dots"></i> <span>Chat</span></a>
-     </li>
-     <hr class="sidebar-divider d-none d-md-block">
-
-     <!-- Nav Item - Utilities Collapse Menu -->
-     <?php
-        if ($title == 'Pre-Test' || $title == 'Post-Test') {
-            echo "<li class='nav-item active'>";
-        } else {
-            echo "<li class='nav-item'>";
-        }
-        ?>
-     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-         <i class="fas fa-pencil-ruler"></i>
-         <span>Test</span>
-     </a>
-
-     <!--Untuk class active pada menu-->
-     <?php
-        if ($title == 'Pre-Test' || $title == 'Post-Test' || $title == 'Edit Pre-Test' || $title == 'Edit Post-Test') {
-            echo "<div id='collapseUtilities' class='collapse show' aria-labelledby='headingUtilities' data-parent='#accordionSidebar'>";
-        } else {
-            echo "<div id='collapseUtilities' class='collapse' aria-labelledby='headingUtilities' data-parent='#accordionSidebar'>";
-        }
-        ?>
-     <div class="bg-white py-2 collapse-inner rounded">
-         <h6 class="collapse-header">Test</h6>
-         <?php
-            if ($title == 'Pre-Test' || $title == 'Edit Pre-Test') {
-                echo "<a class='collapse-item active' href='" . base_url('Admin/preTest') . "'>Pre-Test</a>";
-            } else {
-                echo "<a class='collapse-item' href='" . base_url('Admin/preTest') . "'>Pre-Test</a>";
             }
             ?>
-         <?php
-            if ($title == 'Post-Test' || $title == 'Edit Post-Test') {
-                echo "<a class='collapse-item active' href='" . base_url('Admin/postTest') . "'>Post-Test</a>";
-            } else {
-                echo "<a class='collapse-item' href='" . base_url('Admin/postTest') . "'>Post-Test</a>";
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">dashboard</i>
+            </div>
+            <span class="nav-link-text ms-1">Home Admin</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <?php 
+            if($title == 'Materi'){
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Admin/materi') . '">';
+
+               
+            }else{
+               echo '<a class="nav-link text-white " href="' . base_url('Admin/materi') . '">';
+
+
+            }
+            ?>            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">book</i>
+            </div>
+            <span class="nav-link-text ms-1">Materi</span>
+          </a>
+        </li>
+       
+        <li class="nav-item">
+
+          <?php 
+            if($title == 'Tugas'){
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Admin/tugas') . '">';
+
+               
+            }else{
+               echo '<a class="nav-link text-white " href="' . base_url('Admin/tugas') . '">';
+
+
             }
             ?>
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">task</i>   
+            </div>
+            <span class="nav-link-text ms-1">Tugas</span>
+          </a>
+        </li>
 
-     </div>
-     </div>
-     </li>
+         <li class="nav-item">
 
-     <!-- Divider -->
-     <hr class="sidebar-divider">
+          <?php 
+            if($title == 'Menilai'){
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Admin/menilai') . '">';
 
-     <?php
-        if ($title == 'Materi' || $title == 'Edit Materi') {
-            echo "<li class='nav-item active'>";
-        } else {
-            echo "<li class='nav-item'>";
-        }
-        ?> <a class="nav-link" href="<?= base_url('Admin/materi'); ?>">
-         <i class="fas fa-book"></i> <span>Materi</span></a>
-     </li>
-     <hr class="sidebar-divider d-none d-md-block">
-
-     <?php
-        if ($title == 'Tugas') {
-            echo "<li class='nav-item active'>";
-        } else {
-            echo "<li class='nav-item'>";
-        }
-        ?> <a class="nav-link" href="<?= base_url('Admin/Tugas'); ?>">
-         <i class="fas fa-tasks"></i> <span>Tugas</span></a>
-     </li>
-     <hr class="sidebar-divider d-none d-md-block">
+               
+            }else{
+               echo '<a class="nav-link text-white " href="' . base_url('Admin/menilai') . '">';
 
 
-
-     <?php
-        if ($title == 'Hasil Pre-Test' || $title == 'Hasil Post-Test' || $title == 'Hasil Pertemuan 1' || $title == 'Hasil Pertemuan 2' || $title == 'Hasil Pertemuan 3' || $title == 'Hasil Pertemuan 4') {
-            echo "<li class='nav-item active'>";
-        } else {
-            echo "<li class='nav-item'>";
-        }
-        ?>
-
-
-     <!-- Nav Item - Pages Collapse Menu -->
-     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-         <i class="fas fa-book-open"></i>
-         <span>Menilai & Report</span>
-     </a>
-
-     <?php
-        if ($title == 'Hasil Pre-Test' || $title == 'Hasil Post-Test' || $title == 'Hasil Pertemuan 1' || $title == 'Hasil Pertemuan 2' || $title == 'Hasil Pertemuan 3' || $title == 'Hasil Pertemuan 4') {
-            echo "<div id='collapsePages' class='collapse show' aria-labelledby='headingPages' data-parent='#accordionSidebar'>";
-        } else {
-            echo "<div id='collapsePages' class='collapse' aria-labelledby='headingPages' data-parent='#accordionSidebar'>";
-        }
-        ?>
-     <div class="bg-white py-2 collapse-inner rounded">
-         <h6 class="collapse-header">Test:</h6>
-         <?php
-            if ($title == 'Hasil Pre-Test') {
-                echo "<a class='collapse-item active' href='" . base_url('Admin/hasilPreTest') . "'>Pre-Test</a>";
-            } else {
-                echo "<a class='collapse-item' href='" . base_url('Admin/hasilPreTest') . "'>Pre-Test</a>";
-            }
-
-            if ($title == 'Hasil Post-Test') {
-                echo "<a class='collapse-item active' href='" . base_url('Admin/hasilPostTest') . "'>Post-Test</a>";
-            } else {
-                echo "<a class='collapse-item' href='" . base_url('Admin/hasilPostTest') . "'>Post-Test</a>";
-            }
-
-
-            ?>
-         <div class="collapse-divider"></div>
-         <h6 class="collapse-header">Tugas Pertemuan:</h6>
-         <?php
-            if ($title == 'Hasil Pertemuan 1') {
-                echo "<a class='collapse-item active' href='" . base_url('Admin/hasilPertemuan1') . "'>Pertemuan 1</a>";
-            } else {
-                echo "<a class='collapse-item' href='" . base_url('Admin/hasilPertemuan1') . "'>Pertemuan 1</a>";
-            }
-
-            if ($title == 'Hasil Pertemuan 2') {
-                echo "<a class='collapse-item active' href='" . base_url('Admin/hasilPertemuan2') . "'>Pertemuan 2</a>";
-            } else {
-                echo "<a class='collapse-item' href='" . base_url('Admin/hasilPertemuan2') . "'>Pertemuan 2</a>";
-            }
-            if ($title == 'Hasil Pertemuan 3') {
-                echo "<a class='collapse-item active' href='" . base_url('Admin/hasilPertemuan3') . "'>Pertemuan 3</a>";
-            } else {
-                echo "<a class='collapse-item' href='" . base_url('Admin/hasilPertemuan3') . "'>Pertemuan 3</a>";
-            }
-
-            if ($title == 'Hasil Pertemuan 4') {
-                echo "<a class='collapse-item active' href='" . base_url('Admin/hasilPertemuan4') . "'>Pertemuan 4</a>";
-            } else {
-                echo "<a class='collapse-item' href='" . base_url('Admin/hasilPertemuan4') . "'>Pertemuan 4</a>";
             }
             ?>
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">score</i>   
+            </div>
+            <span class="nav-link-text ms-1">Menilai</span>
+          </a>
+        </li>
+       <li class="nav-item">
+ <?php 
+            if($title == 'Chat'){
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Chat/menu') . '">';
+
+               
+            }else{
+               echo '<a class="nav-link text-white " href="' . base_url('Chat/menu') . '">';
 
 
+            }
+            ?>            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">chat</i>
+            </div>
+            <span class="nav-link-text ms-1">Chat</span>
+          </a>
+        </li>
+      
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
+        </li>
+        <li class="nav-item">
+<?php 
+            if($title == 'Profile'){
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Admin/profile') . '">';
 
-     </div>
-     </div>
-     </li>
-     <hr class="sidebar-divider d-none d-md-block">
+               
+            }else{
+               echo '<a class="nav-link text-white " href="' . base_url('Admin/profile') . '">';
 
 
- </ul>
- <!-- End  of Sidebar -->
+            }
+            ?>                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">person</i>
+            </div>
+            <span class="nav-link-text ms-1">Profile</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="<?php echo base_url('Auth/logout');?>">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">logout</i>
+            </div>
+            <span class="nav-link-text ms-1">Log Out</span>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+  </aside>
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="">Pages</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page"><?php echo $title; ?></li>
+          </ol>
+          <h6 class="font-weight-bolder mb-0"><?php echo $title; ?> </h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+           
+          </div>
+          <ul class="navbar-nav  justify-content-end">
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item px-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a>
+            </li>
+           
+            <li class="nav-item d-flex align-items-center">
+              <a href="<?php echo base_url('Siswa/profile');?>" class="nav-link text-body font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none"><?php echo $user['nama'] ;?> </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
