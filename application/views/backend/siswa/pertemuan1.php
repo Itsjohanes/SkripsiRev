@@ -27,12 +27,15 @@
                             echo '<input type="hidden" name="id_hasiltugas" value="' . $hasiltugas['id_hasiltugas'] . '">';
                             echo '<input type="hidden" name="filelama" value="' . $hasiltugas['upload'] . '">';
                             echo '<label for="selectOption">Pertemuan</label>';
-                            echo '<input type = "text" name = "pertemuan" value = "1" class = "input-group input-group-outline mb-3" readonly>';
-
+                            echo '<div class="input-group input-group-outline">'; 
+                            echo '<input type = "text" name = "pertemuan" value = "1" class = "form-control" readonly>';
+                            echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
                             echo '<label for="textArea">Text</label>';
-                            echo '<textarea class="input-group input-group-outline mb-3" id="textArea" name="text" rows="3">' . $hasiltugas['text'] . '</textarea>';
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<textarea class = "form-control" id="textArea" name="text" rows="3">' . $hasiltugas['text'] . '</textarea>';
+                            echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
                             echo '<label for="fileUpload">Upload File (PDF)</label>';
@@ -55,11 +58,15 @@
                             
                             echo '<input type="hidden" name="slide" value="pertemuan1">';
                             echo '<label for="selectOption">Pertemuan</label>';
-                            echo '<input type = "text" name = "pertemuan" value = "1" class = "input-group input-group-outline mb-3" readonly>';
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<input type = "text" name = "pertemuan" value = "1" class = "form-control" readonly>';
+                            echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
                             echo '<label for="textArea">Text</label>';
-                            echo '<textarea class="input-group input-group-outline mb-3" id="textArea" name="text" rows="3"></textarea>';
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<textarea class="form-control" id="textArea" name="text" rows="3"></textarea>';
+                            echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
                             echo '<label for="fileUpload">Upload File (PDF)</label>';

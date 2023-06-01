@@ -15,7 +15,7 @@
                         //Jika sudah ada sebelumnya
                         echo '<div class="card-body">';
                         if ($banyakHasilTugas > 0) {
-                            echo "Data sudah ada sebelumnya. Silahkan isi form dibawah ini untuk mengubah data";
+                             echo "Data sudah ada sebelumnya. Silahkan isi form dibawah ini untuk mengubah data";
                             //mengubah data yang sudah ada
                             echo form_open_multipart('siswa/editTugas');
                             echo '<div class="form-group">';
@@ -23,11 +23,15 @@
                             echo '<input type="hidden" name="id_hasiltugas" value="' . $hasiltugas['id_hasiltugas'] . '">';
                             echo '<input type="hidden" name="filelama" value="' . $hasiltugas['upload'] . '">';
                             echo '<label for="selectOption">Pertemuan</label>';
-                            echo '<input type = "text" name = "pertemuan" value = "3" class = "input-group input-group-outline mb-3" readonly>';
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<input type = "text" name = "pertemuan" value = "3" class = "form-control" readonly>';
+                            echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
                             echo '<label for="textArea">Text</label>';
-                            echo '<textarea class="input-group input-group-outline mb-3" id="textArea" name="text" rows="3">' . $hasiltugas['text'] . '</textarea>';
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<textarea class="form-control" id="textArea" name="text" rows="3">' . $hasiltugas['text'] . '</textarea>';
+                            echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
                             echo '<label for="fileUpload">Upload File (PDF)</label>';
@@ -39,6 +43,7 @@
                             echo '<a href = "' . base_url('Siswa/hapusTugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini?\')">Delete</a>';
 
 
+
                             //delete data by Id button aja
                         } else {
 
@@ -46,12 +51,15 @@
                             echo '<div class="form-group">';
                             echo '<input type="hidden" name="slide" value="pertemuan3">';
                             echo '<label for="selectOption">Pertemuan</label>';
-                            echo '<input type = "text" name = "pertemuan" value = "3" class = "input-group input-group-outline mb-3" readonly>';
-
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<input type = "text" name = "pertemuan" value = "3" class = "form-control" readonly>';
+                            echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
                             echo '<label for="textArea">Text</label>';
-                            echo '<textarea class="input-group input-group-outline mb-3" id="textArea" name="text" rows="3"></textarea>';
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<textarea class="form-control" id="textArea" name="text" rows="3"></textarea>';
+                            echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
                             echo '<label for="fileUpload">Upload File (PDF)</label>';
