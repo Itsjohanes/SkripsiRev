@@ -23,6 +23,8 @@
                 <?php echo form_open_multipart('Admin/tambahMateri'); ?>
                 <div class="row">
                     <div class="col">
+                    <div class="input-group input-group-outline">
+
                         <select class="form-control" id="exampleFormControlSelect1" id="pertemuan" name="pertemuan">
                             <option selected>Pertemuan</option>
                             <option value="1">1</option>
@@ -32,9 +34,13 @@
 
                         </select>
                     </div>
+                    </div>
+                    
 
                     <div class="col">
+                    <div class="input-group input-group-outline">
                         <input type="text" class="form-control" placeholder="Link" id="link" name="link">
+                    </div>
                     </div>
 
                     <div class="col">

@@ -16,6 +16,8 @@
             <input type="hidden" name="file_lama" id="file_lama" value="<?php echo $tugas['tugas'];  ?>">
     
             <label for="link">Pertemuan</label>
+             <div class="input-group input-group-outline">
+
             <select class="form-control" required id="exampleFormControlSelect1" id="pertemuan" name="pertemuan">
                 <?php
                 if ($tugas['pertemuan'] == 1) {
@@ -43,10 +45,16 @@
 
 
             </select>
+            </div>
             <label for="nilai">File Tugas</label>
-            <a href="<?= base_url('assets/tugas/') . $tugas['tugas']; ?>" target="_blank">Lihat Tugas</a>
-            <input type="file" class="form-control" id="tugas" name="tugas">
+            <div class="input-group input-group-outline">
 
+            <a href="<?= base_url('assets/tugas/') . $tugas['tugas']; ?>" target="_blank">Lihat Tugas</a>
+            </div>
+                        <div class="input-group input-group-outline">
+
+            <input type="file" class="form-control" id="tugas" name="tugas">
+            </div>
 
         </div>
 

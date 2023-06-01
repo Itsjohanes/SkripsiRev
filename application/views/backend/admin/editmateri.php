@@ -14,6 +14,7 @@
         <div class="form-group">
             <input type="hidden" class="form-control" id="id_materi" name="id_materi" value="<?php echo $materi['id_materi'];  ?>">
             <label for="link">Pertemuan</label>
+            <div class="input-group input-group-outline">
             <select required class="form-control" id="exampleFormControlSelect1" id="pertemuan" name="pertemuan">
                 <?php
                 if ($materi['pertemuan'] == 1) {
@@ -41,9 +42,11 @@
 
 
             </select>
+            </div>
             <label for="nilai">Link Youtube</label>
+            <div class="input-group input-group-outline">
             <input type="text" required class="form-control" id="youtube" name="youtube" value="<?php echo $materi['youtube'];  ?>">
-
+            </div>
 
 
 
