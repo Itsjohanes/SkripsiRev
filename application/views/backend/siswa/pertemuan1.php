@@ -38,6 +38,12 @@
                             echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
+                            echo '<label for="textArea">Komentar</label>';
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<textarea class = "form-control" id="textArea" disabled name="text" rows="3">' . $hasiltugas['komentar'] . '</textarea>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<div class="form-group">';
                             echo '<label for="fileUpload">Upload File (PDF)</label>';
                             //file pdf yang diupload
                             echo '<a href="' . base_url('assets/tugassiswa/' . $hasiltugas['upload']) . '" target="_blank">' . $hasiltugas['upload'] . '</a>';
