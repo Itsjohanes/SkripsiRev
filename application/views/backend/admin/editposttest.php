@@ -17,22 +17,31 @@
             <input type="hidden" name="gambar_lama" id="gambar_lama" value="<?php echo $soal['gambar'];  ?>">
 
             <label for="link">Soal</label>
-            <input type="text" class="form-control" required id="soal" name="soal" value="<?php echo $soal['soal'];  ?>">
+            <div class="input-group input-group-outline">
+            <input type="text" class="form-control" required id="soal" name="soal" value="<?php echo $soal['soal'];  ?>"></div>
             <label for="nilai">Opsi A</label>
-            <input type="text" class="form-control" required id="opsi_a" name="opsi_a" value="<?php echo $soal['opsi_a'];  ?>">
+            <div class="input-group input-group-outline">
+            <input type="text" class="form-control" required id="opsi_a" name="opsi_a" value="<?php echo $soal['opsi_a'];  ?>"></div>
             <label for="nilai">Opsi B</label>
-            <input type="text" class="form-control" required id="opsi_b" name="opsi_b" value="<?php echo $soal['opsi_b'];  ?>">
+            <div class="input-group input-group-outline">
+            <input type="text" class="form-control" required id="opsi_b" name="opsi_b" value="<?php echo $soal['opsi_b'];  ?>"></div>
             <label for="nilai">Opsi C</label>
-            <input type="text" class="form-control" required id="opsi_c" name="opsi_c" value="<?php echo $soal['opsi_c'];  ?>">
+            <div class="input-group input-group-outline">
+            <input type="text" class="form-control" required id="opsi_c" name="opsi_c" value="<?php echo $soal['opsi_c'];  ?>"></div>
             <label for="nilai">Opsi D</label>
-            <input type="text" class="form-control" required id="opsi_d" name="opsi_d" value="<?php echo $soal['opsi_d'];  ?>">
+            <div class="input-group input-group-outline">
+            <input type="text" class="form-control" required id="opsi_d" name="opsi_d" value="<?php echo $soal['opsi_d'];  ?>"></div>
             <label for="nilai">Opsi E</label>
-            <input type="text" class="form-control" required id="opsi_e" name="opsi_e" value="<?php echo $soal['opsi_e'];  ?>">
+            <div class="input-group input-group-outline">
+            <input type="text" class="form-control" required id="opsi_e" name="opsi_e" value="<?php echo $soal['opsi_e'];  ?>"></div>
             <label for="nilai">Kunci</label>
-            <input type="text" class="form-control" required id="kunci" name="kunci" value="<?php echo $soal['kunci'];  ?>">
+            <div class="input-group input-group-outline">
+            <input type="text" class="form-control" required id="kunci" name="kunci" value="<?php echo $soal['kunci'];  ?>"></div>
             <label for="nilai">Gambar</label>
-            <a href="<?= base_url('assets/img/posttest/') . $soal['gambar']; ?>" target="_blank">Lihat Gambar</a>
-            <input type="file" class="form-control" id="gambar" name="gambar">
+            <div class="input-group input-group-outline">
+            <a href="<?= base_url('assets/img/posttest/') . $soal['gambar']; ?>" target="_blank">Lihat Gambar</a></div>
+            <div class="input-group input-group-outline">
+            <input type="file" class="form-control" id="gambar" name="gambar"></div>
 
 
         </div>

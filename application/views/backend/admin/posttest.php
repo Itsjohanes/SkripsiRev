@@ -23,29 +23,37 @@
                 <?php echo form_open_multipart('Admin/tambahPostTest'); ?>
                 <div class="row">
                     <div class="col">
-                        <input type="text" required class="form-control" placeholder="Soal" id="soal" name="soal">
+                        <div class="input-group input-group-outline">
+                        <input type="text" required class="form-control" placeholder="Soal" id="soal" name="soal"></div>
                     </div>
 
                     <div class="col">
-                        <input type="text" required class="form-control" placeholder="Opsi A" id="a" name="a">
+                        <div class="input-group input-group-outline">
+                        <input type="text" required class="form-control" placeholder="Opsi A" id="a" name="a"></div>
                     </div>
                     <div class="col">
-                        <input type="text" required class="form-control" placeholder="Opsi B" id="b" name="b">
+                        <div class="input-group input-group-outline">
+                        <input type="text" required class="form-control" placeholder="Opsi B" id="b" name="b"></div>
                     </div>
                     <div class="col">
-                        <input type="text" required class="form-control" placeholder="Opsi C" id="c" name="c">
+                        <div class="input-group input-group-outline">
+                        <input type="text" required class="form-control" placeholder="Opsi C" id="c" name="c"></div>
                     </div>
                     <div class="col">
-                        <input type="text" required class="form-control" placeholder="Opsi D" id="d" name="d">
+                        <div class="input-group input-group-outline">
+                        <input type="text" required class="form-control" placeholder="Opsi D" id="d" name="d"></div>
                     </div>
                     <div class="col">
-                        <input type="text" required class="form-control" placeholder="Opsi E" id="e" name="e">
+                        <div class="input-group input-group-outline">
+                        <input type="text" required class="form-control" placeholder="Opsi E" id="e" name="e"></div>
                     </div>
                     <div class="col">
-                        <input type="text" required class="form-control" placeholder="Kunci" id="kunci" name="kunci">
+                        <div class="input-group input-group-outline">
+                        <input type="text" required class="form-control" placeholder="Kunci" id="kunci" name="kunci"></div>
                     </div>
                     <div class="col">
-                        <input type="file" class="form-control" id="formFile" name="gambar" />
+                        <div class="input-group input-group-outline">
+                        <input type="file" class="form-control" id="formFile" name="gambar" /></div>
                     </div>
                     <div class="col">
                         <Button class="btn btn-success">Submit</Button>

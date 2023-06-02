@@ -21,9 +21,11 @@
             <a href="<?= base_url(); ?>assets/tugassiswa/<?= $pertemuan3['upload']; ?>" <i class="fas fa-file-pdf"></i></a>
             <br>
             <label for="link">Nilai</label>
-            <input type="text" class="form-control" id="nilai" name="nilai" value="<?php echo $pertemuan3['nilai'];  ?>">
+            <div class="input-group input-group-outline">
+            <input type="text" class="form-control" id="nilai" name="nilai" value="<?php echo $pertemuan3['nilai'];  ?>"></div>
             <label for="nilai">Komentar</label>
-            <input type="text" class="form-control" id="komentar" name="komentar" value="<?php echo $pertemuan3['komentar'];  ?>">
+            <div class="input-group input-group-outline">
+            <input type="text" class="form-control" id="komentar" name="komentar" value="<?php echo $pertemuan3['komentar'];  ?>"></div>
 
 
 

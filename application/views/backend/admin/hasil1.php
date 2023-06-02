@@ -49,6 +49,7 @@
                                         <td><?= $j['nama']; ?></td>
                                         <td><?= $j['text']; ?></td>
                                         <td> <a href="<?= base_url(); ?>assets/tugassiswa/<?= $j['upload']; ?>" <i class="fas fa-file-pdf"></i></a> </td>
+                                        
                                         <td><?= $j['nilai']; ?></td>
                                         <td><?= $j['komentar']; ?></td>
                                         <td>
