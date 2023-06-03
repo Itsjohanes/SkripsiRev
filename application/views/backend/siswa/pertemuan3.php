@@ -33,6 +33,18 @@
                             echo '<textarea class="form-control" id="textArea" name="text" rows="3">' . $hasiltugas['text'] . '</textarea>';
                             echo '</div>';
                             echo '</div>';
+                             echo '<div class="form-group">';
+                            echo '<label for="textArea">Nilai</label>';
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<textarea class = "form-control" id="textArea" disabled name="text" rows="1">' . $hasiltugas['nilai'] . '</textarea>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<div class="form-group">';
+                            echo '<label for="textArea">Komentar</label>';
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<textarea class = "form-control" id="textArea" disabled name="text" rows="3">' . $hasiltugas['komentar'] . '</textarea>';
+                            echo '</div>';
+                            echo '</div>';
                             echo '<div class="form-group">';
                             echo '<label for="fileUpload">Upload File (PDF)</label>';
                             //file pdf yang diupload
@@ -61,18 +73,7 @@
                             echo '<textarea class="form-control" id="textArea" name="text" rows="3"></textarea>';
                             echo '</div>';
                             echo '</div>';
-                            echo '<div class="form-group">';
-                            echo '<label for="textArea">Nilai</label>';
-                            echo '<div class="input-group input-group-outline">';
-                            echo '<textarea class = "form-control" id="textArea" disabled name="text" rows="1">' . $hasiltugas['nilai'] . '</textarea>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '<div class="form-group">';
-                            echo '<label for="textArea">Komentar</label>';
-                            echo '<div class="input-group input-group-outline">';
-                            echo '<textarea class = "form-control" id="textArea" disabled name="text" rows="3">' . $hasiltugas['komentar'] . '</textarea>';
-                            echo '</div>';
-                            echo '</div>';
+                           
                             echo '<div class="form-group">';
                             echo '<label for="fileUpload">Upload File (PDF)</label>';
                             echo '<input type="file" class="form-control-file" name="upload" id="fileUpload">';
@@ -119,6 +120,9 @@
                      <a href='<?= base_url('materi/pertemuan3/'); ?>' target='_blank'><i class="fas fa-book"> Materi</i></a>
                      &nbsp
                      <a href='<?= base_url('assets/tugas/') . $tugas['tugas']; ?>' target='_blank'><i class="fas fa-tasks"> Tugas</i></a>
+                      &nbsp
+                    <a href='<?= base_url('Comments3'); ?>' ><i class="fas fa-comment"> Komentar</i></a>
+                     
                  </div>
              </div>
 
