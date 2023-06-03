@@ -127,6 +127,8 @@
                      <a href='<?= base_url('materi/pertemuan1/'); ?>'><i class="fas fa-book"> Materi</i></a>
                      &nbsp
                      <a href='<?= base_url('assets/tugas/') . $tugas['tugas']; ?>' target='_blank'><i class="fas fa-tasks"> Tugas</i></a>
+                     &nbsp
+                     <a href='<?= base_url('Comments1'); ?>' ><i class="fas fa-comment"> Komentar</i></a>
                  </div>
              </div>
 

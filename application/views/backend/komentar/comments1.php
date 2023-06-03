@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title><?php echo $title;?></title>
-    <!-- Tambahkan link CSS Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 
     <style>
         .comment-container {
             margin-bottom: 20px;
@@ -37,15 +32,16 @@
 </head>
 <body>
     <div class="container">
-        <h1>Comments</h1>
 
         <h2>Add Comment</h2>
-        <form action="<?php echo site_url('comments/save_comment'); ?>" method="post">
+        <form action="<?php echo site_url('Comments1/save_comment'); ?>" method="post">
             <div class="form-group">
                 <input type="hidden" name="id_user" value = "<?php echo $user['id'];?>" required class="form-control">
             </div>
             <div class="form-group">
+                <div class="input-group input-group-outline mb-3">
                 <textarea name="comment" placeholder="Comment" required class="form-control"></textarea>
+                </div>
             </div>
             <input type="submit" value="Submit" class="btn btn-primary">
         </form>
@@ -62,7 +58,7 @@
                     </div>
                     <a href="#" class="reply-btn">Reply</a>
                     <div class="reply-form-container" style="display: none;">
-                        <form action="<?php echo site_url('comments/save_reply'); ?>" method="post" class="reply-form">
+                        <form action="<?php echo site_url('Comments1/save_reply'); ?>" method="post" class="reply-form">
                             <div class="form-group">
                                 <input type="hidden" name="id_user" value = "<?php echo $user['id'];?>" required class="form-control">
                             </div>
@@ -101,5 +97,4 @@
             });
         });
     </script>
-</body>
-</html>
+
