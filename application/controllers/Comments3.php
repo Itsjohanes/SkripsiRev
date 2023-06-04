@@ -15,28 +15,22 @@ class Comments3 extends CI_Controller {
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/komentar/comments3', $data);
             $this->load->view('backend/admin/footer');
-
         }
         else if ($this->session->userdata('email') != '') {
-         $data['title'] = "Komentar Pertemuan 3";
+            $data['title'] = "Komentar Pertemuan 3";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['comments'] = $this->comments3_model->get_comments();
-              $this->load->view('backend/siswa/header', $data);
+            $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/komentar/comments3', $data);
             $this->load->view('backend/siswa/footer');
-            
-
-
-
         } else {
             redirect('Auth/backLogin');
-        }
-
-        
+        }   
     }
 
     public function save_comment() {
+        if($this->session->userdata('email') != ''){
         // Proses menyimpan komentar
         $data = array(
             'id_user' => $this->input->post('id_user'),
@@ -47,9 +41,11 @@ class Comments3 extends CI_Controller {
         $this->comments3_model->save_comment($data);
         redirect('Comments3');
     }
+    }
 
     public function save_reply() {
         // Proses menyimpan reply
+        if($this->session->userdata('email') != ''){
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
@@ -58,5 +54,6 @@ class Comments3 extends CI_Controller {
 
         $this->comments3_model->save_reply($data);
         redirect('Comments3');
+        }
     }
 }

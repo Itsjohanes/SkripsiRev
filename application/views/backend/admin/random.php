@@ -196,7 +196,7 @@
         echo "</div>";
 
         //kelompok 4
-        echo "<h3>Kelompok 1 " . "</h3>";
+        echo "<h3>Kelompok 4 " . "</h3>";
         echo "<div class='card shadow mb-4'>";
         echo "<div class='card-header py-3'>";
         echo "</div>";

@@ -103,7 +103,25 @@
             <span class="nav-link-text ms-1">Post-Test</span>
           </a>
         </li>
-        
+        <li class="nav-item">
+
+          <?php 
+            if($title == 'Random'){
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Admin/random') . '">';
+
+               
+            }else{
+               echo '<a class="nav-link text-white " href="' . base_url('Admin/random') . '">';
+
+
+            }
+            ?>
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">group</i>   
+            </div>
+            <span class="nav-link-text ms-1">Random Kelompok</span>
+          </a>
+        </li>
 
          <li class="nav-item">
 

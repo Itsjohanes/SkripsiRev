@@ -16,9 +16,9 @@ class Chat extends CI_Controller
 
     public function index()
     {
-        if ($_SESSION['email'] == null) {
+        if ($_SESSION['email'] == '') {
 
-            redirect('Auth/login', 'refresh');
+            redirect('Auth/login');
         } else {
             $no =  $this->uri->segment(2);
             $data['data'] = $this->ChatModel->getDataById($no);
@@ -33,7 +33,7 @@ class Chat extends CI_Controller
                     $this->load->view('backend/admin/sidebar');
                     $this->load->view('backend/chat/chat', $data);
                     $this->load->view('backend/admin/footer');
-                } else {
+                } else if($data['user']['role'] == '0'){
                     $this->load->view('backend/siswa/header', $data);
                     $this->load->view('backend/siswa/sidebar');
                     $this->load->view('backend/chat/chat', $data);
@@ -51,11 +51,13 @@ class Chat extends CI_Controller
             $this->load->view('backend/admin/sidebar',$data);
             $this->load->view('backend/chat/dua');
             $this->load->view('backend/admin/footer');
-        } else {
+        } else if($data['user']['role'] == '0') {
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar');
             $this->load->view('backend/chat/dua');
             $this->load->view('backend/siswa/footer');
+        }else{
+            redirect('Auth/login');
         }
     }
     public function loadChat()
@@ -68,7 +70,7 @@ class Chat extends CI_Controller
             'data' => $data
         ));
 
-        # code...
+        
     }
     public function KirimPesan()
     {
@@ -105,13 +107,13 @@ class Chat extends CI_Controller
             'data' => $data
         ));
 
-        # code...
+        
     }
     public function menu()
     {
         if ($_SESSION['email'] == null) {
 
-            redirect('Auth/login', 'refresh');
+            redirect('Auth/login');
         } else {
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -121,7 +123,7 @@ class Chat extends CI_Controller
                 $this->load->view('backend/admin/sidebar');
                 $this->load->view('backend/chat/menu');
                 $this->load->view('backend/admin/footer');
-            } else {
+            } else if($data['user']['role'] == '0') {
                 $this->load->view('backend/siswa/header', $data);
                 $this->load->view('backend/siswa/sidebar');
                 $this->load->view('backend/chat/menu');

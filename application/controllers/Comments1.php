@@ -5,7 +5,6 @@ class Comments1 extends CI_Controller {
         parent::__construct();
         $this->load->model('comments1_model');
     }
-
     public function index() {
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1){
             $data['title'] = "Komentar Pertemuan 1";
@@ -25,19 +24,14 @@ class Comments1 extends CI_Controller {
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/komentar/comments1', $data);
             $this->load->view('backend/siswa/footer');
-            
-
-
-
         } else {
             redirect('Auth/backLogin');
         }
-
-        
     }
 
     public function save_comment() {
         // Proses menyimpan komentar
+        if($this->session->userdata('email') != ''){
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
@@ -47,8 +41,10 @@ class Comments1 extends CI_Controller {
         $this->comments1_model->save_comment($data);
         redirect('Comments1');
     }
+    }
 
     public function save_reply() {
+        if($this->session->userdata('email') != ''){
         // Proses menyimpan reply
         $data = array(
             'id_user' => $this->input->post('id_user'),
@@ -58,5 +54,6 @@ class Comments1 extends CI_Controller {
 
         $this->comments1_model->save_reply($data);
         redirect('Comments1');
+    }
     }
 }
