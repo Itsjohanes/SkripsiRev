@@ -76,29 +76,29 @@
                 <h6 class="m-0 font-weight-bold text-primary">Jumlah Siswa</h6>
             </div>
             <div class="card-body">
-                <h4 class="small font-weight-bold">Mengerjakan Pre-Test (<span class="float-right"><?php echo $persentasepretest;  ?>)%</span></h4>
+                <h4 class="small font-weight-bold">Mengerjakan Pre-Test (<span class="float-right"><?php echo $persentasepretest;  ?>%)</span></h4>
                 <div class="progress mb-4">
                     <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $persentasepretest ?>%" aria-valuenow="<?php echo $persentasepretest ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <h4 class="small font-weight-bold">Mengerjakan Tugas 1 (<span class="float-right"><?php echo $persentasetugas1;  ?>)%</span></h4>
+                <h4 class="small font-weight-bold">Mengerjakan Tugas 1 (<span class="float-right"><?php echo $persentasetugas1;  ?>%)</span></h4>
                 <div class="progress mb-4">
                     <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $persentasetugas1 ?>%" aria-valuenow="<?php echo $persentasetugas1 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <h4 class="small font-weight-bold">Mengerjakan Tugas 2 (<span class="float-right"><?php echo $persentasetugas2;  ?>)%</span></h4>
+                <h4 class="small font-weight-bold">Mengerjakan Tugas 2 (<span class="float-right"><?php echo $persentasetugas2;  ?>%)</span></h4>
                 <div class="progress mb-4">
                     <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $persentasetugas2 ?>%" aria-valuenow="<?php echo $persentasetugas2 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <h4 class="small font-weight-bold">Mengerjakan Tugas 3 (<span class="float-right"><?php echo $persentasetugas3;  ?>)%</span></h4>
+                <h4 class="small font-weight-bold">Mengerjakan Tugas 3 (<span class="float-right"><?php echo $persentasetugas3;  ?>%)</span></h4>
                 <div class="progress mb-4">
                     <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $persentasetugas3 ?>%" aria-valuenow="<?php echo $persentasetugas3 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <h4 class="small font-weight-bold">Mengerjakan Tugas 4 (<span class="float-right"><?php echo $persentasetugas4;  ?>)%</span></h4>
+                <h4 class="small font-weight-bold">Mengerjakan Tugas 4 (<span class="float-right"><?php echo $persentasetugas4;  ?>%)</span></h4>
                 <div class="progress mb-4">
                     <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $persentasetugas4 ?>%" aria-valuenow="<?php echo $persentasetugas4 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <h4 class="small font-weight-bold">Mengerjakan Post-Test (<span class="float-right"><?php echo $persentaseposttest;  ?>)%</span></h4>
+                <h4 class="small font-weight-bold">Mengerjakan Post-Test (<span class="float-right"><?php echo $persentaseposttest;  ?>%)</span></h4>
                 <div class="progress mb-4">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo $persentaseposttest; ?>%" aria-valuenow="<?php echo $persentaseposttest; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $persentaseposttest; ?>%" aria-valuenow="<?php echo $persentaseposttest; ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
 
             </div>
