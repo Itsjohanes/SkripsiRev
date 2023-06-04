@@ -915,6 +915,7 @@ class Admin extends CI_Controller
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $data['title'] = "Tugas";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+           
             $data['tugas'] = $this->db->get('tb_tugas')->result_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
@@ -928,10 +929,31 @@ class Admin extends CI_Controller
             }
         }
     }
+
+
+    public function komentar()
+    {
+        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+            $data['title'] = "Komentar";
+            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+            $this->load->view('backend/admin/header', $data);
+            $this->load->view('backend/admin/sidebar', $data);
+            $this->load->view('backend/admin/komentar', $data);
+            $this->load->view('backend/admin/footer');
+        } else {
+            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
+                redirect('Auth/blocked');
+            } else {
+                redirect('Auth/backLogin');
+            }
+        }
+    }
+
+
+
     public function tambahTugas()
     {
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
-            //memasukan pertemuan dan tugas berupa pdf saja
 
             $pertemuan = $this->input->post('pertemuan');
             $tugas = $_FILES['tugas']['name'];

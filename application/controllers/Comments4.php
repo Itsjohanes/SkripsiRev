@@ -8,7 +8,7 @@ class Comments4 extends CI_Controller {
 
     public function index() {
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1){
-            $data['title'] = "Komentar";
+            $data['title'] = "Komentar Pertemuan 4";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['comments'] = $this->comments4_model->get_comments();
               $this->load->view('backend/admin/header', $data);
@@ -18,7 +18,7 @@ class Comments4 extends CI_Controller {
 
         }
         else if ($this->session->userdata('email') != '') {
-         $data['title'] = "Komentar";
+         $data['title'] = "Komentar Pertemuan 4";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['comments'] = $this->comments4_model->get_comments();
               $this->load->view('backend/siswa/header', $data);

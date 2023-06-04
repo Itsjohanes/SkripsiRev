@@ -124,6 +124,28 @@
             <span class="nav-link-text ms-1">Menilai</span>
           </a>
         </li>
+
+
+
+        <li class="nav-item">
+
+          <?php 
+            if($title == 'Komentar'){
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Admin/komentar') . '">';
+
+               
+            }else{
+               echo '<a class="nav-link text-white " href="' . base_url('Admin/komentar') . '">';
+
+
+            }
+            ?>
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">comment</i>   
+            </div>
+            <span class="nav-link-text ms-1">Komentar dan Diskusi</span>
+          </a>
+        </li>
        <li class="nav-item">
  <?php 
             if($title == 'Chat'){
