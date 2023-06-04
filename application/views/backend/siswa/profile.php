@@ -31,7 +31,7 @@
                 <div class="card-header pb-0 p-3">
                   <div class="row">
                     <div class="col-md-8 d-flex align-items-center">
-                      <h6 class="mb-0">Profile Information</h6>
+                      <h6 class="mb-0">Informasi Akun</h6>
                     </div>
                     <div class="col-md-4 text-end">
                       <a href="<?php echo base_url('Siswa/editProfile');?>">
@@ -46,9 +46,9 @@
                   </p>
                   <hr class="horizontal gray-light my-4">
                   <ul class="list-group">
-                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; <?php echo $user['nama'];?></li>
+                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nama Lengkap:</strong> &nbsp; <?php echo $user['nama'];?></li>
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; <?php echo $user['email'];?></li>
-                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; Indonesia</li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Lokasi:</strong> &nbsp; Indonesia</li>
                     
                   </ul>
                 </div>

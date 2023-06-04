@@ -334,7 +334,17 @@ class Siswa extends CI_Controller
             $data['tugas2'] = $tugas2;
             $data['tugas3'] = $tugas3;
             $data['tugas4'] = $tugas4;
-            $data['siswa'] = $this->db->get_where('tb_akun', ['role' => 0])->result_array();
+            //mendapatkan kelompok siswa dari tb_random
+            $kelompok = $this->db->get_where('tb_random', ['id_user' => $this->session->userdata('id')])->row_array();
+            if($kelompok != ''){
+                //data siswa isikan dengan dengan data siswa yang satu kelompok
+                $data['siswa'] = $this->db->get_where('tb_random', ['kelompok' => $kelompok['kelompok']])->result_array();
+            }else{
+                //data siswa isikan dengan dengan data siswa yang satu kelompok
+                $data['siswa'] = $this->db->get_where('tb_random', ['kelompok' => 0])->result_array();
+            }
+
+            
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/materi', $data);

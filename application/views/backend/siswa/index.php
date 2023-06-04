@@ -29,9 +29,9 @@
                 <h4 class="mb-0">
                     <?php 
                 if($kelompok == null) {
-                    echo "Not Found";
+                    echo "Belum ada";
                     } else {
-                    echo $kelompok;
+                    echo $kelompok['kelompok'];
                     }?></h4>
                 
 
@@ -87,7 +87,7 @@
               </div>
             </div>
             <div class="card-body">
-              <h6 class="mb-0 ">Complete Task</h6>
+              <h6 class="mb-0 ">Tugas Selesai</h6>
               <p class="text-sm "> 
 
                  <?php 
@@ -116,7 +116,7 @@
               </div>
             </div>
             <div class="card-body">
-              <h6 class="mb-0 "> Incomplete Task </h6>
+              <h6 class="mb-0 "> Tugas Belum Selesai </h6>
               <p class="text-sm "> <?php echo $belumSelesai;?> </p>
               <hr class="dark horizontal">
               <div class="d-flex ">
@@ -134,7 +134,7 @@
               </div>
             </div>
             <div class="card-body">
-              <h6 class="mb-0 ">Completed Test</h6>
+              <h6 class="mb-0 ">Tes Selesai</h6>
             <p class="text-sm ">
 
             <?php
