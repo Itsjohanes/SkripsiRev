@@ -949,7 +949,23 @@ class Admin extends CI_Controller
         }
     }
 
-
+    public function message(){
+         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+            $data['title'] = "Message";
+            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+            $data['pesan'] = $this->db->get('tb_contact')->result_array();
+            $this->load->view('backend/admin/header', $data);
+            $this->load->view('backend/admin/sidebar', $data);
+            $this->load->view('backend/admin/message', $data);
+            $this->load->view('backend/admin/footer');
+        } else {
+            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
+                redirect('Auth/blocked');
+            } else {
+                redirect('Auth/backLogin');
+            }
+        }
+    }
 
     public function tambahTugas()
     {
