@@ -76,7 +76,7 @@
 
 <script>
   // Timer Countdown
-  var timeLeft = 10; // Waktu dalam detik (10 detik sebagai contoh)
+  var timeLeft = 3600; // Waktu dalam detik (10 detik sebagai contoh)
   var timerId;
 
   function startTimer() {
@@ -96,10 +96,17 @@
       document.getElementById('posttest-form').submit();
     } else {
       timeLeft--;
+      localStorage.setItem('timeLeft', timeLeft); 
     }
   }
 
-  // Jalankan timer saat halaman dimuat
+  var storedTimeLeft = localStorage.getItem('timeLeft');
+  if (storedTimeLeft) {
+    timeLeft = parseInt(storedTimeLeft);
+  } else {
+    timeLeft = 3600; // Atur waktu default jika tidak ada waktu tersisa yang disimpan
+  }
+  
   startTimer();
 
   // Simpan opsi yang dipilih pada session storage
