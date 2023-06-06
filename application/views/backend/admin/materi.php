@@ -13,8 +13,20 @@
         <div class="alert alert-danger"> <?= $this->session->flashdata('category_error') ?> </div>
     <?php } ?>
     <div class="row no-gutters">
-
         <br>
+        <div class="container-fluid">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Materi Bacaan</h6>
+                </div>
+                    <div class="col">
+                    <a class="btn btn-danger" href = "<?php echo base_url('/materi/pertemuan1');?>">Pertemuan 1</a>
+                    <a class="btn btn-warning" href = "<?php echo base_url('/materi/pertemuan2');?>">Pertemuan 2</a>
+                    <a class="btn btn-success" href = "<?php echo base_url('/materi/pertemuan3');?>">Pertemuan 3</a>
+                    <a class="btn btn-info" href = "<?php echo base_url('/materi/pertemuan4');?>">Pertemuan 4</a>    
+                </div>
+            </div>
+        </div>
         <div class="container-fluid">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -24,7 +36,7 @@
                 <div class="row">
                     <div class="col">
                     <div class="input-group input-group-outline">
-
+                        &nbsp
                         <select class="form-control" id="exampleFormControlSelect1" id="pertemuan" name="pertemuan">
                             <option selected>Pertemuan</option>
                             <option value="1">1</option>
@@ -50,7 +62,6 @@
                 </form>
             </div>
         </div>
-
 
 
 
