@@ -166,11 +166,10 @@ $nama = $_SESSION['nama'];
 				}
 			});
 		}
-		$('body').on('click', '.coba', function() {
-			var id = $(".coba").data('id');
-			window.location.replace("<?= base_url() ?>Chat/" + id);
-
-		});
+		$('body').on('click', '.coba', function(event) {
+  var id = $(event.target).closest('.coba').data('id');
+  window.location.replace("<?= base_url() ?>Chat/" + id);
+});
 
 	});
 </script>
