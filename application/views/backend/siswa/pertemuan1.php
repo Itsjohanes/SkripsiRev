@@ -50,7 +50,8 @@
                             echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
-                            echo '<label for="fileUpload">Upload File (PDF)</label>';
+                            echo '<label for="fileUpload">Upload File (max 2mb) (PDF)</label>';
+                            echo '</br>';
                             //file pdf yang diupload
                             echo '<a href="' . base_url('assets/tugassiswa/' . $hasiltugas['upload']) . '" target="_blank">' . $hasiltugas['upload'] . '</a>';
                             echo '<input type="file" class="form-control-file" name="upload" id="fileUpload">';
@@ -59,7 +60,6 @@
                             //hapus dengan konfirmasi menggunakan alert
 
                             echo '<a href = "' . base_url('Siswa/hapusTugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini?\')">Delete</a>';
-
 
 
                             //delete data by Id button aja
@@ -81,9 +81,11 @@
                             echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
-                            echo '<label for="fileUpload">Upload File (PDF)</label>';
+                            echo '<label for="fileUpload">Upload File (max 2mb) (PDF)</label>';
+                            echo '</br>';
                             echo '<input type="file" class="form-control-file" name="upload" id="fileUpload">';
                             echo '</div>';
+                            echo '</br>';
                         }
                         ?>
                      <button type="submit" class="btn btn-success">Submit</button>
@@ -100,7 +102,7 @@
                  <div class="card-body">
                      <?php
                         foreach ($materi as $v) {
-                            $iframe = '<iframe width="560" height="315" src="https://www.youtube.com/embed/' . $v['youtube'] . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                            $iframe = '<iframe width="500" height="315" src="https://www.youtube.com/embed/' . $v['youtube'] . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
                             echo $iframe;
                         }
                         ?>

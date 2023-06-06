@@ -308,6 +308,8 @@ class Admin extends CI_Controller
             $data['title'] = "Pre-Test";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['soal'] = $this->db->get('tb_pretest')->result_array();
+            //select aktif dari tb_test
+            $data['aktif'] = $this->db->get_where('tb_test', ['id_tes' => 1])->row_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/pretest', $data);
@@ -326,6 +328,7 @@ class Admin extends CI_Controller
             $data['title'] = "Post-Test";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['soal'] = $this->db->get('tb_posttest')->result_array();
+            $data['aktif'] = $this->db->get_where('tb_test', ['id_tes' => 2])->row_array();
 
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
@@ -948,6 +951,96 @@ class Admin extends CI_Controller
             }
         }
     }
+    public function preTestHandler(){
+        if ($this->input->post('pretes')) {
+        $this->activasiPretest();
+    } else {
+        $this->mematikanPretest();
+    }
+
+    }
+
+    public function activasiPretest(){
+        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+            //mengubah status pada tb_test menjadi 1
+            $this->db->set('aktif', 1);
+            $this->db->where('id_tes', 1);
+            $this->db->update('tb_test');
+            redirect('Admin/preTest');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pretest telah diaktifkan</div>');
+
+
+        } else {
+            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
+                redirect('Auth/blocked');
+            } else {
+                redirect('Auth/backLogin');
+            }
+        }
+    }
+    public function mematikanPretest(){
+        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+            //mengubah status pada tb_test menjadi 1
+            $this->db->set('aktif', 0);
+            $this->db->where('id_tes', 1);
+            $this->db->update('tb_test');
+            redirect('Admin/preTest');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pretest telah dimatikan</div>');
+
+        } else {
+            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
+                redirect('Auth/blocked');
+            } else {
+                redirect('Auth/backLogin');
+            }
+        }
+    }
+    
+    public function postTestHandler(){
+        if ($this->input->post('posttes')) {
+        $this->activasiPosttest();
+    } else {
+        $this->mematikanPosttest();
+    }
+
+    }
+
+    public function activasiPosttest(){
+        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+            //mengubah status pada tb_test menjadi 1
+            $this->db->set('aktif', 1);
+            $this->db->where('id_tes', 2);
+            $this->db->update('tb_test');
+            redirect('Admin/postTest');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Posttest telah diaktifkan</div>');
+
+
+        } else {
+            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
+                redirect('Auth/blocked');
+            } else {
+                redirect('Auth/backLogin');
+            }
+        }
+    }
+    public function mematikanPosttest(){
+        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+            //mengubah status pada tb_test menjadi 1
+            $this->db->set('aktif', 0);
+            $this->db->where('id_tes', 2);
+            $this->db->update('tb_test');
+            redirect('Admin/postTest');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Posttest telah dimatikan</div>');
+
+        } else {
+            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
+                redirect('Auth/blocked');
+            } else {
+                redirect('Auth/backLogin');
+            }
+        }
+    }
+
 
     public function message(){
          if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {

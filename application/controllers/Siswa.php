@@ -166,10 +166,19 @@ class Siswa extends CI_Controller
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah pernah mengerjakan Pre-Test</div>');
                 redirect('Siswa/materi');
             } else {
-                $this->load->view('backend/siswa/header', $data);
-                $this->load->view('backend/siswa/sidebar', $data);
-                $this->load->view('backend/siswa/pretest', $data);
-                $this->load->view('backend/siswa/footer');
+                //status aktif
+                $aktif = $this->db->get_where('tb_test',['id_tes' => 1])->row_array();
+                if($aktif['aktif'] == 0){
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pre-Test belum aktif</div>');
+                    redirect('Siswa/materi');
+                }else{
+                    $this->load->view('backend/siswa/header', $data);
+                    $this->load->view('backend/siswa/sidebar', $data);
+                    $this->load->view('backend/siswa/pretest', $data);
+                    $this->load->view('backend/siswa/footer');
+                }
+
+                
             }
         } else {
             redirect('Auth/backLogin');
@@ -249,10 +258,17 @@ class Siswa extends CI_Controller
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah mengerjakan Post-Test</div>');
             redirect('Siswa/materi');
             } else {
+                $aktif = $this->db->get_where('tb_test',['id_tes' => 2])->row_array();
+                if($aktif['aktif'] == 0){
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Post-Test belum aktif</div>');
+                    redirect('Siswa/materi');
+                }else{
                 $this->load->view('backend/siswa/header', $data);
                 $this->load->view('backend/siswa/sidebar', $data);
                 $this->load->view('backend/siswa/posttest', $data);
                 $this->load->view('backend/siswa/footer');
+                }
+                
             }   
         } else {
             redirect('Auth/backLogin');
