@@ -8,6 +8,10 @@ class Siswa extends CI_Controller
     function __construct()
     {
         parent::__construct();
+          $this->load->model('comments1_model');
+          $this->load->model('comments2_model');
+          $this->load->model('comments3_model');
+          $this->load->model('comments4_model');
     }
     public function index()
     {
@@ -375,9 +379,14 @@ class Siswa extends CI_Controller
             $data['hasiltugas'] = $this->db->get_where('tb_hasiltugas', ['pertemuan' => 1, 'id_siswa' => $this->session->userdata('id')])->row_array();
             $data['banyakHasilTugas'] =   $this->db->get_where('tb_hasiltugas', ['pertemuan' => 1, 'id_siswa' => $this->session->userdata('id')])->num_rows();
             $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 1])->row_array();
+            $data['comments'] = $this->comments1_model->get_comments();
+
+
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/pertemuan1', $data);
+             $this->load->view('backend/komentar/comments1', $data);
+
             $this->load->view('backend/siswa/footer');
         } else {
             redirect('Auth/backLogin');
@@ -434,9 +443,13 @@ class Siswa extends CI_Controller
             $data['hasiltugas'] = $this->db->get_where('tb_hasiltugas', ['pertemuan' => 2, 'id_siswa' => $this->session->userdata('id')])->row_array();
             $data['banyakHasilTugas'] =   $this->db->get_where('tb_hasiltugas', ['pertemuan' => 2, 'id_siswa' => $this->session->userdata('id')])->num_rows();
             $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 2])->row_array();
+            $data['comments'] = $this->comments2_model->get_comments();
+
+            
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/pertemuan2', $data);
+             $this->load->view('backend/komentar/comments2', $data);
             $this->load->view('backend/siswa/footer');
         } else {
             redirect('Auth/backLogin');
@@ -451,11 +464,13 @@ class Siswa extends CI_Controller
             $data['hasiltugas'] = $this->db->get_where('tb_hasiltugas', ['pertemuan' => 3, 'id_siswa' => $this->session->userdata('id')])->row_array();
             $data['banyakHasilTugas'] =   $this->db->get_where('tb_hasiltugas', ['pertemuan' => 3, 'id_siswa' => $this->session->userdata('id')])->num_rows();
             $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 3])->row_array();
+            $data['comments'] = $this->comments3_model->get_comments();
 
 
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/pertemuan3', $data);
+            $this->load->view('backend/komentar/comments3', $data);
             $this->load->view('backend/siswa/footer');
         } else {
             redirect('Auth/backLogin');
@@ -470,9 +485,11 @@ class Siswa extends CI_Controller
             $data['hasiltugas'] = $this->db->get_where('tb_hasiltugas', ['pertemuan' => 4, 'id_siswa' => $this->session->userdata('id')])->row_array();
             $data['banyakHasilTugas'] =   $this->db->get_where('tb_hasiltugas', ['pertemuan' => 4, 'id_siswa' => $this->session->userdata('id')])->num_rows();
             $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 4])->row_array();
+            $data['comments'] = $this->comments4_model->get_comments();
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/pertemuan4', $data);
+            $this->load->view('backend/komentar/comments4', $data);
             $this->load->view('backend/siswa/footer');
         } else {
             redirect('Auth/backLogin');
