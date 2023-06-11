@@ -12,13 +12,9 @@ class Admin extends CI_Controller
         $this->load->model('comments2_model');
         $this->load->model('comments3_model');
         $this->load->model('comments4_model');
-
-
     }
     public function index()
     {
-        //hanya bisa diakses jika memiliki session dan role nya adalah 
-
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $data['title'] = "Home Admin";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
@@ -34,8 +30,6 @@ class Admin extends CI_Controller
             $tugas2 = $this->db->get_where('tb_hasiltugas', ['pertemuan' => 2])->num_rows();
             $tugas3 = $this->db->get_where('tb_hasiltugas', ['pertemuan' => 3])->num_rows();
             $tugas4 = $this->db->get_where('tb_hasiltugas', ['pertemuan' => 4])->num_rows();
-
-            //persentase
             if ($jumlahSiswa != 0) {
                 $data['persentasepretest'] = ($jumlahPretest / $jumlahSiswa) * 100;
                 $data['persentaseposttest'] = ($jumlahPosttest / $jumlahSiswa) * 100;
@@ -51,8 +45,6 @@ class Admin extends CI_Controller
                 $data['persentasetugas3'] = 0 * 100;
                 $data['persentasetugas4'] = 0 * 100;
             }
-
-
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/index', $data);
@@ -1600,29 +1592,4 @@ public function save_comment1() {
         redirect('Admin/halamanKomentar4');
     }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
