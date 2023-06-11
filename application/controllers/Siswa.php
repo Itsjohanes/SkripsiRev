@@ -88,12 +88,7 @@ class Siswa extends CI_Controller
             if ($tugas4 == 0) {
                 array_push($data['tugasbelumselesai'], "Tugas 4");
             }
-
-            //mendapatkan data seluruh siswa
-
             $data['siswa'] = $this->db->get_where('tb_akun', ['role' => 0])->result_array();
-            
-
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/index', $data);
@@ -385,7 +380,7 @@ class Siswa extends CI_Controller
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/pertemuan1', $data);
-             $this->load->view('backend/komentar/comments1', $data);
+             $this->load->view('backend/siswa/comments1', $data);
 
             $this->load->view('backend/siswa/footer');
         } else {
@@ -393,7 +388,116 @@ class Siswa extends CI_Controller
         }
     }
 
-    
+
+     public function save_comment1() {
+        // Proses menyimpan komentar
+        if($this->session->userdata('email') != ''){
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+        );
+
+        $this->comments1_model->save_comment($data);
+        redirect('Siswa/pertemuan1');
+    }
+    }
+
+    public function save_reply1() {
+        if($this->session->userdata('email') != ''){
+        // Proses menyimpan reply
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => $this->input->post('parent_id')
+        );
+
+        $this->comments1_model->save_reply($data);
+        redirect('Siswa/pertemuan1');
+    }
+    }
+     public function save_comment2() {
+        // Proses menyimpan komentar
+        if($this->session->userdata('email') != ''){
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+        );
+
+        $this->comments1_model->save_comment($data);
+        redirect('Siswa/pertemuan2');
+    }
+    }
+
+    public function save_reply2() {
+        if($this->session->userdata('email') != ''){
+        // Proses menyimpan reply
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => $this->input->post('parent_id')
+        );
+
+        $this->comments1_model->save_reply($data);
+        redirect('Siswa/pertemuan2');
+    }
+    }
+     public function save_comment3() {
+        // Proses menyimpan komentar
+        if($this->session->userdata('email') != ''){
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+        );
+
+        $this->comments1_model->save_comment($data);
+        redirect('Siswa/pertemuan3');
+    }
+    }
+
+    public function save_reply3() {
+        if($this->session->userdata('email') != ''){
+        // Proses menyimpan reply
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => $this->input->post('parent_id')
+        );
+
+        $this->comments1_model->save_reply($data);
+        redirect('Siswa/pertemuan3');
+    }
+    }
+     public function save_comment4() {
+        // Proses menyimpan komentar
+        if($this->session->userdata('email') != ''){
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+        );
+
+        $this->comments1_model->save_comment($data);
+        redirect('Siswa/pertemuan4');
+    }
+    }
+
+    public function save_reply4() {
+        if($this->session->userdata('email') != ''){
+        // Proses menyimpan reply
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => $this->input->post('parent_id')
+        );
+
+        $this->comments1_model->save_reply($data);
+        redirect('Siswa/pertemuan4');
+    }
+    }
+
     public function tambahTugas()
     {
         if ($this->session->userdata('email') != '') {
@@ -449,7 +553,7 @@ class Siswa extends CI_Controller
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/pertemuan2', $data);
-             $this->load->view('backend/komentar/comments2', $data);
+             $this->load->view('backend/siswa/comments2', $data);
             $this->load->view('backend/siswa/footer');
         } else {
             redirect('Auth/backLogin');
@@ -470,7 +574,7 @@ class Siswa extends CI_Controller
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/pertemuan3', $data);
-            $this->load->view('backend/komentar/comments3', $data);
+            $this->load->view('backend/siswa/comments3', $data);
             $this->load->view('backend/siswa/footer');
         } else {
             redirect('Auth/backLogin');
@@ -489,7 +593,7 @@ class Siswa extends CI_Controller
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/pertemuan4', $data);
-            $this->load->view('backend/komentar/comments4', $data);
+            $this->load->view('backend/siswa/comments4', $data);
             $this->load->view('backend/siswa/footer');
         } else {
             redirect('Auth/backLogin');
