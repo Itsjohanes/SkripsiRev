@@ -8,6 +8,12 @@ class Admin extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->model('comments1_model');
+        $this->load->model('comments2_model');
+        $this->load->model('comments3_model');
+        $this->load->model('comments4_model');
+
+
     }
     public function index()
     {
@@ -1007,7 +1013,6 @@ class Admin extends CI_Controller
 
     public function activasiPosttest(){
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
-            //mengubah status pada tb_test menjadi 1
             $this->db->set('aktif', 1);
             $this->db->where('id_tes', 2);
             $this->db->update('tb_test');
@@ -1217,7 +1222,6 @@ class Admin extends CI_Controller
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             //Menghapus by id
             $this->db->where('id_hasiltugas', $id);
-            //$this->db->delete('tb_hasiltugas');
             $data = [
                 'nilai' => null,
                 'komentar' => null
@@ -1279,7 +1283,6 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $this->db->where('id_hasiltugas', $id);
-            //$this->db->delete('tb_hasiltugas');
             $data = [
                 'nilai' => null,
                 'komentar' => null
@@ -1340,7 +1343,6 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $this->db->where('id_hasiltugas', $id);
-            //$this->db->delete('tb_hasiltugas');
             $data = [
                 'nilai' => null,
                 'komentar' => null
@@ -1401,7 +1403,6 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $this->db->where('id_hasiltugas', $id);
-            //$this->db->delete('tb_hasiltugas');
             $data = [
                 'nilai' => null,
                 'komentar' => null
@@ -1417,4 +1418,211 @@ class Admin extends CI_Controller
             }
         }
     }
+    public function halamanKomentar1(){
+
+         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1){
+            $data['title'] = "Komentar Pertemuan 1";
+            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+            $data['comments'] = $this->comments1_model->get_comments();
+              $this->load->view('backend/admin/header', $data);
+            $this->load->view('backend/admin/sidebar', $data);
+            $this->load->view('backend/admin/comments1', $data);
+            $this->load->view('backend/admin/footer');
+
+        }else{
+            redirect('Auth');
+        }
+
+
+
+    }
+    public function halamanKomentar2(){
+
+         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1){
+            $data['title'] = "Komentar Pertemuan 2";
+            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+            $data['comments'] = $this->comments2_model->get_comments();
+              $this->load->view('backend/admin/header', $data);
+            $this->load->view('backend/admin/sidebar', $data);
+            $this->load->view('backend/admin/comments2', $data);
+            $this->load->view('backend/admin/footer');
+
+        }else{
+            redirect('Auth');
+        }
+
+
+
+    }
+    public function halamanKomentar3(){
+
+         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1){
+            $data['title'] = "Komentar Pertemuan 3";
+            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+            $data['comments'] = $this->comments3_model->get_comments();
+              $this->load->view('backend/admin/header', $data);
+            $this->load->view('backend/admin/sidebar', $data);
+            $this->load->view('backend/admin/comments3', $data);
+            $this->load->view('backend/admin/footer');
+
+        }else{
+            redirect('Auth');
+        }
+
+
+
+    }
+    public function halamanKomentar4(){
+
+         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1){
+            $data['title'] = "Komentar Pertemuan 4";
+            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+            $data['comments'] = $this->comments1_model->get_comments();
+              $this->load->view('backend/admin/header', $data);
+            $this->load->view('backend/admin/sidebar', $data);
+            $this->load->view('backend/admin/comments4', $data);
+            $this->load->view('backend/admin/footer');
+
+        }else{
+            redirect('Auth');
+        }
+        
+
+
+
+    }
+    
+public function save_comment1() {
+        // Proses menyimpan komentar
+        if($this->session->userdata('email') != ''){
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+        );
+
+        $this->comments1_model->save_comment($data);
+        redirect('Admin/halamanKomentar1');
+    }
+    }
+
+    public function save_reply1() {
+        if($this->session->userdata('email') != ''){
+        // Proses menyimpan reply
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => $this->input->post('parent_id')
+        );
+
+        $this->comments1_model->save_reply($data);
+        redirect('Admin/halamanKomentar1');
+    }
+    }
+     public function save_comment2() {
+        // Proses menyimpan komentar
+        if($this->session->userdata('email') != ''){
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+        );
+
+        $this->comments1_model->save_comment($data);
+        redirect('Admin/halamanKomentar2');
+    }
+    }
+
+    public function save_reply2() {
+        if($this->session->userdata('email') != ''){
+        // Proses menyimpan reply
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => $this->input->post('parent_id')
+        );
+
+        $this->comments1_model->save_reply($data);
+        redirect('Admin/halamanKomentar2');
+    }
+    }
+     public function save_comment3() {
+        // Proses menyimpan komentar
+        if($this->session->userdata('email') != ''){
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+        );
+
+        $this->comments1_model->save_comment($data);
+        redirect('Admin/halamanKomentar3');
+    }
+    }
+
+    public function save_reply3() {
+        if($this->session->userdata('email') != ''){
+        // Proses menyimpan reply
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => $this->input->post('parent_id')
+        );
+
+        $this->comments1_model->save_reply($data);
+        redirect('Admin/halamanKomentar3');
+    }
+    }
+     public function save_comment4() {
+        // Proses menyimpan komentar
+        if($this->session->userdata('email') != ''){
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+        );
+
+        $this->comments1_model->save_comment($data);
+        redirect('Admin/halamanKomentar4');
+    }
+    }
+
+    public function save_reply4() {
+        if($this->session->userdata('email') != ''){
+        // Proses menyimpan reply
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'comment' => $this->input->post('comment'),
+            'parent_id' => $this->input->post('parent_id')
+        );
+
+        $this->comments1_model->save_reply($data);
+        redirect('Admin/halamanKomentar4');
+    }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

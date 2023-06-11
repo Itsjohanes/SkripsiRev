@@ -47,8 +47,9 @@
             <div class="input-group input-group-outline">
             <input type="text" required class="form-control" id="youtube" name="youtube" value="<?php echo $materi['youtube'];  ?>">
             </div>
-
-
+            <label for="nilai">Video</label>
+            <br>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= $materi['youtube']; ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
         </div>
 

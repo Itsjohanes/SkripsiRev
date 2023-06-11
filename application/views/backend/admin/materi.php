@@ -104,7 +104,9 @@
                                     <tr>
                                         <th scope="row"><?= $i; ?></th>
                                         <td><?= $j['pertemuan']; ?></td>
-                                        <td><?= $j['youtube']; ?></td>
+<td>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= $j['youtube']; ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</td>
 
                                         <td>
                                             <a href="<?= base_url(); ?>Admin/hapusMateri/<?= $j['id_materi']; ?>" class="btn btn-danger" onclick="return confirm('Yakin?');"><i class="fas fa-trash-alt"></i></a>

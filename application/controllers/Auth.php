@@ -23,11 +23,13 @@ class Auth extends CI_Controller
   {
 
     parent::__construct();
+      $this->CI =& get_instance();
   }
 
   public function index()
   {
 
+    
     $data['title'] = 'Login';
     //jika tidak terdapat session
     if ($this->session->userdata('email') == '') {
@@ -41,6 +43,7 @@ class Auth extends CI_Controller
         redirect('Siswa/index');
       }
     }
+   
   }
   public function login()
   {

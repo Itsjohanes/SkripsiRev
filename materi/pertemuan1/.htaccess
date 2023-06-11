@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/materi/pertemuan1/ [NC]
+RewriteCond %{HTTP_COOKIE} !^.*ci_session.*$ [NC]
+RewriteRule ^(.*)$ /Auth [R,L]
