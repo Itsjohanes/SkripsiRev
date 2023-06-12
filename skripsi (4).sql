@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 04, 2023 at 04:59 AM
+-- Generation Time: Jun 12, 2023 at 11:15 AM
 -- Server version: 8.0.30
 -- PHP Version: 7.4.33
 
@@ -50,11 +50,12 @@ INSERT INTO `tb_akun` (`id`, `email`, `nama`, `password`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_comments1`
+-- Table structure for table `tb_comments`
 --
 
-CREATE TABLE `tb_comments1` (
+CREATE TABLE `tb_comments` (
   `id` int NOT NULL,
+  `pertemuan` int NOT NULL,
   `id_user` int NOT NULL,
   `comment` text NOT NULL,
   `parent_id` int DEFAULT '0',
@@ -63,85 +64,19 @@ CREATE TABLE `tb_comments1` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `tb_comments1`
+-- Dumping data for table `tb_comments`
 --
 
-INSERT INTO `tb_comments1` (`id`, `id_user`, `comment`, `parent_id`, `created_at`, `updated_at`) VALUES
-(10, 14, 'Pertemuan 1 sangat hebat', 0, '2023-06-04 04:24:37', '2023-06-04 04:24:37'),
-(11, 14, 'Benar', 10, '2023-06-04 04:24:43', '2023-06-04 04:24:43'),
-(12, 14, 'Pertemuan 1 keren mas bro', 0, '2023-06-04 04:24:53', '2023-06-04 04:24:53'),
-(13, 14, 'yoi', 10, '2023-06-04 04:25:05', '2023-06-04 04:25:05');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_comments2`
---
-
-CREATE TABLE `tb_comments2` (
-  `id` int NOT NULL,
-  `id_user` int NOT NULL,
-  `comment` text NOT NULL,
-  `parent_id` int DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tb_comments2`
---
-
-INSERT INTO `tb_comments2` (`id`, `id_user`, `comment`, `parent_id`, `created_at`, `updated_at`) VALUES
-(10, 14, 'tes', 0, '2023-06-03 15:07:01', '2023-06-03 15:07:01'),
-(11, 14, 'p', 10, '2023-06-03 15:07:05', '2023-06-03 15:07:05');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_comments3`
---
-
-CREATE TABLE `tb_comments3` (
-  `id` int NOT NULL,
-  `id_user` int NOT NULL,
-  `comment` text NOT NULL,
-  `parent_id` int DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tb_comments3`
---
-
-INSERT INTO `tb_comments3` (`id`, `id_user`, `comment`, `parent_id`, `created_at`, `updated_at`) VALUES
-(10, 14, 'tes', 0, '2023-06-03 15:35:45', '2023-06-03 15:35:45'),
-(11, 14, 'p', 10, '2023-06-03 15:35:48', '2023-06-03 15:35:48'),
-(12, 14, 'Ini pertemuan3', 0, '2023-06-04 04:27:01', '2023-06-04 04:27:01');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_comments4`
---
-
-CREATE TABLE `tb_comments4` (
-  `id` int NOT NULL,
-  `id_user` int NOT NULL,
-  `comment` text NOT NULL,
-  `parent_id` int DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tb_comments4`
---
-
-INSERT INTO `tb_comments4` (`id`, `id_user`, `comment`, `parent_id`, `created_at`, `updated_at`) VALUES
-(10, 14, 'te', 0, '2023-06-03 15:20:39', '2023-06-03 15:20:39'),
-(11, 14, 'tess', 10, '2023-06-03 15:20:42', '2023-06-03 15:20:42'),
-(12, 14, 'Ini pertemuan 4', 0, '2023-06-04 04:27:15', '2023-06-04 04:27:15');
+INSERT INTO `tb_comments` (`id`, `pertemuan`, `id_user`, `comment`, `parent_id`, `created_at`, `updated_at`) VALUES
+(10, 1, 14, 'Pertemuan 1 sangat hebat', 0, '2023-06-04 04:24:37', '2023-06-12 00:00:23'),
+(11, 1, 14, 'Benar', 10, '2023-06-04 04:24:43', '2023-06-12 00:00:26'),
+(12, 1, 14, 'Pertemuan 1 keren mas bro', 0, '2023-06-04 04:24:53', '2023-06-12 00:00:30'),
+(13, 1, 14, 'yoi', 10, '2023-06-04 04:25:05', '2023-06-12 00:00:33'),
+(14, 1, 14, 'tes', 0, '2023-06-11 02:16:10', '2023-06-12 00:00:36'),
+(15, 1, 14, 'masok pa eko', 14, '2023-06-11 02:16:18', '2023-06-12 00:00:39'),
+(16, 1, 14, 'tes', 0, '2023-06-11 02:16:30', '2023-06-12 00:00:42'),
+(17, 1, 14, 'tess', 0, '2023-06-11 02:22:42', '2023-06-12 00:00:47'),
+(18, 1, 14, 'oke', 17, '2023-06-11 02:22:50', '2023-06-12 00:00:49');
 
 -- --------------------------------------------------------
 
@@ -155,6 +90,13 @@ CREATE TABLE `tb_contact` (
   `email_pengirim` varchar(255) NOT NULL,
   `pesan_pengirim` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_contact`
+--
+
+INSERT INTO `tb_contact` (`id_pengirim`, `nama_pengirim`, `email_pengirim`, `pesan_pengirim`) VALUES
+(19, 'Johannes Alexander Putra', 'johannes@upi.edu', 'baguss');
 
 -- --------------------------------------------------------
 
@@ -171,13 +113,6 @@ CREATE TABLE `tb_hasilposttest` (
   `kosong` int NOT NULL,
   `score` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tb_hasilposttest`
---
-
-INSERT INTO `tb_hasilposttest` (`id_hasilposttest`, `id_siswa`, `jawaban`, `benar`, `salah`, `kosong`, `score`) VALUES
-(6, 14, 'opsi_aopsi_eopsi_a', 2, 1, 0, 67);
 
 -- --------------------------------------------------------
 
@@ -200,8 +135,7 @@ CREATE TABLE `tb_hasilpretest` (
 --
 
 INSERT INTO `tb_hasilpretest` (`id_hasilpretest`, `id_siswa`, `jawaban`, `score`, `benar`, `salah`, `kosong`) VALUES
-(14, 3, 'opsi_aopsi_c opsi_e             opsi_d  ', 5, 1, 3, 16),
-(15, 14, 'opsi_a                   ', 0, 0, 1, 19);
+(14, 3, 'opsi_aopsi_c opsi_e             opsi_d  ', 5, 1, 3, 16);
 
 -- --------------------------------------------------------
 
@@ -237,15 +171,37 @@ INSERT INTO `tb_hasiltugas` (`id_hasiltugas`, `nilai`, `pertemuan`, `id_siswa`, 
 CREATE TABLE `tb_materi` (
   `id_materi` int NOT NULL,
   `pertemuan` int NOT NULL,
-  `youtube` text NOT NULL
+  `materi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_materi`
 --
 
-INSERT INTO `tb_materi` (`id_materi`, `pertemuan`, `youtube`) VALUES
-(7, 1, '_g43nQ0cIFQ');
+INSERT INTO `tb_materi` (`id_materi`, `pertemuan`, `materi`) VALUES
+(2, 1, 'Pertemuan1.pdf');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_pertemuan`
+--
+
+CREATE TABLE `tb_pertemuan` (
+  `id_pertemuan` int NOT NULL,
+  `pertemuan` int NOT NULL,
+  `aktif` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_pertemuan`
+--
+
+INSERT INTO `tb_pertemuan` (`id_pertemuan`, `pertemuan`, `aktif`) VALUES
+(1, 1, 1),
+(2, 2, 0),
+(3, 3, 0),
+(4, 4, 0);
 
 -- --------------------------------------------------------
 
@@ -372,11 +328,31 @@ CREATE TABLE `tb_random` (
 --
 
 INSERT INTO `tb_random` (`id_random`, `id_user`, `nama`, `kelompok`) VALUES
-(70, 3, 'Putra', 1),
-(71, 11, 'Doni', 2),
-(72, 12, 'dr. Udin', 3),
-(73, 13, 'dr. Udint', 4),
-(74, 14, 'Putra Ganteng', 5);
+(80, 3, 'Putra', 1),
+(81, 11, 'Doni', 2),
+(82, 12, 'dr. Udin', 3),
+(83, 13, 'dr. Udint', 4),
+(84, 14, 'Putra Ganteng', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_test`
+--
+
+CREATE TABLE `tb_test` (
+  `id_tes` int NOT NULL,
+  `nama` varchar(10) NOT NULL,
+  `aktif` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_test`
+--
+
+INSERT INTO `tb_test` (`id_tes`, `nama`, `aktif`) VALUES
+(1, 'pretest', 0),
+(2, 'posttest', 0);
 
 -- --------------------------------------------------------
 
@@ -400,6 +376,30 @@ INSERT INTO `tb_tugas` (`id_tugas`, `pertemuan`, `tugas`) VALUES
 (7, 3, 'Tugas_3.pdf'),
 (8, 4, 'tugas4.pdf');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_youtube`
+--
+
+CREATE TABLE `tb_youtube` (
+  `id_materi` int NOT NULL,
+  `pertemuan` int NOT NULL,
+  `youtube` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_youtube`
+--
+
+INSERT INTO `tb_youtube` (`id_materi`, `pertemuan`, `youtube`) VALUES
+(7, 1, 'eJjPpqgXBYU'),
+(8, 1, 'JprBFnCqWfQ'),
+(9, 1, 'ZPd-ShDM1us'),
+(11, 1, 'QyvMLEYQoYE'),
+(12, 1, 'wBIiRds7qFw'),
+(13, 2, '-Fz6Mn9sSMo');
+
 --
 -- Indexes for dumped tables
 --
@@ -412,30 +412,9 @@ ALTER TABLE `tb_akun`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `tb_comments1`
+-- Indexes for table `tb_comments`
 --
-ALTER TABLE `tb_comments1`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_user` (`id_user`);
-
---
--- Indexes for table `tb_comments2`
---
-ALTER TABLE `tb_comments2`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_user` (`id_user`);
-
---
--- Indexes for table `tb_comments3`
---
-ALTER TABLE `tb_comments3`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_user` (`id_user`);
-
---
--- Indexes for table `tb_comments4`
---
-ALTER TABLE `tb_comments4`
+ALTER TABLE `tb_comments`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_user` (`id_user`);
 
@@ -473,6 +452,12 @@ ALTER TABLE `tb_materi`
   ADD PRIMARY KEY (`id_materi`);
 
 --
+-- Indexes for table `tb_pertemuan`
+--
+ALTER TABLE `tb_pertemuan`
+  ADD PRIMARY KEY (`id_pertemuan`);
+
+--
 -- Indexes for table `tb_pesan`
 --
 ALTER TABLE `tb_pesan`
@@ -500,10 +485,22 @@ ALTER TABLE `tb_random`
   ADD KEY `id_user` (`id_user`);
 
 --
+-- Indexes for table `tb_test`
+--
+ALTER TABLE `tb_test`
+  ADD PRIMARY KEY (`id_tes`);
+
+--
 -- Indexes for table `tb_tugas`
 --
 ALTER TABLE `tb_tugas`
   ADD PRIMARY KEY (`id_tugas`);
+
+--
+-- Indexes for table `tb_youtube`
+--
+ALTER TABLE `tb_youtube`
+  ADD PRIMARY KEY (`id_materi`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -516,46 +513,28 @@ ALTER TABLE `tb_akun`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `tb_comments1`
+-- AUTO_INCREMENT for table `tb_comments`
 --
-ALTER TABLE `tb_comments1`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `tb_comments2`
---
-ALTER TABLE `tb_comments2`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `tb_comments3`
---
-ALTER TABLE `tb_comments3`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `tb_comments4`
---
-ALTER TABLE `tb_comments4`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `tb_comments`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tb_contact`
 --
 ALTER TABLE `tb_contact`
-  MODIFY `id_pengirim` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_pengirim` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tb_hasilposttest`
 --
 ALTER TABLE `tb_hasilposttest`
-  MODIFY `id_hasilposttest` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_hasilposttest` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tb_hasilpretest`
 --
 ALTER TABLE `tb_hasilpretest`
-  MODIFY `id_hasilpretest` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_hasilpretest` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tb_hasiltugas`
@@ -567,7 +546,13 @@ ALTER TABLE `tb_hasiltugas`
 -- AUTO_INCREMENT for table `tb_materi`
 --
 ALTER TABLE `tb_materi`
-  MODIFY `id_materi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_materi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tb_pertemuan`
+--
+ALTER TABLE `tb_pertemuan`
+  MODIFY `id_pertemuan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_pesan`
@@ -591,7 +576,13 @@ ALTER TABLE `tb_pretest`
 -- AUTO_INCREMENT for table `tb_random`
 --
 ALTER TABLE `tb_random`
-  MODIFY `id_random` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id_random` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+
+--
+-- AUTO_INCREMENT for table `tb_test`
+--
+ALTER TABLE `tb_test`
+  MODIFY `id_tes` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_tugas`
@@ -600,32 +591,20 @@ ALTER TABLE `tb_tugas`
   MODIFY `id_tugas` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `tb_youtube`
+--
+ALTER TABLE `tb_youtube`
+  MODIFY `id_materi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `tb_comments1`
+-- Constraints for table `tb_comments`
 --
-ALTER TABLE `tb_comments1`
-  ADD CONSTRAINT `tb_comments1_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_akun` (`id`);
-
---
--- Constraints for table `tb_comments2`
---
-ALTER TABLE `tb_comments2`
-  ADD CONSTRAINT `tb_comments2_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_akun` (`id`);
-
---
--- Constraints for table `tb_comments3`
---
-ALTER TABLE `tb_comments3`
-  ADD CONSTRAINT `tb_comments3_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_akun` (`id`);
-
---
--- Constraints for table `tb_comments4`
---
-ALTER TABLE `tb_comments4`
-  ADD CONSTRAINT `tb_comments4_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_akun` (`id`);
+ALTER TABLE `tb_comments`
+  ADD CONSTRAINT `tb_comments_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_akun` (`id`);
 
 --
 -- Constraints for table `tb_hasilposttest`
