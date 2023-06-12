@@ -9,7 +9,7 @@ class Comments2_model extends CI_Model {
     
         //select nama pengirim dari tabel tb_akun yang dijoinkan dengan id_user pada tabel comment
     
-        $query = $this->db->query("SELECT c.id, c.id_user, c.comment, a.nama FROM tb_comments2 AS c JOIN tb_akun AS a ON c.id_user = a.id WHERE c.parent_id = 0");
+        $query = $this->db->query("SELECT c.id, c.id_user, c.comment, a.nama FROM tb_comments2 AS c JOIN tb_akun AS a ON c.id_user = a.id WHERE c.parent_id = 0 and c.pertemuan = 2");
     
     $comments = array();
 

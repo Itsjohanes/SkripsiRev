@@ -4,7 +4,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin extends CI_Controller
 {
-
     function __construct()
     {
         parent::__construct();
@@ -133,6 +132,12 @@ class Admin extends CI_Controller
                 redirect('Auth/backLogin');
             }
         }
+    }
+    public function nama_method(){
+                if ($this->session->userdata('email') == '') {
+                    redirect('Auth/backLogin');
+                }
+
     }
     public function listSiswa()
     {
@@ -618,15 +623,15 @@ class Admin extends CI_Controller
             }
         }
     }
-    public function materi()
+    public function youtube()
     {
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
-            $data['title'] = 'Materi';
+            $data['title'] = 'Youtube';
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-            $data['materi'] = $this->db->get('tb_materi')->result_array();
+            $data['materi'] = $this->db->get('tb_youtube')->result_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/materi', $data);
+            $this->load->view('backend/admin/youtube', $data);
             $this->load->view('backend/admin/footer');
         } else {
             if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
@@ -636,7 +641,7 @@ class Admin extends CI_Controller
             }
         }
     }
-    public function tambahMateri()
+    public function tambahYoutube()
     {
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             //masukan ke db
@@ -646,8 +651,8 @@ class Admin extends CI_Controller
                 'pertemuan' => $pertemuan,
                 'youtube' => $link
             ];
-            $this->db->insert('tb_materi', $data);
-            redirect('Admin/materi');
+            $this->db->insert('tb_youtube', $data);
+            redirect('Admin/youtube');
         } else {
             if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
                 redirect('Auth/blocked');
@@ -656,14 +661,14 @@ class Admin extends CI_Controller
             }
         }
     }
-    public function hapusMateri($id)
+    public function hapusYoutube($id)
     {
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $this->db->where('id_materi', $id);
-            $this->db->delete('tb_materi');
+            $this->db->delete('tb_youtube');
 
             $this->session->set_flashdata('category_success', 'Materi berhasil dihapus');
-            redirect('Admin/materi');
+            redirect('Admin/youtube');
         } else {
             if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
                 redirect('Auth/blocked');
@@ -672,16 +677,16 @@ class Admin extends CI_Controller
             }
         }
     }
-    public function editMateri($id_materi)
+    public function editYoutube($id_materi)
     {
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
-            $data['title'] = 'Edit Materi';
+            $data['title'] = 'Edit Youtube';
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-            $data['materi'] = $this->db->get_where('tb_materi', ['id_materi' => $id_materi])->row_array();
+            $data['materi'] = $this->db->get_where('tb_youtube', ['id_materi' => $id_materi])->row_array();
 
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/editMateri', $data);
+            $this->load->view('backend/admin/edityoutube', $data);
             $this->load->view('backend/admin/footer');
         } else {
             if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
@@ -691,7 +696,7 @@ class Admin extends CI_Controller
             }
         }
     }
-    public function runEditMateri()
+    public function runEditYoutube()
     {
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $id_materi = $this->input->post('id_materi');
@@ -702,8 +707,8 @@ class Admin extends CI_Controller
                 'youtube' => $youtube
             ];
             $this->db->where('id_materi', $id_materi);
-            $this->db->update('tb_materi', $data);
-            redirect('Admin/materi');
+            $this->db->update('tb_youtube', $data);
+            redirect('Admin/youtube');
         } else {
             if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
                 redirect('Auth/blocked');
@@ -720,7 +725,7 @@ class Admin extends CI_Controller
             $data['siswa'] = $this->db->get_where('tb_akun', ['role' => 0])->result_array();
             $data['title'] = 'Menilai';
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-            $data['materi'] = $this->db->get('tb_materi')->result_array();
+            $data['materi'] = $this->db->get('tb_youtube')->result_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/tugastes', $data);
@@ -1048,6 +1053,139 @@ class Admin extends CI_Controller
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/message', $data);
             $this->load->view('backend/admin/footer');
+        } else {
+            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
+                redirect('Auth/blocked');
+            } else {
+                redirect('Auth/backLogin');
+            }
+        }
+    }
+
+    public function materi()
+    {
+        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+            $data['title'] = "Materi";
+            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+           
+            $data['materi'] = $this->db->get('tb_materi')->result_array();
+            $this->load->view('backend/admin/header', $data);
+            $this->load->view('backend/admin/sidebar', $data);
+            $this->load->view('backend/admin/materi', $data);
+            $this->load->view('backend/admin/footer');
+        } else {
+            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
+                redirect('Auth/blocked');
+            } else {
+                redirect('Auth/backLogin');
+            }
+        }
+    }
+
+
+
+        public function tambahMateri()
+    {
+        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+
+            $pertemuan = $this->input->post('pertemuan');
+            $materi = $_FILES['materi']['name'];
+            if ($materi) {
+                $config['allowed_types'] = 'pdf';
+                $config['max_size'] = '2048';
+                $config['upload_path'] = './assets/materi/';
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('materi')) {
+                    $materi = $this->upload->data('file_name');
+                    $this->db->set('pertemuan', $pertemuan);
+                    $this->db->set('materi', $materi);
+                    $this->db->insert('tb_materi');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Materi berhasil ditambahkan</div>');
+                    redirect('Admin/materi');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Materi gagal ditambahkan</div>');
+                    redirect('Admin/materi');
+                }
+            }
+        } else {
+            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
+                redirect('Auth/blocked');
+            } else {
+                redirect('Auth/backLogin');
+            }
+        }
+    }
+    public function hapusMateri($id)
+    {
+        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+            //delete by id
+            $materi = $this->db->get_where('tb_materi', ['id_materi' => $id])->row_array();
+            $pdf = $materi['materi'];
+            unlink(FCPATH . 'assets/materi/' . $pdf);
+            $this->db->where('id_materi', $id);
+            $this->db->delete('tb_materi');
+            $this->session->set_flashdata('category_success', 'Materi berhasil dihapus');
+            redirect('Admin/materi');
+        } else {
+            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
+                redirect('Auth/blocked');
+            } else {
+                redirect('Auth/backLogin');
+            }
+        }
+    }
+    public function editMateri($id)
+    {
+        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+            $data['title'] = "Edit Materi";
+            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+            $data['materi'] = $this->db->get_where('tb_materi', ['id_materi' => $id])->row_array();
+            $this->load->view('backend/admin/header', $data);
+            $this->load->view('backend/admin/sidebar', $data);
+            $this->load->view('backend/admin/editmateri', $data);
+            $this->load->view('backend/admin/footer');
+        } else {
+            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
+                redirect('Auth/blocked');
+            } else {
+                redirect('Auth/backLogin');
+            }
+        }
+    }
+    public function runEditMateri()
+    {
+        //gagal unlink
+        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+            $id = $this->input->post('id_materi');
+            $pertemuan = $this->input->post('pertemuan');
+            $materiLama = $this->input->post('file_lama');
+
+            $materi = $_FILES['materi']['name'];
+            if ($materi) {
+                $config['allowed_types'] = 'pdf';
+                $config['max_size'] = '2048';
+                $config['upload_path'] = './assets/materi/';
+                if ($materiLama != $materi) {
+                    $this->load->library('upload', $config);
+                    if ($this->upload->do_upload('materi')) {
+
+                        unlink(FCPATH . './assets/materi/' . $materiLama);
+                        $materi = $this->upload->data('file_name');
+                    } else {
+                        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Materi gagal diubah</div>');
+                    }
+                } else {
+                    $materi = $materiLama;
+                }
+                $data = [
+                    'pertemuan' => $pertemuan,
+                    'materi' => $materi
+                ];
+                $this->db->where('id_materi', $id);
+                $this->db->update('tb_materi', $data);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Materi berhasil diubah</div>');
+                redirect('Admin/materi');
+            }
         } else {
             if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
                 redirect('Auth/blocked');
@@ -1490,7 +1628,8 @@ public function save_comment1() {
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+            'parent_id' => 0, // Set parent_id sebagai 0 untuk komentar utama
+            'pertemuan' => 1
         );
 
         $this->comments1_model->save_comment($data);
@@ -1504,7 +1643,8 @@ public function save_comment1() {
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => $this->input->post('parent_id')
+            'parent_id' => $this->input->post('parent_id'),
+            'pertemuan' => 1
         );
 
         $this->comments1_model->save_reply($data);
@@ -1517,7 +1657,8 @@ public function save_comment1() {
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+            'parent_id' => 0,
+            'pertemuan' => 2 // Set parent_id sebagai 0 untuk komentar utama
         );
 
         $this->comments1_model->save_comment($data);
@@ -1531,7 +1672,8 @@ public function save_comment1() {
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => $this->input->post('parent_id')
+            'parent_id' => $this->input->post('parent_id'),
+            'pertemuan' => 2
         );
 
         $this->comments1_model->save_reply($data);
@@ -1544,7 +1686,8 @@ public function save_comment1() {
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+            'parent_id' => 0, // Set parent_id sebagai 0 untuk komentar utama
+            'pertemuan' => 3
         );
 
         $this->comments1_model->save_comment($data);
@@ -1558,7 +1701,8 @@ public function save_comment1() {
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => $this->input->post('parent_id')
+            'parent_id' => $this->input->post('parent_id'),
+            'pertemuan' => 3
         );
 
         $this->comments1_model->save_reply($data);
@@ -1571,7 +1715,8 @@ public function save_comment1() {
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+            'parent_id' => 0,
+            'pertemuan' => 4// Set parent_id sebagai 0 untuk komentar utama
         );
 
         $this->comments1_model->save_comment($data);
@@ -1585,7 +1730,8 @@ public function save_comment1() {
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => $this->input->post('parent_id')
+            'parent_id' => $this->input->post('parent_id'),
+            'pertemuan' => 4
         );
 
         $this->comments1_model->save_reply($data);

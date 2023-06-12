@@ -13,19 +13,19 @@
         <div class="alert alert-danger"> <?= $this->session->flashdata('category_error') ?> </div>
     <?php } ?>
     <div class="row no-gutters">
-
         <br>
+       
         <div class="container-fluid">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Add Materi</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Add Materi Youtube</h6>
                 </div>
                 <?php echo form_open_multipart('Admin/tambahMateri'); ?>
                 <div class="row">
                     <div class="col">
-                       <div class="input-group input-group-outline">
-
-                        <select class="form-control" required id="exampleFormControlSelect1" id="pertemuan" name="pertemuan">
+                    <div class="input-group input-group-outline">
+                        &nbsp
+                        <select class="form-control" id="exampleFormControlSelect1" id="pertemuan" name="pertemuan">
                             <option selected>Pertemuan</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -35,12 +35,14 @@
                         </select>
                     </div>
                     </div>
-                    <div class="col">
-                       <div class="input-group input-group-outline">
+                    
 
-                        <input type="file" required class=" btn  form-control-file" id="exampleFormControlFile1" name="materi" />
+                    <div class="col">
+                    <div class="input-group input-group-outline">
+                        <input type="text" class="form-control" placeholder="Link" id="link" name="link">
                     </div>
                     </div>
+
                     <div class="col">
                         <Button class="btn btn-success">Submit</Button>
                     </div>
@@ -48,19 +50,10 @@
                 </form>
             </div>
         </div>
-
-
-
-
-
         <div class="container-fluid">
-
-            <!-- Page Heading -->
-
-            <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Materi</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Youtube</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -69,16 +62,19 @@
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Pertemuan</th>
-                                    <th scope="col">Materi</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col">Link</th>
+                                    <th scope="col">Action</th>
+
+
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Pertemuan</th>
-                                    <th scope="col">Materi</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col">Link</th>
+                                    <th scope="col">Action</th>
+
 
                                 </tr>
                             </tfoot>
@@ -88,10 +84,13 @@
                                     <tr>
                                         <th scope="row"><?= $i; ?></th>
                                         <td><?= $j['pertemuan']; ?></td>
-                                        <td><a href="<?= base_url(); ?>assets/materi/<?= $j['materi']; ?>" <i class="fas fa-file-pdf"></i></a> </td>
+<td>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= $j['youtube']; ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</td>
+
                                         <td>
-                                            <a href="<?= base_url(); ?>Admin/hapusMateri/<?= $j['id_materi']; ?>" class="btn btn-danger" onclick="return confirm('Yakin?');"><i class="fas fa-trash-alt"></i></a>
-                                            <a href="<?= base_url(); ?>Admin/editMateri/<?= $j['id_materi']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                            <a href="<?= base_url(); ?>Admin/hapusYoutube/<?= $j['id_materi']; ?>" class="btn btn-danger" onclick="return confirm('Yakin?');"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="<?= base_url(); ?>Admin/editYoutube/<?= $j['id_materi']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                         </td>
 
                                     </tr>
@@ -124,3 +123,4 @@
 </div>
 <!-- End of Main Content -->
 <!-- Page level plugins -->
+</div>

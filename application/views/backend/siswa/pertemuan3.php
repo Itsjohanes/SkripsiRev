@@ -119,7 +119,7 @@
                  </div>
                  <!-- Card Body -->
                  <div class="card-body">
-                     <a href='<?= base_url('materi/pertemuan3/'); ?>' target='_blank'><i class="fas fa-book"> Materi</i></a>
+                     <a href='<?= base_url('Siswa/materiPertemuan3'); ?>' target='_blank'><i class="fas fa-book"> Materi</i></a>
                      &nbsp
                      <a href='<?= base_url('assets/tugas/') . $tugas['tugas']; ?>' target='_blank'><i class="fas fa-tasks"> Tugas</i></a>
                      

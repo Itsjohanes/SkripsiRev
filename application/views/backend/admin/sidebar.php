@@ -66,6 +66,7 @@
             <span class="nav-link-text ms-1">List Siswa</span>
           </a>
         </li>
+
         <li class="nav-item">
           <?php 
             if($title == 'Materi'){
@@ -74,13 +75,30 @@
                
             }else{
                echo '<a class="nav-link text-white " href="' . base_url('Admin/materi') . '">';
+            }
+            ?>
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">book</i>
+            </div>
+            <span class="nav-link-text ms-1">Materi</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <?php 
+            if($title == 'Youtube'){
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Admin/youtube') . '">';
+
+               
+            }else{
+               echo '<a class="nav-link text-white " href="' . base_url('Admin/youtube') . '">';
 
 
             }
             ?>            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">book</i>
+              <i class="material-icons opacity-10">movie</i>
             </div>
-            <span class="nav-link-text ms-1">Materi</span>
+            <span class="nav-link-text ms-1">Youtube</span>
           </a>
         </li>
        

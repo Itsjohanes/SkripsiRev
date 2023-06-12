@@ -333,7 +333,74 @@ class Siswa extends CI_Controller
             redirect('Auth/backlogin');
         }
     }
+
+    public function materiPertemuan1(){
+
+         if ($this->session->userdata('email') != '') {
+           $data['title'] = "Materi Pertemuan 1";
+           $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+           $data['materi'] = $this->db->get_where('tb_materi', ['pertemuan' => 1])->row_array();
+            $this->load->view('backend/siswa/header', $data);
+            $this->load->view('backend/siswa/sidebar', $data);
+            $this->load->view('backend/siswa/materipertemuan', $data);
+            $this->load->view('backend/siswa/footer');
+         }else{
+             redirect('Auth/backLogin');
+         }
+
+
+    }
+    public function materiPertemuan2(){
+
+         if ($this->session->userdata('email') != '') {
+           $data['title'] = "Materi Pertemuan 2";
+           $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+           $data['materi'] = $this->db->get_where('tb_materi', ['pertemuan' => 2])->row_array();
+            $this->load->view('backend/siswa/header', $data);
+            $this->load->view('backend/siswa/sidebar', $data);
+            $this->load->view('backend/siswa/materipertemuan', $data);
+            $this->load->view('backend/siswa/footer');
+         }else{
+             redirect('Auth/backLogin');
+         }
+
+
+    }
+    public function materiPertemuan3(){
+
+         if ($this->session->userdata('email') != '') {
+           $data['title'] = "Materi Pertemuan 3";
+           $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+           $data['materi'] = $this->db->get_where('tb_materi', ['pertemuan' => 3])->row_array();
+            $this->load->view('backend/siswa/header', $data);
+            $this->load->view('backend/siswa/sidebar', $data);
+            $this->load->view('backend/siswa/materipertemuan', $data);
+            $this->load->view('backend/siswa/footer');
+         }else{
+             redirect('Auth/backLogin');
+         }
+
+
+    }
+    public function materiPertemuan4(){
+
+         if ($this->session->userdata('email') != '') {
+           $data['title'] = "Materi Pertemuan 4";
+           $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+           $data['materi'] = $this->db->get_where('tb_materi', ['pertemuan' => 4])->row_array();
+            $this->load->view('backend/siswa/header', $data);
+            $this->load->view('backend/siswa/sidebar', $data);
+            $this->load->view('backend/siswa/materipertemuan', $data);
+            $this->load->view('backend/siswa/footer');
+         }else{
+             redirect('Auth/backLogin');
+         }
+
+
+    }
+
     public function materi(){
+         if ($this->session->userdata('email') != '') {
          $data['title'] = "Materi";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['jumlahSiswa'] = $this->db->get_where('tb_akun', ['role' => 0])->num_rows();
@@ -364,23 +431,24 @@ class Siswa extends CI_Controller
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/materi', $data);
             $this->load->view('backend/siswa/footer');
+        }else{
+            redirect('Auth/backLogin');
+        }
     }
     public function pertemuan1()
     {
         if ($this->session->userdata('email') != '') {
             $data['title'] = "Materi Pertemuan 1";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-            $data['materi'] = $this->db->get_where('tb_materi', ['pertemuan' => 1])->result_array();
+            $data['materi'] = $this->db->get_where('tb_youtube', ['pertemuan' => 1])->result_array();
             $data['hasiltugas'] = $this->db->get_where('tb_hasiltugas', ['pertemuan' => 1, 'id_siswa' => $this->session->userdata('id')])->row_array();
             $data['banyakHasilTugas'] =   $this->db->get_where('tb_hasiltugas', ['pertemuan' => 1, 'id_siswa' => $this->session->userdata('id')])->num_rows();
             $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 1])->row_array();
             $data['comments'] = $this->comments1_model->get_comments();
-
-
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/pertemuan1', $data);
-             $this->load->view('backend/siswa/comments1', $data);
+            $this->load->view('backend/siswa/comments1', $data);
 
             $this->load->view('backend/siswa/footer');
         } else {
@@ -395,7 +463,8 @@ class Siswa extends CI_Controller
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+            'parent_id' => 0,
+            'pertemuan' => 1// Set parent_id sebagai 0 untuk komentar utama
         );
 
         $this->comments1_model->save_comment($data);
@@ -409,7 +478,8 @@ class Siswa extends CI_Controller
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => $this->input->post('parent_id')
+            'parent_id' => $this->input->post('parent_id'),
+            'pertemuan' => 1
         );
 
         $this->comments1_model->save_reply($data);
@@ -422,7 +492,8 @@ class Siswa extends CI_Controller
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+            'parent_id' => 0,
+            'pertemuan' => 2// Set parent_id sebagai 0 untuk komentar utama
         );
 
         $this->comments1_model->save_comment($data);
@@ -436,7 +507,8 @@ class Siswa extends CI_Controller
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => $this->input->post('parent_id')
+            'parent_id' => $this->input->post('parent_id'),
+            'pertemuan' => 2
         );
 
         $this->comments1_model->save_reply($data);
@@ -449,7 +521,8 @@ class Siswa extends CI_Controller
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+            'parent_id' => 0,
+            'pertemuan' => 3// Set parent_id sebagai 0 untuk komentar utama
         );
 
         $this->comments1_model->save_comment($data);
@@ -463,7 +536,8 @@ class Siswa extends CI_Controller
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => $this->input->post('parent_id')
+            'parent_id' => $this->input->post('parent_id'),
+            'pertemuan' => 3
         );
 
         $this->comments1_model->save_reply($data);
@@ -476,7 +550,8 @@ class Siswa extends CI_Controller
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => 0 // Set parent_id sebagai 0 untuk komentar utama
+            'parent_id' => 0,
+            'pertemuan' => 4 // Set parent_id sebagai 0 untuk komentar utama
         );
 
         $this->comments1_model->save_comment($data);
@@ -490,7 +565,8 @@ class Siswa extends CI_Controller
         $data = array(
             'id_user' => $this->input->post('id_user'),
             'comment' => $this->input->post('comment'),
-            'parent_id' => $this->input->post('parent_id')
+            'parent_id' => $this->input->post('parent_id'),
+            'pertemuan' => 4
         );
 
         $this->comments1_model->save_reply($data);
@@ -543,7 +619,7 @@ class Siswa extends CI_Controller
         if ($this->session->userdata('email') != '') {
             $data['title'] = "Materi Pertemuan 2";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-            $data['materi'] = $this->db->get_where('tb_materi', ['pertemuan' => 2])->result_array();
+            $data['materi'] = $this->db->get_where('tb_youtube', ['pertemuan' => 2])->result_array();
             $data['hasiltugas'] = $this->db->get_where('tb_hasiltugas', ['pertemuan' => 2, 'id_siswa' => $this->session->userdata('id')])->row_array();
             $data['banyakHasilTugas'] =   $this->db->get_where('tb_hasiltugas', ['pertemuan' => 2, 'id_siswa' => $this->session->userdata('id')])->num_rows();
             $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 2])->row_array();
@@ -564,7 +640,7 @@ class Siswa extends CI_Controller
         if ($this->session->userdata('email') != '') {
             $data['title'] = "Materi Pertemuan 3";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-            $data['materi'] = $this->db->get_where('tb_materi', ['pertemuan' => 3])->result_array();
+            $data['materi'] = $this->db->get_where('tb_youtube', ['pertemuan' => 3])->result_array();
             $data['hasiltugas'] = $this->db->get_where('tb_hasiltugas', ['pertemuan' => 3, 'id_siswa' => $this->session->userdata('id')])->row_array();
             $data['banyakHasilTugas'] =   $this->db->get_where('tb_hasiltugas', ['pertemuan' => 3, 'id_siswa' => $this->session->userdata('id')])->num_rows();
             $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 3])->row_array();
@@ -585,7 +661,7 @@ class Siswa extends CI_Controller
         if ($this->session->userdata('email') != '') {
             $data['title'] = "Materi Pertemuan 4";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-            $data['materi'] = $this->db->get_where('tb_materi', ['pertemuan' => 4])->result_array();
+            $data['materi'] = $this->db->get_where('tb_youtube', ['pertemuan' => 4])->result_array();
             $data['hasiltugas'] = $this->db->get_where('tb_hasiltugas', ['pertemuan' => 4, 'id_siswa' => $this->session->userdata('id')])->row_array();
             $data['banyakHasilTugas'] =   $this->db->get_where('tb_hasiltugas', ['pertemuan' => 4, 'id_siswa' => $this->session->userdata('id')])->num_rows();
             $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 4])->row_array();
