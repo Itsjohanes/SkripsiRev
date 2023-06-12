@@ -345,6 +345,60 @@ class Admin extends CI_Controller
             }
         }
     }
+
+    public function aturPertemuan()
+    {
+        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+            $data['title'] = "Atur Pertemuan";
+            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+            $data['pertemuan'] = $this->db->get('tb_pertemuan')->result_array();
+            $this->load->view('backend/admin/header', $data);
+            $this->load->view('backend/admin/sidebar', $data);
+            $this->load->view('backend/admin/aturpertemuan', $data);
+            $this->load->view('backend/admin/footer');
+        } else {
+            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
+                redirect('Auth/blocked');
+            } else {
+                redirect('Auth/backLogin');
+            }
+        }
+    }
+    public function aktifkanPertemuan($id){
+        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+            //aktifkan pertemuan di tb_pertemuan ubah status di tb_pertemuan
+            $this->db->set('aktif', '1');
+            $this->db->where('id_pertemuan', $id);
+            $this->db->update('tb_pertemuan');
+            redirect('Admin/aturPertemuan');
+            
+        } else {
+            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
+                redirect('Auth/blocked');
+            } else {
+                redirect('Auth/backLogin');
+            }
+        }
+
+    }
+     public function matikanPertemuan($id){
+        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+            //aktifkan pertemuan di tb_pertemuan ubah status di tb_pertemuan
+            $this->db->set('aktif', '0');
+            $this->db->where('id_pertemuan', $id);
+            $this->db->update('tb_pertemuan');
+            redirect('Admin/aturPertemuan');
+            
+        } else {
+            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
+                redirect('Auth/blocked');
+            } else {
+                redirect('Auth/backLogin');
+            }
+        }
+
+    }
+
     public function tambahPreTest()
     {
 

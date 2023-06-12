@@ -9,7 +9,7 @@ class Comments3_model extends CI_Model {
     
         //select nama pengirim dari tabel tb_akun yang dijoinkan dengan id_user pada tabel comment
     
-        $query = $this->db->query("SELECT c.id, c.id_user, c.comment, a.nama FROM tb_comments3 AS c JOIN tb_akun AS a ON c.id_user = a.id WHERE c.parent_id = 0 and c.pertemuan = 3");
+        $query = $this->db->query("SELECT c.id, c.id_user, c.comment, a.nama FROM tb_comments AS c JOIN tb_akun AS a ON c.id_user = a.id WHERE c.parent_id = 0 and c.pertemuan = 3");
     
     $comments = array();
 
@@ -18,7 +18,7 @@ class Comments3_model extends CI_Model {
         
         // Mengambil reply berdasarkan komentar utama
         //dapatkan juga nama pengirim dari tabel tb_akun yang dijoinkan dengan id_user pada tabel comment
-        $reply_query = $this->db->query("SELECT c.id, c.id_user, c.comment, a.nama FROM tb_comments3 AS c JOIN tb_akun AS a ON c.id_user = a.id WHERE c.parent_id = $comment_id");
+        $reply_query = $this->db->query("SELECT c.id, c.id_user, c.comment, a.nama FROM tb_comments AS c JOIN tb_akun AS a ON c.id_user = a.id WHERE c.parent_id = $comment_id");
      
         $replies = $reply_query->result();
 
@@ -41,10 +41,10 @@ class Comments3_model extends CI_Model {
     
 
     public function save_comment($data) {
-        $this->db->insert('tb_comments3', $data);
+        $this->db->insert('tb_comments', $data);
     }
 
     public function save_reply($data) {
-        $this->db->insert('tb_comments3', $data);
+        $this->db->insert('tb_comments', $data);
     }
 }

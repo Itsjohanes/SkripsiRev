@@ -340,10 +340,16 @@ class Siswa extends CI_Controller
            $data['title'] = "Materi Pertemuan 1";
            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
            $data['materi'] = $this->db->get_where('tb_materi', ['pertemuan' => 1])->row_array();
+           $status = $this->db->get_where('tb_pertemuan', ['pertemuan' => 1])->row_array(); 
+           if($status['aktif'] == '1'){
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/materipertemuan', $data);
             $this->load->view('backend/siswa/footer');
+           }else{
+             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('Siswa/materi');
+           }
          }else{
              redirect('Auth/backLogin');
          }
@@ -356,10 +362,16 @@ class Siswa extends CI_Controller
            $data['title'] = "Materi Pertemuan 2";
            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
            $data['materi'] = $this->db->get_where('tb_materi', ['pertemuan' => 2])->row_array();
+           $status = $this->db->get_where('tb_pertemuan', ['pertemuan' => 2])->row_array(); 
+           if($status['aktif'] == '1'){
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/materipertemuan', $data);
             $this->load->view('backend/siswa/footer');
+           }else{
+             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('Siswa/materi');
+           }
          }else{
              redirect('Auth/backLogin');
          }
@@ -372,10 +384,17 @@ class Siswa extends CI_Controller
            $data['title'] = "Materi Pertemuan 3";
            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
            $data['materi'] = $this->db->get_where('tb_materi', ['pertemuan' => 3])->row_array();
+            $status = $this->db->get_where('tb_pertemuan', ['pertemuan' => 3])->row_array(); 
+            
+            if($status['aktif'] == '1'){
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/materipertemuan', $data);
             $this->load->view('backend/siswa/footer');
+            }else{
+                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('Siswa/materi');
+            }
          }else{
              redirect('Auth/backLogin');
          }
@@ -388,10 +407,17 @@ class Siswa extends CI_Controller
            $data['title'] = "Materi Pertemuan 4";
            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
            $data['materi'] = $this->db->get_where('tb_materi', ['pertemuan' => 4])->row_array();
+            $status = $this->db->get_where('tb_pertemuan', ['pertemuan' => 4])->row_array(); 
+            
+            if($status['aktif'] == '1'){
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/materipertemuan', $data);
             $this->load->view('backend/siswa/footer');
+            }else{
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('Siswa/materi');
+            }
          }else{
              redirect('Auth/backLogin');
          }
@@ -401,7 +427,7 @@ class Siswa extends CI_Controller
 
     public function materi(){
          if ($this->session->userdata('email') != '') {
-         $data['title'] = "Materi";
+            $data['title'] = "Materi";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['jumlahSiswa'] = $this->db->get_where('tb_akun', ['role' => 0])->num_rows();
             $pretest = $this->db->get_where('tb_hasilpretest', ['id_siswa' => $this->session->userdata('id')])->num_rows();
@@ -445,12 +471,26 @@ class Siswa extends CI_Controller
             $data['banyakHasilTugas'] =   $this->db->get_where('tb_hasiltugas', ['pertemuan' => 1, 'id_siswa' => $this->session->userdata('id')])->num_rows();
             $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 1])->row_array();
             $data['comments'] = $this->comments1_model->get_comments();
+            //query status dari tb_pertemuan
+            $status = $this->db->get_where('tb_pertemuan', ['pertemuan' => 1])->row_array();
+            //query aktif
+            if($status['aktif'] == '1'){
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/pertemuan1', $data);
             $this->load->view('backend/siswa/comments1', $data);
 
             $this->load->view('backend/siswa/footer');
+
+            }else{
+                //tampilkan tulisan belum diaktifasi
+                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('Siswa/materi');
+
+            }
+            
+
+           
         } else {
             redirect('Auth/backLogin');
         }
@@ -625,12 +665,21 @@ class Siswa extends CI_Controller
             $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 2])->row_array();
             $data['comments'] = $this->comments2_model->get_comments();
 
-            
+            $status = $this->db->get_where('tb_pertemuan', ['pertemuan' => 2])->row_array();
+             if($status['aktif'] == '1'){
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/pertemuan2', $data);
-             $this->load->view('backend/siswa/comments2', $data);
+            $this->load->view('backend/siswa/comments2', $data);
+
             $this->load->view('backend/siswa/footer');
+
+            }else{
+                //tampilkan tulisan belum diaktifasi
+                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('Siswa/materi');
+
+            }
         } else {
             redirect('Auth/backLogin');
         }
@@ -645,13 +694,22 @@ class Siswa extends CI_Controller
             $data['banyakHasilTugas'] =   $this->db->get_where('tb_hasiltugas', ['pertemuan' => 3, 'id_siswa' => $this->session->userdata('id')])->num_rows();
             $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 3])->row_array();
             $data['comments'] = $this->comments3_model->get_comments();
+            $status = $this->db->get_where('tb_pertemuan', ['pertemuan' => 3])->row_array();
 
-
+           if($status['aktif'] == '1'){
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/pertemuan3', $data);
             $this->load->view('backend/siswa/comments3', $data);
+
             $this->load->view('backend/siswa/footer');
+
+            }else{
+                //tampilkan tulisan belum diaktifasi
+                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('Siswa/materi');
+
+            }
         } else {
             redirect('Auth/backLogin');
         }
@@ -666,11 +724,21 @@ class Siswa extends CI_Controller
             $data['banyakHasilTugas'] =   $this->db->get_where('tb_hasiltugas', ['pertemuan' => 4, 'id_siswa' => $this->session->userdata('id')])->num_rows();
             $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 4])->row_array();
             $data['comments'] = $this->comments4_model->get_comments();
+            $status = $this->db->get_where('tb_pertemuan', ['pertemuan' => 4])->row_array();
+            if($status['aktif'] == '1'){
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/pertemuan4', $data);
             $this->load->view('backend/siswa/comments4', $data);
+
             $this->load->view('backend/siswa/footer');
+
+            }else{
+                //tampilkan tulisan belum diaktifasi
+                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('Siswa/materi');
+
+            }
         } else {
             redirect('Auth/backLogin');
         }
