@@ -1146,7 +1146,7 @@ class Admin extends CI_Controller
             $materi = $_FILES['materi']['name'];
             if ($materi) {
                 $config['allowed_types'] = 'pdf';
-                $config['max_size'] = '2048';
+                $config['max_size'] = '8192';
                 $config['upload_path'] = './assets/materi/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('materi')) {
@@ -1217,7 +1217,7 @@ class Admin extends CI_Controller
             $materi = $_FILES['materi']['name'];
             if ($materi) {
                 $config['allowed_types'] = 'pdf';
-                $config['max_size'] = '2048';
+                $config['max_size'] = '8192';
                 $config['upload_path'] = './assets/materi/';
                 if ($materiLama != $materi) {
                     $this->load->library('upload', $config);

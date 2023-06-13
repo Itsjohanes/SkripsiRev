@@ -20,7 +20,7 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Add Materi Youtube</h6>
                 </div>
-                <?php echo form_open_multipart('Admin/tambahMateri'); ?>
+                <?php echo form_open_multipart('Admin/tambahYoutube'); ?>
                 <div class="row">
                     <div class="col">
                     <div class="input-group input-group-outline">
