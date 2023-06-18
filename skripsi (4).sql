@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 12, 2023 at 11:15 AM
+-- Generation Time: Jun 18, 2023 at 01:41 PM
 -- Server version: 8.0.30
 -- PHP Version: 7.4.33
 
@@ -101,6 +101,28 @@ INSERT INTO `tb_contact` (`id_pengirim`, `nama_pengirim`, `email_pengirim`, `pes
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_globalchat`
+--
+
+CREATE TABLE `tb_globalchat` (
+  `id` int NOT NULL,
+  `sender_id` int NOT NULL,
+  `message` text NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_globalchat`
+--
+
+INSERT INTO `tb_globalchat` (`id`, `sender_id`, `message`, `created_at`) VALUES
+(5, 2, 'gt4es', '2023-06-18 13:27:51'),
+(6, 14, 'tes', '2023-06-18 13:30:25'),
+(7, 14, 'masuk', '2023-06-18 13:39:47');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_hasilposttest`
 --
 
@@ -179,7 +201,8 @@ CREATE TABLE `tb_materi` (
 --
 
 INSERT INTO `tb_materi` (`id_materi`, `pertemuan`, `materi`) VALUES
-(2, 1, 'Pertemuan1.pdf');
+(2, 1, 'Pertemuan1.pdf'),
+(3, 2, 'Pertemuan2.pdf');
 
 -- --------------------------------------------------------
 
@@ -398,7 +421,12 @@ INSERT INTO `tb_youtube` (`id_materi`, `pertemuan`, `youtube`) VALUES
 (9, 1, 'ZPd-ShDM1us'),
 (11, 1, 'QyvMLEYQoYE'),
 (12, 1, 'wBIiRds7qFw'),
-(13, 2, '-Fz6Mn9sSMo');
+(13, 2, '-Fz6Mn9sSMo'),
+(14, 2, 'jKFFuLX9jgE'),
+(16, 2, 'UiOJw8VafwY'),
+(17, 3, 'lb3HxIsKlCs'),
+(18, 3, 'TJX83BL-uqM'),
+(19, 4, '-zZQWl2kKBk');
 
 --
 -- Indexes for dumped tables
@@ -423,6 +451,13 @@ ALTER TABLE `tb_comments`
 --
 ALTER TABLE `tb_contact`
   ADD PRIMARY KEY (`id_pengirim`);
+
+--
+-- Indexes for table `tb_globalchat`
+--
+ALTER TABLE `tb_globalchat`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sender_id` (`sender_id`);
 
 --
 -- Indexes for table `tb_hasilposttest`
@@ -525,6 +560,12 @@ ALTER TABLE `tb_contact`
   MODIFY `id_pengirim` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
+-- AUTO_INCREMENT for table `tb_globalchat`
+--
+ALTER TABLE `tb_globalchat`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `tb_hasilposttest`
 --
 ALTER TABLE `tb_hasilposttest`
@@ -546,7 +587,7 @@ ALTER TABLE `tb_hasiltugas`
 -- AUTO_INCREMENT for table `tb_materi`
 --
 ALTER TABLE `tb_materi`
-  MODIFY `id_materi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_materi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_pertemuan`
@@ -594,7 +635,7 @@ ALTER TABLE `tb_tugas`
 -- AUTO_INCREMENT for table `tb_youtube`
 --
 ALTER TABLE `tb_youtube`
-  MODIFY `id_materi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_materi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
@@ -605,6 +646,12 @@ ALTER TABLE `tb_youtube`
 --
 ALTER TABLE `tb_comments`
   ADD CONSTRAINT `tb_comments_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_akun` (`id`);
+
+--
+-- Constraints for table `tb_globalchat`
+--
+ALTER TABLE `tb_globalchat`
+  ADD CONSTRAINT `tb_globalchat_ibfk_1` FOREIGN KEY (`sender_id`) REFERENCES `tb_akun` (`id`);
 
 --
 -- Constraints for table `tb_hasilposttest`
