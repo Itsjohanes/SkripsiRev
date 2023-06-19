@@ -1,5 +1,5 @@
 <?php
-class GlobalChat extends CI_Controller
+class GroupChat extends CI_Controller
 {
     public function __construct()
     {
@@ -13,7 +13,7 @@ class GlobalChat extends CI_Controller
         $data['chat_messages'] = $this->chat_model->get_chat_messages();
 
 
-        $data['title'] = "Global Chat";
+        $data['title'] = "Group Chat";
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
     
         $this->load->view('backend/admin/header', $data);
@@ -23,7 +23,7 @@ class GlobalChat extends CI_Controller
 
         }else if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 0) {
              $data['chat_messages'] = $this->chat_model->get_chat_messages();
-        $data['title'] = "Global Chat";
+        $data['title'] = "Group Chat";
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
 
          $this->load->view('backend/siswa/header', $data);

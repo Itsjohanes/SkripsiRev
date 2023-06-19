@@ -242,6 +242,10 @@ class Admin extends CI_Controller
     {
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $data['title'] = "Random";
+            $query = $this->db->select_max('kelompok')->get('tb_random');
+            $result = $query->row();
+            $maxKelompok = $result->kelompok;
+            $data['jumkel'] = $maxKelompok;
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['siswa'] = $this->db->get_where('tb_akun', ['role' => "0"])->result_array();
             $data['randoms'] = $this->db->get_where('tb_random')->result_array();
@@ -262,23 +266,43 @@ class Admin extends CI_Controller
 
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
 
-            $siswa = $this->db->get_where('tb_akun', ['role' => "0"])->result_array();
-            $kelompok = 6;
-            $jumlah = count($siswa);
-            $siswaPerKelompok = ceil($jumlah / $kelompok);
+           $siswa = $this->db->get_where('tb_akun', ['role' => "0"])->result_array();
+        $jumlahSiswa = count($siswa);
+
+
+
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+            // Mengambil nilai jumlah kelompok dari POST
+            $jumlahKelompok = $this->input->post('jumlah_kelompok');
+
+            if (!is_numeric($jumlahKelompok) || $jumlahKelompok <= 0) {
+                echo "Jumlah kelompok harus merupakan bilangan positif. Silakan coba lagi.";
+                exit;
+            }
+
+            $siswaPerKelompok = ceil($jumlahSiswa / $jumlahKelompok);
+            shuffle($siswa); // Mengacak urutan siswa secara acak
             $siswa = array_chunk($siswa, $siswaPerKelompok);
             $i = 1;
+            $assignedKelompok = [];
             foreach ($siswa as $siswas) {
+                $kelompokIndex = $i % $jumlahKelompok;
+                if ($kelompokIndex == 0) {
+                    $kelompokIndex = $jumlahKelompok;
+                }
                 foreach ($siswas as $siswa1) {
                     $data = [
                         'id_user' => $siswa1['id'],
-                        'kelompok' => $i,
+                        'kelompok' => $kelompokIndex,
                         'nama' => $siswa1['nama']
                     ];
                     $this->db->insert('tb_random', $data);
+                    $assignedKelompok[] = $kelompokIndex;
                 }
                 $i++;
             }
+        }
+
             redirect('Admin/random');
         } else {
             if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
