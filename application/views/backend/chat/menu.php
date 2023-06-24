@@ -44,6 +44,7 @@ $nama = $_SESSION['nama'];
 										<span>Khalid</span>
 										<p>Kalid is online</p>
 									</div>
+									
 								</div>
 							</li>
 							<li class="active">
@@ -91,48 +92,7 @@ $nama = $_SESSION['nama'];
 
 <script>
 	$(document).ready(function() {
-		$('.keluar').click(function(e) {
-
-			Swal.fire({
-				title: 'Anda Akan Keluar?',
-				text: "Apakah Anda Yakin Akan keluar ? ",
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Yes!'
-			}).then((result) => {
-				if (result.isConfirmed) {
-					$.ajax({
-						type: "post",
-						url: "<?= base_url() ?>/Chat/logout",
-						// data: "data",
-						dataType: "json",
-						success: function(r) {
-							// console.log(r)
-							// return false
-							if (r) {
-								Swal.fire(
-									'success!',
-									r.pesan,
-									'success'
-								)
-								setTimeout(() => {
-									location.href = '<?= base_url() ?>Auth/login';
-								}, 1000);
-							} else {
-								'error!',
-								r.pesan,
-								'error'
-							}
-
-						}
-					});
-
-				}
-			})
-
-		});
+		
 		orang()
 
 		function orang() {
@@ -158,6 +118,7 @@ $nama = $_SESSION['nama'];
 									<div class="user_info ">	
 										<span class="">${d.nama}</span>
 									</div>
+									
 								</div>
 							</li>`;
 

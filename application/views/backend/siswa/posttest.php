@@ -76,7 +76,7 @@
 
 <script>
   // Timer Countdown
-  var timeLeft = 3600; // Waktu dalam detik (10 detik sebagai contoh)
+  var timeLeft = 3600; 
   var timerId;
 
   function startTimer() {

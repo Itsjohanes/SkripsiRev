@@ -1,8 +1,7 @@
 
 <!------ Include the above in your HEAD tag ---------->
 
-<!DOCTYPE html>
-<html>
+
 <?php
 $this->load->view('style');
 
@@ -223,4 +222,3 @@ $this->load->view('style');
 	});
 </script>
 
-</html>

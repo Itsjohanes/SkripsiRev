@@ -34,6 +34,8 @@ class GroupChat extends CI_Controller
                 $this->load->view('backend/chat/group', $data);
                 $this->load->view('backend/siswa/footer');
             }else{
+                //berikan alert
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda belum memiliki kelompok</div>');
                 redirect('Siswa');
         
             }
