@@ -57,7 +57,7 @@
                                         <td><?= $j['salah']; ?></td>
                                         <td><?= $j['kosong']; ?></td>
                                         <td>
-                                            <a href="<?= base_url('Admin/hapusHasilPretest/') . $j['id_hasilpretest']; ?>" onclick="return confirm('Yakin?');"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="<?= base_url('Admin/hapusHasilPretest/') . $j['id_hasilpretest']; ?>" onclick="return confirm('Anda yakin menghapus hasil test ini?');"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>

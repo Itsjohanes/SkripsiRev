@@ -90,7 +90,7 @@
                                         <td><?= $j['pertemuan']; ?></td>
                                         <td><a href="<?= base_url(); ?>assets/materi/<?= $j['materi']; ?>" <i class="fas fa-file-pdf"></i></a> </td>
                                         <td>
-                                            <a href="<?= base_url(); ?>Admin/hapusMateri/<?= $j['id_materi']; ?>" class="btn btn-danger" onclick="return confirm('Yakin?');"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="<?= base_url(); ?>Admin/hapusMateri/<?= $j['id_materi']; ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin akan menghapus Materi ini?');"><i class="fas fa-trash-alt"></i></a>
                                             <a href="<?= base_url(); ?>Admin/editMateri/<?= $j['id_materi']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                         </td>
 
