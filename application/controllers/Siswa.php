@@ -9,9 +9,7 @@ class Siswa extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Siswa_model');
-        $this->load->model('comments2_model');
-        $this->load->model('comments3_model');
-        $this->load->model('comments4_model');
+        
     }
     public function index()
     {
