@@ -4,34 +4,37 @@
 
                  <!-- Default Card Example -->
 
+
+
+
                  <div class="card mb-4">
                      <div class="card-header">
                          <?= $this->session->flashdata("message");
                             ?>
-                         <h6 class="m-0 font-weight-bold text-primary">Form Pengumpulan Tugas 2</h6>
-
+                         <h6 class="m-0 font-weight-bold text-primary">Form Pengumpulan Tugas <?php echo $pertemuan;?></h6>
                      </div>
 
                      <?php
                         //Jika sudah ada sebelumnya
                         echo '<div class="card-body">';
                         if ($banyakHasilTugas > 0) {
-                            echo "Data sudah ada sebelumnya. Silahkan isi form dibawah ini untuk mengubah data";
+                            echo "Data sudah ada sebelumnya. Silahkan isi form di bawah ini untuk mengubah data";
                             //mengubah data yang sudah ada
-                            echo form_open_multipart('Pertemuan2/editTugas');
+                            echo form_open_multipart('Pertemuan/editTugas');
                             echo '<div class="form-group">';
-                            echo '<input type="hidden" name="slide" value="pertemuan2">';
+
+                            echo '<input type="hidden" name="slide" value="pertemuan1">';
                             echo '<input type="hidden" name="id_hasiltugas" value="' . $hasiltugas['id_hasiltugas'] . '">';
                             echo '<input type="hidden" name="filelama" value="' . $hasiltugas['upload'] . '">';
                             echo '<label for="selectOption">Pertemuan</label>';
-                            echo '<div class="input-group input-group-outline">';
-                            echo '<input type = "text" name = "pertemuan" value = "2" class = "form-control" readonly>';
+                            echo '<div class="input-group input-group-outline">'; 
+                            echo '<input type="text" name="pertemuan" value="' . $hasiltugas['pertemuan'] . '" class="form-control" readonly>';
                             echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
                             echo '<label for="textArea">Text</label>';
                             echo '<div class="input-group input-group-outline">';
-                            echo '<textarea class="form-control" id="textArea" name="text" rows="3">' . $hasiltugas['text'] . '</textarea>';
+                            echo '<textarea class = "form-control" id="textArea" name="text" rows="3">' . $hasiltugas['text'] . '</textarea>';
                             echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
@@ -54,17 +57,21 @@
                             echo '<input type="file" class="form-control-file" name="upload" id="fileUpload">';
 
                             echo '</div>';
-                            echo '<a href = "' . base_url('Pertemuan2/hapusTugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini?\')">Delete</a>';
+                            //hapus dengan konfirmasi menggunakan alert
+
+                            echo '<a href = "' . base_url('Pertemuan/hapusTugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini?\')">Delete</a>';
+
 
                             //delete data by Id button aja
                         } else {
 
-                            echo form_open_multipart('Pertemuan2/tambahTugas');
+                            echo form_open_multipart('Pertemuan/tambahTugas');
                             echo '<div class="form-group">';
-                            echo '<input type="hidden" name="slide" value="pertemuan2">';
+                            
+                            echo '<input type="hidden" name="slide" value="pertemuan1">';
                             echo '<label for="selectOption">Pertemuan</label>';
                             echo '<div class="input-group input-group-outline">';
-                            echo '<input type = "text" name = "pertemuan" value = "2" class = "form-control" readonly>';
+                            echo '<input type="text" name="pertemuan" value="' . $pertemuan . '" class="form-control" readonly>';
                             echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
@@ -117,17 +124,16 @@
                      </div>
                  </div>
                  <!-- Card Body -->
+
                  <div class="card-body">
-                     <a href='<?= base_url('Pertemuan2/materiPertemuan2'); ?>' target='_blank'><i class="fas fa-book"> Materi</i></a>
+                     <a href='<?= base_url('Pertemuan/materiPertemuan/'.$pertemuan); ?>'><i class="fas fa-book"> Materi</i></a>
                      &nbsp
                      <a href='<?= base_url('assets/tugas/') . $tugas['tugas']; ?>' target='_blank'><i class="fas fa-tasks"> Tugas</i></a>
                     
-
                  </div>
              </div>
 
              <!-- Collapsable Card Example -->
-
 
          </div>
 

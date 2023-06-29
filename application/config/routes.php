@@ -59,3 +59,4 @@ $route['login'] = 'Chat/login';
 $route['register'] = 'Chat/Register';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['Pertemuan/(:num)'] = 'Pertemuan/index/$1';

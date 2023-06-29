@@ -1,88 +1,108 @@
 <?php
 
-class Pertemuan3 extends CI_Controller {
+class Pertemuan extends CI_Controller {
     public function __construct() {
         parent::__construct();
-        $this->load->model('Comments3_model');
-        $this->load->model('Pertemuan3_model'); // Load the model
+        $this->load->model('Komentar_model');
+        $this->load->model('Pertemuan_model'); // Load the model
+        $this->load->library('user_agent');
+
     }
 
-    public function index() {
+    public function index($id = '') {
         if ($this->session->userdata('email') != '') {
-            $data['title'] = "Materi Pertemuan 3";
-            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-            $data['materi'] = $this->db->get_where('tb_youtube', ['pertemuan' => 3])->result_array();
-            $data['hasiltugas'] = $this->db->get_where('tb_hasiltugas', ['pertemuan' => 3, 'id_siswa' => $this->session->userdata('id')])->row_array();
-            $data['banyakHasilTugas'] =   $this->db->get_where('tb_hasiltugas', ['pertemuan' => 3, 'id_siswa' => $this->session->userdata('id')])->num_rows();
-            $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => 3])->row_array();
-            $data['comments'] = $this->Comments3_model->get_comments();
-            //query status dari tb_pertemuan
-            $status = $this->db->get_where('tb_pertemuan', ['pertemuan' => 3])->row_array();
-            //query aktif
-            if($status['aktif'] == '1'){
-                $this->load->view('backend/siswa/header', $data);
-                $this->load->view('backend/siswa/sidebar', $data);
-                $this->load->view('backend/siswa/pertemuan3', $data);
-                $this->load->view('backend/siswa/comments3', $data);
-                $this->load->view('backend/siswa/footer');
-            } else {
-                //tampilkan tulisan belum diaktifasi
-                $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+            if($id >= 1 && $id <= 4){
+                $data['title'] = "Materi Pertemuan 1";
+                $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+                $data['materi'] = $this->db->get_where('tb_youtube', ['pertemuan' => $id])->result_array();
+                $data['hasiltugas'] = $this->db->get_where('tb_hasiltugas', ['pertemuan' => $id, 'id_siswa' => $this->session->userdata('id')])->row_array();
+                $data['banyakHasilTugas'] =   $this->db->get_where('tb_hasiltugas', ['pertemuan' => $id, 'id_siswa' => $this->session->userdata('id')])->num_rows();
+                $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => $id])->row_array();
+                $data['comments'] = $this->Komentar_model->get_comments($id);
+                $data['pertemuan'] = $id;
+                //query status dari tb_pertemuan
+                $status = $this->db->get_where('tb_pertemuan', ['pertemuan' => $id])->row_array();
+                //query aktif
+                if($status['aktif'] == '1'){
+                    $this->load->view('backend/siswa/header', $data);
+                    $this->load->view('backend/siswa/sidebar', $data);
+                    $this->load->view('backend/siswa/pertemuan', $data);
+                    $this->load->view('backend/siswa/comments', $data);
+                    $this->load->view('backend/siswa/footer');
+                } else {
+                    //tampilkan tulisan belum diaktifasi
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('Materi');
+                }
+
+            }else{
                 redirect('Materi');
             }
-        } else {
+            
+        
+
+        }else{
             redirect('Auth/backLogin');
         }
     }
 
-    public function save_comment3() {
+    public function save_comment() {
         // Proses menyimpan komentar
         if ($this->session->userdata('email') != '') {
+            
             $data = array(
                 'id_user' => $this->input->post('id_user'),
                 'comment' => $this->input->post('comment'),
                 'parent_id' => 0,
-                'pertemuan' => 3 // Set parent_id as 0 for main comments
+                'pertemuan' => $this->input->post('pertemuan')
             );
+            $this->Komentar_model->save_comment($data);
+            redirect($this->agent->referrer());
 
-            $this->Comments3_model->save_comment($data);
-            redirect('Pertemuan3');
+            
         }
     }
 
-     public function materiPertemuan3(){
+     public function materiPertemuan($id = ''){
 
          if ($this->session->userdata('email') != '') {
-           $data['title'] = "Materi Pertemuan 3";
-           $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-           $data['materi'] = $this->db->get_where('tb_materi', ['pertemuan' => 3])->row_array();
-           $status = $this->db->get_where('tb_pertemuan', ['pertemuan' => 3])->row_array(); 
-           if($status['aktif'] == '1'){
-            $this->load->view('backend/siswa/header', $data);
-            $this->load->view('backend/siswa/sidebar', $data);
-            $this->load->view('backend/siswa/materipertemuan', $data);
-            $this->load->view('backend/siswa/footer');
-           }else{
-             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
-             redirect('Materi');
-           }
+            if($id >= 1 && $id <= 4){
+                $data['title'] = "Materi Pertemuan ". $id;
+                $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+                $data['materi'] = $this->db->get_where('tb_materi', ['pertemuan' => $id])->row_array();
+                $status = $this->db->get_where('tb_pertemuan', ['pertemuan' => $id])->row_array(); 
+                if($status['aktif'] == '1'){
+                    $this->load->view('backend/siswa/header', $data);
+                    $this->load->view('backend/siswa/sidebar', $data);
+                    $this->load->view('backend/siswa/materipertemuan', $data);
+                    $this->load->view('backend/siswa/footer');
+                }else{
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('Materi');
+                }    
+            }else{
+                    redirect('Materi');
+                
+            }
+          
          }else{
              redirect('Auth/backLogin');
          }
     }
 
-    public function save_reply3() {
+    public function save_reply() {
         if ($this->session->userdata('email') != '') {
             // Proses menyimpan reply
             $data = array(
                 'id_user' => $this->input->post('id_user'),
                 'comment' => $this->input->post('comment'),
                 'parent_id' => $this->input->post('parent_id'),
-                'pertemuan' => 3
+                'pertemuan' => $this->input->post('pertemuan')
             );
 
-            $this->Comments3_model->save_reply($data);
-            redirect('Pertemuan3');
+            $this->Komentar_model->save_reply($data);
+            redirect($this->agent->referrer());
+
         }
     }
 
@@ -110,7 +130,7 @@ class Pertemuan3 extends CI_Controller {
                         'upload' => $new_upload
                     ];
                     //setAlert
-                    $this->Pertemuan3_model->insertHasilTugas($data);
+                    $this->Pertemuan_model->insertHasilTugas($data);
                     //set flashdata
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tugas berhasil diupload</div>');
                 } else {
@@ -119,7 +139,7 @@ class Pertemuan3 extends CI_Controller {
                 }
             }
 
-            redirect('Pertemuan3');
+            redirect($this->agent->referrer());
         } else {
             redirect('Auth/backLogin');
         }
@@ -127,16 +147,17 @@ class Pertemuan3 extends CI_Controller {
 
     public function hapusTugas($id) {
         if ($this->session->userdata('email') != '') {
-            $file = $this->Pertemuan3_model->getHasilTugasById($id);
+            $file = $this->Pertemuan_model->getHasilTugasById($id);
             $filename = $file['upload'];
             $pertemuan = $file['pertemuan'];
 
-            $this->Pertemuan3_model->deleteHasilTugas($id);
+            $this->Pertemuan_model->deleteHasilTugas($id);
             //unlink file based on id_hasiltugas
             unlink(FCPATH . 'assets/tugassiswa/' . $filename);
             //setflash
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tugas berhasil dihapus</div>');
-            redirect('Pertemuan3');
+            redirect($this->agent->referrer());
+
         } else {
             redirect('Auth/backLogin');
         }
@@ -167,7 +188,7 @@ class Pertemuan3 extends CI_Controller {
                             'upload' => $new_upload,
                             'text' => $text
                         ];
-                        $this->Pertemuan3_model->updateHasilTugas($id, $data);
+                        $this->Pertemuan_model->updateHasilTugas($id, $data);
                     } else {
                         echo $this->upload->display_errors();
                     }
@@ -176,7 +197,7 @@ class Pertemuan3 extends CI_Controller {
                 }
             }
 
-            redirect('Pertemuan3');
+            redirect($this->agent->referrer());
         } else {
             redirect('Auth/backLogin');
         }

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pertemuan2_model extends CI_Model {
+class Pertemuan_model extends CI_Model {
 
    
     public function insertHasilTugas($data) {
