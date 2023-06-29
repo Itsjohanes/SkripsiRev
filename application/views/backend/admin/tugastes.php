@@ -20,7 +20,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('MenilaiPertemuan1');?>"> Pertemuan 1  </a>
+              <a class="mb-0 " href = "<?php echo base_url('Menilai/menilaiPertemuan/1');?>"> Pertemuan 1  </a>
               <p class="text-sm ">
               </p>
               <hr class="dark horizontal">
@@ -39,7 +39,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('MenilaiPertemuan2');?>"> Pertemuan 2 </a>
+              <a class="mb-0 " href = "<?php echo base_url('Menilai/menilaiPertemuan/2');?>"> Pertemuan 2 </a>
                 <p class="text-sm "> 
 
                 
@@ -60,7 +60,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('MenilaiPertemuan3');?>"> Pertemuan 3 </a>
+              <a class="mb-0 " href = "<?php echo base_url('Menilai/menilaiPertemuan/3');?>"> Pertemuan 3 </a>
             <p class="text-sm "> 
 
                 
@@ -84,7 +84,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('MenilaiPertemuan4');?>"> Pertemuan 4 </a>
+              <a class="mb-0 " href = "<?php echo base_url('Menilai/menilaiPertemuan/4');?>"> Pertemuan 4 </a>
 
             <p class="text-sm "> 
 

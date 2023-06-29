@@ -1,9 +1,9 @@
 <!-- List dari Siswa -->
 <div class="row">
-    <div class="col-md-13">
+    <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title"> Report Nilai Pertemuan 4 </h4>
+                <h4 class="card-title"> Report Nilai Pertemuan <?php echo $pertemuan;?> </h4>
             </div>
             <?php
             if ($this->session->flashdata('message')) {
@@ -53,10 +53,10 @@
                                         <td><?= $j['nilai']; ?></td>
                                         <td><?= $j['komentar']; ?></td>
                                         <td>
-                                            <a href="<?= base_url('MenilaiPertemuan4/menilaiById/') . $j['id_hasiltugas']; ?>" >Edit</a>
+                                            <a href="<?= base_url('Menilai/menilaiById/') . $j['id_hasiltugas']; ?>" >Edit</a>
                                             <?php
                                             if ($j['nilai'] != null || $j['komentar'] != null) {
-                                                echo '<a href="' . base_url('MenilaiPertemuan4/deleteMenilai/') . $j['id_hasiltugas'] . '"  onclick="return confirm(\'Yakin nilai akan dihapus permanen?\');">Hapus</a>';
+                                                echo '<a href="' . base_url('Menilai/deleteMenilai/') . $j['id_hasiltugas'] . '"  onclick="return confirm(\'Yakin nilai akan dihapus permanen?\');">Hapus</a>';
                                             }
                                             ?>
                                         </td>
