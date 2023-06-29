@@ -27,19 +27,12 @@ class Comments1_model extends CI_Model {
             'id_user' => $row->id_user,
             'comment' => $row->comment,
             'nama' => $row->nama,
-            'replies' => $replies
-
-           
+            'replies' => $replies           
         );
-
         $comments[] = $comment;
     }
-
     return $comments;
 }
-
-    
-
     public function save_comment($data) {
         $this->db->insert('tb_comments', $data);
     }

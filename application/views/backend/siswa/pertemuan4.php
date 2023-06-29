@@ -15,9 +15,9 @@
                         //Jika sudah ada sebelumnya
                         echo '<div class="card-body">';
                         if ($banyakHasilTugas > 0) {
-                            echo "Data sudah ada sebelumnya. Silahkan isi form dibawah ini untuk mengubah data";
+                             echo "Data sudah ada sebelumnya. Silahkan isi form dibawah ini untuk mengubah data";
                             //mengubah data yang sudah ada
-                            echo form_open_multipart('siswa/editTugas');
+                            echo form_open_multipart('Pertemuan4/editTugas');
                             echo '<div class="form-group">';
                             echo '<input type="hidden" name="slide" value="pertemuan4">';
                             echo '<input type="hidden" name="id_hasiltugas" value="' . $hasiltugas['id_hasiltugas'] . '">';
@@ -33,7 +33,7 @@
                             echo '<textarea class="form-control" id="textArea" name="text" rows="3">' . $hasiltugas['text'] . '</textarea>';
                             echo '</div>';
                             echo '</div>';
-                            echo '<div class="form-group">';
+                             echo '<div class="form-group">';
                             echo '<label for="textArea">Nilai</label>';
                             echo '<div class="input-group input-group-outline">';
                             echo '<textarea class = "form-control" id="textArea" disabled name="text" rows="1">' . $hasiltugas['nilai'] . '</textarea>';
@@ -48,17 +48,18 @@
                             echo '<div class="form-group">';
                             echo '<label for="fileUpload">Upload File (max 2mb) (PDF)</label>';
                             echo '</br>';
+                            //file pdf yang diupload
                             echo '<a href="' . base_url('assets/tugassiswa/' . $hasiltugas['upload']) . '" target="_blank">' . $hasiltugas['upload'] . '</a>';
                             echo '<input type="file" class="form-control-file" name="upload" id="fileUpload">';
 
                             echo '</div>';
-                            echo '<a href = "' . base_url('Siswa/hapusTugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini?\')">Delete</a>';
-                            echo '</div>';
+                            echo '<a href = "' . base_url('Pertemuan4/hapusTugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini?\')">Delete</a>';
+
 
                             //delete data by Id button aja
                         } else {
 
-                             echo form_open_multipart('siswa/tambahTugas');
+                            echo form_open_multipart('Pertemuan4/tambahTugas');
                             echo '<div class="form-group">';
                             echo '<input type="hidden" name="slide" value="pertemuan4">';
                             echo '<label for="selectOption">Pertemuan</label>';
@@ -72,11 +73,11 @@
                             echo '<textarea class="form-control" id="textArea" name="text" rows="3"></textarea>';
                             echo '</div>';
                             echo '</div>';
+                           
                             echo '<div class="form-group">';
                             echo '<label for="fileUpload">Upload File (max 2mb) (PDF)</label>';
                             echo '</br>';
                             echo '<input type="file" class="form-control-file" name="upload" id="fileUpload">';
-                            
                             echo '</div>';
                             echo '</br>';
                         }
@@ -118,14 +119,16 @@
                  </div>
                  <!-- Card Body -->
                  <div class="card-body">
-                     <a href='<?= base_url('Siswa/materiPertemuan4') ?>' target='_blank'><i class="fas fa-book"> Materi</i></a>
+                     <a href='<?= base_url('Pertemuan4/materiPertemuan4'); ?>' target='_blank'><i class="fas fa-book"> Materi</i></a>
                      &nbsp
                      <a href='<?= base_url('assets/tugas/') . $tugas['tugas']; ?>' target='_blank'><i class="fas fa-tasks"> Tugas</i></a>
-                    
+                     
+                     
                  </div>
              </div>
 
              <!-- Collapsable Card Example -->
+
 
          </div>
 

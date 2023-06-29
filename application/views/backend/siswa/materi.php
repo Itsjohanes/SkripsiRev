@@ -20,7 +20,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('Siswa/pertemuan1');?>"> Pertemuan 1  </a>
+              <a class="mb-0 " href = "<?php echo base_url('Pertemuan1');?>"> Pertemuan 1  </a>
               <p class="text-sm "> 
 
                  <?php 
@@ -28,10 +28,8 @@
                     echo "Tugas 1 Belum Selesai";
                  }else{
                     echo "Tugas 1 Sudah Selesai";
-
                  }
                  ?>
-
               </p>
               <hr class="dark horizontal">
               <div class="d-flex ">
@@ -49,7 +47,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('Siswa/pertemuan2');?>"> Pertemuan 2 </a>
+              <a class="mb-0 " href = "<?php echo base_url('Pertemuan2');?>"> Pertemuan 2 </a>
                 <p class="text-sm "> 
 
                  <?php 
@@ -78,7 +76,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('Siswa/pertemuan3');?>"> Pertemuan 3 </a>
+              <a class="mb-0 " href = "<?php echo base_url('Pertemuan3');?>"> Pertemuan 3 </a>
             <p class="text-sm "> 
 
                  <?php 
@@ -109,7 +107,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('Siswa/pertemuan4');?>"> Pertemuan 4 </a>
+              <a class="mb-0 " href = "<?php echo base_url('Pertemuan4');?>"> Pertemuan 4 </a>
 
             <p class="text-sm "> 
 
@@ -140,7 +138,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('Siswa/preTest');?>"> Pre-Test </a>
+              <a class="mb-0 " href = "<?php echo base_url('PreTest');?>"> Pre-Test </a>
            <p class="text-sm "> 
 
                  <?php 
@@ -170,7 +168,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('Siswa/postTest');?>"> Post-Test </a>
+              <a class="mb-0 " href = "<?php echo base_url('PostTest');?>"> Post-Test </a>
            <p class="text-sm "> 
 
                  <?php 

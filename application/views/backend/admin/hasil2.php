@@ -49,13 +49,14 @@
                                         <td><?= $j['nama']; ?></td>
                                         <td><?= $j['text']; ?></td>
                                         <td> <a href="<?= base_url(); ?>assets/tugassiswa/<?= $j['upload']; ?>" <i class="fas fa-file-pdf"></i></a> </td>
+                                        
                                         <td><?= $j['nilai']; ?></td>
                                         <td><?= $j['komentar']; ?></td>
                                         <td>
-                                            <a href="<?= base_url('Admin/menilaiPertemuan2ById/') . $j['id_hasiltugas']; ?>" >Edit</a>
+                                            <a href="<?= base_url('MenilaiPertemuan2/menilaiById/') . $j['id_hasiltugas']; ?>" >Edit</a>
                                             <?php
                                             if ($j['nilai'] != null || $j['komentar'] != null) {
-                                                echo '<a href="' . base_url('Admin/deleteMenilaiPertemuan2/') . $j['id_hasiltugas'] . '"  onclick="return confirm(\'Yakin nilai akan dihapus permanen?\');">Hapus</a>';
+                                                echo '<a href="' . base_url('MenilaiPertemuan2/deleteMenilai/') . $j['id_hasiltugas'] . '"  onclick="return confirm(\'Yakin nilai akan dihapus permanen?\');">Hapus</a>';
                                             }
                                             ?>
                                         </td>

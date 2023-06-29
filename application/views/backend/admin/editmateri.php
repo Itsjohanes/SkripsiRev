@@ -10,7 +10,7 @@
     <div class="card-header py-3">
     </div>
     <div class="card-body">
-        <?php echo form_open_multipart('Admin/runEditMateri'); ?>
+        <?php echo form_open_multipart('KelolaMateri/runEditMateri'); ?>
         <div class="form-group">
             <input type="hidden" class="form-control" id="id_materi" name="id_materi" value="<?php echo $materi['id_materi'];  ?>">
             <input type="hidden" name="file_lama" id="file_lama" value="<?php echo $materi['materi'];  ?>">

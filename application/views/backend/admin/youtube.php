@@ -20,7 +20,7 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Add Materi Youtube</h6>
                 </div>
-                <?php echo form_open_multipart('Admin/tambahYoutube'); ?>
+                <?php echo form_open_multipart('KelolaYoutube/tambahYoutube'); ?>
                 <div class="row">
                     <div class="col">
                     <div class="input-group input-group-outline">
@@ -89,8 +89,8 @@
 </td>
 
                                         <td>
-                                            <a href="<?= base_url(); ?>Admin/hapusYoutube/<?= $j['id_materi']; ?>" class="btn btn-danger" onclick="return confirm('Anda yakin akan menghapus video ini?');"><i class="fas fa-trash-alt"></i></a>
-                                            <a href="<?= base_url(); ?>Admin/editYoutube/<?= $j['id_materi']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                            <a href="<?= base_url(); ?>KelolaYoutube/hapusYoutube/<?= $j['id_materi']; ?>" class="btn btn-danger" onclick="return confirm('Anda yakin akan menghapus video ini?');"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="<?= base_url(); ?>KelolaYoutube/editYoutube/<?= $j['id_materi']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                         </td>
 
                                     </tr>

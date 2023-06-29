@@ -20,7 +20,7 @@
                         if ($banyakHasilTugas > 0) {
                             echo "Data sudah ada sebelumnya. Silahkan isi form dibawah ini untuk mengubah data";
                             //mengubah data yang sudah ada
-                            echo form_open_multipart('siswa/editTugas');
+                            echo form_open_multipart('Pertemuan1/editTugas');
                             echo '<div class="form-group">';
 
                             echo '<input type="hidden" name="slide" value="pertemuan1">';
@@ -59,13 +59,13 @@
                             echo '</div>';
                             //hapus dengan konfirmasi menggunakan alert
 
-                            echo '<a href = "' . base_url('Siswa/hapusTugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini?\')">Delete</a>';
+                            echo '<a href = "' . base_url('Pertemuan1/hapusTugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini?\')">Delete</a>';
 
 
                             //delete data by Id button aja
                         } else {
 
-                            echo form_open_multipart('siswa/tambahTugas');
+                            echo form_open_multipart('Pertemuan1/tambahTugas');
                             echo '<div class="form-group">';
                             
                             echo '<input type="hidden" name="slide" value="pertemuan1">';
@@ -126,7 +126,7 @@
                  <!-- Card Body -->
 
                  <div class="card-body">
-                     <a href='<?= base_url('Siswa/materiPertemuan1'); ?>'><i class="fas fa-book"> Materi</i></a>
+                     <a href='<?= base_url('Pertemuan1/materiPertemuan1'); ?>'><i class="fas fa-book"> Materi</i></a>
                      &nbsp
                      <a href='<?= base_url('assets/tugas/') . $tugas['tugas']; ?>' target='_blank'><i class="fas fa-tasks"> Tugas</i></a>
                     

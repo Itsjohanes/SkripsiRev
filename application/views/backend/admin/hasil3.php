@@ -1,6 +1,6 @@
 <!-- List dari Siswa -->
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-13">
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title"> Report Nilai Pertemuan 3 </h4>
@@ -49,13 +49,14 @@
                                         <td><?= $j['nama']; ?></td>
                                         <td><?= $j['text']; ?></td>
                                         <td> <a href="<?= base_url(); ?>assets/tugassiswa/<?= $j['upload']; ?>" <i class="fas fa-file-pdf"></i></a> </td>
+                                        
                                         <td><?= $j['nilai']; ?></td>
                                         <td><?= $j['komentar']; ?></td>
                                         <td>
-                                            <a href="<?= base_url('Admin/menilaiPertemuan3ById/') . $j['id_hasiltugas']; ?>" >Edit</a>
+                                            <a href="<?= base_url('MenilaiPertemuan3/menilaiById/') . $j['id_hasiltugas']; ?>" >Edit</a>
                                             <?php
                                             if ($j['nilai'] != null || $j['komentar'] != null) {
-                                                echo '<a href="' . base_url('Admin/deleteMenilaiPertemuan3/') . $j['id_hasiltugas'] . '"  onclick="return confirm(\'Yakin nilai akan dihapus permanen?\');">Hapus</a>';
+                                                echo '<a href="' . base_url('MenilaiPertemuan3/deleteMenilai/') . $j['id_hasiltugas'] . '"  onclick="return confirm(\'Yakin nilai akan dihapus permanen?\');">Hapus</a>';
                                             }
                                             ?>
                                         </td>

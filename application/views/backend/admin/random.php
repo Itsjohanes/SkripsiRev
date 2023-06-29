@@ -42,13 +42,13 @@
         </div>
     </div>
 
-    <form method="POST" action="<?php echo site_url('Admin/runRandom'); ?>">
+    <form method="POST" action="<?php echo site_url('RandomKelompok/runRandom'); ?>">
   <label for="jumlah_kelompok">Jumlah Kelompok:</label>
   <input type="number" name="jumlah_kelompok" id="jumlah_kelompok" min="1" required>
   <button type="submit">Proses</button>
 </form>
 
-    <a type="button" name="random" href="<?= base_url(); ?>Admin/deleteRandom" class=" btn btn-danger"><i class="fas fa-user-times"></i></a>
+    <a type="button" name="random" href="<?= base_url(); ?>RandomKelompok/deleteRandom" class=" btn btn-danger"><i class="fas fa-user-times"></i></a>
 
 
 

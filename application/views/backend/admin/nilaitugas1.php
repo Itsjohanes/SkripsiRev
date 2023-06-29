@@ -10,7 +10,7 @@
     <div class="card-header py-3">
     </div>
     <div class="card-body">
-        <?php echo form_open_multipart('Admin/runMenilaiPertemuan1'); ?>
+        <?php echo form_open_multipart('MenilaiPertemuan1/runMenilai'); ?>
         <div class="form-group">
 
             <input type="hidden" class="form-control" id="id_hasiltugas" name="id_hasiltugas" value="<?php echo $pertemuan1['id_hasiltugas'];  ?>">

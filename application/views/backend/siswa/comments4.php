@@ -34,7 +34,7 @@
     <div class="container">
 
         <h2>Add Comment</h2>
-        <form action="<?php echo site_url('Siswa/save_comment4'); ?>" method="post">
+        <form action="<?php echo site_url('Pertemuan4/save_comment4'); ?>" method="post">
             <div class="form-group">
                 <input type="hidden" name="id_user" value = "<?php echo $user['id'];?>" required class="form-control">
             </div>
@@ -58,7 +58,7 @@
                     </div>
                     <a href="#" class="reply-btn">Reply</a>
                     <div class="reply-form-container" style="display: none;">
-                        <form action="<?php echo site_url('Siswa/save_reply4'); ?>" method="post" class="reply-form">
+                        <form action="<?php echo site_url('Pertemuan4/save_reply4'); ?>" method="post" class="reply-form">
                             <div class="form-group">
                                 <input type="hidden" name="id_user" value = "<?php echo $user['id'];?>" required class="form-control">
                             </div>

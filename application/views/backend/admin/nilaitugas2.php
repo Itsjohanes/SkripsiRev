@@ -10,8 +10,9 @@
     <div class="card-header py-3">
     </div>
     <div class="card-body">
-        <?php echo form_open_multipart('Admin/runMenilaiPertemuan2'); ?>
+        <?php echo form_open_multipart('MenilaiPertemuan2/runMenilai'); ?>
         <div class="form-group">
+
             <input type="hidden" class="form-control" id="id_hasiltugas" name="id_hasiltugas" value="<?php echo $pertemuan2['id_hasiltugas'];  ?>">
             <label for="text">Hasil Tugas</label>
             </br>
@@ -22,11 +23,12 @@
             <br>
             <label for="link">Nilai</label>
             <div class="input-group input-group-outline">
-            <input type="text" class="form-control" id="nilai" name="nilai" value="<?php echo $pertemuan2['nilai'];  ?>"></div>
+            <input type="text" class="form-control" id="nilai" name="nilai" value="<?php echo $pertemuan2['nilai'];  ?>">
+            </div>
             <label for="nilai">Komentar</label>
             <div class="input-group input-group-outline">
-            <input type="text" class="form-control" id="komentar" name="komentar" value="<?php echo $pertemuan2['komentar'];  ?>"></div>
-
+            <input type="text" class="form-control" id="komentar" name="komentar" value="<?php echo $pertemuan2['komentar'];  ?>">
+            </div>
 
 
 

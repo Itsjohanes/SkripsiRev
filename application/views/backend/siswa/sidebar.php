@@ -30,11 +30,11 @@
         <li class="nav-item">
           <?php 
             if($title == 'Materi'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Siswa/materi') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Materi') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('Siswa/materi') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('Materi') . '">';
 
 
             }
@@ -49,11 +49,11 @@
 
           <?php 
             if($title == 'Report'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Siswa/report') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Rapot') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('Siswa/report') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('Rapot') . '">';
 
 
             }
@@ -123,11 +123,11 @@
         <li class="nav-item">
 <?php 
             if($title == 'Profile'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Siswa/profile') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Profile') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('Siswa/profile') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('Profile') . '">';
 
 
             }
@@ -181,7 +181,7 @@
             </li>
            
             <li class="nav-item d-flex align-items-center">
-              <a href="<?php echo base_url('Siswa/profile');?>" class="nav-link text-body font-weight-bold px-0">
+              <a href="<?php echo base_url('Profile');?>" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $user['nama'] ;?> </span>
               </a>

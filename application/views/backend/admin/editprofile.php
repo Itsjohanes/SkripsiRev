@@ -23,7 +23,7 @@
                   <p class="mb-0">Edit Profile Anda</p>
                 </div>
                 <div class="card-body">
-              <form class="user" method="post" action="<?= base_url('Admin/runEdit') ?>">
+              <form class="user" method="post" action="<?= base_url('Profile/runEdit') ?>">
                     <div class="input-group input-group-outline mb-3">
                       <label class="form-label"></label>
                       <input type="text" placeholder = "Nama" value="<?= $user['nama']; ?>" name = "nama" class="form-control">

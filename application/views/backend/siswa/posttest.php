@@ -14,7 +14,7 @@
         foreach ($soal as $data) :
           $no++
         ?>
-          <form id="posttest-form" action="<?= base_url('Siswa/SimpanPostTest') ?>" method="POST">
+          <form id="posttest-form" action="<?= base_url('Posttest/SimpanPostTest') ?>" method="POST">
             <div class="question bg-white p-3 border-bottom">
               <input type="hidden" name="id_posttest[]" value="<?php echo $data['id_posttest']; ?>">
               <input type="hidden" name="jumlah" value="<?php echo $jumlah; ?>">

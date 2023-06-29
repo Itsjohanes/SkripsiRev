@@ -98,7 +98,6 @@ input:checked + .slider:before {
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Pertemuan</th>
-                                    <th scope="col">Status</th>
                                     <th scope="col">Aksi</th>
 
                                 </tr>
@@ -107,7 +106,6 @@ input:checked + .slider:before {
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Pertemuan</th>
-                                    <th scope="col">Status</th>
                                     <th scope="col">Aksi</th>
                                     
                                 </tr>
@@ -118,13 +116,12 @@ input:checked + .slider:before {
                                     <tr>
                                         <th scope="row"><?= $i; ?></th>
                                         <td><?= $j['pertemuan']; ?></td>
-                                        <td><?= $j['aktif'];?></td>
                                         <td>
                                             <?php 
                                             if($j['aktif'] == '1'){
-                                                echo '<a href="'.base_url('Admin/matikanPertemuan/'.$j['id_pertemuan']).'" class="btn btn-danger btn-sm">Nonaktifkan</a>';
+                                                echo '<a href="'.base_url('KelolaPertemuan/matikanPertemuan/'.$j['id_pertemuan']).'" class="btn btn-danger btn-sm">Nonaktifkan</a>';
                                             }else{
-                                                echo '<a href="'.base_url('Admin/aktifkanPertemuan/'.$j['id_pertemuan']).'" class="btn btn-success btn-sm">Aktifkan</a>';
+                                                echo '<a href="'.base_url('KelolaPertemuan/aktifkanPertemuan/'.$j['id_pertemuan']).'" class="btn btn-success btn-sm">Aktifkan</a>';
                                             }
                                             ?>
                                         </td>

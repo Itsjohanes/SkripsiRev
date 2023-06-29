@@ -17,7 +17,7 @@
                         if ($banyakHasilTugas > 0) {
                              echo "Data sudah ada sebelumnya. Silahkan isi form dibawah ini untuk mengubah data";
                             //mengubah data yang sudah ada
-                            echo form_open_multipart('siswa/editTugas');
+                            echo form_open_multipart('Pertemuan3/editTugas');
                             echo '<div class="form-group">';
                             echo '<input type="hidden" name="slide" value="pertemuan3">';
                             echo '<input type="hidden" name="id_hasiltugas" value="' . $hasiltugas['id_hasiltugas'] . '">';
@@ -53,13 +53,13 @@
                             echo '<input type="file" class="form-control-file" name="upload" id="fileUpload">';
 
                             echo '</div>';
-                            echo '<a href = "' . base_url('Siswa/hapusTugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini?\')">Delete</a>';
+                            echo '<a href = "' . base_url('Pertemuan3/hapusTugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini?\')">Delete</a>';
 
 
                             //delete data by Id button aja
                         } else {
 
-                            echo form_open_multipart('siswa/tambahTugas');
+                            echo form_open_multipart('Pertemuan3/tambahTugas');
                             echo '<div class="form-group">';
                             echo '<input type="hidden" name="slide" value="pertemuan3">';
                             echo '<label for="selectOption">Pertemuan</label>';
@@ -119,7 +119,7 @@
                  </div>
                  <!-- Card Body -->
                  <div class="card-body">
-                     <a href='<?= base_url('Siswa/materiPertemuan3'); ?>' target='_blank'><i class="fas fa-book"> Materi</i></a>
+                     <a href='<?= base_url('Pertemuan3/materiPertemuan3'); ?>' target='_blank'><i class="fas fa-book"> Materi</i></a>
                      &nbsp
                      <a href='<?= base_url('assets/tugas/') . $tugas['tugas']; ?>' target='_blank'><i class="fas fa-tasks"> Tugas</i></a>
                      

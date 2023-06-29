@@ -83,7 +83,7 @@ input:checked + .slider:before {
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Add Soal</h6>
                 </div>
-                <?php echo form_open_multipart('Admin/TambahPreTest'); ?>
+                <?php echo form_open_multipart('KelolaPretest/TambahPreTest'); ?>
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
@@ -137,7 +137,7 @@ input:checked + .slider:before {
 
                 <h6 class="m-0 font-weight-bold text-primary">Aktifkan Paket Soal</h6>
                 </div>
-                <form id="myForm" method="post" action="<?php echo base_url('Admin/preTestHandler');?>">
+                <form id="myForm" method="post" action="<?php echo base_url('KelolaPretest/preTestHandler');?>">
                 <label class="switch">
                 <?php
                 if($aktif['aktif'] == 1){
@@ -211,8 +211,8 @@ input:checked + .slider:before {
                                         <td><?= $j['opsi_e']; ?></td>
                                         <td><?= $j['kunci']; ?></td>
                                         <td>
-                                            <a href="<?= base_url(); ?>Admin/hapusPreTest/<?= $j['id_pretest']; ?>" class="btn btn-danger" onclick="return confirm('Anda yakin akan menghapus soal ini?');"><i class="fas fa-trash-alt"></i></a>
-                                            <a href="<?= base_url(); ?>Admin/editPreTest/<?= $j['id_pretest']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                            <a href="<?= base_url(); ?>KelolaPretest/hapusPreTest/<?= $j['id_pretest']; ?>" class="btn btn-danger" onclick="return confirm('Anda yakin akan menghapus soal ini?');"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="<?= base_url(); ?>KelolaPretest/editPreTest/<?= $j['id_pretest']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                         </td>
 
                                     </tr>
