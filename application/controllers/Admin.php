@@ -7,11 +7,6 @@ class Admin extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Admin_model');
-        $this->load->model('comments1_model');
-        $this->load->model('comments2_model');
-        $this->load->model('comments3_model');
-        $this->load->model('comments4_model');
     }
     public function index()
     {
