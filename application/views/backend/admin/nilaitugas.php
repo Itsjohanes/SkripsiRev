@@ -14,7 +14,7 @@
         <div class="form-group">
 
             <input type="hidden" class="form-control" id="id_hasiltugas" name="id_hasiltugas" value="<?php echo $pertemuan['id_hasiltugas'];  ?>">
-            <input type="hidden" class="form-control" id="pertemuan" name="pertemuan" value="<?php echo $pertemuan['pertemuan'];  ?>">
+            <input type="hidden" class="form-control" id="pertemuan" name="pertemuan" value="<?php echo $pertemuan['id_pertemuan'];  ?>">
 
             <label for="text">Hasil Tugas</label>
             </br>

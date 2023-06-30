@@ -43,7 +43,7 @@ class KelolaTugas extends CI_Controller {
                 if ($this->upload->do_upload('tugas')) {
                     $tugas = $this->upload->data('file_name');
                     $data = array(
-                        'pertemuan' => $pertemuan,
+                        'id_pertemuan' => $pertemuan,
                         'tugas' => $tugas
                     );
                     $this->Kelolatugas_model->tambahTugas($data);
@@ -129,7 +129,7 @@ class KelolaTugas extends CI_Controller {
             }
 
             $data = array(
-                'pertemuan' => $pertemuan,
+                'id_pertemuan' => $pertemuan,
                 'tugas' => $tugas
             );
 

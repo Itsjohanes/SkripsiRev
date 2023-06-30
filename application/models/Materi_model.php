@@ -18,7 +18,7 @@ class Materi_model extends CI_Model {
     }
 
     public function getJumlahTugas($id, $pertemuan) {
-        return $this->db->get_where('tb_hasiltugas', ['id_siswa' => $id, 'pertemuan' => $pertemuan])->num_rows();
+        return $this->db->get_where('tb_hasiltugas', ['id_siswa' => $id, 'id_pertemuan' => $pertemuan])->num_rows();
     }
 
     public function getKelompok($id) {

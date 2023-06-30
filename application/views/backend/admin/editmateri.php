@@ -20,22 +20,22 @@
 
             <select class="form-control" required id="exampleFormControlSelect1" id="pertemuan" name="pertemuan">
                 <?php
-                if ($materi['pertemuan'] == 1) {
+                if ($materi['id_pertemuan'] == 1) {
                     echo '<option value="1" selected>1</option>';
                 } else {
                     echo '<option value="1" >1</option>';
                 }
-                if ($materi['pertemuan'] == 2) {
+                if ($materi['id_pertemuan'] == 2) {
                     echo '<option value="2" selected>2</option>';
                 } else {
                     echo '<option value="2" >2</option>';
                 }
-                if ($materi['pertemuan'] == 3) {
+                if ($materi['id_pertemuan'] == 3) {
                     echo '<option value="3" selected>3</option>';
                 } else {
                     echo '<option value="3" >3</option>';
                 }
-                if ($materi['pertemuan'] == 4) {
+                if ($materi['id_pertemuan'] == 4) {
                     echo '<option value="4" selected>4</option>';
                 } else {
                     echo '<option value="4" >4</option>';

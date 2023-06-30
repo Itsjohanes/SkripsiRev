@@ -59,7 +59,7 @@ class Komentar extends CI_Controller {
                 'id_user' => $this->input->post('id_user'),
                 'comment' => $this->input->post('comment'),
                 'parent_id' => 0, // Set parent_id sebagai 0 untuk komentar utama
-                'pertemuan' => $pertemuan
+                'id_pertemuan' => $pertemuan
             );
 
             $this->Komentar_model->save_comment($data);
@@ -75,7 +75,7 @@ class Komentar extends CI_Controller {
                 'id_user' => $this->input->post('id_user'),
                 'comment' => $this->input->post('comment'),
                 'parent_id' => $this->input->post('parent_id'),
-                'pertemuan' => $pertemuan
+                'id_pertemuan' => $pertemuan
             );
 
             $this->Komentar_model->save_reply($data);

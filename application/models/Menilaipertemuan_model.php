@@ -17,7 +17,7 @@ class Menilaipertemuan_model extends CI_Model {
     {
         $this->db->select('*');
         $this->db->from('tb_hasiltugas');
-        $this->db->where('pertemuan', $pertemuan);
+        $this->db->where('id_pertemuan', $pertemuan);
         $this->db->join('tb_akun', 'tb_akun.id = tb_hasiltugas.id_siswa');
         return $this->db->get()->result_array();
     }

@@ -36,7 +36,7 @@ class KelolaYoutube extends CI_Controller {
             $pertemuan = $this->input->post('pertemuan');
             $link = $this->input->post('link');
             $data = array(
-                'pertemuan' => $pertemuan,
+                'id_pertemuan' => $pertemuan,
                 'youtube' => $link
             );
             $this->Kelolayoutube_model->tambahYoutubeMateri($data);
@@ -93,7 +93,7 @@ class KelolaYoutube extends CI_Controller {
             $pertemuan = $this->input->post('pertemuan');
             $youtube = $this->input->post('youtube');
             $data = array(
-                'pertemuan' => $pertemuan,
+                'id_pertemuan' => $pertemuan,
                 'youtube' => $youtube
             );
             $this->Kelolayoutube_model->updateYoutubeMateri($id_materi, $data);

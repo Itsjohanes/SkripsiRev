@@ -20,6 +20,6 @@ class Rapot_model extends CI_Model
 
     public function getTugasBySiswaIdAndPertemuan($siswaId, $pertemuan)
     {
-        return $this->db->get_where('tb_hasiltugas', ['id_siswa' => $siswaId, 'pertemuan' => $pertemuan])->row_array();
+        return $this->db->get_where('tb_hasiltugas', ['id_siswa' => $siswaId, 'id_pertemuan' => $pertemuan])->row_array();
     }
 }

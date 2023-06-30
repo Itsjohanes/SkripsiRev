@@ -14,14 +14,14 @@ class Pertemuan extends CI_Controller {
             if($id >= 1 && $id <= 4){
                 $data['title'] = "Materi Pertemuan 1";
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-                $data['materi'] = $this->db->get_where('tb_youtube', ['pertemuan' => $id])->result_array();
-                $data['hasiltugas'] = $this->db->get_where('tb_hasiltugas', ['pertemuan' => $id, 'id_siswa' => $this->session->userdata('id')])->row_array();
-                $data['banyakHasilTugas'] =   $this->db->get_where('tb_hasiltugas', ['pertemuan' => $id, 'id_siswa' => $this->session->userdata('id')])->num_rows();
-                $data['tugas']  = $this->db->get_where('tb_tugas', ['pertemuan' => $id])->row_array();
+                $data['materi'] = $this->db->get_where('tb_youtube', ['id_pertemuan' => $id])->result_array();
+                $data['hasiltugas'] = $this->db->get_where('tb_hasiltugas', ['id_pertemuan' => $id, 'id_siswa' => $this->session->userdata('id')])->row_array();
+                $data['banyakHasilTugas'] =   $this->db->get_where('tb_hasiltugas', ['id_pertemuan' => $id, 'id_siswa' => $this->session->userdata('id')])->num_rows();
+                $data['tugas']  = $this->db->get_where('tb_tugas', ['id_pertemuan' => $id])->row_array();
                 $data['comments'] = $this->Komentar_model->get_comments($id);
                 $data['pertemuan'] = $id;
                 //query status dari tb_pertemuan
-                $status = $this->db->get_where('tb_pertemuan', ['pertemuan' => $id])->row_array();
+                $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array();
                 //query aktif
                 if($status['aktif'] == '1'){
                     $this->load->view('backend/siswa/header', $data);
@@ -54,7 +54,7 @@ class Pertemuan extends CI_Controller {
                 'id_user' => $this->input->post('id_user'),
                 'comment' => $this->input->post('comment'),
                 'parent_id' => 0,
-                'pertemuan' => $this->input->post('pertemuan')
+                'id_pertemuan' => $this->input->post('pertemuan')
             );
             $this->Komentar_model->save_comment($data);
             redirect($this->agent->referrer());
@@ -69,8 +69,8 @@ class Pertemuan extends CI_Controller {
             if($id >= 1 && $id <= 4){
                 $data['title'] = "Materi Pertemuan ". $id;
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-                $data['materi'] = $this->db->get_where('tb_materi', ['pertemuan' => $id])->row_array();
-                $status = $this->db->get_where('tb_pertemuan', ['pertemuan' => $id])->row_array(); 
+                $data['materi'] = $this->db->get_where('tb_materi', ['id_pertemuan' => $id])->row_array();
+                $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
                 if($status['aktif'] == '1'){
                     $this->load->view('backend/siswa/header', $data);
                     $this->load->view('backend/siswa/sidebar', $data);
@@ -97,7 +97,7 @@ class Pertemuan extends CI_Controller {
                 'id_user' => $this->input->post('id_user'),
                 'comment' => $this->input->post('comment'),
                 'parent_id' => $this->input->post('parent_id'),
-                'pertemuan' => $this->input->post('pertemuan')
+                'id_pertemuan' => $this->input->post('pertemuan')
             );
 
             $this->Komentar_model->save_reply($data);
@@ -125,7 +125,7 @@ class Pertemuan extends CI_Controller {
                     $this->db->set('upload', $new_upload);
                     $data = [
                         'id_siswa' => $id_siswa,
-                        'pertemuan' => $pertemuan,
+                        'id_pertemuan' => $pertemuan,
                         'text' => $text,
                         'upload' => $new_upload
                     ];
@@ -184,7 +184,7 @@ class Pertemuan extends CI_Controller {
                         $this->db->set('upload', $new_upload);
                         $data = [
                             'id_hasiltugas' => $id,
-                            'pertemuan' => $pertemuan,
+                            'id_pertemuan' => $pertemuan,
                             'upload' => $new_upload,
                             'text' => $text
                         ];

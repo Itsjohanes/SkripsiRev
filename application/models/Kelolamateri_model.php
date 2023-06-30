@@ -16,7 +16,7 @@ class KelolaMateri_model extends CI_Model {
     public function tambahMateri($pertemuan, $materi)
     {
         $data = array(
-            'pertemuan' => $pertemuan,
+            'id_pertemuan' => $pertemuan,
             'materi' => $materi
         );
 

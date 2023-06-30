@@ -87,7 +87,7 @@
                                 <?php foreach ($tugas as $j) : ?>
                                     <tr>
                                         <th scope="row"><?= $i; ?></th>
-                                        <td><?= $j['pertemuan']; ?></td>
+                                        <td><?= $j['id_pertemuan']; ?></td>
                                         <td><a href="<?= base_url(); ?>assets/tugas/<?= $j['tugas']; ?>" <i class="fas fa-file-pdf"></i></a> </td>
                                         <td>
                                             <a href="<?= base_url(); ?>KelolaTugas/hapusTugas/<?= $j['id_tugas']; ?>" class="btn btn-danger" onclick="return confirm('Anda yakin akan menghapus tugas ini?');"><i class="fas fa-trash-alt"></i></a>

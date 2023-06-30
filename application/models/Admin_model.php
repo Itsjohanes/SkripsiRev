@@ -35,6 +35,6 @@ class Admin_model extends CI_Model {
 
     public function getTotalHasilTugas($pertemuan)
     {
-        return $this->db->get_where('tb_hasiltugas', ['pertemuan' => $pertemuan])->num_rows();
+        return $this->db->get_where('tb_hasiltugas', ['id_pertemuan' => $pertemuan])->num_rows();
     }
 }

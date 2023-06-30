@@ -125,7 +125,7 @@ class KelolaMateri extends CI_Controller {
                 }
 
                 $data = array(
-                    'pertemuan' => $pertemuan,
+                    'id_pertemuan' => $pertemuan,
                     'materi' => $materi
                 );
 

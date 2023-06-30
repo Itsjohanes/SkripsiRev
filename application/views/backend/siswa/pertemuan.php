@@ -28,7 +28,7 @@
                             echo '<input type="hidden" name="filelama" value="' . $hasiltugas['upload'] . '">';
                             echo '<label for="selectOption">Pertemuan</label>';
                             echo '<div class="input-group input-group-outline">'; 
-                            echo '<input type="text" name="pertemuan" value="' . $hasiltugas['pertemuan'] . '" class="form-control" readonly>';
+                            echo '<input type="text" name="pertemuan" value="' . $hasiltugas['id_pertemuan'] . '" class="form-control" readonly>';
                             echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';

@@ -83,7 +83,7 @@
                                 <?php foreach ($materi as $j) : ?>
                                     <tr>
                                         <th scope="row"><?= $i; ?></th>
-                                        <td><?= $j['pertemuan']; ?></td>
+                                        <td><?= $j['id_pertemuan']; ?></td>
 <td>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= $j['youtube']; ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </td>
