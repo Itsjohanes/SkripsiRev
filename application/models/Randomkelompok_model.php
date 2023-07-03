@@ -16,5 +16,6 @@ class Randomkelompok_model extends CI_Model {
     public function deleteRandom()
     {
         $this->db->empty_table('tb_random');
+        $this->db->empty_table('tb_groupchat');
     }
 }

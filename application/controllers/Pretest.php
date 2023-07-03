@@ -20,12 +20,12 @@ class Pretest extends CI_Controller
 
             if ($data['pretest'] > 0) {
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah pernah mengerjakan Pre-Test</div>');
-                redirect('Siswa/materi');
+                redirect('Materi');
             } else {
                 $aktif = $this->Pretest_model->getPretestStatus();
                 if ($aktif['aktif'] == 0) {
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pre-Test belum aktif</div>');
-                    redirect('Siswa/materi');
+                    redirect('Materi');
                 } else {
                     $this->load->view('backend/siswa/header', $data);
                     $this->load->view('backend/siswa/sidebar', $data);
@@ -81,12 +81,13 @@ class Pretest extends CI_Controller
                 'benar' => $benar,
                 'salah' => $salah,
                 'kosong' => $kosong,
-                'score' => $hasil
+                'score' => $hasil,
+                'id_test' => 1
             ];
 
             $this->Pretest_model->savePretestResult($data);
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah pernah mengerjakan Pre-Test</div>');
-            redirect('Siswa/materi');
+            redirect('Materi');
         } else {
             redirect('Auth/backlogin');
         }

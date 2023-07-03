@@ -20,12 +20,12 @@ class Posttest extends CI_Controller
             
             if ($data['posttest'] > 0) {
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah mengerjakan Post-Test</div>');
-                redirect('Siswa/materi');
+                redirect('Materi');
             } else {
                 $aktif = $this->Posttest_model->getPosttestStatus();
                 if ($aktif['aktif'] == 0) {
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Post-Test belum aktif</div>');
-                    redirect('Siswa/materi');
+                    redirect('Materi');
                 } else {
                     $this->load->view('backend/siswa/header', $data);
                     $this->load->view('backend/siswa/sidebar', $data);
@@ -81,12 +81,13 @@ class Posttest extends CI_Controller
                 'benar' => $benar,
                 'salah' => $salah,
                 'kosong' => $kosong,
-                'score' => $hasil
+                'score' => $hasil,
+                'id_test' => 2
             ];
 
             $this->Posttest_model->savePosttestResult($data);
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah mengerjakan Post-Test</div>');
-            redirect('Siswa/materi');
+            redirect('Materi');
         } else {
             redirect('Auth/backlogin');
         }

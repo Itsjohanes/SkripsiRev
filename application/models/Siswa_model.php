@@ -20,12 +20,13 @@ class Siswa_model extends CI_Model
 
     public function getPretestCount($id_siswa)
     {
-        return $this->db->get_where('tb_hasilpretest', ['id_siswa' => $id_siswa])->num_rows();
+        
+        return $this->db->get_where('tb_hasilprepost', ['id_siswa' => $id_siswa,'id_test' => 1])->num_rows();
     }
 
     public function getPosttestCount($id_siswa)
     {
-        return $this->db->get_where('tb_hasilposttest', ['id_siswa' => $id_siswa])->num_rows();
+        return $this->db->get_where('tb_hasilprepost', ['id_siswa' => $id_siswa,'id_test' => 2])->num_rows();
     }
 
     public function getTugasCount($id_siswa, $pertemuan)

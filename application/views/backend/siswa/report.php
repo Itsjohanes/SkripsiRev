@@ -46,39 +46,39 @@
                                     </td>
                                     <td>
                                         <?php
-                                        if ($tugas1 != null) {
+                                        if ($tugas1 != 0) {
                                             echo  $tugas1['nilai'];
                                         } else {
-                                            echo "Belum Mengikuti Tugas 1";
+                                            echo "Belum Dinilai";
                                         }
                                         ?>
                                     </td>
                                     <td>
                                         <?php
-                                        if ($tugas2 != null) {
+                                        if ($tugas2 != 0) {
                                             echo  $tugas2['nilai'];
                                         } else {
-                                            echo "Belum Mengikuti Tugas 2";
+                                            echo "Belum Dinilai";
                                         }
                                         ?>
 
                                     </td>
                                     <td>
                                         <?php
-                                        if ($tugas3 != null) {
+                                        if ($tugas3 != 0) {
                                             echo  $tugas3['nilai'];
                                         } else {
-                                            echo "Belum Mengikuti Tugas 3";
+                                            echo "Belum Dinilai";
                                         }
                                         ?>
 
                                     </td>
                                     <td>
                                         <?php
-                                        if ($tugas4 != null) {
+                                        if ($tugas4 != 0) {
                                             echo  $tugas4['nilai'];
                                         } else {
-                                            echo "Belum Mengikuti Tugas 4";
+                                            echo "Belum Dinilai";
                                         }
                                         ?>
 

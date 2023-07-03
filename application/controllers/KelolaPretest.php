@@ -65,7 +65,8 @@ class KelolaPretest extends CI_Controller {
                 'opsi_d' => $opsi_d,
                 'opsi_e' => $opsi_e,
                 'kunci' => $kunci,
-                'gambar' => $gambar
+                'gambar' => $gambar,
+                'id_test' => 1
             ];
             $this->Kelolapretest_model->tambahPretest($data);
             redirect('KelolaPreTest');

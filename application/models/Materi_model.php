@@ -10,14 +10,15 @@ class Materi_model extends CI_Model {
     }
 
     public function getJumlahPretest($id) {
-        return $this->db->get_where('tb_hasilpretest', ['id_siswa' => $id])->num_rows();
+        return $this->db->get_where('tb_hasilprepost', ['id_siswa' => $id,'id_test' => 1])->num_rows();
     }
 
     public function getJumlahPosttest($id) {
-        return $this->db->get_where('tb_hasilposttest', ['id_siswa' => $id])->num_rows();
+        return $this->db->get_where('tb_hasilprepost', ['id_siswa' => $id,'id_test' => 2])->num_rows();
     }
 
     public function getJumlahTugas($id, $pertemuan) {
+        
         return $this->db->get_where('tb_hasiltugas', ['id_siswa' => $id, 'id_pertemuan' => $pertemuan])->num_rows();
     }
 

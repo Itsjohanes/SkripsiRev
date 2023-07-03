@@ -15,22 +15,32 @@ class Admin_model extends CI_Model {
 
     public function getTotalPretests()
     {
-        return $this->db->get('tb_pretest')->num_rows();
+        //where id_test = 1
+
+        $this->db->where('id_test', 1);
+        $result = $this->db->get('tb_prepost')->num_rows();
+        return $result;
     }
 
     public function getTotalPosttests()
     {
-        return $this->db->get('tb_posttest')->num_rows();
+        $this->db->where('id_test', 2);
+        $result = $this->db->get('tb_prepost')->num_rows();
+        return $result;
     }
 
     public function getTotalHasilPretest()
     {
-        return $this->db->get('tb_hasilpretest')->num_rows();
+         $this->db->where('id_test', 1);
+        $result = $this->db->get('tb_hasilprepost')->num_rows();
+        return $result;
     }
 
     public function getTotalHasilPosttest()
     {
-        return $this->db->get('tb_hasilposttest')->num_rows();
+        $this->db->where('id_test', 2);
+        $result = $this->db->get('tb_hasilprepost')->num_rows();
+        return $result;
     }
 
     public function getTotalHasilTugas($pertemuan)

@@ -64,7 +64,8 @@ class KelolaPosttest extends CI_Controller {
                 'opsi_d' => $opsi_d,
                 'opsi_e' => $opsi_e,
                 'kunci' => $kunci,
-                'gambar' => $gambar
+                'gambar' => $gambar,
+                'id_test'=>2
             ];
             $this->Kelolaposttest_model->tambahPosttest($data);
             redirect('KelolaPosttest');

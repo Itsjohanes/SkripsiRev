@@ -10,12 +10,12 @@ class Rapot_model extends CI_Model
 
     public function getPretestBySiswaId($siswaId)
     {
-        return $this->db->get_where('tb_hasilpretest', ['id_siswa' => $siswaId])->row_array();
+        return $this->db->get_where('tb_hasilprepost', ['id_siswa' => $siswaId,'id_test' => 1])->row_array();
     }
 
     public function getPosttestBySiswaId($siswaId)
     {
-        return $this->db->get_where('tb_hasilposttest', ['id_siswa' => $siswaId])->row_array();
+        return $this->db->get_where('tb_hasilprepost', ['id_siswa' => $siswaId,'id_test' => 2])->row_array();
     }
 
     public function getTugasBySiswaIdAndPertemuan($siswaId, $pertemuan)

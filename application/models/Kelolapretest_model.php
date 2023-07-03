@@ -5,29 +5,31 @@ class Kelolapretest_model extends CI_Model {
 
     public function getPretest()
     {
-        return $this->db->get('tb_pretest')->result_array();
+       //return dari tb_prepost dengan id_test = 1
+        return $this->db->get_where('tb_prepost', ['id_test' => 1])->result_array();
+
     }
 
     public function tambahPretest($data)
     {
-        $this->db->insert('tb_pretest', $data);
+        $this->db->insert('tb_prepost', $data);
     }
 
     public function hapusPretest($id)
     {
-        $this->db->where('id_pretest', $id);
-        $this->db->delete('tb_pretest');
+        $this->db->where('id_soal', $id);
+        $this->db->delete('tb_prepost');
     }
 
     public function getPretestById($id)
     {
-        return $this->db->get_where('tb_pretest', ['id_pretest' => $id])->row_array();
+        return $this->db->get_where('tb_prepost', ['id_soal' => $id])->row_array();
     }
 
     public function updatePretest($id, $data)
     {
-        $this->db->where('id_pretest', $id);
-        $this->db->update('tb_pretest', $data);
+        $this->db->where('id_soal', $id);
+        $this->db->update('tb_prepost', $data);
     }
 
 }

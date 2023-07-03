@@ -11,15 +11,16 @@ class Menilaipretest_model extends CI_Model {
     public function getHasilPretest()
     {
         $this->db->select('*');
-        $this->db->from('tb_hasilpretest');
-        $this->db->join('tb_akun', 'tb_akun.id = tb_hasilpretest.id_siswa');
+        $this->db->from('tb_hasilprepost');
+        $this->db->where('id_test', 1);
+        $this->db->join('tb_akun', 'tb_akun.id = tb_hasilprepost.id_siswa');
         return $this->db->get()->result_array();
     }
 
     public function deleteHasilPretest($id)
     {
-        $this->db->where('id_hasilpretest', $id);
-        $this->db->delete('tb_hasilpretest');
+        $this->db->where('id_hasiltest', $id);
+        $this->db->delete('tb_hasilprepost');
     }
 
 }

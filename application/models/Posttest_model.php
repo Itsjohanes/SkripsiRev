@@ -10,17 +10,21 @@ class Posttest_model extends CI_Model
 
     public function getPosttestQuestions()
     {
-        return $this->db->get('tb_posttest')->result_array();
+        $this->db->where('id_test', 2);
+        $result = $this->db->get('tb_prepost')->result_array();
+        return $result;
     }
 
     public function getPosttestQuestionCount()
     {
-        return $this->db->get('tb_posttest')->num_rows();
+       $this->db->where('id_test', 2);
+        $result = $this->db->get('tb_prepost')->num_rows();
+        return $result;
     }
 
     public function getPosttestCountBySiswaId($siswaId)
     {
-        return $this->db->get_where('tb_hasilposttest', ['id_siswa' => $siswaId])->num_rows();
+        return $this->db->get_where('tb_hasilprepost', ['id_siswa' => $siswaId, 'id_test' => 2])->num_rows();
     }
 
     public function getPosttestStatus()
@@ -30,7 +34,7 @@ class Posttest_model extends CI_Model
 
     public function checkAnswer($nomor, $jawaban)
     {
-        $query = $this->db->query("SELECT * FROM tb_posttest WHERE id_posttest='$nomor' AND kunci='$jawaban'");
+        $query = $this->db->query("SELECT * FROM tb_prepost WHERE id_soal='$nomor' AND kunci='$jawaban' AND id_test = 2");
         $cek = $query->result_array();
 
         if ($cek) {
@@ -42,6 +46,6 @@ class Posttest_model extends CI_Model
 
     public function savePosttestResult($data)
     {
-        $this->db->insert('tb_hasilposttest', $data);
+        $this->db->insert('tb_hasilprepost', $data);
     }
 }
