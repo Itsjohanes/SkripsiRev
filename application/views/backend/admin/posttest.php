@@ -193,7 +193,7 @@ input:checked + .slider:before {
                                     <tr>
                                         <th scope="row"><?= $i; ?></th>
                                         <td><?= $j['soal']; ?></td>
-                                        <td><?= $j['gambar']; ?></td>
+                                        <td><img src = "<?php echo base_url('assets/img/posttest/').$j['gambar'];?>" width = '300px' width = '150px' alt = "Tidak ada gambar"> </img></td>
                                         <td><?= $j['opsi_a']; ?></td>
                                         <td><?= $j['opsi_b']; ?></td>
                                         <td><?= $j['opsi_c']; ?></td>
