@@ -1,4 +1,5 @@
-<body>
+<div class="container-fluid">
+     <h1 class="h3 mb-4 text-gray-800">Pilih Grup</h1>
     <section class="py-4 py-xl-5">
         <div class="container">
             <div class="row d-flex justify-content-center">
@@ -17,4 +18,5 @@
             </div>
         </div>
     </section>
-</body>
+</div>
+

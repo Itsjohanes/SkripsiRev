@@ -98,6 +98,7 @@ input:checked + .slider:before {
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Pertemuan</th>
+                                    <th scope="col">Tujuan Pembelajaran</th>
                                     <th scope="col">Aksi</th>
 
                                 </tr>
@@ -106,6 +107,7 @@ input:checked + .slider:before {
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Pertemuan</th>
+                                    <th scope="col">Tujuan Pembelajaran</th>
                                     <th scope="col">Aksi</th>
                                     
                                 </tr>
@@ -116,6 +118,7 @@ input:checked + .slider:before {
                                     <tr>
                                         <th scope="row"><?= $i; ?></th>
                                         <td><?= $j['pertemuan']; ?></td>
+                                        <td><?= $j['tp'];?></td>
                                         <td>
                                             <?php 
                                             if($j['aktif'] == '1'){

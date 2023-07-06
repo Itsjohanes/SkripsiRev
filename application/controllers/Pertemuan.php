@@ -20,8 +20,12 @@ class Pertemuan extends CI_Controller {
                 $data['tugas']  = $this->db->get_where('tb_tugas', ['id_pertemuan' => $id])->row_array();
                 $data['comments'] = $this->Komentar_model->get_comments($id);
                 $data['pertemuan'] = $id;
+              
+
+
                 //query status dari tb_pertemuan
                 $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array();
+                $data['tp'] = $status;
                 //query aktif
                 if($status['aktif'] == '1'){
                     $this->load->view('backend/siswa/header', $data);
