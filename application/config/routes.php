@@ -60,4 +60,3 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['Pertemuan/(:num)'] = 'Pertemuan/index/$1';
 $route['MenilaiPertemuan/(:num)'] = 'MenilaiPertemuan/index/$1';
-$route['auth'] = 'Auth';

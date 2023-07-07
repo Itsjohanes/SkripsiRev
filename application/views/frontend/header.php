@@ -21,17 +21,17 @@
                     <li class="nav-item">
                         <a class="nav-link <?php if ($title == 'Alpro') {
                                                 echo 'active';
-                                            } ?>" href="<?= base_url('Awal'); ?>">Home</a>
+                                            } ?>" href="<?= base_url('awal'); ?>">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php if ($title == 'Informasi') {
                                                 echo 'active';
-                                            } ?>"" href=" <?= base_url('Awal/informasi'); ?>">Informasi</a>
+                                            } ?>"" href=" <?= base_url('awal/informasi'); ?>">Informasi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php if ($title == 'Materi') {
                                                 echo 'active';
-                                            } ?>"" href=" <?= base_url('Awal/materi'); ?>">Materi</a>
+                                            } ?>"" href=" <?= base_url('awal/materi'); ?>">Materi</a>
                     </li>
                 </ul>
                 <a href="<?= base_url('Auth'); ?>" class="btn btn-primary" type="button">Login</a>
