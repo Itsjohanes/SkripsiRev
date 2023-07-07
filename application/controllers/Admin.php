@@ -44,6 +44,9 @@ class Admin extends CI_Controller
                 $data['persentasetugas4'] = 0 * 100;
             }
 
+            //ambil data dari tb_akun yang memiliki nilai total nilai tertinggi
+            $data['nilaiTertinggi'] = $this->Admin_model->getNilaiTertinggi();
+
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/index', $data);

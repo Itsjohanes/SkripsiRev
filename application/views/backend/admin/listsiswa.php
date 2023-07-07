@@ -19,8 +19,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Email</th>
                                     <th scope="col">Nama</th>
+                                    <th scope="col">Email</th>
                                     <th scope="col">Action</th>
 
                                 </tr>
@@ -28,8 +28,8 @@
                             <tfoot>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Email</th>
                                     <th scope="col">Nama</th>
+                                    <th scope="col">Email</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </tfoot>
@@ -38,8 +38,8 @@
                                 <?php foreach ($siswa as $s) : ?>
                                     <tr>
                                         <th scope="row"><?= $i; ?></th>
-                                        <td><?= $s['email']; ?></td>
                                         <td><?= $s['nama']; ?></td>
+                                        <td><?= $s['email']; ?></td>
 
                                         <td>
                                             <a href="<?= base_url(); ?>KelolaListSiswa/editSiswa/<?= $s['id']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>

@@ -47,4 +47,25 @@ class Admin_model extends CI_Model {
     {
         return $this->db->get_where('tb_hasiltugas', ['id_pertemuan' => $pertemuan])->num_rows();
     }
+    public function getNilaiTertinggi(){
+        $this->db->select('nama, (COALESCE(pretest, 0) + COALESCE(tugas_1, 0) + COALESCE(tugas_2, 0) + COALESCE(tugas_3, 0) + COALESCE(tugas_4, 0) + COALESCE(posttest, 0)) AS total_nilai');
+        $this->db->from('tb_akun');
+        $this->db->order_by('total_nilai', 'desc');
+        $this->db->order_by('nama', 'asc');
+        $this->db->limit(1);
+        $query = $this->db->get();
+
+        $data['siswa'] = null;
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            $data['siswa'] = array(
+                'nama' => $row->nama,
+                'total_nilai' => $row->total_nilai
+            );
+        }
+
+        return $data['siswa'];
+
+    }
 }

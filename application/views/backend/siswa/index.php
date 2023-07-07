@@ -160,7 +160,7 @@
             <div class="card-header pb-0">
               <div class="row">
                 <div class="col-lg-6 col-7">
-                  <h6>Daftar Teman Sekelas</h6>
+                  <h6>Daftar Teman Sekelas Urut Berdasarkan Ranking</h6>
                   <p class="text-sm mb-0">
                   </p>
                 </div>
@@ -180,6 +180,7 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Nama</th>
+                                    <th scope="col">Total Perolehan Score</th>
                                 </tr>
                             </thead>
                            
@@ -188,11 +189,12 @@
                                     <?php
 
                                     $no = 1;
-                                    foreach($siswa as $s){
+                                    foreach($ranking as $s){
                                         
                                         echo "<tr>";
-                                        echo "<th scope = 'row'>".$no++."</th>";
+                                        echo "<th scope = 'row'>".$s['ranking']."</th>";
                                         echo "<td>".$s['nama']."</td>";
+                                        echo "<td>".$s['total_nilai']."</td>";
                                         echo "</tr>";
                                     }
 

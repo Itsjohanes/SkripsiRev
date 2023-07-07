@@ -28,7 +28,7 @@ class Siswa extends CI_Controller
             $tugas4 = $this->Siswa_model->getTugasCount($this->session->userdata('id'), 4);
             $jumlah = $tugas1 + $tugas2 + $tugas3 + $tugas4;
             $data['persentasetugas'] = ($jumlah / 4) * 100;
-
+            $data['ranking'] = $this->Siswa_model->getRanking();
             $data['persentasetest'] = ($pretest + $posttest) / 2 * 100;
             $belumSelesai = "";
             $sudahSelesai = "";

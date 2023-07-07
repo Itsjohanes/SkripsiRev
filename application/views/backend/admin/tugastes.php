@@ -142,6 +142,30 @@
             </div>
           </div>
         </div>
+
+
+           <div class="col-lg-4 mt-4 mb-2">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/incomplete.png');?>" height="170"></img>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <a class="mb-0 " href = "<?php echo base_url('RekapNilai');?>"> Rekap Nilai </a>
+           <p class="text-sm "> 
+
+               
+              </p>     
+              <hr class="dark horizontal">
+              <div class="d-flex ">
+              
+              </div>
+            </div>
+          </div>
+        </div>
        
       </div>
       <div class="row mb-4">

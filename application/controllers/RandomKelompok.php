@@ -7,6 +7,7 @@ class RandomKelompok extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Randomkelompok_model');
+        $this->load->model('Kelolalistsiswa_model');
     }
 
     public function index()
@@ -18,7 +19,7 @@ class RandomKelompok extends CI_Controller {
             $maxKelompok = $result->kelompok;
             $data['jumkel'] = $maxKelompok;
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-            $data['siswa'] = $this->db->get_where('tb_akun', ['role' => "0"])->result_array();
+            $data['siswa'] = $this->Kelolalistsiswa_model->getSiswa();
             $data['randoms'] = $this->Randomkelompok_model->getRandoms();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
