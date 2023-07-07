@@ -89,38 +89,54 @@ input:checked + .slider:before {
                         <div class="input-group input-group-outline">
                         <input type="text" required class="form-control" placeholder="Soal" id="soal" name="soal"></div>
                     </div>
-
+                </div>
+                <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
                         <input type="text" required class="form-control" placeholder="Opsi A" id="a" name="a"></div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
                         <input type="text" required class="form-control" placeholder="Opsi B" id="b" name="b"></div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
                         <input type="text" required class="form-control" placeholder="Opsi C" id="c" name="c"></div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
                         <input type="text" required class="form-control" placeholder="Opsi D" id="d" name="d"></div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
                         <input type="text" required class="form-control" placeholder="Opsi E" id="e" name="e"></div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
                         <input type="text" required class="form-control" placeholder="Kunci" id="kunci" name="kunci"></div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
                         <input type="file" class="form-control" id="formFile" name="gambar" /></div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col">
                         <Button class="btn btn-success">Submit</Button>
                     </div>
+                </div>
                 </div>
                 </form>
                 <div class="card-header py-3">
