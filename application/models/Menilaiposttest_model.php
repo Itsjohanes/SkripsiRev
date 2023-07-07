@@ -19,6 +19,17 @@ class Menilaiposttest_model extends CI_Model {
 
     public function deleteHasilPosttest($id)
     {
+        $this->db->select('id_siswa');
+        $this->db->where('id_hasiltest', $id);
+        $query = $this->db->get('tb_hasilprepost');
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            $id_siswa = $row->id_siswa;
+            $this->db->where('id', $id_siswa);
+            $this->db->update('tb_akun', array('posttest' => null));
+        }
+
         $this->db->where('id_hasiltest', $id);
         $this->db->delete('tb_hasilprepost');
     }

@@ -19,8 +19,25 @@ class Menilaipretest_model extends CI_Model {
 
     public function deleteHasilPretest($id)
     {
+        //ambil id_siswa dari tb_hasilprepost berdasarkan id_hasiltest
+
+        $this->db->select('id_siswa');
+        $this->db->where('id_hasiltest', $id);
+        $query = $this->db->get('tb_hasilprepost');
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            $id_siswa = $row->id_siswa;
+            $this->db->where('id', $id_siswa);
+            $this->db->update('tb_akun', array('pretest' => null));
+        }
+
+        
+        
         $this->db->where('id_hasiltest', $id);
         $this->db->delete('tb_hasilprepost');
+
+        
     }
 
 }

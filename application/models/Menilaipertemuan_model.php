@@ -29,8 +29,54 @@ class Menilaipertemuan_model extends CI_Model {
 
     public function updateHasilTugas($id, $data)
     {
+       
+        // Mendapatkan id_pertemuan berdasarkan id_hasil_tugas
+        $this->db->select('id_pertemuan');
         $this->db->where('id_hasiltugas', $id);
-        $this->db->update('tb_hasiltugas', $data);
+        $query = $this->db->get('tb_hasiltugas');
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            $id_pertemuan = $row->id_pertemuan;
+
+            // Mendapatkan id_siswa dari tb_hasiltugas berdasarkan id_hasil_tugas
+            $this->db->select('id_siswa');
+            $this->db->where('id_hasiltugas', $id);
+            $query = $this->db->get('tb_hasiltugas');
+
+            if ($query->num_rows() > 0) {
+                $row = $query->row();
+                $id_siswa = $row->id_siswa;
+
+                if ($id_pertemuan == 1) {
+                    // Update kolom tugas_1 pada tb_akun
+                    $this->db->set('tugas_1', $data['nilai']);
+                    $this->db->where('id', $id_siswa);
+                    $this->db->update('tb_akun');
+                } else if ($id_pertemuan == 2) {
+                    // Update kolom tugas_2 pada tb_akun
+                    $this->db->set('tugas_2', $data['nilai']);
+                    $this->db->where('id', $id_siswa);
+                    $this->db->update('tb_akun');
+                } else if ($id_pertemuan == 3) {
+                    // Update kolom tugas_3 pada tb_akun
+                    $this->db->set('tugas_3', $data['nilai']);
+                    $this->db->where('id', $id_siswa);
+                    $this->db->update('tb_akun');
+                } else if ($id_pertemuan == 4) {
+                    // Update kolom tugas_4 pada tb_akun
+                    $this->db->set('tugas_4', $data['nilai']);
+                    $this->db->where('id', $id_siswa);
+                    $this->db->update('tb_akun');
+                }
+            }
+
+            $this->db->where('id_hasiltugas', $id);
+            $this->db->update('tb_hasiltugas', $data);
+
+           
+
+         }
     }
 
 }

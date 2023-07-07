@@ -49,5 +49,13 @@ class Pretest_model extends CI_Model
     public function savePretestResult($data)
     {
         $this->db->insert('tb_hasilprepost', $data);
+
+        $id = $data['id_siswa'];
+        $score = $data['score'];
+        $this->db->where('id', $id);
+        $this->db->update('tb_akun', array('pretest' => $score));
+        
+        
+        
     }
 }
