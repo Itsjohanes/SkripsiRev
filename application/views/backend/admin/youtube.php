@@ -15,11 +15,17 @@
     <div class="row no-gutters">
         <br>
        
-        <div class="container-fluid">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Add Materi Youtube</h6>
-                </div>
+ <div class="container-fluid py-4">
+
+    <div class="row">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Tambah Video</h6>
+              </div>
+            </div>
+                <br>
                 <?php echo form_open_multipart('KelolaYoutube/tambahYoutube'); ?>
                 <div class="row">
                     <div class="col">
@@ -50,11 +56,16 @@
                 </form>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Youtube</h6>
-                </div>
+ <div class="container-fluid py-4">
+
+    <div class="row">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Youtube</h6>
+              </div>
+            </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

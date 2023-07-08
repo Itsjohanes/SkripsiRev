@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title><?php echo $title; ?></title>
+    <link rel="icon" type="image/png" href="<?php echo base_url('assets/img/favicon.png'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>frontend/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>frontend/css/Articles-Cards-images.css" />
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>frontend/css/Navbar-With-Button-icons.css" />

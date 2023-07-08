@@ -78,11 +78,43 @@ input:checked + .slider:before {
     <div class="row no-gutters">
 
         <br>
-        <div class="container-fluid">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Add Soal</h6>
+
+ <div class="container-fluid py-4">
+
+        <div class="row">
+            <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                    <h6 class="text-white text-capitalize ps-3">Aktifkan Post-Test</h6>
                 </div>
+                </div>
+                <br>
+                    <form id="myForm" method="post" action="<?php echo base_url('KelolaPosttest/postTestHandler');?>">
+                    <label class="switch">
+                    <?php
+                    if($aktif['aktif'] == 1){
+                        echo "<input type='checkbox' name = 'posttes' id = 'posttes' value='1' checked>";
+                    }else{
+                        echo "<input type='checkbox' name = 'posttes' id = 'posttes' value='1'>";
+                    }
+                    ?>
+                <span class="slider round"></span>
+                </form>
+                </label>
+                </div>
+
+        </div>
+        </div>
+    <div class="row">
+            <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                    <h6 class="text-white text-capitalize ps-3">Tambah Post-Test</h6>
+                </div>
+                </div>
+                <br>
                 <?php echo form_open_multipart('KelolaPosttest/tambahPostTest'); ?>
                 <div class="row">
                     <div class="col">
@@ -139,23 +171,8 @@ input:checked + .slider:before {
                 </div>
                 </div>
                 </form>
-                <div class="card-header py-3">
-
-                <h6 class="m-0 font-weight-bold text-primary">Aktifkan Paket Soal</h6>
-                </div>
-                <form id="myForm" method="post" action="<?php echo base_url('KelolaPosttest/postTestHandler');?>">
-                <label class="switch">
-                <?php
-                if($aktif['aktif'] == 1){
-                    echo "<input type='checkbox' name = 'posttes' id = 'posttes' value='1' checked>";
-                }else{
-                    echo "<input type='checkbox' name = 'posttes' id = 'posttes' value='1'>";
-                }
-                ?>
                 
-                <span class="slider round"></span>
-                </form>
-                </label>
+            
             </div>
         </div>
 
@@ -163,15 +180,19 @@ input:checked + .slider:before {
 
 
 
-        <div class="container-fluid">
 
             <!-- Page Heading -->
 
             <!-- DataTales Example -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Soal Post-test</h6>
+    <div class="row">
+            <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                    <h6 class="text-white text-capitalize ps-3">Post-Test</h6>
                 </div>
+                </div>
+                <br>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -230,8 +251,6 @@ input:checked + .slider:before {
                 </div>
             </div>
 
-        </div>
-        <!-- /.container-fluid -->
 
     </div>
 

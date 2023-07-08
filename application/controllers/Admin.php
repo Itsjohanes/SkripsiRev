@@ -19,7 +19,7 @@ class Admin extends CI_Controller
 
             $data['pretest'] = $this->Admin_model->getTotalPretests();
             $data['posttest'] = $this->Admin_model->getTotalPosttests();
-
+            $data['ranking'] = $this->Admin_model->getRanking();
             $jumlahSiswa = $this->Admin_model->getTotalStudents();
             $jumlahPretest = $this->Admin_model->getTotalHasilPretest();
             $jumlahPosttest = $this->Admin_model->getTotalHasilPosttest();
@@ -27,7 +27,7 @@ class Admin extends CI_Controller
             $tugas2 = $this->Admin_model->getTotalHasilTugas(2);
             $tugas3 = $this->Admin_model->getTotalHasilTugas(3);
             $tugas4 = $this->Admin_model->getTotalHasilTugas(4);
-
+            
             if ($jumlahSiswa != 0) {
                 $data['persentasepretest'] = ($jumlahPretest / $jumlahSiswa) * 100;
                 $data['persentaseposttest'] = ($jumlahPosttest / $jumlahSiswa) * 100;
