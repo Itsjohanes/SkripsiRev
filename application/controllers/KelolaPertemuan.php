@@ -80,7 +80,8 @@ class KelolaPertemuan extends CI_Controller {
         if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
            $tp = $this->input->post('tp');
            $id_pertemuan = $this->input->post('id_pertemuan');
-           $this->Kelolapertemuan_model->editTp($id_pertemuan,$tp);
+           $link = $this->input->post('link');
+           $this->Kelolapertemuan_model->editTp($id_pertemuan,$tp,$link);
            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tujuan Pembelajaran berhasil diubah!</div>');
            redirect('KelolaPertemuan');
                 

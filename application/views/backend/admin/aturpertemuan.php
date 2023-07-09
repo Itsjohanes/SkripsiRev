@@ -35,6 +35,7 @@
                                     <th scope="col">No.</th>
                                     <th scope="col">Pertemuan</th>
                                     <th scope="col">Tujuan Pembelajaran</th>
+                                    <th scope="col">Video Conference</th>
                                     <th scope="col">Aksi</th>
 
                                 </tr>
@@ -44,6 +45,7 @@
                                     <th scope="col">No.</th>
                                     <th scope="col">Pertemuan</th>
                                     <th scope="col">Tujuan Pembelajaran</th>
+                                    <th scope="col">Video Conference</th>
                                     <th scope="col">Aksi</th>
                                     
                                 </tr>
@@ -55,6 +57,7 @@
                                         <th scope="row"><?= $i; ?></th>
                                         <td><?= $j['pertemuan']; ?></td>
                                         <td><?= $j['tp'];?></td>
+                                        <td><?= $j['videoconference'];?></td>
                                         <td>
                                             <?php 
                                             if($j['aktif'] == '1'){
@@ -64,7 +67,7 @@
                                             }
                                             ?>
                                             <?php
-                                                echo '<a href="'.base_url('KelolaPertemuan/editTp/'.$j['id_pertemuan']).'" class="btn btn-warning btn-sm">Edit TP</a>';
+                                                echo '<a href="'.base_url('KelolaPertemuan/editTp/'.$j['id_pertemuan']).'" class="btn btn-warning btn-sm">Edit TP & Video Conference</a>';
 
 
                                             ?>
