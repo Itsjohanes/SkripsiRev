@@ -110,7 +110,7 @@ class Rapot extends CI_Controller
         }
 
 
-        $pdf->Output();
+        $pdf->Output('D','Raport.pdf');
     }else{
        
                 redirect('Auth/backLogin');

@@ -70,7 +70,7 @@ class RekapNilai extends CI_Controller
             $no++;
         }
 
-        $pdf->Output();
+        $pdf->Output('D','Rekap_Nilai.pdf');
     }else{
         if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
                 redirect('Auth/blocked');
