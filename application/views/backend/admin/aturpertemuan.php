@@ -64,7 +64,7 @@
                                             }
                                             ?>
                                             <?php
-                                                echo '<a href="'.base_url('KelolaPertemuan/editTp/'.$j['id_pertemuan']).'" class="btn btn-success btn-sm">Edit TP</a>';
+                                                echo '<a href="'.base_url('KelolaPertemuan/editTp/'.$j['id_pertemuan']).'" class="btn btn-warning btn-sm">Edit TP</a>';
 
 
                                             ?>
