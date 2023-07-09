@@ -12,6 +12,12 @@ class KelolaPertemuan_model extends CI_Model {
     {
         return $this->db->get('tb_pertemuan')->result_array();
     }
+    public function getPertemuanbyId($id)
+    {
+        return $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array();
+
+       
+    }
 
     public function aktifkanPertemuan($id)
     {
@@ -26,4 +32,10 @@ class KelolaPertemuan_model extends CI_Model {
         $this->db->where('id_pertemuan', $id);
         $this->db->update('tb_pertemuan');
     }
+    public function editTp($id,$tp){
+        $this->db->set('tp', $tp);
+        $this->db->where('id_pertemuan', $id);
+        $this->db->update('tb_pertemuan');
+    }
+    
 }

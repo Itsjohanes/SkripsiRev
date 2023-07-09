@@ -63,6 +63,11 @@
                                                 echo '<a href="'.base_url('KelolaPertemuan/aktifkanPertemuan/'.$j['id_pertemuan']).'" class="btn btn-success btn-sm">Aktifkan</a>';
                                             }
                                             ?>
+                                            <?php
+                                                echo '<a href="'.base_url('KelolaPertemuan/editTp/'.$j['id_pertemuan']).'" class="btn btn-success btn-sm">Edit TP</a>';
+
+
+                                            ?>
                                         </td>
 
                                     </tr>
