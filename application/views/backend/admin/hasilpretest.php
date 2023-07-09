@@ -16,6 +16,7 @@
                 <div class="card-header py-3">
                 </div>
                 <div class="card-body">
+                    <a href = "<?php echo base_url('MenilaiPretest/cetakExcel');?>" class = "btn btn-success">Cetak Excel</a>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>

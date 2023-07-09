@@ -84,7 +84,7 @@ class Rapot extends CI_Controller
 
         }
         if($tugas2 == null){
-           $pdf->Cell(45, 10, "Belum dikerjakan/dinilai", 1, 0);
+           $pdf->Cell(45, 10, "Belum dikerjakan", 1, 0);
 
         }else{
              if($tugas2['nilai'] == null){
@@ -95,7 +95,7 @@ class Rapot extends CI_Controller
 
         }
         if($tugas3 == null){
-           $pdf->Cell(45, 10, "Belum dikerjakan/dinilai", 1, 0);
+           $pdf->Cell(45, 10, "Belum dikerjakan", 1, 0);
 
         }else{
             if($tugas3['nilai'] == null){
@@ -105,7 +105,7 @@ class Rapot extends CI_Controller
             }
         }
         if($tugas4 == null){
-           $pdf->Cell(45, 10, "Belum dikerjakan/dinilai", 1, 0);
+           $pdf->Cell(45, 10, "Belum dikerjakan", 1, 0);
 
         }else{
             if($tugas4['nilai'] == null){
