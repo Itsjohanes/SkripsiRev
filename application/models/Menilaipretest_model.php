@@ -14,6 +14,8 @@ class Menilaipretest_model extends CI_Model {
         $this->db->from('tb_hasilprepost');
         $this->db->where('id_test', 1);
         $this->db->join('tb_akun', 'tb_akun.id = tb_hasilprepost.id_siswa');
+        $this->db->order_by('tb_akun.nama', 'asc');
+
         return $this->db->get()->result_array();
     }
 
