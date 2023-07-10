@@ -31,7 +31,7 @@
                  
                  
                   <li class="nav-item">
-                    <a class="nav-link me-2" href="<?php echo base_url('Auth/register'); ?>">
+                    <a class="nav-link me-2" href="<?php echo base_url('auth/register'); ?>">
                       <i
                         class="fas fa-user-circle opacity-6 text-dark me-1"
                       ></i>
@@ -83,7 +83,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <form action="<?php echo base_url('Auth/login'); ?>" method="post">
+                  <form action="<?php echo base_url('auth/login'); ?>" method="post">
 
                    <?= $this->session->flashdata("message");
                   ?>
@@ -107,7 +107,7 @@
                     <p class="mt-4 text-sm text-center">
                       Don't have an account?
                       <a
-                        href="<?php echo base_url('Auth/register'); ?>"
+                        href="<?php echo base_url('auth/register'); ?>"
                         class="text-info text-gradient font-weight-bold"
                         >Register</a
                       >

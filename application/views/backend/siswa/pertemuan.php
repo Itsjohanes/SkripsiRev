@@ -20,7 +20,7 @@
                         if ($banyakHasilTugas > 0) {
                             echo "Data sudah ada sebelumnya. Silahkan isi form di bawah ini untuk mengubah data";
                             //mengubah data yang sudah ada
-                            echo form_open_multipart('Pertemuan/editTugas');
+                            echo form_open_multipart('pertemuan/edittugas');
                             echo '<div class="form-group">';
 
                             echo '<input type="hidden" name="slide" value="pertemuan1">';
@@ -59,13 +59,13 @@
                             echo '</div>';
                             //hapus dengan konfirmasi menggunakan alert
 
-                            echo '<a href = "' . base_url('Pertemuan/hapusTugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini?\')">Delete</a>';
+                            echo '<a href = "' . base_url('pertemuan/hapustugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini?\')">Delete</a>';
 
 
                             //delete data by Id button aja
                         } else {
 
-                            echo form_open_multipart('Pertemuan/tambahTugas');
+                            echo form_open_multipart('pertemuan/tambahtugas');
                             echo '<div class="form-group">';
                             
                             echo '<input type="hidden" name="slide" value="pertemuan1">';
@@ -146,7 +146,7 @@
                  <!-- Card Body -->
 
                  <div class="card-body">
-                     <a href='<?= base_url('Pertemuan/materiPertemuan/'.$pertemuan); ?>'><i class="fas fa-book"> Materi</i></a>
+                     <a href='<?= base_url('pertemuan/materipertemuan/'.$pertemuan); ?>'><i class="fas fa-book"> Materi</i></a>
                      &nbsp
                      <a href='<?= base_url('assets/tugas/') . $tugas['tugas']; ?>' target='_blank'><i class="fas fa-tasks"> Tugas</i></a>
                      &nbsp

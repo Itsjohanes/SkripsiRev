@@ -33,7 +33,7 @@ class KelolaYoutube extends CI_Controller {
                 'youtube' => $link
             );
             $this->Kelolayoutube_model->tambahYoutubeMateri($data);
-            redirect('KelolaYoutube');
+            redirect('kelolayoutube');
         
     }
 
@@ -42,7 +42,7 @@ class KelolaYoutube extends CI_Controller {
             $this->Kelolayoutube_model->hapusYoutubeMateri($id);
 
             $this->session->set_flashdata('category_success', 'Materi berhasil dihapus');
-            redirect('KelolaYoutube');
+            redirect('kelolayoutube');
         
     }
 
@@ -69,7 +69,7 @@ class KelolaYoutube extends CI_Controller {
                 'youtube' => $youtube
             );
             $this->Kelolayoutube_model->updateYoutubeMateri($id_materi, $data);
-            redirect('KelolaYoutube');
+            redirect('kelolayoutube');
        
     }
 

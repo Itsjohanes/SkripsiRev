@@ -138,7 +138,7 @@ $this->load->view('style');
 			if (pesan != "") {
 				$.ajax({
 					type: "post",
-					url: "<?= base_url() ?>/Chat/KirimPesanKeSatu",
+					url: "<?= base_url() ?>/chat/kirimpesankesatu",
 					data: {
 						pesan
 					},
@@ -180,7 +180,7 @@ $this->load->view('style');
 		function pesan() {
 			$.ajax({
 				type: "post",
-				url: "<?= base_url() ?>Chat/loadChat",
+				url: "<?= base_url() ?>chat/loadchat",
 				data: {
 					id: 2
 				},

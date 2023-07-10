@@ -61,13 +61,13 @@
                                         <td>
                                             <?php 
                                             if($j['aktif'] == '1'){
-                                                echo '<a href="'.base_url('KelolaPertemuan/matikanPertemuan/'.$j['id_pertemuan']).'" class="btn btn-danger btn-sm">Nonaktifkan</a>';
+                                                echo '<a href="'.base_url('kelolapertemuan/matikanpertemuan/'.$j['id_pertemuan']).'" class="btn btn-danger btn-sm">Nonaktifkan</a>';
                                             }else{
-                                                echo '<a href="'.base_url('KelolaPertemuan/aktifkanPertemuan/'.$j['id_pertemuan']).'" class="btn btn-success btn-sm">Aktifkan</a>';
+                                                echo '<a href="'.base_url('kelolapertemuan/aktifkanpertemuan/'.$j['id_pertemuan']).'" class="btn btn-success btn-sm">Aktifkan</a>';
                                             }
                                             ?>
                                             <?php
-                                                echo '<a href="'.base_url('KelolaPertemuan/editTp/'.$j['id_pertemuan']).'" class="btn btn-warning btn-sm">Edit TP & Video Conference</a>';
+                                                echo '<a href="'.base_url('kelolapertemuan/edittp/'.$j['id_pertemuan']).'" class="btn btn-warning btn-sm">Edit TP & Video Conference</a>';
 
 
                                             ?>

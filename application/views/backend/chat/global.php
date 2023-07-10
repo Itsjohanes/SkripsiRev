@@ -55,7 +55,7 @@
             // Refresh chat messages every 2 seconds
             setInterval(function() {
                 $.ajax({
-                    url: '<?php echo base_url("GlobalChat/fetch_chat_messages"); ?>',
+                    url: '<?php echo base_url("globalchat/fetch_chat_messages"); ?>',
                     type: 'get',
                     dataType: 'json',
                     success: function(response) {
@@ -73,7 +73,7 @@
                 var message = $('#message').val();
 
                 $.ajax({
-                    url: '<?php echo base_url("GlobalChat/save_message"); ?>',
+                    url: '<?php echo base_url("globalchat/save_message"); ?>',
                     type: 'post',
                     data: {
                         message: message

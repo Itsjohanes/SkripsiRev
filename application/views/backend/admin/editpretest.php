@@ -10,7 +10,7 @@
     <div class="card-header py-3">
     </div>
     <div class="card-body">
-        <?php echo form_open_multipart('KelolaPretest/runEditPreTest'); ?>
+        <?php echo form_open_multipart('kelolapretest/runeditpretest'); ?>
         <div class="form-group">
             <input type="hidden" class="form-control" id="id_pretest" name="id_pretest" value="<?php echo $soal['id_soal'];  ?>">
             <input type="hidden" name="gambar_lama" id="gambar_lama" value="<?php echo $soal['gambar'];  ?>">

@@ -12,7 +12,7 @@ class KelolaPertemuan extends CI_Controller {
 
     public function index()
     {
-        
+            $data['title'] = "Atur Pertemuan";
             $data['user'] = $this->Kelolapertemuan_model->getUserByEmail($this->session->userdata('email'));
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
 
@@ -27,14 +27,14 @@ class KelolaPertemuan extends CI_Controller {
     {
        
             $this->Kelolapertemuan_model->aktifkanPertemuan($id);
-            redirect('KelolaPertemuan');
+            redirect('kelolapertemuan');
         
     }
 
     public function matikanPertemuan($id)
     {
             $this->Kelolapertemuan_model->matikanPertemuan($id);
-            redirect('KelolaPertemuan');
+            redirect('kelolapertemuan');
         
     }
     public function editTp($id){
@@ -56,7 +56,7 @@ class KelolaPertemuan extends CI_Controller {
            $link = $this->input->post('link');
            $this->Kelolapertemuan_model->editTp($id_pertemuan,$tp,$link);
            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tujuan Pembelajaran berhasil diubah!</div>');
-           redirect('KelolaPertemuan');
+           redirect('kelolapertemuan');
     }
 
 }

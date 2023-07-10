@@ -90,7 +90,7 @@ input:checked + .slider:before {
                 </div>
                 </div>
                 <br>
-                    <form id="myForm" method="post" action="<?php echo base_url('KelolaPosttest/postTestHandler');?>">
+                    <form id="myForm" method="post" action="<?php echo base_url('kelolaPosttest/posttesthandler');?>">
                     <label class="switch">
                     <?php
                     if($aktif['aktif'] == 1){
@@ -115,7 +115,7 @@ input:checked + .slider:before {
                 </div>
                 </div>
                 <br>
-                <?php echo form_open_multipart('KelolaPosttest/tambahPostTest'); ?>
+                <?php echo form_open_multipart('kelolaposttest/tambahposttest'); ?>
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
@@ -238,8 +238,8 @@ input:checked + .slider:before {
                                         <td><?= $j['opsi_e']; ?></td>
                                         <td><?= $j['kunci']; ?></td>
                                         <td>
-                                            <a href="<?= base_url(); ?>KelolaPosttest/hapusPostTest/<?= $j['id_soal']; ?>" class="btn btn-danger" onclick="return confirm('Anda yakin akan menghapus soal ini?');"><i class="fas fa-trash-alt"></i></a>
-                                            <a href="<?= base_url(); ?>KelolaPosttest/editPostTest/<?= $j['id_soal']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                            <a href="<?= base_url(); ?>kelolaposttest/hapusposttest/<?= $j['id_soal']; ?>" class="btn btn-danger" onclick="return confirm('Anda yakin akan menghapus soal ini?');"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="<?= base_url(); ?>kelolaposttest/editposttest/<?= $j['id_soal']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                         </td>
 
                                     </tr>

@@ -41,10 +41,10 @@ class KelolaTugas extends CI_Controller {
                     );
                     $this->Kelolatugas_model->tambahTugas($data);
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tugas berhasil ditambahkan</div>');
-                    redirect('KelolaTugas');
+                    redirect('kelolatugas');
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Tugas gagal ditambahkan</div>');
-                    redirect('KelolaTugas');
+                    redirect('kelolatugas');
                 }
             }
         
@@ -57,7 +57,7 @@ class KelolaTugas extends CI_Controller {
             unlink(FCPATH . 'assets/tugas/' . $pdf);
             $this->Kelolatugas_model->hapusTugas($id);
             $this->session->set_flashdata('category_success', 'Tugas berhasil dihapus');
-            redirect('KelolaTugas');
+            redirect('kelolatugas');
         
     }
 
@@ -91,7 +91,7 @@ class KelolaTugas extends CI_Controller {
                         $tugas = $this->upload->data('file_name');
                     } else {
                         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Tugas gagal diubah</div>');
-                        redirect('KelolaTugas');
+                        redirect('kelolatugas');
                     }
                 } else {
                     $tugas = $tugasLama;
@@ -107,7 +107,7 @@ class KelolaTugas extends CI_Controller {
 
             $this->Kelolatugas_model->updateTugas($id, $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tugas berhasil diubah</div>');
-            redirect('KelolaTugas');
+            redirect('kelolatugas');
         
     }
 

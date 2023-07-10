@@ -19,9 +19,9 @@ class Auth extends CI_Controller
       $this->load->view('backend/login/auth_footer');
     } else {
       if ($this->session->userdata('role') == 1) {
-        redirect('Admin');
+        redirect('admin');
       } else {
-        redirect('Siswa/index');
+        redirect('siswa');
       }
     }
   }
@@ -42,17 +42,17 @@ class Auth extends CI_Controller
         ];
         $this->session->set_userdata($data);
         if ($user['role'] == 1) {
-          redirect('Admin');
+          redirect('admin');
         } else {
-          redirect('Siswa');
+          redirect('siswa');
         }
       } else {
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
-        redirect('Auth');
+        redirect('auth');
       }
     } else {
       $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
-      redirect('Auth');
+      redirect('auth');
     }
   }
 
@@ -90,7 +90,7 @@ class Auth extends CI_Controller
       $this->Auth_model->register_user($email, $nama, $password, $role);
       
       $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! Your account has been created. Please login.</div>');
-      redirect('Auth');
+      redirect('auth');
     }
   }
 
@@ -106,11 +106,11 @@ class Auth extends CI_Controller
     $this->session->unset_userdata('nama');
     $this->session->unset_userdata('role');
     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out!</div>');
-    redirect('Auth');
+    redirect('auth');
   }
 
   public function backLogin()
   {
-    redirect('Auth');
+    redirect('auth');
   }
 }

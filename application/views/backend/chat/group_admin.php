@@ -56,7 +56,7 @@
             setInterval(function() {
                 var kelompok = $('#kelompok').val();
                 $.ajax({
-                    url: '<?php echo base_url("GroupChat/fetchadmin_chat_messages"); ?>/' + kelompok,
+                    url: '<?php echo base_url("groupchat/fetchadmin_chat_messages"); ?>/' + kelompok,
                     type: 'get',
                     dataType: 'json',
                     success: function(response) {
@@ -75,7 +75,7 @@
                  var kelompok = $('#kelompok').val();
 
                 $.ajax({
-                    url: '<?php echo base_url("GroupChat/saveadmin_message"); ?>',
+                    url: '<?php echo base_url("groupchat/saveadmin_message"); ?>',
                     type: 'post',
                     data: {
                         message: message,

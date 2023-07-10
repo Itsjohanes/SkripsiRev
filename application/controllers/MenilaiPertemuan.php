@@ -27,7 +27,7 @@ class MenilaiPertemuan extends CI_Controller {
                 $this->load->view('backend/admin/hasiltugas', $data);
                 $this->load->view('backend/admin/footer');
             }else{
-                redirect('Menilai');
+                redirect('menilai');
             }
             
        
@@ -58,7 +58,7 @@ class MenilaiPertemuan extends CI_Controller {
             ];
             $this->Menilaipertemuan_model->updateHasilTugas($id, $data);
             $this->session->set_flashdata('category_success', 'Nilai berhasil diubah');
-            redirect('MenilaiPertemuan/'.$pertemuan);
+            redirect('menilaipertemuan/'.$pertemuan);
         
     }
 

@@ -16,7 +16,7 @@ $id = $this->session->userdata('id');
 	function orang() {
 		$.ajax({
 			type: "post",
-			url: "<?= base_url() ?>Chat/GetAllOrang",
+			url: "<?= base_url() ?>chat/getallorang",
 			data: {
 				id: '<?= $id ?>'
 			},
@@ -56,7 +56,7 @@ $id = $this->session->userdata('id');
 			var id_lawan = '<?= $data->id ?>'
 			$.ajax({
 				type: "post",
-				url: "<?= base_url() ?>Chat/loadChat",
+				url: "<?= base_url() ?>chat/loadchat",
 				data: {
 					id: '<?= $id ?>',
 					id_lawan: id_lawan
@@ -134,7 +134,7 @@ $id = $this->session->userdata('id');
 			if (pesan != "") {
 				$.ajax({
 					type: "post",
-					url: "<?= base_url() ?>/Chat/KirimPesan",
+					url: "<?= base_url() ?>/chat/kirimpesan",
 					data: {
 						id,
 						id_lawan,
@@ -183,7 +183,7 @@ $id = $this->session->userdata('id');
 				if (result.isConfirmed) {
 					$.ajax({
 						type: "post",
-						url: "<?= base_url() ?>Chat/logout",
+						url: "<?= base_url() ?>chat/logout",
 						// data: "data",
 						dataType: "json",
 						success: function(r) {
@@ -196,7 +196,7 @@ $id = $this->session->userdata('id');
 									'success'
 								)
 								setTimeout(() => {
-									location.href = '<?= base_url() ?>/Auth/login';
+									location.href = '<?= base_url() ?>/auth/login';
 								}, 1000);
 							} else {
 								'error!',
@@ -215,7 +215,7 @@ $id = $this->session->userdata('id');
 
 		$('body').on('click', '.coba', function() {
 			var id = $(this).attr('data-id');
-			window.location.replace("<?= base_url() ?>Chat/" + id);
+			window.location.replace("<?= base_url() ?>chat/" + id);
 
 		});
 

@@ -16,7 +16,7 @@
                 <div class="card-header py-3">
                 </div>
                 <div class="card-body">
-                    <a class = "btn btn-success"  href = "<?php echo base_url('RekapNilai/cetakPDF');?>" >Cetak PDF</a>
+                    <a class = "btn btn-success"  href = "<?php echo base_url('rekapnilai/cetakpdf');?>" >Cetak PDF</a>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>

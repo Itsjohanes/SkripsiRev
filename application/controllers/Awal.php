@@ -42,10 +42,10 @@ class Awal extends CI_Controller
         );
         if ($this->Contact_model->tambahKontak($data, 'tb_contact') == true) {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pesan berhasil dikirim!</div>');
-            redirect('Awal/informasi');
+            redirect('awal/informasi');
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pesan gagal dikirim!</div>');
-            redirect('Awal/informasi');
+            redirect('awal/informasi');
         }
     }
 }

@@ -60,7 +60,7 @@ class KelolaPosttest extends CI_Controller {
                 'id_test'=>2
             ];
             $this->Kelolaposttest_model->tambahPosttest($data);
-            redirect('KelolaPosttest');
+            redirect('kelolaposttest');
         
     }
     
@@ -71,7 +71,7 @@ class KelolaPosttest extends CI_Controller {
             unlink(FCPATH . 'assets/img/posttest/' . $gambar);
             $this->Kelolaposttest_model->hapusPosttest($id);
             $this->session->set_flashdata('category_success', 'Soal berhasil dihapus');
-            redirect('KelolaPosttest');
+            redirect('kelolaposttest');
         
     }
 
@@ -127,7 +127,7 @@ class KelolaPosttest extends CI_Controller {
                 'gambar' => $gambar
             ];
             $this->Kelolaposttest_model->updatePosttest($id_posttest, $data);
-            redirect('KelolaPosttest');
+            redirect('kelolaposttest');
         
     }
      public function postTestHandler(){
@@ -143,7 +143,7 @@ class KelolaPosttest extends CI_Controller {
             $this->db->set('aktif', 1);
             $this->db->where('id_tes', 2);
             $this->db->update('tb_test');
-            redirect('KelolaPosttest');
+            redirect('kelolaposttest');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Posttest telah diaktifkan</div>');
 
 
@@ -154,7 +154,7 @@ class KelolaPosttest extends CI_Controller {
             $this->db->set('aktif', 0);
             $this->db->where('id_tes', 2);
             $this->db->update('tb_test');
-            redirect('KelolaPosttest');
+            redirect('kelolaposttest');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Posttest telah dimatikan</div>');
 
         

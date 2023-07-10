@@ -120,7 +120,7 @@
         </div>
         <div class="col-md-6 col-lg-5 col-xl-4">
           <div>
-            <form class="p-3 p-xl-4" action="<?php echo base_url() . 'Awal/tambahKontak'; ?>" method="post">
+            <form class="p-3 p-xl-4" action="<?php echo base_url() . 'awal/tambahkontak'; ?>" method="post">
               <div class="mb-3">
                 <input class="form-control" type="text" id="nama_pengirim" name="nama" required placeholder="Name" />
               </div>

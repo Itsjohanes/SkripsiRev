@@ -40,10 +40,10 @@ class KelolaMateri extends CI_Controller {
                     $materi = $this->upload->data('file_name');
                     $this->Kelolamateri_model->tambahMateri($pertemuan, $materi);
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Materi berhasil ditambahkan</div>');
-                    redirect('KelolaMateri');
+                    redirect('kelolamateri');
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Materi gagal ditambahkan</div>');
-                    redirect('KelolaMateri');
+                    redirect('kelolamateri');
                 }
             }
         
@@ -57,7 +57,7 @@ class KelolaMateri extends CI_Controller {
             unlink(FCPATH . 'assets/materi/' . $pdf);
             $this->Kelolamateri_model->hapusMateri($id);
             $this->session->set_flashdata('category_success', 'Materi berhasil dihapus');
-            redirect('KelolaMateri');
+            redirect('kelolamateri');
         
     }
 
@@ -108,7 +108,7 @@ class KelolaMateri extends CI_Controller {
 
                 $this->Kelolamateri_model->updateMateri($id, $data);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Materi berhasil diubah</div>');
-                redirect('KelolaMateri');
+                redirect('kelolamateri');
             }
         
     }

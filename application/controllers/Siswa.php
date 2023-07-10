@@ -9,10 +9,7 @@ class Siswa extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Siswa_model');
-        checkRole(0);
-
-
-        
+        checkRole(0); 
     }
     public function index()
     {
@@ -81,9 +78,7 @@ class Siswa extends CI_Controller
             if ($tugas4 == 0) {
                 array_push($data['tugasbelumselesai'], "Tugas 4");
             }
-
             $data['siswa'] = $this->Siswa_model->getSiswaByRole(0);
-
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/index', $data);

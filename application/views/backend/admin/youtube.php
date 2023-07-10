@@ -26,7 +26,7 @@
               </div>
             </div>
                 <br>
-                <?php echo form_open_multipart('KelolaYoutube/tambahYoutube'); ?>
+                <?php echo form_open_multipart('kelolayoutube/tambahyoutube'); ?>
                 <div class="row">
                     <div class="col">
                     <div class="input-group input-group-outline">
@@ -100,8 +100,8 @@
 </td>
 
                                         <td>
-                                            <a href="<?= base_url(); ?>KelolaYoutube/hapusYoutube/<?= $j['id_materi']; ?>" class="btn btn-danger" onclick="return confirm('Anda yakin akan menghapus video ini?');"><i class="fas fa-trash-alt"></i></a>
-                                            <a href="<?= base_url(); ?>KelolaYoutube/editYoutube/<?= $j['id_materi']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                            <a href="<?= base_url(); ?>kelolayoutube/hapusyoutube/<?= $j['id_materi']; ?>" class="btn btn-danger" onclick="return confirm('Anda yakin akan menghapus video ini?');"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="<?= base_url(); ?>Kelolayoutube/edityoutube/<?= $j['id_materi']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                         </td>
 
                                     </tr>

@@ -84,7 +84,7 @@ class Posttest extends CI_Controller
 
             $this->Posttest_model->savePosttestResult($data);
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah mengerjakan Post-Test</div>');
-            redirect('Materi');
+            redirect('materi');
         
     }
 }

@@ -12,11 +12,11 @@
         <li class="nav-item">
           <?php 
             if($title == 'Home Siswa'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Siswa') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('siswa') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('Siswa') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('siswa') . '">';
 
 
             }
@@ -30,11 +30,11 @@
         <li class="nav-item">
           <?php 
             if($title == 'Materi'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Materi') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('materi') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('Materi') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('materi') . '">';
 
 
             }
@@ -49,11 +49,11 @@
 
           <?php 
             if($title == 'Report'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Rapot') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('rapot') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('Rapot') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('rapot') . '">';
 
 
             }
@@ -67,11 +67,11 @@
        <li class="nav-item">
  <?php 
             if($title == 'Chat'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Chat/menu') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('chat/menu') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('Chat/menu') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('chat/menu') . '">';
 
 
             }
@@ -84,11 +84,11 @@
         <li class="nav-item">
  <?php 
             if($title == 'Group Chat'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('GroupChat') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('groupchat') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('GroupChat') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('groupchat') . '">';
 
 
             }
@@ -102,11 +102,11 @@
             <li class="nav-item">
  <?php 
             if($title == 'Global Chat'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('GlobalChat') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('globalchat') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('GlobalChat') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('globalchat') . '">';
 
 
             }
@@ -123,11 +123,11 @@
         <li class="nav-item">
 <?php 
             if($title == 'Profile'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Profile') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('profile') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('Profile') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('profile') . '">';
 
 
             }
@@ -138,7 +138,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="<?php echo base_url('Auth/logout');?>">
+          <a class="nav-link text-white " href="<?php echo base_url('auth/logout');?>">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">logout</i>
             </div>

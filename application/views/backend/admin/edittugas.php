@@ -10,7 +10,7 @@
     <div class="card-header py-3">
     </div>
     <div class="card-body">
-        <?php echo form_open_multipart('KelolaTugas/runEditTugas'); ?>
+        <?php echo form_open_multipart('kelolatugas/runedittugas'); ?>
         <div class="form-group">
             <input type="hidden" class="form-control" id="id_tugas" name="id_tugas" value="<?php echo $tugas['id_tugas'];  ?>">
             <input type="hidden" name="file_lama" id="file_lama" value="<?php echo $tugas['tugas'];  ?>">

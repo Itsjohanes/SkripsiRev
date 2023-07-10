@@ -18,7 +18,7 @@
               <ul class="navbar-nav mx-auto">
                 
                 <li class="nav-item">
-                    <a class="nav-link me-2" href="<?php echo base_url('Auth/register'); ?>">
+                    <a class="nav-link me-2" href="<?php echo base_url('auth/register'); ?>">
                       <i
                         class="fas fa-user-circle opacity-6 text-dark me-1 "
                       ></i>
@@ -26,7 +26,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link me-2" href="<?php echo base_url('Auth');?>/">
+                    <a class="nav-link me-2" href="<?php echo base_url('auth');?>/">
                       <i class="fas fa-key opacity-6 text-dark me-1"></i>
                       Login
                     </a>
@@ -58,7 +58,7 @@
                   <p class="mb-0">Enter your email and password to register</p>
                 </div>
                 <div class="card-body">
-              <form class="user" method="post" action="<?= base_url('Auth/registration') ?>">
+              <form class="user" method="post" action="<?= base_url('auth/registration') ?>">
                     <div class="input-group input-group-outline mb-3">
                       <label class="form-label"></label>
                       <input type="text" placeholder = "Nama" name = "nama" class="form-control">

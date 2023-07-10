@@ -49,7 +49,7 @@ class KelolaListSiswa extends CI_Controller {
                 $data['title'] = "Home Admin";
                 $data['user'] = $this->Kelolalistsiswa_model->getUserByEmail($this->session->userdata('email'));
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Failed! Passwords do not match</div>');
-                redirect('ListSiswa/editSiswa/' . $this->input->post('id'));
+                redirect('kelolalistsiswa/editSiswa/' . $this->input->post('id'));
             } else {
                 $data = [
                     'nama' => htmlspecialchars($this->input->post('nama', true)),
@@ -59,10 +59,10 @@ class KelolaListSiswa extends CI_Controller {
 
                 if ($this->db->affected_rows() > 0) {
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulations! Your account has been edited</div>');
-                    redirect('KelolaListSiswa');
+                    redirect('kelolalistsiswa');
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Failed! Your account has not been edited</div>');
-                    redirect('KelolaListSiswa');
+                    redirect('kelolalistsiswa');
                 }
             }
         
@@ -73,13 +73,7 @@ class KelolaListSiswa extends CI_Controller {
        
             $this->Kelolalistsiswa_model->deleteSiswa($id);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulations! The account has been deleted</div>');
-            redirect('ListSiswa');
-        
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
+            redirect('listsiswa'); 
         
     }
 

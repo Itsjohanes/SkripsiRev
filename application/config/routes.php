@@ -51,12 +51,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 $route['default_controller'] = 'awal';
 $route['dua'] = 'Chat/dua';
-$route['Siswa'] = 'Siswa/index';
-$route['Chat'] = 'Chat';
+$route['chat'] = 'Chat';
 $route['menu'] = 'Chat/menu';
-$route['Chat/(:num)'] = 'Chat';
+$route['chat/(:num)'] = 'Chat';
 $route['login'] = 'Chat/login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['Pertemuan/(:num)'] = 'Pertemuan/index/$1';
-$route['MenilaiPertemuan/(:num)'] = 'MenilaiPertemuan/index/$1';
+$route['pertemuan/(:num)'] = 'Pertemuan/index/$1';
+$route['menilaipertemuan/(:num)'] = 'MenilaiPertemuan/index/$1';

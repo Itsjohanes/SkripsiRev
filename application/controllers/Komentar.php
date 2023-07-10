@@ -35,7 +35,7 @@ class Komentar extends CI_Controller {
                 $this->load->view('backend/admin/comments', $data);
                 $this->load->view('backend/admin/footer');
             }else{
-                redirect('Komentar');
+                redirect('komentar');
             }
        
 
@@ -53,7 +53,7 @@ class Komentar extends CI_Controller {
             );
 
             $this->Komentar_model->save_comment($data);
-            redirect('Komentar/halamanKomentar/'.$pertemuan);
+            redirect('komentar/halamankomentar/'.$pertemuan);
         
     }
 
@@ -68,7 +68,7 @@ class Komentar extends CI_Controller {
             );
 
             $this->Komentar_model->save_reply($data);
-            redirect('Komentar/halamanKomentar/'.$pertemuan);
+            redirect('komentar/halamankomentar/'.$pertemuan);
         
     }
 

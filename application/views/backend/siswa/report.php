@@ -10,7 +10,7 @@
                 <div class="card-header py-3">
                 </div>
                 <div class="card-body">
-                    <a href = "<?php echo base_url('Rapot/cetakPDF');?>" class = "btn btn-success">Cetak PDF</a>
+                    <a href = "<?php echo base_url('rapot/cetakpdf');?>" class = "btn btn-success">Cetak PDF</a>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -47,42 +47,62 @@
                                     </td>
                                     <td>
                                         <?php
-                                        if ($tugas1 != 0) {
-                                            echo  $tugas1['nilai'];
+                                        if ($tugas1 != null) {
+                                            
+                                            if($tugas1['nilai'] == null){
+                                                echo "Belum dinilai";
+                                            }else{
+                                                echo  $tugas1['nilai'];
+                                            }
+                                            
                                         } else {
-                                            echo "Belum Dinilai";
+                                            echo "Belum Dinilai/Belum Dikerjakan";
                                         }
                                         ?>
                                     </td>
                                     <td>
                                         <?php
-                                        if ($tugas2 != 0) {
-                                            echo  $tugas2['nilai'];
+                                        if ($tugas2 != null) {
+                                            if($tugas2['nilai'] == null){
+                                                echo "Belum Dinilai";
+                                                
+                                            }else{
+                                                echo  $tugas2['nilai'];
+                                            }
                                         } else {
-                                            echo "Belum Dinilai";
+                                            echo "Belum Dikerjakan";
                                         }
                                         ?>
 
                                     </td>
                                     <td>
                                         <?php
-                                        if ($tugas3 != 0) {
-                                            echo  $tugas3['nilai'];
+                                        if ($tugas3 != null) {
+                                           if($tugas3['nilai'] == null){
+                                            
+                                                echo "Belum Dinilai";
+                                                
+                                            }else{
+                                                echo  $tugas3['nilai'];
+                                            }
                                         } else {
-                                            echo "Belum Dinilai";
+                                            echo "Belum Dikerjakan";
                                         }
                                         ?>
 
                                     </td>
                                     <td>
                                         <?php
-                                        if ($tugas4 != 0) {
-                                            echo  $tugas4['nilai'];
+                                        if ($tugas4 != null) {
+                                            if($tugas4['nilai'] == ''){
+                                                echo "Belum Dinilai";
+                                            }else{
+                                                echo  $tugas4['nilai'];
+                                            }
                                         } else {
-                                            echo "Belum Dinilai";
+                                            echo "Belum Dikerjakan";
                                         }
                                         ?>
-
                                     </td>
                                 </tr>
                             </tbody>

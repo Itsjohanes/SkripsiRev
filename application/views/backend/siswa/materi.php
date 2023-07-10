@@ -20,11 +20,11 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('Pertemuan/1');?>"> Pertemuan 1  </a>
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/1');?>"> Pertemuan 1  </a>
               <p class="text-sm "> 
 
                  <?php 
-                 if($tugas1 == ''){
+                 if($tugas1 == null){
                     echo "Tugas 1 Belum Selesai";
                  }else{
                     echo "Tugas 1 Sudah Selesai";
@@ -47,11 +47,11 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('Pertemuan/2');?>"> Pertemuan 2 </a>
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/2');?>"> Pertemuan 2 </a>
                 <p class="text-sm "> 
 
                  <?php 
-                 if($tugas2 == ''){
+                 if($tugas2 == null){
                     echo "Tugas 2 Belum Selesai";
                  }else{
                     echo "Tugas 2 Sudah Selesai";
@@ -76,11 +76,11 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('Pertemuan/3');?>"> Pertemuan 3 </a>
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/3');?>"> Pertemuan 3 </a>
             <p class="text-sm "> 
 
                  <?php 
-                 if($tugas3 == ''){
+                 if($tugas3 == null){
                     echo "Tugas 3 Belum Selesai";
                  }else{
                     echo "Tugas 3 Sudah Selesai";
@@ -107,12 +107,12 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('Pertemuan/4');?>"> Pertemuan 4 </a>
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/4');?>"> Pertemuan 4 </a>
 
             <p class="text-sm "> 
 
                  <?php 
-                 if($tugas4 == ''){
+                 if($tugas4 == null){
                     echo "Tugas 4 Belum Selesai";
                  }else{
                     echo "Tugas 4 Sudah Selesai";
@@ -138,11 +138,11 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('PreTest');?>"> Pre-Test </a>
+              <a class="mb-0 " href = "<?php echo base_url('pretest');?>"> Pre-Test </a>
            <p class="text-sm "> 
 
                  <?php 
-                 if($pretest == ''){
+                 if($pretest == null){
                     echo "Pre-Test Belum Selesai";
                  }else{
                     echo "Pre-Test Sudah Selesai";
@@ -168,11 +168,11 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('PostTest');?>"> Post-Test </a>
+              <a class="mb-0 " href = "<?php echo base_url('posttest');?>"> Post-Test </a>
            <p class="text-sm "> 
 
                  <?php 
-                 if($posttest == ''){
+                 if($pretest == null){
                     echo "Post-Test Belum Selesai";
                  }else{
                     echo "Post-Test Sudah Selesai";

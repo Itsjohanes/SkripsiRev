@@ -26,7 +26,7 @@
               </div>
             </div>
             <br>
-                <?php echo form_open_multipart('KelolaMateri/tambahMateri'); ?>
+                <?php echo form_open_multipart('kelolamateri/tambahmateri'); ?>
                 <div class="row">
                     <div class="col">
                        <div class="input-group input-group-outline">
@@ -97,8 +97,8 @@
                                         <td><?= $j['id_pertemuan']; ?></td>
                                         <td><a href="<?= base_url(); ?>assets/materi/<?= $j['materi']; ?>" <i class="fas fa-file-pdf"></i></a> </td>
                                         <td>
-                                            <a href="<?= base_url(); ?>KelolaMateri/hapusMateri/<?= $j['id_materi']; ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin akan menghapus Materi ini?');"><i class="fas fa-trash-alt"></i></a>
-                                            <a href="<?= base_url(); ?>KelolaMateri/editMateri/<?= $j['id_materi']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                            <a href="<?= base_url(); ?>kelolamateri/hapusmateri/<?= $j['id_materi']; ?>" class="btn btn-danger" onclick="return confirm('Anda Yakin akan menghapus Materi ini?');"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="<?= base_url(); ?>kelolamateri/editmateri/<?= $j['id_materi']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                         </td>
 
                                     </tr>

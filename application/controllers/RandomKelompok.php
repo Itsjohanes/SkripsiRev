@@ -65,7 +65,7 @@ class RandomKelompok extends CI_Controller {
                 }
             }
 
-            redirect('RandomKelompok');
+            redirect('randomkelompok');
         
     }
 
@@ -74,7 +74,7 @@ class RandomKelompok extends CI_Controller {
 
             $this->Randomkelompok_model->deleteRandom();
 
-            redirect('RandomKelompok');
+            redirect('randomkelompok');
         
     }
 

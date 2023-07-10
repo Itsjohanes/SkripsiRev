@@ -12,11 +12,11 @@
         <li class="nav-item">
           <?php 
             if($title == 'Home Admin'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Admin') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('admin') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('Admin') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('admin') . '">';
 
 
             }
@@ -30,11 +30,11 @@
         <li class="nav-item">
           <?php 
             if($title == 'Message'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Message') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('message') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('Message') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('message') . '">';
 
 
             }
@@ -50,11 +50,11 @@
         <li class="nav-item">
           <?php 
             if($title == 'List Siswa'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('KelolaListSiswa') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('kelolalistsiswa') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('KelolaListSiswa') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('kelolalistsiswa') . '">';
 
 
             }
@@ -67,11 +67,11 @@
         </li>
    <?php 
             if($title == 'Atur Pertemuan'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('KelolaPertemuan') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('kelolapertemuan') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('KelolaPertemuan') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('kelolapertemuan') . '">';
             }
             ?>
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -83,11 +83,11 @@
         <li class="nav-item">
           <?php 
             if($title == 'Materi'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('KelolaMateri') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('kelolamateri') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('KelolaMateri') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('kelolamateri') . '">';
             }
             ?>
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -102,11 +102,11 @@
         <li class="nav-item">
           <?php 
             if($title == 'Youtube'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('KelolaYoutube') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('kelolayoutube') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('KelolaYoutube') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('kelolayoutube') . '">';
 
 
             }
@@ -121,11 +121,11 @@
 
           <?php 
             if($title == 'Tugas'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('KelolaTugas') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('kelolatugas') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('KelolaTugas') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('kelolatugas') . '">';
 
 
             }
@@ -140,11 +140,11 @@
 
           <?php 
             if($title == 'Pre-Test'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('KelolaPretest') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('kelolapretest') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('KelolaPretest') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('kelolapretest') . '">';
 
 
             }
@@ -159,11 +159,11 @@
 
           <?php 
             if($title == 'Post-Test'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('KelolaPosttest') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('kelolaposttest') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('KelolaPosttest') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('kelolaposttest') . '">';
 
 
             }
@@ -178,11 +178,11 @@
 
           <?php 
             if($title == 'Random'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('RandomKelompok') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('randomkelompok') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('RandomKelompok') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('randomkelompok') . '">';
 
 
             }
@@ -198,11 +198,11 @@
 
           <?php 
             if($title == 'Menilai'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Menilai') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('menilai') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('Menilai') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('menilai') . '">';
 
 
             }
@@ -220,11 +220,11 @@
 
           <?php 
             if($title == 'Komentar'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Komentar') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('komentar') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('Komentar') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('komentar') . '">';
 
 
             }
@@ -238,11 +238,11 @@
        <li class="nav-item">
  <?php 
             if($title == 'Chat'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Chat/menu') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('chat/menu') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('Chat/menu') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('chat/menu') . '">';
 
 
             }
@@ -255,10 +255,10 @@
         <li class="nav-item">
  <?php 
             if($title == 'Group Chat'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('GroupChat') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('groupchat') . '">';
  
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('GroupChat') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('groupchat') . '">';
 
             }
             ?>            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -271,11 +271,11 @@
         <li class="nav-item">
         <?php 
             if($title == 'Global Chat'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('GlobalChat') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('globalchat') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('GlobalChat') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('globalchat') . '">';
 
 
             }
@@ -292,11 +292,11 @@
         <li class="nav-item">
 <?php 
             if($title == 'Profile'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('Profile') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('profile') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('Profile') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('profile') . '">';
 
 
             }
@@ -307,7 +307,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="<?php echo base_url('Auth/logout');?>">
+          <a class="nav-link text-white " href="<?php echo base_url('auth/logout');?>">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">logout</i>
             </div>

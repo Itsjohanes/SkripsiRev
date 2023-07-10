@@ -44,8 +44,8 @@
                                         <td><?= $s['email']; ?></td>
 
                                         <td>
-                                            <a href="<?= base_url(); ?>KelolaListSiswa/editSiswa/<?= $s['id']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                            <a href="<?= base_url(); ?>KelolaListSiswa/deleteSiswa/<?= $s['id']; ?>" onclick="return confirm('Anda yakin akan menghapus Siswa ini?');" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="<?= base_url(); ?>kelolalistsiswa/editsiswa/<?= $s['id']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                            <a href="<?= base_url(); ?>kelolalistSiswa/deletesiswa/<?= $s['id']; ?>" onclick="return confirm('Anda yakin akan menghapus Siswa ini?');" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                         </td>
 
                                     </tr>

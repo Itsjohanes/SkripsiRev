@@ -1,18 +1,18 @@
 <?php
 class GroupChat extends CI_Controller
 {
+    private $role;
     public function __construct()
     {
         parent::__construct();
         $this->load->model('chatgroup_model');
+        checkRole(0);
+        $this->role = $this->session->userdata('role');
     }
 
     public function index()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
-        //$data['chat_messages'] = $this->chatgroup_model->get_chat_messages();
-
-
+        if ($this->role == 1) {
         $data['title'] = "Group Chat";
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('backend/admin/header', $data);
@@ -20,7 +20,7 @@ class GroupChat extends CI_Controller
         $this->load->view('backend/chat/pilih', $data);
         $this->load->view('backend/admin/footer');
 
-        }else if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 0) {
+        }else {
                 $id_user = $this->session->userdata('id');
                 $query = $this->db->get_where('tb_random', ['id_user' => $id_user]);
             if($query->num_rows() > 0){
@@ -34,15 +34,11 @@ class GroupChat extends CI_Controller
                 $this->load->view('backend/chat/group', $data);
                 $this->load->view('backend/siswa/footer');
             }else{
-                //berikan alert
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda belum memiliki kelompok</div>');
-                redirect('Siswa');
-        
+                redirect('siswa');
             }
-
-        }else{
-             redirect('Auth/login');
         }
+        
     }
      public function fetch_chat_messages()
     {
@@ -105,7 +101,7 @@ class GroupChat extends CI_Controller
         $this->chatgroup_model->insert_chat_message($data);
     }
     public function chooseGroup(){
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+        if ($this->role  == 1) {
         $data['title'] = "Group Chat";
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
         $data['kelompok'] = $this->input->post('kelompok');
@@ -115,11 +111,8 @@ class GroupChat extends CI_Controller
         $this->load->view('backend/admin/sidebar', $data);
         $this->load->view('backend/chat/group_admin', $data);
         $this->load->view('backend/admin/footer');
-
-        } else if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 0){
-                redirect('Siswa');
-        }else{
-                redirect('Auth/login');
+        } else{
+           redirect('siswa');
         }
     }
 }

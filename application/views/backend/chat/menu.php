@@ -98,7 +98,7 @@ $nama = $_SESSION['nama'];
 		function orang() {
 			$.ajax({
 				type: "post",
-				url: "<?= base_url() ?>Chat/GetAllOrang",
+				url: "<?= base_url() ?>chat/getallorang",
 				data: {
 					id: '<?= $id ?>'
 				},
@@ -129,7 +129,7 @@ $nama = $_SESSION['nama'];
 		}
 		$('body').on('click', '.coba', function(event) {
   var id = $(event.target).closest('.coba').data('id');
-  window.location.replace("<?= base_url() ?>Chat/" + id);
+  window.location.replace("<?= base_url() ?>chat/" + id);
 });
 
 	});

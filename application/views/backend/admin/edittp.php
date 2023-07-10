@@ -10,7 +10,7 @@
     <div class="card-header py-3">
     </div>
     <div class="card-body">
-        <?php echo form_open_multipart('KelolaPertemuan/runEditTp'); ?>
+        <?php echo form_open_multipart('kelolapertemuan/runedittp'); ?>
         <div class="form-group">
             <label for="link">Pertemuan</label>
             <div class="input-group input-group-outline">

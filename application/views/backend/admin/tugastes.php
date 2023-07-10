@@ -20,7 +20,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('MenilaiPertemuan/1');?>"> Pertemuan 1  </a>
+              <a class="mb-0 " href = "<?php echo base_url('menilaipertemuan/1');?>"> Pertemuan 1  </a>
               <p class="text-sm ">
               </p>
               <hr class="dark horizontal">
@@ -39,7 +39,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('MenilaiPertemuan/2');?>"> Pertemuan 2 </a>
+              <a class="mb-0 " href = "<?php echo base_url('menilaipertemuan/2');?>"> Pertemuan 2 </a>
                 <p class="text-sm "> 
 
                 
@@ -60,7 +60,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('MenilaiPertemuan/3');?>"> Pertemuan 3 </a>
+              <a class="mb-0 " href = "<?php echo base_url('menilaipertemuan/3');?>"> Pertemuan 3 </a>
             <p class="text-sm "> 
 
                 
@@ -84,7 +84,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('MenilaiPertemuan/4');?>"> Pertemuan 4 </a>
+              <a class="mb-0 " href = "<?php echo base_url('menilaipertemuan/4');?>"> Pertemuan 4 </a>
 
             <p class="text-sm "> 
 
@@ -107,7 +107,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('MenilaiPretest');?>"> Pre-Test </a>
+              <a class="mb-0 " href = "<?php echo base_url('menilaipretest');?>"> Pre-Test </a>
            <p class="text-sm "> 
 
                 
@@ -130,7 +130,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('MenilaiPosttest');?>"> Post-Test </a>
+              <a class="mb-0 " href = "<?php echo base_url('menilaiposttest');?>"> Post-Test </a>
            <p class="text-sm "> 
 
                
@@ -154,7 +154,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('RekapNilai');?>"> Rekap Nilai </a>
+              <a class="mb-0 " href = "<?php echo base_url('rekapnilai');?>"> Rekap Nilai </a>
            <p class="text-sm "> 
 
                

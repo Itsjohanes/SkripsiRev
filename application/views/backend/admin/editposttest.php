@@ -11,7 +11,7 @@
     <div class="card-header py-3">
     </div>
     <div class="card-body">
-        <?php echo form_open_multipart('KelolaPosttest/runEditPostTest'); ?>
+        <?php echo form_open_multipart('kelolaposttest/runeditposttest'); ?>
         <div class="form-group">
             <input type="hidden" class="form-control" id="id_posttest" name="id_posttest" value="<?php echo $soal['id_soal'];  ?>">
             <input type="hidden" name="gambar_lama" id="gambar_lama" value="<?php echo $soal['gambar'];  ?>">

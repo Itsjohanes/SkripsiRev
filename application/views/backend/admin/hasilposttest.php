@@ -16,7 +16,7 @@
                 <div class="card-header py-3">
                 </div>
                 <div class="card-body">
-                  <a href = "<?php echo base_url('MenilaiPosttest/cetakExcel');?>" class = "btn btn-success">Cetak Excel</a>
+                  <a href = "<?php echo base_url('menilaiposttest/cetakexcel');?>" class = "btn btn-success">Cetak Excel</a>
 
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -61,7 +61,7 @@
                                         <td><?= $j['salah']; ?></td>
                                         <td><?= $j['kosong']; ?></td>
                                         <td>
-                                            <a class="btn btn-danger" href="<?= base_url('MenilaiPosttest/hapusHasilPosttest/') . $j['id_hasiltest']; ?>"  onclick="return confirm('Anda yakin akan menghapus post test ini?');"><i class="fas fa-trash-alt"> </i></a>
+                                            <a class="btn btn-danger" href="<?= base_url('menilaiposttest/hapushasilposttest/') . $j['id_hasiltest']; ?>"  onclick="return confirm('Anda yakin akan menghapus post test ini?');"><i class="fas fa-trash-alt"> </i></a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>
