@@ -8,11 +8,11 @@ class KelolaTugas extends CI_Controller {
         parent::__construct();
         // Load model
         $this->load->model('Kelolatugas_model');
+        checkRole(1);
     }
 
     public function index()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $data['title'] = 'Tugas';
             $data['user'] = $this->Kelolatugas_model->getUserByEmail($this->session->userdata('email'));
             $data['tugas'] = $this->Kelolatugas_model->getTugas();
@@ -21,18 +21,11 @@ class KelolaTugas extends CI_Controller {
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/tugas', $data);
             $this->load->view('backend/admin/footer');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function tambahTugas()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $pertemuan = $this->input->post('pertemuan');
             $tugas = $_FILES['tugas']['name'];
             if ($tugas) {
@@ -54,36 +47,22 @@ class KelolaTugas extends CI_Controller {
                     redirect('KelolaTugas');
                 }
             }
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function hapusTugas($id)
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $tugas = $this->Kelolatugas_model->getTugasById($id);
             $pdf = $tugas['tugas'];
             unlink(FCPATH . 'assets/tugas/' . $pdf);
             $this->Kelolatugas_model->hapusTugas($id);
             $this->session->set_flashdata('category_success', 'Tugas berhasil dihapus');
             redirect('KelolaTugas');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function editTugas($id)
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $data['title'] = "Edit Tugas";
             $data['user'] = $this->Kelolatugas_model->getUserByEmail($this->session->userdata('email'));
             $data['tugas'] = $this->Kelolatugas_model->getTugasById($id);
@@ -91,18 +70,11 @@ class KelolaTugas extends CI_Controller {
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/edittugas', $data);
             $this->load->view('backend/admin/footer');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+       
     }
 
     public function runEditTugas()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $id = $this->input->post('id_tugas');
             $pertemuan = $this->input->post('pertemuan');
             $tugasLama = $this->input->post('file_lama');
@@ -136,13 +108,7 @@ class KelolaTugas extends CI_Controller {
             $this->Kelolatugas_model->updateTugas($id, $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tugas berhasil diubah</div>');
             redirect('KelolaTugas');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
 }

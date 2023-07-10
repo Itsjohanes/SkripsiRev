@@ -4,10 +4,10 @@ class Materi extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Materi_model'); // Load the model
+        checkRole(0);
     }
 
     public function index() {
-        if ($this->session->userdata('email') != '') {
             $data['title'] = "Materi";
             $data['user'] = $this->Materi_model->getUserByEmail($this->session->userdata('email'));
             $data['jumlahSiswa'] = $this->Materi_model->getJumlahSiswa();
@@ -34,8 +34,6 @@ class Materi extends CI_Controller {
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/materi', $data);
             $this->load->view('backend/siswa/footer');
-        } else {
-            redirect('Auth/backLogin');
-        }
+        
     }
 }

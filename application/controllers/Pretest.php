@@ -7,11 +7,11 @@ class Pretest extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Pretest_model'); // Load the Pretest_model
+        checkRole(0);
     }
 
     public function index()
     {
-        if ($this->session->userdata('email') != '') {
             $data['title'] = "Pre-Test";
             $data['user'] = $this->Pretest_model->getUserByEmail($this->session->userdata('email'));
             $data['soal'] = $this->Pretest_model->getPretestQuestions();
@@ -33,14 +33,11 @@ class Pretest extends CI_Controller
                     $this->load->view('backend/siswa/footer');
                 }
             }
-        } else {
-            redirect('Auth/backLogin');
-        }
+        
     }
 
     public function simpanPreTest()
     {
-        if ($this->session->userdata('email') != '') {
             $pilihan = $this->input->post('pilihan');
             $id_pretest = $this->input->post('id_pretest');
             $jumlah = $this->input->post('jumlah');
@@ -88,8 +85,6 @@ class Pretest extends CI_Controller
             $this->Pretest_model->savePretestResult($data);
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah pernah mengerjakan Pre-Test</div>');
             redirect('Materi');
-        } else {
-            redirect('Auth/backlogin');
-        }
+        
     }
 }

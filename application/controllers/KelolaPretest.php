@@ -7,13 +7,12 @@ class KelolaPretest extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Kelolapretest_model');
-        
+        checkRole(1);
     }
 
 
      public function index()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $data['title'] = "Pre-Test";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['soal'] = $this->Kelolapretest_model->getPretest();
@@ -23,19 +22,12 @@ class KelolaPretest extends CI_Controller {
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/pretest', $data);
             $this->load->view('backend/admin/footer');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function tambahPreTest()
     {
 
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             //memasukan soal dan gambar ke tb_pretest
             $soal = $this->input->post('soal');
             $opsi_a = $this->input->post('a');
@@ -70,35 +62,21 @@ class KelolaPretest extends CI_Controller {
             ];
             $this->Kelolapretest_model->tambahPretest($data);
             redirect('KelolaPreTest');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function hapusPretest($id)
     {
 
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             //delete soal and unlink picture by id 
             $this->Kelolapretest_model->hapusPretest($id);
             $this->session->set_flashdata('category_success', 'Soal berhasil dihapus');
             redirect('KelolaPreTest');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function editPretest($id)
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $data['title'] = "Edit Pre-Test";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['soal'] = $this->Kelolapretest_model->getPretestById($id);
@@ -106,18 +84,11 @@ class KelolaPretest extends CI_Controller {
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/editPretest', $data);
             $this->load->view('backend/admin/footer');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function runEditPreTest()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $id_pretest = $this->input->post('id_pretest');
             $soal = $this->input->post('soal');
             $gambar_lama = $this->input->post('gambar_lama');
@@ -159,13 +130,7 @@ class KelolaPretest extends CI_Controller {
             ];
             $this->Kelolapretest_model->updatePretest($id_pretest, $data);
             redirect('KelolaPreTest');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
 
@@ -179,7 +144,6 @@ class KelolaPretest extends CI_Controller {
     }
 
     public function activasiPretest(){
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             //mengubah status pada tb_test menjadi 1
             $this->db->set('aktif', 1);
             $this->db->where('id_tes', 1);
@@ -188,16 +152,9 @@ class KelolaPretest extends CI_Controller {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pretest telah diaktifkan</div>');
 
 
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
     public function mematikanPretest(){
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             //mengubah status pada tb_test menjadi 1
             $this->db->set('aktif', 0);
             $this->db->where('id_tes', 1);
@@ -205,12 +162,6 @@ class KelolaPretest extends CI_Controller {
             redirect('KelolaPretest');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pretest telah dimatikan</div>');
 
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 }

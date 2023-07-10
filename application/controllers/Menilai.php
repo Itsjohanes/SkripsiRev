@@ -10,12 +10,12 @@ class Menilai extends CI_Controller {
         $this->load->model('Menilai_model');
         // Load the user agent library
         $this->load->library('user_agent');
+        checkRole(1);
 
     }
 
     public function index()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             // Select siswa from database
             $data['siswa'] = $this->Menilai_model->getSiswa();
             $data['title'] = 'Menilai';
@@ -25,13 +25,7 @@ class Menilai extends CI_Controller {
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/tugastes', $data);
             $this->load->view('backend/admin/footer');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+       
     }
 
     

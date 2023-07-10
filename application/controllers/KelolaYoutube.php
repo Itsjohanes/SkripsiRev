@@ -8,11 +8,11 @@ class KelolaYoutube extends CI_Controller {
         parent::__construct();
         // Load model
         $this->load->model('Kelolayoutube_model');
+        checkRole(1);
     }
 
     public function index()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $data['title'] = 'Youtube';
             $data['user'] = $this->Kelolayoutube_model->getUserByEmail($this->session->userdata('email'));
             $data['materi'] = $this->Kelolayoutube_model->getYoutubeMateri();
@@ -21,18 +21,11 @@ class KelolaYoutube extends CI_Controller {
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/youtube', $data);
             $this->load->view('backend/admin/footer');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function tambahYoutube()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $pertemuan = $this->input->post('pertemuan');
             $link = $this->input->post('link');
             $data = array(
@@ -41,34 +34,20 @@ class KelolaYoutube extends CI_Controller {
             );
             $this->Kelolayoutube_model->tambahYoutubeMateri($data);
             redirect('KelolaYoutube');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function hapusYoutube($id)
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $this->Kelolayoutube_model->hapusYoutubeMateri($id);
 
             $this->session->set_flashdata('category_success', 'Materi berhasil dihapus');
             redirect('KelolaYoutube');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function editYoutube($id_materi)
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $data['title'] = 'Edit Youtube';
             $data['user'] = $this->Kelolayoutube_model->getUserByEmail($this->session->userdata('email'));
             $data['materi'] = $this->Kelolayoutube_model->getYoutubeMateriById($id_materi);
@@ -77,18 +56,11 @@ class KelolaYoutube extends CI_Controller {
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/edityoutube', $data);
             $this->load->view('backend/admin/footer');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function runEditYoutube()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $id_materi = $this->input->post('id_materi');
             $pertemuan = $this->input->post('pertemuan');
             $youtube = $this->input->post('youtube');
@@ -98,13 +70,7 @@ class KelolaYoutube extends CI_Controller {
             );
             $this->Kelolayoutube_model->updateYoutubeMateri($id_materi, $data);
             redirect('KelolaYoutube');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+       
     }
 
 }

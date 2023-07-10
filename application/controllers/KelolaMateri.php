@@ -7,31 +7,26 @@ class KelolaMateri extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Kelolamateri_model'); // Load the KelolaMateri_model
+        checkRole(1);
     }
 
     public function index()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
-            $data['title'] = "Materi";
-            $data['user'] = $this->Kelolamateri_model->getUserByEmail($this->session->userdata('email'));
-            $data['materi'] = $this->Kelolamateri_model->getMateri();
+        
+        $data['title'] = "Materi";
+        $data['user'] = $this->Kelolamateri_model->getUserByEmail($this->session->userdata('email'));
+        $data['materi'] = $this->Kelolamateri_model->getMateri();
 
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/materi', $data);
-            $this->load->view('backend/admin/footer');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        $this->load->view('backend/admin/header', $data);
+        $this->load->view('backend/admin/sidebar', $data);
+        $this->load->view('backend/admin/materi', $data);
+        $this->load->view('backend/admin/footer');
+       
     }
 
     public function tambahMateri()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+        
             $pertemuan = $this->input->post('pertemuan');
             $materi = $_FILES['materi']['name'];
 
@@ -51,36 +46,24 @@ class KelolaMateri extends CI_Controller {
                     redirect('KelolaMateri');
                 }
             }
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function hapusMateri($id)
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+        
             $materi = $this->Kelolamateri_model->getMateriById($id);
             $pdf = $materi['materi'];
             unlink(FCPATH . 'assets/materi/' . $pdf);
             $this->Kelolamateri_model->hapusMateri($id);
             $this->session->set_flashdata('category_success', 'Materi berhasil dihapus');
             redirect('KelolaMateri');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function editMateri($id)
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+        
             $data['title'] = "Edit Materi";
             $data['user'] = $this->Kelolamateri_model->getUserByEmail($this->session->userdata('email'));
             $data['materi'] = $this->Kelolamateri_model->getMateriById($id);
@@ -89,18 +72,12 @@ class KelolaMateri extends CI_Controller {
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/editmateri', $data);
             $this->load->view('backend/admin/footer');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function runEditMateri()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+        
             $id = $this->input->post('id_materi');
             $pertemuan = $this->input->post('pertemuan');
             $materiLama = $this->input->post('file_lama');
@@ -133,13 +110,7 @@ class KelolaMateri extends CI_Controller {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Materi berhasil diubah</div>');
                 redirect('KelolaMateri');
             }
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
 }

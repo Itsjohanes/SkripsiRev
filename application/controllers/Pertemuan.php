@@ -6,11 +6,11 @@ class Pertemuan extends CI_Controller {
         $this->load->model('Komentar_model');
         $this->load->model('Pertemuan_model'); // Load the model
         $this->load->library('user_agent');
+        checkRole(0);
 
     }
 
     public function index($id = '') {
-        if ($this->session->userdata('email') != '') {
             if($id >= 1 && $id <= 4){
                 $data['title'] = "Materi Pertemuan 1";
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
@@ -45,14 +45,11 @@ class Pertemuan extends CI_Controller {
             
         
 
-        }else{
-            redirect('Auth/backLogin');
-        }
+       
     }
 
     public function save_comment() {
         // Proses menyimpan komentar
-        if ($this->session->userdata('email') != '') {
             
             $data = array(
                 'id_user' => $this->input->post('id_user'),
@@ -64,12 +61,12 @@ class Pertemuan extends CI_Controller {
             redirect($this->agent->referrer());
 
             
-        }
+        
     }
 
      public function materiPertemuan($id = ''){
 
-         if ($this->session->userdata('email') != '') {
+         
             if($id >= 1 && $id <= 4){
                 $data['title'] = "Materi Pertemuan ". $id;
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
@@ -89,13 +86,10 @@ class Pertemuan extends CI_Controller {
                 
             }
           
-         }else{
-             redirect('Auth/backLogin');
-         }
+         
     }
 
     public function save_reply() {
-        if ($this->session->userdata('email') != '') {
             // Proses menyimpan reply
             $data = array(
                 'id_user' => $this->input->post('id_user'),
@@ -107,11 +101,10 @@ class Pertemuan extends CI_Controller {
             $this->Komentar_model->save_reply($data);
             redirect($this->agent->referrer());
 
-        }
+        
     }
 
     public function tambahTugas() {
-        if ($this->session->userdata('email') != '') {
             $id_siswa = $this->session->userdata('id');
             $pertemuan = $this->input->post('pertemuan');
             $text = $this->input->post('text');
@@ -144,13 +137,10 @@ class Pertemuan extends CI_Controller {
             }
 
             redirect($this->agent->referrer());
-        } else {
-            redirect('Auth/backLogin');
-        }
+        
     }
 
     public function hapusTugas($id) {
-        if ($this->session->userdata('email') != '') {
             $file = $this->Pertemuan_model->getHasilTugasById($id);
             $filename = $file['upload'];
             $pertemuan = $file['pertemuan'];
@@ -162,13 +152,10 @@ class Pertemuan extends CI_Controller {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tugas berhasil dihapus</div>');
             redirect($this->agent->referrer());
 
-        } else {
-            redirect('Auth/backLogin');
-        }
+       
     }
 
     public function editTugas() {
-        if ($this->session->userdata('email') != '') {
             $id = $this->input->post('id_hasiltugas');
             $pertemuan = $this->input->post('pertemuan');
             $slide = $this->input->post('slide');
@@ -202,8 +189,6 @@ class Pertemuan extends CI_Controller {
             }
 
             redirect($this->agent->referrer());
-        } else {
-            redirect('Auth/backLogin');
-        }
+        
     }
 }

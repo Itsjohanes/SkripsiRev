@@ -7,11 +7,11 @@ class Posttest extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Posttest_model'); // Load the Posttest_model
+        checkRole(0);
     }
 
     public function index()
     {
-        if ($this->session->userdata('email') != '') {
             $data['title'] = "Post-Test";
             $data['user'] = $this->Posttest_model->getUserByEmail($this->session->userdata('email'));
             $data['soal'] = $this->Posttest_model->getPosttestQuestions();
@@ -33,14 +33,11 @@ class Posttest extends CI_Controller
                     $this->load->view('backend/siswa/footer');
                 }
             }
-        } else {
-            redirect('Auth/backLogin');
-        }
+        
     }
 
     public function simpanPostTest()
     {
-        if ($this->session->userdata('email') != '') {
             $pilihan = $this->input->post('pilihan');
             $id_posttest = $this->input->post('id_posttest');
             $jumlah = $this->input->post('jumlah');
@@ -88,8 +85,6 @@ class Posttest extends CI_Controller
             $this->Posttest_model->savePosttestResult($data);
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah mengerjakan Post-Test</div>');
             redirect('Materi');
-        } else {
-            redirect('Auth/backlogin');
-        }
+        
     }
 }

@@ -8,12 +8,12 @@ class Rapot extends CI_Controller
         parent::__construct();
         $this->load->model('Rapot_model');
         $this->load->library('cetak_pdf');
+        checkRole(0);
     }
 
     public function index()
     {
         // Only accessible if session exists
-        if ($this->session->userdata('email') != '') {
             $data['title'] = "Report";
             $data['user'] = $this->Rapot_model->getUserByEmail($this->session->userdata('email'));
             $data['pretest'] = $this->Rapot_model->getPretestBySiswaId($this->session->userdata('id'));
@@ -27,13 +27,10 @@ class Rapot extends CI_Controller
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/report', $data);
             $this->load->view('backend/siswa/footer');
-        } else {
-            redirect('Auth/backLogin');
-        }
+        
     }
     public function cetakPDF()
 	{
-        if ($this->session->userdata('email') != '') {
 
         $user = $this->Rapot_model->getUserByEmail($this->session->userdata('email'));
         $pretest = $this->Rapot_model->getPretestBySiswaId($this->session->userdata('id'));
@@ -111,11 +108,7 @@ class Rapot extends CI_Controller
 
 
         $pdf->Output('D','Raport.pdf');
-    }else{
-       
-                redirect('Auth/backLogin');
-            
-    }
+    
 
 	}
 }

@@ -8,11 +8,11 @@ class RekapNilai extends CI_Controller
         parent::__construct();
          $this->load->library('cetak_pdf');
         $this->load->model('ReportNilai_model');
+        checkRole(1);
     }
 
     public function index()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $data['title'] = "Rekap Nilai";
             // Mendapatkan data user
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
@@ -23,20 +23,13 @@ class RekapNilai extends CI_Controller
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/rekapnilai', $data);
             $this->load->view('backend/admin/footer');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+       
     }
 
 
 
 	public function cetakPDF()
 	{
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
         $pdf = new FPDF('L', 'mm', 'a3');
         $pdf->AddPage();
 
@@ -71,13 +64,7 @@ class RekapNilai extends CI_Controller
         }
 
         $pdf->Output('D','Rekap_Nilai.pdf');
-    }else{
-        if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-    }
+    
 
 	}
 }

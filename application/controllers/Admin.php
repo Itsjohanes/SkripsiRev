@@ -8,11 +8,11 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Admin_model');
+        checkRole(1);
        
     }
     public function index()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $data['title'] = "Home Admin";
             $data['user'] = $this->Admin_model->getUserByEmail($this->session->userdata('email'));
             $data['siswa'] = $this->Admin_model->getTotalStudents();
@@ -51,12 +51,6 @@ class Admin extends CI_Controller
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/index', $data);
             $this->load->view('backend/admin/footer');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 }

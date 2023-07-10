@@ -7,51 +7,37 @@ class KelolaListSiswa extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Kelolalistsiswa_model'); // Load the ListSiswa_model
+        checkRole(1);
     }
 
     public function index()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
-            $data['title'] = "List Siswa";
-            $data['user'] = $this->Kelolalistsiswa_model->getUserByEmail($this->session->userdata('email'));
-            $data['siswa'] = $this->Kelolalistsiswa_model->getSiswa();
+        $data['title'] = "List Siswa";
+        $data['user'] = $this->Kelolalistsiswa_model->getUserByEmail($this->session->userdata('email'));
+        $data['siswa'] = $this->Kelolalistsiswa_model->getSiswa();
 
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/listsiswa', $data);
-            $this->load->view('backend/admin/footer');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        $this->load->view('backend/admin/header', $data);
+        $this->load->view('backend/admin/sidebar', $data);
+        $this->load->view('backend/admin/listsiswa', $data);
+        $this->load->view('backend/admin/footer');
+        
     }
 
     public function editSiswa($id)
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
-            $data['title'] = "List Siswa";
-            $data['user'] = $this->Kelolalistsiswa_model->getUserByEmail($this->session->userdata('email'));
-            $data['siswa'] = $this->Kelolalistsiswa_model->getSiswaById($id);
+        $data['title'] = "List Siswa";
+        $data['user'] = $this->Kelolalistsiswa_model->getUserByEmail($this->session->userdata('email'));
+        $data['siswa'] = $this->Kelolalistsiswa_model->getSiswaById($id);
 
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/editsiswa', $data);
-            $this->load->view('backend/admin/footer');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        $this->load->view('backend/admin/header', $data);
+        $this->load->view('backend/admin/sidebar', $data);
+        $this->load->view('backend/admin/editsiswa', $data);
+        $this->load->view('backend/admin/footer');
+        
     }
 
     public function runEditSiswa()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $this->form_validation->set_rules('nama', 'Nama', 'required');
             $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
                 'matches' => 'Password doesn\'t match!',
@@ -79,28 +65,22 @@ class KelolaListSiswa extends CI_Controller {
                     redirect('KelolaListSiswa');
                 }
             }
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function deleteSiswa($id)
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
+       
             $this->Kelolalistsiswa_model->deleteSiswa($id);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulations! The account has been deleted</div>');
             redirect('ListSiswa');
-        } else {
+        
             if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
                 redirect('Auth/blocked');
             } else {
                 redirect('Auth/backLogin');
             }
-        }
+        
     }
 
 }

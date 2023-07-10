@@ -9,12 +9,14 @@ class Siswa extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Siswa_model');
+        checkRole(0);
+
+
         
     }
     public function index()
     {
-        // Only accessible if session exists
-        if ($this->session->userdata('email') != '') {
+
             $data['title'] = "Home Siswa";
             $data['kelompok'] = $this->Siswa_model->getKelompokByIdUser($this->session->userdata('id'));
             $data['user'] = $this->Siswa_model->getUserByEmail($this->session->userdata('email'));
@@ -86,8 +88,6 @@ class Siswa extends CI_Controller
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/index', $data);
             $this->load->view('backend/siswa/footer');
-        } else {
-            redirect('Auth/backLogin');
-        }
+        
     } 
 }

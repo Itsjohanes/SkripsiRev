@@ -8,11 +8,11 @@ class RandomKelompok extends CI_Controller {
         parent::__construct();
         $this->load->model('Randomkelompok_model');
         $this->load->model('Kelolalistsiswa_model');
+        checkRole(1);
     }
 
     public function index()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $data['title'] = "Random";
             $query = $this->db->select_max('kelompok')->get('tb_random');
             $result = $query->row();
@@ -25,18 +25,11 @@ class RandomKelompok extends CI_Controller {
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/random', $data);
             $this->load->view('backend/admin/footer');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function runRandom()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
             $siswa = $this->db->get_where('tb_akun', ['role' => "0"])->result_array();
             $jumlahSiswa = count($siswa);
 
@@ -73,29 +66,16 @@ class RandomKelompok extends CI_Controller {
             }
 
             redirect('RandomKelompok');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
     public function deleteRandom()
     {
-        if ($this->session->userdata('email') != '' && $this->session->userdata('role') == 1) {
 
             $this->Randomkelompok_model->deleteRandom();
 
             redirect('RandomKelompok');
-        } else {
-            if ($this->session->userdata('role') == 0 && $this->session->userdata('email') != '') {
-                redirect('Auth/blocked');
-            } else {
-                redirect('Auth/backLogin');
-            }
-        }
+        
     }
 
 }
