@@ -15,7 +15,7 @@ class KelolaPertemuan extends CI_Controller {
             $data['title'] = "Atur Pertemuan";
             $data['user'] = $this->Kelolapertemuan_model->getUserByEmail($this->session->userdata('email'));
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
-
+        
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/aturpertemuan', $data);

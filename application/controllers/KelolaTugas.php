@@ -8,6 +8,7 @@ class KelolaTugas extends CI_Controller {
         parent::__construct();
         // Load model
         $this->load->model('Kelolatugas_model');
+        $this->load->model('Kelolapertemuan_model');
         checkRole(1);
     }
 
@@ -16,7 +17,7 @@ class KelolaTugas extends CI_Controller {
             $data['title'] = 'Tugas';
             $data['user'] = $this->Kelolatugas_model->getUserByEmail($this->session->userdata('email'));
             $data['tugas'] = $this->Kelolatugas_model->getTugas();
-
+            $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/tugas', $data);

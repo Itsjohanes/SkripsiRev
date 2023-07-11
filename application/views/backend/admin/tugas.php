@@ -32,12 +32,12 @@
                        <div class="input-group input-group-outline">
 
                         <select class="form-control" required id="exampleFormControlSelect1" id="pertemuan" name="pertemuan">
-                            <option selected>Pertemuan</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-
+                        <option selected>Pertemuan</option>
+                        <?php foreach ($pertemuan as $pertemuan) : ?>
+                            <option value="<?php echo $pertemuan['id_pertemuan']; ?>">
+                                <?php echo $pertemuan['pertemuan']; ?>
+                            </option>
+                        <?php endforeach; ?>
                         </select>
                     </div>
                     </div>

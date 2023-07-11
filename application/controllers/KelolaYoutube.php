@@ -8,6 +8,7 @@ class KelolaYoutube extends CI_Controller {
         parent::__construct();
         // Load model
         $this->load->model('Kelolayoutube_model');
+        $this->load->model('Kelolapertemuan_model');
         checkRole(1);
     }
 
@@ -16,7 +17,7 @@ class KelolaYoutube extends CI_Controller {
             $data['title'] = 'Youtube';
             $data['user'] = $this->Kelolayoutube_model->getUserByEmail($this->session->userdata('email'));
             $data['materi'] = $this->Kelolayoutube_model->getYoutubeMateri();
-
+            $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/youtube', $data);
