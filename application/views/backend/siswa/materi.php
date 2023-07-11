@@ -190,7 +190,7 @@
         </div>
       </div>
       <div class="row mb-4">
-        <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
+        <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
           <div class="card">
             <div class="card-header pb-0">
               <div class="row">
@@ -238,88 +238,5 @@
                 </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="card h-100">
-            <div class="card-header pb-0">
-              <h6>Materi yang Ada pada Media Ini</h6>
-              <p class="text-sm">
-              </p>
-            </div>
-            <div class="card-body p-3">
-              <div class="timeline timeline-one-side">
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">filter_1</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Flowchart Diagram</h6>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">filter_2</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Pseudocode</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"></p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">filter_3</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Variable</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"></p>
-                  </div>
-                </div>
-                 <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">filter_4</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Tipe Data</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"></p>
-                  </div>
-                </div>
-                 <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">filter_5</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Input Output</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"></p>
-                  </div>
-                </div>
-                 <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">filter_6</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Operator</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"></p>
-                  </div>
-                </div>
-                 <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">filter_7</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Percabangan</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"></p>
-                  </div>
-                </div>
-                 <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="material-icons text-danger text-gradient">filter_8</i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Perulangan</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0"></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
