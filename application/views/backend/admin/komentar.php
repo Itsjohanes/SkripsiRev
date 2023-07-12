@@ -10,92 +10,32 @@
     <?php endif; ?>
     
       <div class="row mt-4">
-        <div class="col-lg-4 col-md-6 mt-4 mb-2">
+        
+        <?php foreach ($pertemuan as $item): ?>  
+          <div class="col-lg-4 col-md-6 mt-4 mb-2">
           <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
               <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
                 <div class="chart">
-                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/pertemuan1.png');?>" height="170"></img>
+                  <img id="chart-bars" class="chart-canvas" src="<?php echo base_url('assets/pertemuan/' . $item['gambar']); ?>" height="170"></img>
                 </div>
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('komentar/halamankomentar/1');?>"> Pertemuan 1  </a>
-              <p class="text-sm "> 
-
-                
-
-              </p>
+              <a class="mb-0 " href = "<?php echo base_url('komentar/halamankomentar/' . $item['id_pertemuan']); ?>"> Pertemuan <?php echo $item['id_pertemuan'];?>  </a>
+             
               <hr class="dark horizontal">
               <div class="d-flex ">
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 mt-4 mb-2">
-          <div class="card z-index-2  ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gradient-success shadow-success border-radius-lg py-3 pe-1">
-                <div class="chart">
-                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/pertemuan2.png');?>" height="170"></img>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('komentar/halamankomentar/2');?>"> Pertemuan 2 </a>
-                <p class="text-sm "> 
 
-                 
-
-              </p>              
-              <hr class="dark horizontal">
-              <div class="d-flex ">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 mt-4 mb-2">
-          <div class="card z-index-2 ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
-                <div class="chart">
-                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/pertemuan3.png');?>" height="170"></img>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('komentar/halamankomentar/3');?>"> Pertemuan 3 </a>
-            <p class="text-sm "> 
+        
+        
+        <?php endforeach; ?>
 
                
-              </p>              
-              <hr class="dark horizontal">
-              <div class="d-flex ">
-              
-              </div>
-            </div>
-          </div>
-        </div>
-
-         <div class="col-lg-4 mt-4 mb-2">
-          <div class="card z-index-2 ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
-                <div class="chart">
-                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/pertemuan4.png');?>" height="170"></img>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('komentar/halamankomentar/4');?>"> Pertemuan 4 </a>
-
-            <p class="text-sm "> 
-
-                
-
-              </p>              
-              <hr class="dark horizontal">
-              <div class="d-flex ">
               
               </div>
             </div>

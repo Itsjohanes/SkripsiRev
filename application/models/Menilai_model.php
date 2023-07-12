@@ -5,7 +5,10 @@ class Menilai_model extends CI_Model {
 
     public function getSiswa()
     {
-        return $this->db->get_where('tb_akun', ['role' => 0])->result_array();
+       $this->db->order_by('nama', 'ASC');
+       $result = $this->db->get_where('tb_akun', ['role' => 0])->result_array();
+       return $result;
+
     }
 
     public function getUserByEmail($email)

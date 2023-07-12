@@ -8,6 +8,7 @@ class MenilaiPertemuan extends CI_Controller {
         parent::__construct();
         // Load model
         $this->load->model('Menilaipertemuan_model');
+        $this->load->model('Kelolapertemuan_model');
         // Load the user agent library
         $this->load->library('user_agent');
         checkRole(1);
@@ -16,10 +17,11 @@ class MenilaiPertemuan extends CI_Controller {
 
     public function index($id = '')
     {
-            if($id >= 1 && $id <= 4){
+            $pertemuan = $this->Kelolapertemuan_model->getPertemuanbyId($id);
+
+            if($pertemuan){
                 $data['title'] = "Hasil Pertemuan ". $id;
                 $data['user'] = $this->Menilaipertemuan_model->getUserByEmail($this->session->userdata('email'));
-                // Join id_siswa dengan table siswa
                 $data['hasiltugas'] = $this->Menilaipertemuan_model->getHasilTugasPertemuan($id);
                 $data['pertemuan'] = $id;
                 $this->load->view('backend/admin/header', $data);
