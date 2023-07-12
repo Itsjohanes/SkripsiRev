@@ -12,11 +12,16 @@
     <div class="card-body">
         <?php echo form_open_multipart('kelolapertemuan/runeditpertemuan'); ?>
         <div class="form-group">
+            <input type = "hidden" name = "gambar_lama" value = "<?php echo $materi['gambar'];?>">
             <label for="link">Pertemuan</label>
             <div class="input-group input-group-outline">
             <input type = "hidden" value = "<?php echo $materi['id_pertemuan'];?>" name = "id_pertemuan" id = "id_pertemuan">
             <div class="input-group input-group-outline">
             <input type = "text" required class="form-control" disabled id = "pertemuan" name = "pertemuan" value = "<?php echo $materi['pertemuan'];?>">
+            </div>
+             <label for="nilai">Penjelasan</label>
+            <div class="input-group input-group-outline">
+            <textarea type="textarea" required class="form-control" id="penjelasan" name="penjelasan"><?php echo $materi['penjelasan'];  ?></textarea>
             </div>
             <label for="nilai">Video Conference Link</label>
             <div class="input-group input-group-outline">
@@ -25,6 +30,10 @@
             <label for="nilai">Tujuan Pembelajaran</label>
             <div class="input-group input-group-outline">
             <textarea type="textarea" required class="form-control" id="tp" name="tp"><?php echo $materi['tp'];  ?></textarea>
+            </div>
+            <label for="nilai">Gambar</label>
+            <div class="input-group input-group-outline">
+            <input type="file" class="form-control" id="gambar" name="gambar">
             </div>
             
 

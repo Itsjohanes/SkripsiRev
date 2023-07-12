@@ -18,6 +18,15 @@ class KelolaPertemuan_model extends CI_Model {
 
        
     }
+    public function tambahPertemuan($data)
+    {
+        $this->db->insert('tb_pertemuan', $data);
+        
+    }
+    public function hapusPertemuan($id){
+        $this->db->where('id_pertemuan', $id);
+        $this->db->delete('tb_pertemuan');
+    }
 
     public function aktifkanPertemuan($id)
     {
@@ -32,9 +41,11 @@ class KelolaPertemuan_model extends CI_Model {
         $this->db->where('id_pertemuan', $id);
         $this->db->update('tb_pertemuan');
     }
-    public function editTp($id,$tp,$link){
+    public function editPertemuan($id, $penjelasan, $gambar, $tp, $link){
         $this->db->set('videoconference',$link);
         $this->db->set('tp', $tp);
+        $this->db->set('gambar',$gambar);
+        $this->db->set('penjelasan', $penjelasan);
         $this->db->where('id_pertemuan', $id);
         $this->db->update('tb_pertemuan');
     }

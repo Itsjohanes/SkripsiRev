@@ -21,7 +21,7 @@
               </div>
             </div>
                 <br>
-                <?php echo form_open_multipart('kelolayoutube/tambahyoutube'); ?>
+                <?php echo form_open_multipart('kelolapertemuan/tambahpertemuan'); ?>
                 <div class="row">
                     <div class="col">
                     <label for = "pertemuan">Pertemuan</label>
@@ -42,7 +42,19 @@
                 <div class="row">
                     <div class="col">
                     <div class="input-group input-group-outline">
-                        <textarea class="form-control" name = "tp" id = "tp"></textarea>
+                        <textarea class="form-control" required name = "tp" id = "tp"></textarea>
+                    </div>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col">
+                    <label for = "pertemuan">Penjelasan</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <div class="input-group input-group-outline">
+                        <textarea class="form-control" required name = "penjelasan" id = "penjelasan"></textarea>
                     </div>
                     </div>
                 </div>
@@ -54,12 +66,23 @@
                 <div class="row">
                     <div class="col">
                     <div class="input-group input-group-outline">
-                        <input type = "text" class="form-control" name = "videoconference" id = "videoconference"></input>
+                        <input type = "text" required class="form-control" name = "videoconference" id = "videoconference"></input>
                     </div>
                     </div>
                 </div>
-
-                   
+                <div class="row">
+                    <div class="col">
+                    <label for = "pertemuan">Gambar</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <div class="input-group input-group-outline">
+                        <input type="file" required class=" btn  form-control-file" id="exampleFormControlFile1" name="gambar" />
+                    </div>
+                    </div>
+                </div>
+                   <input type = "submit" class="btn btn-success"/>
                 </form>
             </div>
         </div>
@@ -85,8 +108,10 @@
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Pertemuan</th>
+                                    <th scope="col">Penjelasan</th>
                                     <th scope="col">Tujuan Pembelajaran</th>
                                     <th scope="col">Video Conference</th>
+                                    <th scope="col">Gambar</th>
                                     <th scope="col">Aksi</th>
 
                                 </tr>
@@ -95,8 +120,10 @@
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Pertemuan</th>
+                                    <th scope="col">Penjelasan</th>
                                     <th scope="col">Tujuan Pembelajaran</th>
                                     <th scope="col">Video Conference</th>
+                                    <th scope="col">Gambar</th>
                                     <th scope="col">Aksi</th>
                                     
                                 </tr>
@@ -107,8 +134,10 @@
                                     <tr>
                                         <th scope="row"><?= $i; ?></th>
                                         <td><?= $j['pertemuan']; ?></td>
+                                        <td><?= $j['penjelasan']; ?></td>
                                         <td><?= $j['tp'];?></td>
                                         <td><?= $j['videoconference'];?></td>
+                                        <td><img src="<?= base_url('assets/pertemuan/' . $j['gambar']) ?>" width = "150px" height = "100px" alt="Gambar"></img>
                                         <td>
                                             <?php 
                                             if($j['aktif'] == '1'){
@@ -118,8 +147,11 @@
                                             }
                                             ?>
                                             <?php
-                                                echo '<a href="'.base_url('kelolapertemuan/editpertemuan/'.$j['id_pertemuan']).'" class="btn btn-warning btn-sm">Edit TP & Video Conference</a>';
+                                                echo '<a href="'.base_url('kelolapertemuan/editpertemuan/'.$j['id_pertemuan']).'" class="btn btn-warning btn-sm">Edit Pertemuan</a>';
 
+                                            ?>
+                                            <?php
+                                                echo '<a href="'.base_url('kelolapertemuan/deletepertemuan/'.$j['id_pertemuan']).'" class="btn btn-danger btn-sm">Hapus Pertemuan</a>';
 
                                             ?>
                                         </td>
