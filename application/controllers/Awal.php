@@ -8,6 +8,7 @@ class Awal extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Contact_model');
+        $this->load->model('Kelolapertemuan_model');
     }
     public function index()
     {
@@ -26,8 +27,11 @@ class Awal extends CI_Controller
     public function materi()
     {
         $data['title'] = "Materi";
+
+        //ambil data dari tb_pertemuan
+        $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
         $this->load->view('frontend/header.php', $data);
-        $this->load->view('frontend/materi.php');
+        $this->load->view('frontend/materi.php',$data);
         $this->load->view('frontend/footer.php');
     }
     public function tambahKontak()
