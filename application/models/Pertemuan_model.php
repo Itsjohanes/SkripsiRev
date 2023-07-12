@@ -16,6 +16,9 @@ class Pertemuan_model extends CI_Model {
     public function getHasilTugasById($id) {
         return $this->db->get_where('tb_hasiltugas', ['id_hasiltugas' => $id])->row_array();
     }
+    public function getPertemuanById($id){
+        return $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array();
+    }
 
     public function updateHasilTugas($id, $data) {
         $this->db->where('id_hasiltugas', $id);

@@ -11,7 +11,10 @@ class Pertemuan extends CI_Controller {
     }
 
     public function index($id = '') {
-            if($id >= 1 && $id <= 4){
+            //Query semua id_materi pada tb_pertemuan jika $id terdaftar
+            $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
+
+            if($id_pertemuan){
                 $data['title'] = "Materi Pertemuan 1";
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $data['materi'] = $this->db->get_where('tb_youtube', ['id_pertemuan' => $id])->result_array();
@@ -20,9 +23,6 @@ class Pertemuan extends CI_Controller {
                 $data['tugas']  = $this->db->get_where('tb_tugas', ['id_pertemuan' => $id])->row_array();
                 $data['comments'] = $this->Komentar_model->get_comments($id);
                 $data['pertemuan'] = $id;
-              
-
-
                 //query status dari tb_pertemuan
                 $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array();
                 $data['tp'] = $status;
@@ -66,8 +66,8 @@ class Pertemuan extends CI_Controller {
 
      public function materiPertemuan($id = ''){
 
-         
-            if($id >= 1 && $id <= 4){
+            $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
+            if($id_pertemuan){
                 $data['title'] = "Materi Pertemuan ". $id;
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $data['materi'] = $this->db->get_where('tb_materi', ['id_pertemuan' => $id])->row_array();

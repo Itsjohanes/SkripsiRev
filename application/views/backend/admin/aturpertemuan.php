@@ -10,8 +10,59 @@
     <?php if ($this->session->flashdata('category_error')) { ?>
         <div class="alert alert-danger"> <?= $this->session->flashdata('category_error') ?> </div>
     <?php } ?>
-    <div class="row no-gutters">
+ <div class="container-fluid py-4">
 
+    <div class="row">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Tambah Pertemuan</h6>
+              </div>
+            </div>
+                <br>
+                <?php echo form_open_multipart('kelolayoutube/tambahyoutube'); ?>
+                <div class="row">
+                    <div class="col">
+                    <label for = "pertemuan">Pertemuan</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <div class="input-group input-group-outline">
+                        <input type="text" class="form-control" id="pertemuan" name="pertemuan">
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <label for = "pertemuan">Tujuan Pembelajaran</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <div class="input-group input-group-outline">
+                        <textarea class="form-control" name = "tp" id = "tp"></textarea>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <label for = "pertemuan">Link Meet</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <div class="input-group input-group-outline">
+                        <input type = "text" class="form-control" name = "videoconference" id = "videoconference"></input>
+                    </div>
+                    </div>
+                </div>
+
+                   
+                </form>
+            </div>
+        </div>
         
 
 
@@ -67,7 +118,7 @@
                                             }
                                             ?>
                                             <?php
-                                                echo '<a href="'.base_url('kelolapertemuan/edittp/'.$j['id_pertemuan']).'" class="btn btn-warning btn-sm">Edit TP & Video Conference</a>';
+                                                echo '<a href="'.base_url('kelolapertemuan/editpertemuan/'.$j['id_pertemuan']).'" class="btn btn-warning btn-sm">Edit TP & Video Conference</a>';
 
 
                                             ?>

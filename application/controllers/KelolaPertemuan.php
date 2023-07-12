@@ -37,20 +37,20 @@ class KelolaPertemuan extends CI_Controller {
             redirect('kelolapertemuan');
         
     }
-    public function editTp($id){
-            $data['title'] = "Edit Tujuan Pembelajaran";
+    public function editPertemuan($id){
+            $data['title'] = "Edit Pertemuan";
             $data['user'] = $this->Kelolapertemuan_model->getUserByEmail($this->session->userdata('email'));
             $data['materi'] = $this->Kelolapertemuan_model->getPertemuanbyId($id);
 
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/edittp', $data);
+            $this->load->view('backend/admin/editpertemuan', $data);
             $this->load->view('backend/admin/footer');
 
        
 
     }
-    public function runEditTp(){
+    public function runEditPertemuan(){
            $tp = $this->input->post('tp');
            $id_pertemuan = $this->input->post('id_pertemuan');
            $link = $this->input->post('link');
