@@ -26,7 +26,7 @@ class Menilai extends CI_Controller {
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/tugastes', $data);
+            $this->load->view('backend/admin/menilai', $data);
             $this->load->view('backend/admin/footer');
        
     }

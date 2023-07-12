@@ -27,6 +27,11 @@
             </div>
             <br>
                 <?php echo form_open_multipart('kelolatugas/tambahtugas'); ?>
+                 <div class="row">
+                    <div class="col">
+                    <label for = "pertemuan">Pertemuan</label>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col">
                        <div class="input-group input-group-outline">
@@ -41,19 +46,29 @@
                         </select>
                     </div>
                     </div>
+                </div>
+                 <div class="row">
+                    <div class="col">
+                    <label for = "tugas">Tugas (PDF)</label>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col">
                        <div class="input-group input-group-outline">
 
-                        <input type="file" required class=" btn  form-control-file" id="exampleFormControlFile1" name="tugas" />
+                        <input type="file" required  id="exampleFormControlFile1" name="tugas" />
                     </div>
                     </div>
+                </div>
+                </br>
+                <div class="row">
                     <div class="col">
                         <Button class="btn btn-success">Submit</Button>
                     </div>
                 </div>
+                </div>
                 </form>
             </div>
-        </div>
 
 
 

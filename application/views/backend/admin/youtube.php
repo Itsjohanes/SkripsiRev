@@ -27,6 +27,12 @@
             </div>
                 <br>
                 <?php echo form_open_multipart('kelolayoutube/tambahyoutube'); ?>
+
+                 <div class="row">
+                    <div class="col">
+                    <label for = "pertemuan">Pertemuan</label>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col">
                     <div class="input-group input-group-outline">
@@ -41,21 +47,28 @@
                         </select>
                     </div>
                     </div>
-                    
-
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <label for = "link">Link</label>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col">
                     <div class="input-group input-group-outline">
                         <input type="text" class="form-control" placeholder="Link" id="link" name="link">
                     </div>
                     </div>
-
+                </div>
+                </br>
+                <div class="row">
                     <div class="col">
                         <Button class="btn btn-success">Submit</Button>
                     </div>
                 </div>
+                </div>
                 </form>
             </div>
-        </div>
  <div class="container-fluid py-4">
 
     <div class="row">
