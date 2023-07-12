@@ -14,6 +14,11 @@ class Posttest_model extends CI_Model
         $result = $this->db->get('tb_prepost')->result_array();
         return $result;
     }
+    public function getWaktu(){
+        $this->db->where('id_tes', 2);
+        $result = $this->db->get('tb_test')->row_array();
+        return $result;
+    }
 
     public function getPosttestQuestionCount()
     {

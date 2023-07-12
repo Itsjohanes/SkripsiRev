@@ -85,11 +85,16 @@ input:checked + .slider:before {
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Aktifkan Pre-Test</h6>
+                <h6 class="text-white text-capitalize ps-3">Atur Pre-Test</h6>
               </div>
             </div>
             <br>
                     <form id="myForm" method="post" action="<?php echo base_url('kelolapretest/pretesthandler');?>">
+                    <div class="row">
+                    <div class="col">
+                        <label for="waktu">Aktifkan Pre-test </label>
+                    </div>
+                    </div>
                     <label class="switch">
                     <?php
                     if($aktif['aktif'] == 1){
@@ -100,9 +105,28 @@ input:checked + .slider:before {
                     ?>
                 <span class="slider round"></span>
                 </form>
+                    
                 </label>
-                </div>
+                <br>
+                <form method="post" action="<?php echo base_url('kelolapretest/aturwaktu');?>">
+                    <div class="row">
+                    <div class="col">
+                        <label for="waktu">Waktu dalam menit </label>
+                    </div>
+                    </div>
 
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group input-group-outline">
+                        <input type="number" required class="form-control" placeholder="Waktu Pre-Test" id="waktu" name="waktu" value="<?php echo $aktif['waktu'];?>">
+                        </div>
+                    </div>
+                    <div class="col">
+                    <input type = "submit" class = "btn btn-success">
+                    </div>
+                </form>
+
+        </div>
         </div>
     <div class="container-fluid py-4">
 

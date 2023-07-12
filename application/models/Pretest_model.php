@@ -16,6 +16,11 @@ class Pretest_model extends CI_Model
         return $result;
 
     }
+    public function getWaktu(){
+        $this->db->where('id_tes', 1);
+        $result = $this->db->get('tb_test')->row_array();
+        return $result;
+    }
 
     public function getPretestQuestionCount()
     {

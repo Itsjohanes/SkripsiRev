@@ -12,6 +12,10 @@ class Kelolaposttest_model extends CI_Model {
     {
         return $this->db->get_where('tb_prepost', ['id_soal' => $id])->row_array();
     }
+    public function aturWaktu($data){
+        $this->db->where('id_tes', 2);
+        $this->db->update('tb_test', $data);
+    }
 
     public function tambahPosttest($data)
     {

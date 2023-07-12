@@ -76,7 +76,12 @@
 
 <script>
   // Timer Countdown
-  var timeLeft = 3600; // Waktu dalam detik (10 detik sebagai contoh)
+
+  //get timeLeft from database
+  var timeLeft = <?php echo $waktu; ?>;
+
+
+        
   var timerId;
 
   function startTimer() {
@@ -104,7 +109,7 @@
   if (storedTimeLeft) {
     timeLeft = parseInt(storedTimeLeft);
   } else {
-    timeLeft = 3600; // Atur waktu default jika tidak ada waktu tersisa yang disimpan
+    timeLeft = <?php echo $waktu; ?>;
   }
   // Jalankan timer saat halaman dimuat
   startTimer();

@@ -17,7 +17,9 @@ class Pretest extends CI_Controller
             $data['soal'] = $this->Pretest_model->getPretestQuestions();
             $data['jumlah'] = $this->Pretest_model->getPretestQuestionCount();
             $data['pretest'] = $this->Pretest_model->getPretestCountBySiswaId($this->session->userdata('id'));
-
+            $pretest = $this->Pretest_model->getWaktu();
+            //waktu yang dikirim dalam detik
+            $data['waktu'] = ($pretest['waktu'] * 60);
             if ($data['pretest'] > 0) {
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah pernah mengerjakan Pre-Test</div>');
                 redirect('materi');

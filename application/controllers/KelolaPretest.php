@@ -142,6 +142,14 @@ class KelolaPretest extends CI_Controller {
     }
 
     }
+    public function aturWaktu(){
+        $waktu = $this->input->post('waktu');
+        $data = [
+            'waktu' => $waktu
+        ];
+        $this->Kelolapretest_model->aturWaktu($data);
+        redirect('kelolapretest');
+    }
 
     public function activasiPretest(){
             //mengubah status pada tb_test menjadi 1

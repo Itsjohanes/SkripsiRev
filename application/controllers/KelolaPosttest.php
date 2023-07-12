@@ -17,13 +17,22 @@ class KelolaPosttest extends CI_Controller {
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['soal'] = $this->Kelolaposttest_model->getPosttest();
             $data['aktif'] = $this->db->get_where('tb_test', ['id_tes' => 2])->row_array();
-
+           
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/posttest', $data);
             $this->load->view('backend/admin/footer');
         
     }
+    public function aturWaktu(){
+        $waktu = $this->input->post('waktu');
+        $data = [
+            'waktu' => $waktu
+        ];
+        $this->Kelolaposttest_model->aturWaktu($data);
+        redirect('kelolaposttest');
+    }
+
 
     public function tambahPostTest()
     {

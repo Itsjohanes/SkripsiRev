@@ -17,7 +17,8 @@ class Posttest extends CI_Controller
             $data['soal'] = $this->Posttest_model->getPosttestQuestions();
             $data['jumlah'] = $this->Posttest_model->getPosttestQuestionCount();
             $data['posttest'] = $this->Posttest_model->getPosttestCountBySiswaId($this->session->userdata('id'));
-            
+            $posttest = $this->Posttest_model->getWaktu();
+            $data['waktu'] = ($posttest['waktu'] * 60);
             if ($data['posttest'] > 0) {
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah mengerjakan Post-Test</div>');
                 redirect('Materi');

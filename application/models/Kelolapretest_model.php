@@ -14,6 +14,10 @@ class Kelolapretest_model extends CI_Model {
     {
         $this->db->insert('tb_prepost', $data);
     }
+    public function aturWaktu($data){
+        $this->db->where('id_tes', 1);
+        $this->db->update('tb_test', $data);
+    }
 
     public function hapusPretest($id)
     {
