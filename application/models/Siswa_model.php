@@ -40,7 +40,15 @@ class Siswa_model extends CI_Model
     }
     public function getRanking(){
 
-        $this->db->select('nama, (COALESCE(pretest, 0) + COALESCE(tugas_1, 0) + COALESCE(tugas_2, 0) + COALESCE(tugas_3, 0) + COALESCE(tugas_4, 0) + COALESCE(posttest, 0)) AS total_nilai');
+        $pertemuan =  $this->db->get('tb_pertemuan')->result_array();
+        $jumlahPertemuan = count($pertemuan);
+        $string = "nama, (COALESCE(pretest, 0) + COALESCE(posttest, 0)";
+        for($i = 1;$i<=$jumlahPertemuan;$i++){
+            $string = $string." + COALESCE(tugas_".$i.", 0)";
+
+        }
+        $string = $string.") AS total_nilai";
+        $this->db->select($string);
         $this->db->from('tb_akun');
         $this->db->where('role','0');
         $this->db->order_by('total_nilai', 'desc');

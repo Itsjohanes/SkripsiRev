@@ -97,22 +97,16 @@
                 <div class="progress mb-4">
                     <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $persentasepretest ?>%" aria-valuenow="<?php echo $persentasepretest ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <label>Mengerjakan Tugas 1 (<span class="float-right"><?php echo $persentasetugas1;  ?>%)</span></label>
-                <div class="progress mb-4">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $persentasetugas1 ?>%" aria-valuenow="<?php echo $persentasetugas1 ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <label>Mengerjakan Tugas 2 (<span class="float-right"><?php echo $persentasetugas2;  ?>%)</span></label>
-                <div class="progress mb-4">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $persentasetugas2 ?>%" aria-valuenow="<?php echo $persentasetugas2 ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <label>Mengerjakan Tugas 3 (<span class="float-right"><?php echo $persentasetugas3;  ?>%)</span></label>
-                <div class="progress mb-4">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $persentasetugas3 ?>%" aria-valuenow="<?php echo $persentasetugas3 ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <label>Mengerjakan Tugas 4 (<span class="float-right"><?php echo $persentasetugas4;  ?>%)</span></label>
-                <div class="progress mb-4">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $persentasetugas4 ?>%" aria-valuenow="<?php echo $persentasetugas4 ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                <?php
+                    for ($i = 1; $i <= 4; $i++) {
+                        $persentaseTugas = ${"persentasetugas" . $i};
+                        echo '<label>Mengerjakan Tugas ' . $i . ' (<span class="float-right">' . $persentaseTugas . '%</span>)</label>';
+                        echo '<div class="progress mb-4">';
+                        echo '<div class="progress-bar bg-success" role="progressbar" style="width: ' . $persentaseTugas . '%" aria-valuenow="' . $persentaseTugas . '" aria-valuemin="0" aria-valuemax="100"></div>';
+                        echo '</div>';
+                    }
+
+                ?>
                 <label>Mengerjakan Post-Test (<span class="float-right"><?php echo $persentaseposttest;  ?>%)</span></label>
                 <div class="progress mb-4">
                     <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $persentaseposttest; ?>%" aria-valuenow="<?php echo $persentaseposttest; ?>" aria-valuemin="0" aria-valuemax="100"></div>

@@ -90,11 +90,13 @@ input:checked + .slider:before {
                 </div>
                 </div>
                 <br>
+                <div class="card-body">
                 <div class="row">
                     <div class="col">
                         <label for="waktu">Aktifkan Post-Test </label>
                     </div>
                     </div>
+                    
                     <form id="myForm" method="post" action="<?php echo base_url('kelolaPosttest/posttesthandler');?>">
                     <label class="switch">
                     <?php
@@ -126,6 +128,7 @@ input:checked + .slider:before {
                     </div>
                 </form>
                 </div>
+                </div>
 
         </div>
         </div>
@@ -138,11 +141,22 @@ input:checked + .slider:before {
                 </div>
                 </div>
                 <br>
+                <div class="card-body">
                 <?php echo form_open_multipart('kelolaposttest/tambahposttest'); ?>
+                <div class="row">
+                    <div class="col">
+                        <label for="waktu">Soal </label>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
                         <input type="text" required class="form-control" placeholder="Soal" id="soal" name="soal"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="waktu">Opsi A </label>
                     </div>
                 </div>
                 <div class="row">
@@ -153,8 +167,18 @@ input:checked + .slider:before {
                 </div>
                 <div class="row">
                     <div class="col">
+                        <label for="waktu">Opsi B </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
                         <div class="input-group input-group-outline">
                         <input type="text" required class="form-control" placeholder="Opsi B" id="b" name="b"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="waktu">Opsi C </label>
                     </div>
                 </div>
                 <div class="row">
@@ -165,8 +189,18 @@ input:checked + .slider:before {
                 </div>
                 <div class="row">
                     <div class="col">
+                        <label for="waktu">Opsi D </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
                         <div class="input-group input-group-outline">
                         <input type="text" required class="form-control" placeholder="Opsi D" id="d" name="d"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="waktu">Opsi E </label>
                     </div>
                 </div>
                 <div class="row">
@@ -177,16 +211,27 @@ input:checked + .slider:before {
                 </div>
                 <div class="row">
                     <div class="col">
+                        <label for="waktu">Kunci </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
                         <div class="input-group input-group-outline">
                         <input type="text" required class="form-control" placeholder="Kunci" id="kunci" name="kunci"></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <div class="input-group input-group-outline">
-                        <input type="file" class="form-control" id="formFile" name="gambar" /></div>
+                        <label for="waktu">Gambar </label>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group input-group-outline">
+                        <input type="file"  id="formFile" name="gambar" /></div>
+                    </div>
+                </div>
+                <br>
                 <div class="row">
                     <div class="col">
                         <Button class="btn btn-success">Submit</Button>
@@ -195,7 +240,7 @@ input:checked + .slider:before {
                 </div>
                 </form>
                 
-            
+            </div>
             </div>
         </div>
 

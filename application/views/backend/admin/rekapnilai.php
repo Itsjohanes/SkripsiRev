@@ -24,10 +24,11 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Nama Siswa</th>
                                     <th scope="col">Pre Test</th>
-                                    <th scope="col">Tugas 1</th>
-                                    <th scope="col">Tugas 2</th>
-                                    <th scope="col">Tugas 3</th>
-                                    <th scope="col">Tugas 4</th>
+                                    <?php
+                                        for ($i = 1; $i <= $jumlahTugas; $i++) {
+                                            echo "<th scope='col'>Tugas " . $i . "</th>";
+                                        }
+                                        ?>
                                     <th scope="col">Post Test</th>
 
 
@@ -38,10 +39,11 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Nama Siswa</th>
                                     <th scope="col">Pre Test</th>
-                                    <th scope="col">Tugas 1</th>
-                                    <th scope="col">Tugas 2</th>
-                                    <th scope="col">Tugas 3</th>
-                                    <th scope="col">Tugas 4</th>
+                                   <?php
+                                    for ($i = 1; $i <= $jumlahTugas; $i++) {
+                                        echo "<th scope='col'>Tugas " . $i . "</th>";
+                                    }
+                                    ?>
                                     <th scope="col">Post Test</th>
 
 
@@ -54,10 +56,12 @@
                                         <th scope="row"><?= $i; ?></th>
                                         <td><?= $j['nama']; ?></td>
                                         <td><?= $j['pretest']; ?></td>
-                                        <td><?= $j['tugas_1']; ?></td>
-                                        <td><?= $j['tugas_2']; ?></td>
-                                        <td><?= $j['tugas_3']; ?></td>
-                                        <td><?= $j['tugas_4']; ?></td>
+                                        <?php
+                                            for ($i = 1; $i <= $jumlahTugas; $i++) {
+                                                echo "<td>" . $j['tugas_' . $i] . "</td>";
+
+                                        }
+                                        ?>
                                         <td><?= $j['posttest'];?></td>
                                        
                                     </tr>

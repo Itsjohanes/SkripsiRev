@@ -9,6 +9,7 @@ class Siswa extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Siswa_model');
+        $this->load->model('Kelolapertemuan_model');
         checkRole(0); 
     }
     public function index()
@@ -21,63 +22,42 @@ class Siswa extends CI_Controller
 
             $pretest = $this->Siswa_model->getPretestCount($this->session->userdata('id'));
             $posttest = $this->Siswa_model->getPosttestCount($this->session->userdata('id'));
-            $tugas1 = $this->Siswa_model->getTugasCount($this->session->userdata('id'), 1);
-            $tugas2 = $this->Siswa_model->getTugasCount($this->session->userdata('id'), 2);
-            $tugas3 = $this->Siswa_model->getTugasCount($this->session->userdata('id'), 3);
-            $tugas4 = $this->Siswa_model->getTugasCount($this->session->userdata('id'), 4);
-            $jumlah = $tugas1 + $tugas2 + $tugas3 + $tugas4;
-            $data['persentasetugas'] = ($jumlah / 4) * 100;
+            $pertemuan = $this->Kelolapertemuan_model->getPertemuan();
+            $countPertemuan = count($pertemuan);
+            //Pertemuan dimulai dari 1
+            for($i = 1; $i<=$countPertemuan; $i++){
+                $tugas[$i] = $this->Siswa_model->getTugasCount($this->session->userdata('id'), $i);
+
+            }
+            $jumlah = 0;
+            for($i = 1;$i<=$countPertemuan;$i++){
+                 $jumlah = $jumlah + $tugas[$i];
+            }
+
+            $data['persentasetugas'] = ($jumlah / $countPertemuan) * 100;
             $data['ranking'] = $this->Siswa_model->getRanking();
             $data['persentasetest'] = ($pretest + $posttest) / 2 * 100;
             $belumSelesai = "";
             $sudahSelesai = "";
-
             $tesSudah = "";
-            if ($pretest != 0) {
+
+            if ($pretest != null) {
                 $tesSudah = $tesSudah . "Pretest, ";
             }
-            if ($posttest != 0) {
+            if ($posttest != null) {
                 $tesSudah = $tesSudah . "Posttest ";
             }
-
-            if ($tugas1 == 0) {
-                $belumSelesai = $belumSelesai . "Tugas 1, ";
-            } else {
-                $sudahSelesai = $sudahSelesai . "Tugas 1, ";
+            for($i = 1;$i<=$countPertemuan;$i++){
+                if ($tugas[$i] != null) {
+                    $sudahSelesai = $sudahSelesai . "Tugas " . $i . ", ";
+                }else{
+                    $belumSelesai = $belumSelesai . "Tugas " . $i . ", ";
+                }
             }
-            if ($tugas2 == 0) {
-                $belumSelesai = $belumSelesai . "Tugas 2, ";
-            } else {
-                $sudahSelesai = $sudahSelesai . "Tugas 2, ";
-            }
-            if ($tugas3 == 0) {
-                $belumSelesai = $belumSelesai . "Tugas 3, ";
-            } else {
-                $sudahSelesai = $sudahSelesai . "Tugas 3, ";
-            }
-            if ($tugas4 == 0) {
-                $belumSelesai = $belumSelesai . "Tugas 4 ";
-            } else {
-                $sudahSelesai = $sudahSelesai . "Tugas 4 ";
-            }
-
+            
             $data['tesSudah'] = $tesSudah;
             $data['sudahSelesai'] = $sudahSelesai;
             $data['belumSelesai'] = $belumSelesai;
-
-            $data['tugasbelumselesai'] = array();
-            if ($tugas1 == 0) {
-                array_push($data['tugasbelumselesai'], "Tugas 1");
-            }
-            if ($tugas2 == 0) {
-                array_push($data['tugasbelumselesai'], "Tugas 2");
-            }
-            if ($tugas3 == 0) {
-                array_push($data['tugasbelumselesai'], "Tugas 3");
-            }
-            if ($tugas4 == 0) {
-                array_push($data['tugasbelumselesai'], "Tugas 4");
-            }
             $data['siswa'] = $this->Siswa_model->getSiswaByRole(0);
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);

@@ -15,7 +15,7 @@ class Pertemuan extends CI_Controller {
             $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
 
             if($id_pertemuan){
-                $data['title'] = "Materi Pertemuan 1";
+                $data['title'] = "Materi Pertemuan";
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $data['materi'] = $this->db->get_where('tb_youtube', ['id_pertemuan' => $id])->result_array();
                 $data['hasiltugas'] = $this->db->get_where('tb_hasiltugas', ['id_pertemuan' => $id, 'id_siswa' => $this->session->userdata('id')])->row_array();

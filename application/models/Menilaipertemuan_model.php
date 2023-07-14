@@ -49,28 +49,11 @@ class Menilaipertemuan_model extends CI_Model {
             if ($query->num_rows() > 0) {
                 $row = $query->row();
                 $id_siswa = $row->id_siswa;
-
-                if ($id_pertemuan == 1) {
-                    // Update kolom tugas_1 pada tb_akun
-                    $this->db->set('tugas_1', $data['nilai']);
-                    $this->db->where('id', $id_siswa);
-                    $this->db->update('tb_akun');
-                } else if ($id_pertemuan == 2) {
-                    // Update kolom tugas_2 pada tb_akun
-                    $this->db->set('tugas_2', $data['nilai']);
-                    $this->db->where('id', $id_siswa);
-                    $this->db->update('tb_akun');
-                } else if ($id_pertemuan == 3) {
-                    // Update kolom tugas_3 pada tb_akun
-                    $this->db->set('tugas_3', $data['nilai']);
-                    $this->db->where('id', $id_siswa);
-                    $this->db->update('tb_akun');
-                } else if ($id_pertemuan == 4) {
-                    // Update kolom tugas_4 pada tb_akun
-                    $this->db->set('tugas_4', $data['nilai']);
-                    $this->db->where('id', $id_siswa);
-                    $this->db->update('tb_akun');
-                }
+                
+                $this->db->set('tugas_'.$id_pertemuan, $data['nilai']);
+                $this->db->where('id', $id_siswa);
+                $this->db->update('tb_akun');
+                
             }
 
             $this->db->where('id_hasiltugas', $id);

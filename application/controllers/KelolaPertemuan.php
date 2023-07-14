@@ -73,10 +73,10 @@ class KelolaPertemuan extends CI_Controller {
                         'gambar' => $gambar
                     );
                     $this->Kelolapertemuan_model->tambahPertemuan($data);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tugas berhasil ditambahkan</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pertemuan berhasil ditambahkan</div>');
                     redirect('kelolapertemuan');
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Tugas gagal ditambahkan</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertemuan gagal ditambahkan</div>');
                     redirect('kelolapertemuan');
                 }
             }
@@ -84,11 +84,16 @@ class KelolaPertemuan extends CI_Controller {
     }
     public function deletePertemuan($id)
     {
+            if($id == 1){
+                $this->session->set_flashdata('category_error', 'Khusus Pertemuan 1 tidak dapat dihapus');
+                redirect('kelolapertemuan');
+            }
+
             $pertemuan = $this->Kelolapertemuan_model->getPertemuanById($id);
             $gambar = $pertemuan['gambar'];
             unlink(FCPATH . 'assets/pertemuan/' . $gambar);
             $this->Kelolapertemuan_model->hapusPertemuan($id);
-            $this->session->set_flashdata('category_success', 'Tugas berhasil dihapus');
+            $this->session->set_flashdata('category_success', 'Pertemuan berhasil dihapus');
             redirect('kelolapertemuan');
         
     }
@@ -98,7 +103,7 @@ class KelolaPertemuan extends CI_Controller {
            $penjelasan = $this->input->post('penjelasan');
            $link = $this->input->post('link');
            $gambarLama = $this->input->post('gambar_lama');
-            $gambar = $_FILES['gambar']['name'];
+           $gambar = $_FILES['gambar']['name'];
             if ($gambar) {
                 $config['allowed_types'] = 'jpg|jpeg|png';
                 $config['max_size'] = '2048';
@@ -109,7 +114,7 @@ class KelolaPertemuan extends CI_Controller {
                         unlink(FCPATH . './assets/pertemuan/' . $gambarLama);
                         $gambar = $this->upload->data('file_name');
                     } else {
-                        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Tugas gagal diubah</div>');
+                        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertemuan gagal diubah</div>');
                         redirect('kelolaPertemuan');
                     }
                 } else {
@@ -120,7 +125,7 @@ class KelolaPertemuan extends CI_Controller {
             }
 
            $this->Kelolapertemuan_model->editPertemuan($id_pertemuan,$penjelasan,$gambar,$tp,$link);
-           $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tujuan Pembelajaran berhasil diubah!</div>');
+           $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pertemuan berhasil diubah!</div>');
            redirect('kelolapertemuan');
     }
 

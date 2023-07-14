@@ -26,6 +26,7 @@
               </div>
             </div>
             <br>
+            <div class="card-body">
                 <?php echo form_open_multipart('kelolamateri/tambahmateri'); ?>
                 <div class="row">
                     <div class="col">
@@ -70,7 +71,7 @@
                 </div>
                 </form>
             </div>
-
+</div>
 
 
 

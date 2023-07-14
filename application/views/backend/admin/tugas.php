@@ -26,6 +26,7 @@
               </div>
             </div>
             <br>
+            <div class="card-body">
                 <?php echo form_open_multipart('kelolatugas/tambahtugas'); ?>
                  <div class="row">
                     <div class="col">
@@ -69,7 +70,7 @@
                 </div>
                 </form>
             </div>
-
+</div>
 
 
 

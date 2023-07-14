@@ -8,6 +8,7 @@ class RekapNilai extends CI_Controller
         parent::__construct();
          $this->load->library('cetak_pdf');
         $this->load->model('ReportNilai_model');
+        $this->load->model('Kelolapertemuan_model');
         checkRole(1);
     }
 
@@ -18,7 +19,8 @@ class RekapNilai extends CI_Controller
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             // Mendapatkan data report
             $data['report'] = $this->ReportNilai_model->getReportData();
-
+            $pertemuan = $this->Kelolapertemuan_model->getPertemuan();
+            $data['jumlahTugas'] = count($pertemuan);
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/rekapnilai', $data);
@@ -30,6 +32,8 @@ class RekapNilai extends CI_Controller
 
 	public function cetakPDF()
 	{
+        $pertemuan = $this->Kelolapertemuan_model->getPertemuan();
+        $jumlahTugas = count($pertemuan);
         $pdf = new FPDF('L', 'mm', 'a3');
         $pdf->AddPage();
 
@@ -42,11 +46,12 @@ class RekapNilai extends CI_Controller
         $pdf->Cell(8, 10, 'No', 1, 0, 'C');
         $pdf->Cell(100, 10, 'Nama Siswa', 1, 0, 'C');
         $pdf->Cell(35, 10, 'Pre-Test', 1, 0, 'C');
-        $pdf->Cell(35, 10, 'Pertemuan 1', 1, 0, 'C');
-        $pdf->Cell(35, 10, 'Pertemuan 2', 1, 0, 'C');
-        $pdf->Cell(35, 10, 'Pertemuan 3', 1, 0, 'C');
-        $pdf->Cell(35, 10, 'Pertemuan 4', 1, 0, 'C');
+        for($i = 1;$i<=$jumlahTugas;$i++){
+            $pdf->Cell(35, 10, 'Tugas '.$i, 1, 0, 'C');
+
+        }
         $pdf->Cell(35, 10, 'Post-Test', 1, 1, 'C');
+       
 
         $pdf->SetFont('Arial', '', 10);
         $data = $this->ReportNilai_model->getReportData();
@@ -55,10 +60,11 @@ class RekapNilai extends CI_Controller
             $pdf->Cell(8, 10, $no, 1, 0);
             $pdf->Cell(100, 10, $data['nama'], 1, 0);
             $pdf->Cell(35, 10, $data['pretest'], 1, 0);
-            $pdf->Cell(35, 10, $data['tugas_1'], 1, 0);
-            $pdf->Cell(35, 10, $data['tugas_2'], 1, 0);
-            $pdf->Cell(35, 10, $data['tugas_3'], 1, 0);
-            $pdf->Cell(35, 10, $data['tugas_4'], 1, 0);
+            for($i = 1;$i<=$jumlahTugas;$i++){
+                
+                $pdf->Cell(35, 10, $data['tugas_'.$i], 1, 0);
+
+            }
             $pdf->Cell(35, 10, $data['posttest'], 1, 1);
             $no++;
         }

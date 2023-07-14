@@ -34,7 +34,7 @@ class KelolaYoutube extends CI_Controller {
                 'youtube' => $link
             );
             $this->Kelolayoutube_model->tambahYoutubeMateri($data);
-            refresh();
+            redirect('kelolayoutube');
 
         
     }

@@ -20,9 +20,9 @@
                 <h6 class="text-white text-capitalize ps-3">Tambah Pertemuan</h6>
               </div>
             </div>
+            <div class="card-body">
                 <br>
                 <?php echo form_open_multipart('kelolapertemuan/tambahpertemuan'); ?>
-                
                 <div class="row">
                     <div class="col">
                     <label for = "pertemuan">Pertemuan</label>
@@ -92,7 +92,7 @@
                 </form>
             </div>
         </div>
-        
+        </div>
 
 
 

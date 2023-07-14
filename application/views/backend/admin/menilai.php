@@ -15,7 +15,7 @@
           <div class="col-lg-4 col-md-6 mt-4 mb-2">
           <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gradient-success shadow-success border-radius-lg py-3 pe-1">
+              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
                 <div class="chart">
                   <img id="chart-bars" class="chart-canvas" src="<?php echo base_url('assets/pertemuan/' . $item['gambar']); ?>" height="170"></img>
                 </div>

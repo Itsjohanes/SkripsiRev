@@ -76,7 +76,7 @@
 
 <script>
   // Timer Countdown
-  var timeLeft = <?php echo $waktu; ?>;
+  var timeLeftPosttest = <?php echo $waktu; ?>;
   var timerId;
 
   function startTimer() {
@@ -84,27 +84,27 @@
   }
 
   function countdown() {
-    var minutes = Math.floor(timeLeft / 60);
-    var seconds = timeLeft % 60;
+    var minutes = Math.floor(timeLeftPosttest / 60);
+    var seconds = timeLeftPosttest % 60;
 
     // Tampilkan waktu pada elemen dengan id 'timer'
     document.getElementById('timer').innerHTML = minutes + ' menit ' + seconds + ' detik';
 
-    if (timeLeft === 0) {
+    if (timeLeftPosttest === 0) {
       clearInterval(timerId);
       // Redirect ke method SimpanPostTest
       document.getElementById('posttest-form').submit();
     } else {
-      timeLeft--;
-      localStorage.setItem('timeLeft', timeLeft); 
+      timeLeftPosttest--;
+      localStorage.setItem('timeLeftPosttest', timeLeftPosttest); 
     }
   }
 
-  var storedTimeLeft = localStorage.getItem('timeLeft');
+  var storedTimeLeft = localStorage.getItem('timeLeftPosttest');
   if (storedTimeLeft) {
-    timeLeft = parseInt(storedTimeLeft);
+    timeLeftPosttest = parseInt(storedTimeLeft);
   } else {
-    timeLeft = <?php echo $waktu; ?>; // Atur waktu default jika tidak ada waktu tersisa yang disimpan
+    timeLeftPosttest = <?php echo $waktu; ?>; // Atur waktu default jika tidak ada waktu tersisa yang disimpan
   }
   
   startTimer();

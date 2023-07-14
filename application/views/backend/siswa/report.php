@@ -18,10 +18,12 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Pre-Test</th>
                                     <th scope="col">Post-Test</th>
-                                    <th scope="col">Tugas 1</th>
-                                    <th scope="col">Tugas 2</th>
-                                    <th scope="col">Tugas 3</th>
-                                    <th scope="col">Tugas 4</th>
+                                    <?php
+                                        for ($i = 1; $i <= $pertemuan; $i++) {
+                                            echo "<th scope='col'>Tugas " . $i . "</th>";
+                                        }
+                                        ?>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,65 +47,17 @@
                                         }
                                         ?>
                                     </td>
-                                    <td>
-                                        <?php
-                                        if ($tugas1 != null) {
-                                            
-                                            if($tugas1['nilai'] == null){
-                                                echo "Belum dinilai";
-                                            }else{
-                                                echo  $tugas1['nilai'];
+                                         <?php
+                                        for ($i = 1; $i <= $pertemuan; $i++) {
+                                            echo "<td>";
+                                            if ($tugas[$i] != null) {
+                                                echo $tugas[$i]['nilai'];
+                                            } else {
+                                                echo "Belum Dikerjakan";
                                             }
-                                            
-                                        } else {
-                                            echo "Belum Dinilai/Belum Dikerjakan";
+                                            echo "</td>";
                                         }
-                                        ?>
-                                    </td>
-                                    <td>
-                                        <?php
-                                        if ($tugas2 != null) {
-                                            if($tugas2['nilai'] == null){
-                                                echo "Belum Dinilai";
-                                                
-                                            }else{
-                                                echo  $tugas2['nilai'];
-                                            }
-                                        } else {
-                                            echo "Belum Dikerjakan";
-                                        }
-                                        ?>
-
-                                    </td>
-                                    <td>
-                                        <?php
-                                        if ($tugas3 != null) {
-                                           if($tugas3['nilai'] == null){
-                                            
-                                                echo "Belum Dinilai";
-                                                
-                                            }else{
-                                                echo  $tugas3['nilai'];
-                                            }
-                                        } else {
-                                            echo "Belum Dikerjakan";
-                                        }
-                                        ?>
-
-                                    </td>
-                                    <td>
-                                        <?php
-                                        if ($tugas4 != null) {
-                                            if($tugas4['nilai'] == ''){
-                                                echo "Belum Dinilai";
-                                            }else{
-                                                echo  $tugas4['nilai'];
-                                            }
-                                        } else {
-                                            echo "Belum Dikerjakan";
-                                        }
-                                        ?>
-                                    </td>
+                                        ?>   
                                 </tr>
                             </tbody>
                         </table>

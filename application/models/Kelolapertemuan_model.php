@@ -21,11 +21,20 @@ class KelolaPertemuan_model extends CI_Model {
     public function tambahPertemuan($data)
     {
         $this->db->insert('tb_pertemuan', $data);
+        //tambahkan collumn pada tb_akun 
+        $this->db->query("ALTER TABLE tb_akun ADD COLUMN `tugas_".$this->db->insert_id()."` INT  NULL  AFTER `posttest`");
+
+
+        
         
     }
     public function hapusPertemuan($id){
+        //delete column pada tb_akun
+        $this->db->query("ALTER TABLE tb_akun DROP COLUMN `tugas_".$id."`");
+    
         $this->db->where('id_pertemuan', $id);
         $this->db->delete('tb_pertemuan');
+
     }
 
     public function aktifkanPertemuan($id)

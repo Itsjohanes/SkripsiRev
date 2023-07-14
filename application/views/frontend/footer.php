@@ -19,7 +19,7 @@
                 </a>
             </li>
         </ul>
-        <p class="mb-0">Copyright © 2023 Johannes Alexander Putra</p>
+        <p class="mb-0">Copyright © <?php echo date("Y") ;?> Johannes Alexander Putra</p>
     </div>
 </footer>
 <script src="<?= base_url('assets/'); ?>frontend/bootstrap/js/bootstrap.min.js"></script>

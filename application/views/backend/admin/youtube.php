@@ -26,6 +26,7 @@
               </div>
             </div>
                 <br>
+                <div class="card-body">
                 <?php echo form_open_multipart('kelolayoutube/tambahyoutube'); ?>
 
                  <div class="row">
@@ -68,6 +69,7 @@
                 </div>
                 </div>
                 </form>
+            </div>
             </div>
  <div class="container-fluid py-4">
 

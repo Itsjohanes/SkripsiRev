@@ -94,7 +94,7 @@
                  if($sudahSelesai == ''){
                     echo "Belum ada tugas yang selesai";
                  }else{
-                   echo $belumSelesai; 
+                   echo $sudahSelesai; 
 
                  }
                  ?>
