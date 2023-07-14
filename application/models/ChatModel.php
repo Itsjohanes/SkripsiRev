@@ -50,6 +50,18 @@ class ChatModel extends CI_Model
     {
         $this->db->insert($tabel, $in);
     }
+
+    public function getChatData()
+    {
+        $id_lawan_sesi = $this->session->userdata('id');
+
+        $this->db->select('tb_pesan.*, tb_akun.nama');
+        $this->db->from('tb_pesan');
+        $this->db->join('tb_akun', 'tb_pesan.id = tb_akun.id');
+        $this->db->where('tb_pesan.id_lawan', $id_lawan_sesi);
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
                         
 /* End of file ChatModel.php */

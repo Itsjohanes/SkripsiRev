@@ -9,6 +9,7 @@ class MenilaiPosttest extends CI_Controller {
         parent::__construct();
         // Load model
         $this->load->model('Menilaiposttest_model');
+        $this->load->model('ChatModel');
         checkRole(1);
     }
 
@@ -16,6 +17,7 @@ class MenilaiPosttest extends CI_Controller {
     {
             $data['title'] = "Hasil Post-Test";
             $data['user'] = $this->Menilaiposttest_model->getUserByEmail($this->session->userdata('email'));
+            $data['notifchat'] = $this->ChatModel->getChatData();
             // Join id_siswa dengan table siswa
             $data['posttest'] = $this->Menilaiposttest_model->getHasilPosttest();
             $this->load->view('backend/admin/header', $data);

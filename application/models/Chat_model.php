@@ -14,5 +14,6 @@ class Chat_model extends CI_Model
     {
         $this->db->insert('tb_globalchat', $data);
     }
+    
 }
 ?>

@@ -9,6 +9,7 @@ class RekapNilai extends CI_Controller
          $this->load->library('cetak_pdf');
         $this->load->model('ReportNilai_model');
         $this->load->model('Kelolapertemuan_model');
+        $this->load->model('ChatModel');
         checkRole(1);
     }
 
@@ -17,6 +18,7 @@ class RekapNilai extends CI_Controller
             $data['title'] = "Rekap Nilai";
             // Mendapatkan data user
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+            $data['notifchat'] = $this->ChatModel->getChatData();
             // Mendapatkan data report
             $data['report'] = $this->ReportNilai_model->getReportData();
             $pertemuan = $this->Kelolapertemuan_model->getPertemuan();

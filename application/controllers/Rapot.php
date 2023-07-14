@@ -14,7 +14,7 @@ class Rapot extends CI_Controller
 
     public function index()
     {
-        // Only accessible if session exists
+        
             $data['title'] = "Report";
             $data['user'] = $this->Rapot_model->getUserByEmail($this->session->userdata('email'));
             $data['pretest'] = $this->Rapot_model->getPretestBySiswaId($this->session->userdata('id'));
@@ -32,7 +32,7 @@ class Rapot extends CI_Controller
 
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
-            $this->load->view('backend/siswa/report', $data);
+            $this->load->view('backend/siswa/rapot', $data);
             $this->load->view('backend/siswa/footer');
         
     }

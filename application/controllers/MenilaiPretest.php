@@ -9,6 +9,7 @@ class MenilaiPretest extends CI_Controller {
         parent::__construct();
         // Load model
         $this->load->model('Menilaipretest_model');
+        $this->load->model('ChatModel');
         checkRole(1);
     }
 
@@ -16,6 +17,7 @@ class MenilaiPretest extends CI_Controller {
     {
             $data['title'] = "Hasil Pre-Test";
             $data['user'] = $this->Menilaipretest_model->getUserByEmail($this->session->userdata('email'));
+            $data['notifchat'] = $this->ChatModel->getChatData();
             // Join id_siswa dengan table siswa
             $data['pretest'] = $this->Menilaipretest_model->getHasilPretest();
             $this->load->view('backend/admin/header', $data);

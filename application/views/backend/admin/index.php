@@ -98,7 +98,7 @@
                     <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $persentasepretest ?>%" aria-valuenow="<?php echo $persentasepretest ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <?php
-                    for ($i = 1; $i <= 4; $i++) {
+                    for ($i = 1; $i <= $jumlahpertemuan; $i++) {
                         $persentaseTugas = ${"persentasetugas" . $i};
                         echo '<label>Mengerjakan Tugas ' . $i . ' (<span class="float-right">' . $persentaseTugas . '%</span>)</label>';
                         echo '<div class="progress mb-4">';

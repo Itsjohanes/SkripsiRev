@@ -343,6 +343,39 @@
                 </div>
               </a>
             </li>
+              <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    
+                    <?php
+                    foreach ($notifchat as $s) {
+                    ?>
+                    <div class="d-flex py-1">
+                      <div class="d-flex flex-column justify-content-center">
+                          <h6 class="text-sm font-weight-normal mb-1">
+                              <span class="font-weight-bold">New message</span> from <?php echo $s->nama; ?>
+                          </h6>
+                          <p class="text-xs text-secondary mb-0">
+                              <i class="fa fa-clock me-1"></i>
+                              <?php echo $s->waktu;?>
+                          </p>
+                      </div>
+                  </div>
+                  <?php
+                    }
+                  ?>
+                    
+                  </a>
+                </li>
+                
+                
+              </ul>
+            </li>
+            
             <li class="nav-item px-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0">
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>

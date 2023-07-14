@@ -8,12 +8,14 @@ class KelolaPosttest extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Kelolaposttest_model');
+        $this->load->model('ChatModel');
         checkRole(1);
     }
 
     public function index()
     {
             $data['title'] = "Post-Test";
+            $data['notifchat'] = $this->ChatModel->getChatData();
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['soal'] = $this->Kelolaposttest_model->getPosttest();
             $data['aktif'] = $this->db->get_where('tb_test', ['id_tes' => 2])->row_array();
@@ -37,6 +39,7 @@ class KelolaPosttest extends CI_Controller {
     public function tambahPostTest()
     {
             //memasukan soal dan gambar ke tb_pretest
+            
             $soal = $this->input->post('soal');
             $opsi_a = $this->input->post('a');
             $opsi_b = $this->input->post('b');
@@ -89,7 +92,7 @@ class KelolaPosttest extends CI_Controller {
             $data['title'] = 'Edit Post-Test';
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['soal'] = $this->Kelolaposttest_model->getPosttestById($id);
-
+            $data['notifchat'] = $this->ChatModel->getChatData();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/editPostTest', $data);

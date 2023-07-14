@@ -6,6 +6,7 @@ class GlobalChat extends CI_Controller
     {
         parent::__construct();
         $this->load->model('chat_model');
+        $this->load->model('ChatModel');
         checkRole(0);
         $this->role = $this->session->userdata('role');
     }
@@ -13,6 +14,7 @@ class GlobalChat extends CI_Controller
     public function index()
     {
         if ($this->role == 1) {
+        $data['notifchat'] = $this->ChatModel->getChatData();
         $data['chat_messages'] = $this->chat_model->get_chat_messages();
 
 
@@ -25,7 +27,7 @@ class GlobalChat extends CI_Controller
         $this->load->view('backend/admin/footer');
 
         }else{
-            
+        $data['notifchat'] = $this->ChatModel->getChatData();   
         $data['chat_messages'] = $this->chat_model->get_chat_messages();
         $data['title'] = "Global Chat";
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();

@@ -8,6 +8,7 @@ class Komentar extends CI_Controller {
         parent::__construct();
         // Load model
         $this->load->model('Komentar_model');
+        $this->load->model('ChatModel');
         $this->load->model('Kelolapertemuan_model');
         checkRole(1);
     }
@@ -15,6 +16,7 @@ class Komentar extends CI_Controller {
     public function index()
     {
             $data['title'] = "Komentar";
+            $data['notifchat'] = $this->ChatModel->getChatData();
             $data['user'] = $this->Komentar_model->getUserByEmail($this->session->userdata('email'));
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
             $this->load->view('backend/admin/header', $data);
@@ -24,8 +26,10 @@ class Komentar extends CI_Controller {
         
     }
     public function halamanKomentar($id = ''){
+        
               $pertemuan = $this->Kelolapertemuan_model->getPertemuanbyId($id);
               if ($pertemuan) {
+                $data['notifchat'] = $this->ChatModel->getChatData();
                 $data['title'] = "Komentar Pertemuan ". $id;
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $data['pertemuan'] = $id;

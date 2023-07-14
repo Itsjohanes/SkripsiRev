@@ -9,6 +9,7 @@ class Admin extends CI_Controller
         parent::__construct();
         $this->load->model('Admin_model');
         $this->load->model('Kelolapertemuan_model');
+        $this->load->model('ChatModel');
         checkRole(1);
        
     }
@@ -29,24 +30,28 @@ class Admin extends CI_Controller
             for($i = 1;$i<=$jumlahPertemuan;$i++){
                 $tugas[$i] = $this->Admin_model->getTotalHasilTugas($i);
             }
-
-           
-            
             if ($jumlahSiswa != 0) {
                 $data['persentasepretest'] = ($jumlahPretest / $jumlahSiswa) * 100;
                 $data['persentaseposttest'] = ($jumlahPosttest / $jumlahSiswa) * 100;
                 for($i = 1;$i<=$jumlahPertemuan;$i++){
                     $data['persentasetugas'.$i] = ($tugas[$i] / $jumlahSiswa) * 100;
-              
                 }
               
             } else {
                 $data['persentasetugas'.$i] = 0 * 100;
             }
-
-            //ambil data dari tb_akun yang memiliki nilai total nilai tertinggi
+            //ambil id dari session
+            $id_lawan_sesi = $this->session->userdata('id');
+            
+            $this->db->select('tb_pesan.*, tb_akun.nama');
+            $this->db->from('tb_pesan');
+            $this->db->join('tb_akun', 'tb_pesan.id = tb_akun.id');
+            $this->db->where('tb_pesan.id_lawan', $id_lawan_sesi);
+            $query = $this->db->get();
+            
+            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['jumlahpertemuan'] = $jumlahPertemuan;
             $data['nilaiTertinggi'] = $this->Admin_model->getNilaiTertinggi();
-
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/index', $data);

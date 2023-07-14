@@ -7,6 +7,7 @@ class KelolaPertemuan extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Kelolapertemuan_model'); // Load the KelolaPertemuan_model
+        $this->load->model('ChatModel');
         checkRole(1);
     }
 
@@ -15,7 +16,7 @@ class KelolaPertemuan extends CI_Controller {
             $data['title'] = "Atur Pertemuan";
             $data['user'] = $this->Kelolapertemuan_model->getUserByEmail($this->session->userdata('email'));
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
-        
+            $data['notifchat'] = $this->ChatModel->getChatData();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/aturpertemuan', $data);
@@ -41,7 +42,7 @@ class KelolaPertemuan extends CI_Controller {
             $data['title'] = "Edit Pertemuan";
             $data['user'] = $this->Kelolapertemuan_model->getUserByEmail($this->session->userdata('email'));
             $data['materi'] = $this->Kelolapertemuan_model->getPertemuanbyId($id);
-
+            $data['notifchat'] = $this->ChatModel->getChatData();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/editpertemuan', $data);

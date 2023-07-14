@@ -7,6 +7,7 @@ class KelolaPretest extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Kelolapretest_model');
+        $this->load->model('ChatModel');
         checkRole(1);
     }
 
@@ -17,6 +18,7 @@ class KelolaPretest extends CI_Controller {
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['soal'] = $this->Kelolapretest_model->getPretest();
             //select aktif dari tb_test
+            $data['notifchat'] = $this->ChatModel->getChatData();
             $data['aktif'] = $this->db->get_where('tb_test', ['id_tes' => 1])->row_array();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
@@ -80,6 +82,7 @@ class KelolaPretest extends CI_Controller {
             $data['title'] = "Edit Pre-Test";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['soal'] = $this->Kelolapretest_model->getPretestById($id);
+            $data['notifchat'] = $this->ChatModel->getChatData();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/editPretest', $data);

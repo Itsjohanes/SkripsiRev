@@ -6,6 +6,7 @@ class KelolaListSiswa extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('ChatModel');
         $this->load->model('Kelolalistsiswa_model'); // Load the ListSiswa_model
         checkRole(1);
     }
@@ -15,7 +16,7 @@ class KelolaListSiswa extends CI_Controller {
         $data['title'] = "List Siswa";
         $data['user'] = $this->Kelolalistsiswa_model->getUserByEmail($this->session->userdata('email'));
         $data['siswa'] = $this->Kelolalistsiswa_model->getSiswa();
-
+        $data['notifchat'] = $this->ChatModel->getChatData();
         $this->load->view('backend/admin/header', $data);
         $this->load->view('backend/admin/sidebar', $data);
         $this->load->view('backend/admin/listsiswa', $data);
@@ -28,7 +29,7 @@ class KelolaListSiswa extends CI_Controller {
         $data['title'] = "List Siswa";
         $data['user'] = $this->Kelolalistsiswa_model->getUserByEmail($this->session->userdata('email'));
         $data['siswa'] = $this->Kelolalistsiswa_model->getSiswaById($id);
-
+        $data['notifchat'] = $this->ChatModel->getChatData();
         $this->load->view('backend/admin/header', $data);
         $this->load->view('backend/admin/sidebar', $data);
         $this->load->view('backend/admin/editsiswa', $data);
@@ -70,7 +71,7 @@ class KelolaListSiswa extends CI_Controller {
 
     public function deleteSiswa($id)
     {
-       
+            
             $this->Kelolalistsiswa_model->deleteSiswa($id);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulations! The account has been deleted</div>');
             redirect('listsiswa'); 

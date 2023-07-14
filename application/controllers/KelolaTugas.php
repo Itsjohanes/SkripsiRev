@@ -9,6 +9,7 @@ class KelolaTugas extends CI_Controller {
         // Load model
         $this->load->model('Kelolatugas_model');
         $this->load->model('Kelolapertemuan_model');
+        $this->load->model('ChatModel');
         checkRole(1);
     }
 
@@ -18,6 +19,7 @@ class KelolaTugas extends CI_Controller {
             $data['user'] = $this->Kelolatugas_model->getUserByEmail($this->session->userdata('email'));
             $data['tugas'] = $this->Kelolatugas_model->getTugas();
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
+            $data['notifchat'] = $this->ChatModel->getChatData();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/tugas', $data);
@@ -67,6 +69,7 @@ class KelolaTugas extends CI_Controller {
             $data['title'] = "Edit Tugas";
             $data['user'] = $this->Kelolatugas_model->getUserByEmail($this->session->userdata('email'));
             $data['tugas'] = $this->Kelolatugas_model->getTugasById($id);
+            $data['notifchat'] = $this->ChatModel->getChatData();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/edittugas', $data);

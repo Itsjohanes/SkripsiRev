@@ -8,6 +8,7 @@ class KelolaMateri extends CI_Controller {
         parent::__construct();
         $this->load->model('Kelolamateri_model'); // Load the KelolaMateri_model
         $this->load->model('Kelolapertemuan_model');
+        $this->load->model('ChatModel');
         checkRole(1);
     }
 
@@ -17,6 +18,7 @@ class KelolaMateri extends CI_Controller {
         $data['title'] = "Materi";
         $data['user'] = $this->Kelolamateri_model->getUserByEmail($this->session->userdata('email'));
         $data['materi'] = $this->Kelolamateri_model->getMateri();
+        $data['notifchat'] = $this->ChatModel->getChatData();
         $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
         $this->load->view('backend/admin/header', $data);
         $this->load->view('backend/admin/sidebar', $data);
@@ -66,6 +68,7 @@ class KelolaMateri extends CI_Controller {
     {
         
             $data['title'] = "Edit Materi";
+            $data['notifchat'] = $this->ChatModel->getChatData();
             $data['user'] = $this->Kelolamateri_model->getUserByEmail($this->session->userdata('email'));
             $data['materi'] = $this->Kelolamateri_model->getMateriById($id);
 

@@ -4,7 +4,9 @@ class GroupChat extends CI_Controller
     private $role;
     public function __construct()
     {
+        
         parent::__construct();
+        $this->load->model('ChatModel');
         $this->load->model('chatgroup_model');
         checkRole(0);
         $this->role = $this->session->userdata('role');
@@ -13,6 +15,7 @@ class GroupChat extends CI_Controller
     public function index()
     {
         if ($this->role == 1) {
+        $data['notifchat'] = $this->ChatModel->getChatData();
         $data['title'] = "Group Chat";
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('backend/admin/header', $data);
@@ -102,6 +105,7 @@ class GroupChat extends CI_Controller
     }
     public function chooseGroup(){
         if ($this->role  == 1) {
+        $data['notifchat'] = $this->ChatModel->getChatData();
         $data['title'] = "Group Chat";
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
         $data['kelompok'] = $this->input->post('kelompok');

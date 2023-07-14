@@ -11,6 +11,7 @@ class Chat extends CI_Controller
         ini_set('memory_limit', '2048M');
         parent::__construct();
         $this->load->model('ChatModel');
+        $this->load->model('ChatModel');
         //default role = 0
         checkRole(0);
         $this->role = $this->session->userdata('role');
@@ -22,7 +23,7 @@ class Chat extends CI_Controller
         
             $no =  $this->uri->segment(2);
             $data['data'] = $this->ChatModel->getDataById($no);
-
+            $data['notifchat'] = $this->ChatModel->getChatData();
             if ($data['data'] == null) {
                 die("user tidak ada nih");
             } else {
@@ -45,6 +46,7 @@ class Chat extends CI_Controller
     public function dua()
     {
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+        $data['notifchat'] = $this->ChatModel->getChatData();
         $data['title'] = 'Chat';
         if ($this->role == '1') {
             $this->load->view('backend/admin/header', $data);
@@ -111,6 +113,7 @@ class Chat extends CI_Controller
     }
     public function menu()
     {
+            $data['notifchat'] = $this->ChatModel->getChatData();
        
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
 
