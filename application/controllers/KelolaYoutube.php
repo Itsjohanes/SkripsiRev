@@ -36,6 +36,8 @@ class KelolaYoutube extends CI_Controller {
                 'youtube' => $link
             );
             $this->Kelolayoutube_model->tambahYoutubeMateri($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Video Berhasil ditambahkan!</div>');
+
             redirect('kelolayoutube');
 
         
@@ -45,7 +47,7 @@ class KelolaYoutube extends CI_Controller {
     {
             $this->Kelolayoutube_model->hapusYoutubeMateri($id);
 
-            $this->session->set_flashdata('category_success', 'Materi berhasil dihapus');
+            $this->session->set_flashdata('category_success', 'Video berhasil dihapus');
             redirect('kelolayoutube');
         
     }
@@ -73,6 +75,8 @@ class KelolaYoutube extends CI_Controller {
                 'youtube' => $youtube
             );
             $this->Kelolayoutube_model->updateYoutubeMateri($id_materi, $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Video Berhasil diubah!</div>');
+
             redirect('kelolayoutube');
        
     }

@@ -34,6 +34,7 @@ class RandomKelompok extends CI_Controller {
     {
             $siswa = $this->db->get_where('tb_akun', ['role' => "0"])->result_array();
             $jumlahSiswa = count($siswa);
+            if(!$this->Randomkelompok_model->getRandoms()){
 
             if ($this->input->server('REQUEST_METHOD') === 'POST') {
                 // Mengambil nilai jumlah kelompok dari POST
@@ -66,7 +67,10 @@ class RandomKelompok extends CI_Controller {
                     $i++;
                 }
             }
-
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kelompok Berhasil ditambahkan!</div>');
+            }else{
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Kelompok sudah ada!</div>');
+            }
             redirect('randomkelompok');
         
     }

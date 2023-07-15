@@ -1,3 +1,6 @@
+  <?= $this->session->flashdata("message");
+                            ?>
+ 
  <div class="container-fluid py-4">
 
     <div class="row">

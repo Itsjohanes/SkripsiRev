@@ -63,6 +63,8 @@ class KelolaPretest extends CI_Controller {
                 'id_test' => 1
             ];
             $this->Kelolapretest_model->tambahPretest($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Soal Berhasil ditambahkan!</div>');
+
             redirect('kelolapretest');
         
     }
@@ -132,6 +134,8 @@ class KelolaPretest extends CI_Controller {
                 'gambar' => $gambar
             ];
             $this->Kelolapretest_model->updatePretest($id_pretest, $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Soal Berhasil diedit!</div>');
+
             redirect('kelolapretest');
         
     }
@@ -159,8 +163,9 @@ class KelolaPretest extends CI_Controller {
             $this->db->set('aktif', 1);
             $this->db->where('id_tes', 1);
             $this->db->update('tb_test');
-            redirect('kelolapretest');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pretest telah diaktifkan</div>');
+
+            redirect('kelolapretest');
 
 
         
@@ -170,8 +175,9 @@ class KelolaPretest extends CI_Controller {
             $this->db->set('aktif', 0);
             $this->db->where('id_tes', 1);
             $this->db->update('tb_test');
-            redirect('kelolapretest');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pretest telah dimatikan</div>');
+
+            redirect('kelolapretest');
 
         
     }

@@ -1,13 +1,6 @@
 <div class="container-fluid py-4">
       
 
-    <!-- Kirim Alert jika Pre-test sudah dikerjakan -->
-    <?php if ($this->session->flashdata('pesan')) : ?>
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <?= $this->session->flashdata('pesan'); ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    <?php endif; ?>
     
       <div class="row mt-4">
          

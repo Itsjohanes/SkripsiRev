@@ -72,6 +72,11 @@ class KelolaPosttest extends CI_Controller {
                 'id_test'=>2
             ];
             $this->Kelolaposttest_model->tambahPosttest($data);
+            //Berikan alert soal berhasil ditambahkan
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Soal Berhasil ditambahkan!</div>');
+
+
+
             redirect('kelolaposttest');
         
     }
@@ -139,6 +144,8 @@ class KelolaPosttest extends CI_Controller {
                 'gambar' => $gambar
             ];
             $this->Kelolaposttest_model->updatePosttest($id_posttest, $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Soal Berhasil diedit!</div>');
+
             redirect('kelolaposttest');
         
     }

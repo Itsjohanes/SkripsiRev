@@ -6,12 +6,8 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-    <?php if ($this->session->flashdata('category_success')) { ?>
-        <div class="alert alert-success"> <?= $this->session->flashdata('category_success') ?> </div>
-    <?php } ?>
-    <?php if ($this->session->flashdata('category_error')) { ?>
-        <div class="alert alert-danger"> <?= $this->session->flashdata('category_error') ?> </div>
-    <?php } ?>
+      <?= $this->session->flashdata("message");
+                            ?>
     <div class="row no-gutters">
 
         <br>

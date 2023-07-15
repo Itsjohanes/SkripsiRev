@@ -28,6 +28,8 @@ class KelolaPertemuan extends CI_Controller {
     {
        
             $this->Kelolapertemuan_model->aktifkanPertemuan($id);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pertemuan Berhasil diaktifkan!</div>');
+
             redirect('kelolapertemuan');
         
     }
@@ -35,6 +37,8 @@ class KelolaPertemuan extends CI_Controller {
     public function matikanPertemuan($id)
     {
             $this->Kelolapertemuan_model->matikanPertemuan($id);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pertemuan Berhasil dimatikan!</div>');
+
             redirect('kelolapertemuan');
         
     }
