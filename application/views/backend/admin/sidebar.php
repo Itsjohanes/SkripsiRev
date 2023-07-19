@@ -372,7 +372,9 @@
                     <div class="d-flex py-1">
                       <div class="d-flex flex-column justify-content-center">
                           <h6 class="text-sm font-weight-normal mb-1">
-                              <span class="font-weight-bold">New message</span> from <?php echo $s->nama; ?>
+
+                            <div  onclick="window.location.href='<?php echo base_url('chat/'.$s->id); ?>';" class="font-weight-bold"> New message from <?php echo $s->nama; ?> </div>
+
                           </h6>
                           <p class="text-xs text-secondary mb-0">
                               <i class="fa fa-clock me-1"></i>
