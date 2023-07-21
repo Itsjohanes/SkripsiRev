@@ -28,7 +28,29 @@ class Kelolalistsiswa_model extends CI_Model {
 
     public function deleteSiswa($id)
     {
+        $this->db->where('sender_id', $id);
+        $groupchat_exists = $this->db->count_all_results('tb_groupchat');
+        $this->db->where('sender_id', $id);
+        $globalchat_exists = $this->db->count_all_results('tb_globalchat');
         $this->db->where('id', $id);
-        $this->db->delete('tb_akun');
+        $pesan1_exists = $this->db->count_all_results('tb_pesan');
+        $this->db->where('id_lawan', $id);
+        $pesan2_exists = $this->db->count_all_results('tb_pesan');
+        $this->db->where('id_user', $id);
+        $comments_exists = $this->db->count_all_results('tb_comments');
+        $this->db->where('id_user', $id);
+        $random_exists = $this->db->count_all_results('tb_random');
+         $this->db->where('id_siswa', $id);
+        $hasiltugas_exists = $this->db->count_all_results('tb_hasiltugas');
+        $this->db->where('id_siswa', $id);
+        $hasilprepost_exists = $this->db->count_all_results('tb_hasilprepost');
+
+        if($groupchat_exists > 0 || $globalchat_exists > 0 || $pesan1_exists > 0 || $pesan2_exists > 0 || $comments_exists > 0 || $random_exists > 0 || $hasiltugas_exists > 0 || $hasilprepost_exists > 0 ){
+            return("Gagal");
+        } else {
+            $this->db->where('id', $id);
+            $this->db->delete('tb_akun');
+        }
     }
+    
 }

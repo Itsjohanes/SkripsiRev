@@ -153,7 +153,7 @@
 
                                             ?>
                                             <?php
-                                                echo '<a href="'.base_url('kelolapertemuan/deletepertemuan/'.$j['id_pertemuan']).'" class="btn btn-danger btn-sm">Hapus Pertemuan</a>';
+                                                echo '<a href="'.base_url('kelolapertemuan/deletepertemuan/'.$j['id_pertemuan']).'" class="btn btn-danger hapus-btn">Hapus Pertemuan</a>';
 
                                             ?>
                                         </td>

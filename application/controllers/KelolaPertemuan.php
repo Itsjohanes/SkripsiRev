@@ -90,16 +90,21 @@ class KelolaPertemuan extends CI_Controller {
     public function deletePertemuan($id)
     {
             if($id == 1){
-                $this->session->set_flashdata('category_error', 'Khusus Pertemuan 1 tidak dapat dihapus');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Khusus pertemuan satu tidak bisa dihapus</div>');
                 redirect('kelolapertemuan');
             }
 
             $pertemuan = $this->Kelolapertemuan_model->getPertemuanById($id);
             $gambar = $pertemuan['gambar'];
             unlink(FCPATH . 'assets/pertemuan/' . $gambar);
-            $this->Kelolapertemuan_model->hapusPertemuan($id);
-            $this->session->set_flashdata('category_success', 'Pertemuan berhasil dihapus');
-            redirect('kelolapertemuan');
+            if($this->Kelolapertemuan_model->hapusPertemuan($id) == "Gagal"){
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertemuan gagal dihapus karena ada foreign key</div>');
+                redirect('kelolapertemuan');
+            }else{
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pertemuan berhasil dihapus</div>');
+                redirect('kelolapertemuan');
+            }
+            
         
     }
     public function runEditPertemuan(){

@@ -59,7 +59,7 @@
   <button type="submit" class = "btn btn-success">Proses</button>
 </form>
 
-    <a type="button" name="random" href="<?= base_url(); ?>randomkelompok/deleterandom" class=" btn btn-danger"><i class="fas fa-user-times"></i></a>
+    <a type="button" name="random" href="<?= base_url(); ?>randomkelompok/deleterandom" class=" btn btn-danger hapus-btn"><i class="fas fa-user-times"></i></a>
 
 
 

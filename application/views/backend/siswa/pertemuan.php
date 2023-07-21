@@ -1,3 +1,7 @@
+
+
+
+
          <div class="row">
 
              <div class="col-lg-6">
@@ -58,8 +62,8 @@
 
                             echo '</div>';
                             //hapus dengan konfirmasi menggunakan alert
-
-                            echo '<a href = "' . base_url('pertemuan/hapustugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini?\')">Delete</a>';
+                            echo '</br>';
+                            echo '<a href = "' . base_url('pertemuan/hapustugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger hapus-btn">Delete</a>';
 
 
                             //delete data by Id button aja

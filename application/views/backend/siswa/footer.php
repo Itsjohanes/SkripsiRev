@@ -101,9 +101,36 @@
   <!--Data tables -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-<script src="<?= base_url('assets/backend/vendor/datatables/'); ?>jquery.dataTables.min.js"></script>
-<script src="<?= base_url('assets/backend/vendor/datatables/'); ?>dataTables.bootstrap4.min.js"></script>
-<script src="<?= base_url('assets/backend/js/demo/'); ?>datatables-demo.js"></script>
+  <script src="<?= base_url('assets/backend/vendor/datatables/'); ?>jquery.dataTables.min.js"></script>
+  <script src="<?= base_url('assets/backend/vendor/datatables/'); ?>dataTables.bootstrap4.min.js"></script>
+  <script src="<?= base_url('assets/backend/js/demo/'); ?>datatables-demo.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const hapusBtns = document.querySelectorAll('.hapus-btn');
+
+    hapusBtns.forEach((btn) => {
+      btn.addEventListener('click', function(event) {
+        event.preventDefault(); // Mencegah link diikuti sebelum konfirmasi
+
+        // Gunakan SweetAlert2 untuk menampilkan kotak konfirmasi
+        Swal.fire({
+          title: 'Konfirmasi Hapus',
+          text: 'Apakah Anda yakin ingin menghapus data ini?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Hapus',
+          cancelButtonText: 'Batal'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = btn.getAttribute('href'); // Mengikuti link jika "Hapus" diklik
+          }
+        });
+      });
+    });
+  });
+  </script>
 
 </body>
 

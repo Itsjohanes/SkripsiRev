@@ -57,7 +57,8 @@
                                             <a href="<?= base_url('menilaipertemuan/menilaibyid/') . $j['id_hasiltugas']; ?>" class="btn btn-warning" > <i class="fas fa-edit"> </i>    Edit</a>
                                             <?php
                                             if ($j['nilai'] != null || $j['komentar'] != null) {
-                                                echo '<a href="' . base_url('menilaipertemuan/deletemenilai/') . $j['id_hasiltugas'] . '" onclick="return confirm(\'Yakin nilai akan dihapus permanen?\');" class="btn btn-danger">Hapus</a>';
+                                                echo '<a href="' . base_url('menilaipertemuan/deletemenilai/') . $j['id_hasiltugas'] . '" class="btn btn-danger hapus-btn">Hapus</a>';
+
                                             }
                                             ?>
                                         </td>

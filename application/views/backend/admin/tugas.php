@@ -109,7 +109,7 @@
                                         <td><?= $j['id_pertemuan']; ?></td>
                                         <td><a href="<?= base_url(); ?>assets/tugas/<?= $j['tugas']; ?>" <i class="fas fa-file-pdf"></i></a> </td>
                                         <td>
-                                            <a href="<?= base_url(); ?>kelolatugas/hapustugas/<?= $j['id_tugas']; ?>" class="btn btn-danger" onclick="return confirm('Anda yakin akan menghapus tugas ini?');"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="<?= base_url(); ?>kelolatugas/hapustugas/<?= $j['id_tugas']; ?>" class="btn btn-danger hapus-btn" ><i class="fas fa-trash-alt"></i></a>
                                             <a href="<?= base_url(); ?>Kelolatugas/edittugas/<?= $j['id_tugas']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                         </td>
 

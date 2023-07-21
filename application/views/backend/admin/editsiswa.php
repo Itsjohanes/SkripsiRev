@@ -14,17 +14,20 @@
                         <form class="user" method="post" action="<?= base_url('kelolalistsiswa/runeditsiswa') ?>">
 
                             <div class=" form-group">
+                                <label for="email">Email</label>
                                 <div class="input-group input-group-outline">
                                 <input type="text" required class="form-control form-control-user" id="email" placeholder="Email Address" name="email" value="<?= $siswa['email']; ?>" disabled>
                                 <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
                             <div class=" form-group">
+                                <label for="email">Nama</label>
                                 <div class="input-group input-group-outline">
                                 <input type="text" required class="form-control form-control-user" id="nama" placeholder="Nama" name="nama" value="<?= $siswa['nama']; ?>">
                             </div>
                             </div>
                             <div class=" form-group row">
+                                <label for="email">Password</label>
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <div class="input-group input-group-outline">
                                     <input type="password" required class="form-control form-control-user" id="password1" placeholder="New Password" name="password1">

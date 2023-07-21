@@ -16,6 +16,7 @@ class Rapot extends CI_Controller
     {
         
             $data['title'] = "Report";
+            $data['notifchat'] = $this->ChatModel->getChatData();
             $data['user'] = $this->Rapot_model->getUserByEmail($this->session->userdata('email'));
             $data['pretest'] = $this->Rapot_model->getPretestBySiswaId($this->session->userdata('id'));
             $data['posttest'] = $this->Rapot_model->getPosttestBySiswaId($this->session->userdata('id'));

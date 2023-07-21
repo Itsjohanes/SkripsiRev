@@ -36,7 +36,7 @@ class KelolaListSiswa extends CI_Controller {
         $this->load->view('backend/admin/footer');
         
     }
-
+    
     public function runEditSiswa()
     {
             $this->form_validation->set_rules('nama', 'Nama', 'required');
@@ -72,9 +72,14 @@ class KelolaListSiswa extends CI_Controller {
     public function deleteSiswa($id)
     {
             
-            $this->Kelolalistsiswa_model->deleteSiswa($id);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulations! The account has been deleted</div>');
-            redirect('listsiswa'); 
+            if($this->Kelolalistsiswa_model->deleteSiswa($id) == "Gagal"){
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun Siswa Gagal Dihapus Karena Ada Data Terkait</div>');
+                redirect('kelolalistsiswa');
+            }else{
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun Siswa Berhasil Dihapus</div>');
+                sredirect('kelolalistsiswa'); 
+            }
+            
         
     }
 

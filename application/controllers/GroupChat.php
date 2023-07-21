@@ -29,6 +29,7 @@ class GroupChat extends CI_Controller
             if($query->num_rows() > 0){
                  $result = $query->row();
                 $kelompok = $result->kelompok;
+                $data['notifchat'] = $this->ChatModel->getChatData();
                 $data['chat_messages'] = $this->chatgroup_model->get_chat_messages($kelompok);
                 $data['title'] = "Group Chat";
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();

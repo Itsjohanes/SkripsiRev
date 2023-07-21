@@ -28,14 +28,41 @@ class KelolaPertemuan_model extends CI_Model {
         
         
     }
-    public function hapusPertemuan($id){
-        //delete column pada tb_akun
-        $this->db->query("ALTER TABLE tb_akun DROP COLUMN `tugas_".$id."`");
-    
+    public function hapusPertemuan($id) {
+        // Check if data exists in tb_materi
         $this->db->where('id_pertemuan', $id);
-        $this->db->delete('tb_pertemuan');
+        $materi_exists = $this->db->count_all_results('tb_materi');
 
-    }
+         $this->db->where('id_pertemuan', $id);
+        $komentar_exists = $this->db->count_all_results('tb_comments');
+
+        // Check if data exists in tb_youtube
+        $this->db->where('id_pertemuan', $id);
+        $youtube_exists = $this->db->count_all_results('tb_youtube');
+
+        // Check if data exists in tb_tugas
+        $this->db->where('id_pertemuan', $id);
+        $tugas_exists = $this->db->count_all_results('tb_tugas');
+
+        // Check if data exists in tb_hasiltugas
+        $this->db->where('id_pertemuan', $id);
+        $hasiltugas_exists = $this->db->count_all_results('tb_hasiltugas');
+
+        // Check if any of the tables have data related to the id_pertemuan
+        if ($materi_exists > 0 || $youtube_exists > 0 || $tugas_exists > 0 || $hasiltugas_exists > 0 || $komentar_exists > 0) {
+            // If data exists in any of the related tables, do not delete
+            return("Gagal");
+           
+        } else {
+            // If no data exists in any of the related tables, proceed with deleting the record from 'tb_pertemuan'
+            $this->db->where('id_pertemuan', $id);
+            $this->db->delete('tb_pertemuan');
+            $this->db->query("ALTER TABLE tb_akun DROP COLUMN `tugas_".$id."`");
+            return("Berhasil");
+          
+        }
+}
+
 
     public function aktifkanPertemuan($id)
     {
