@@ -79,6 +79,7 @@ class RandomKelompok extends CI_Controller {
     {
 
             $this->Randomkelompok_model->deleteRandom();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kelompok berhasil dihapus</div>');
 
             redirect('randomkelompok');
         

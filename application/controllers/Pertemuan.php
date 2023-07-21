@@ -60,6 +60,8 @@ class Pertemuan extends CI_Controller {
                 'id_pertemuan' => $this->input->post('pertemuan')
             );
             $this->Komentar_model->save_comment($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Komentar berhasil terkirim</div>');
+
             redirect($this->agent->referrer());
 
             
@@ -102,6 +104,8 @@ class Pertemuan extends CI_Controller {
             );
 
             $this->Komentar_model->save_reply($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Reply berhasil terkirim</div>');
+
             redirect($this->agent->referrer());
 
         
@@ -200,6 +204,8 @@ class Pertemuan extends CI_Controller {
                 } else {
                     $upload = $filelama;
                 }
+               $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tugas berhasil diubah</div>');
+
             }
 
             redirect($this->agent->referrer());

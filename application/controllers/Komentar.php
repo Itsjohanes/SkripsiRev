@@ -57,6 +57,8 @@ class Komentar extends CI_Controller {
             );
 
             $this->Komentar_model->save_comment($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Komentar berhasil terkirim</div>');
+
             redirect('komentar/halamankomentar/'.$pertemuan);
         
     }
@@ -72,6 +74,8 @@ class Komentar extends CI_Controller {
             );
 
             $this->Komentar_model->save_reply($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Reply berhasil terkirim</div>');
+
             redirect('komentar/halamankomentar/'.$pertemuan);
         
     }

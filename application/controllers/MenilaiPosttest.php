@@ -43,8 +43,8 @@ class MenilaiPosttest extends CI_Controller {
 			$sheet->setCellValue('C1', 'Jawaban');
 			$sheet->setCellValue('D1', 'Score');
 			$sheet->setCellValue('E1', 'Benar');
-			$sheet->setCellValue('E1', 'Salah');
-            $sheet->setCellValue('E1', 'Kosong');
+			$sheet->setCellValue('F1', 'Salah');
+            $sheet->setCellValue('G1', 'Kosong');
 			$siswa = $this->Menilaiposttest_model->getHasilPosttest();
 			$no = 1;
 			$x = 2;
@@ -55,8 +55,8 @@ class MenilaiPosttest extends CI_Controller {
 				$sheet->setCellValue('C'.$x, $row['jawaban']);
 				$sheet->setCellValue('D'.$x, $row['score']);
 				$sheet->setCellValue('E'.$x, $row['benar']);
-                $sheet->setCellValue('E'.$x, $row['salah']);
-                $sheet->setCellValue('E'.$x, $row['kosong']);
+                $sheet->setCellValue('F'.$x, $row['salah']);
+                $sheet->setCellValue('G'.$x, $row['kosong']);
 				$x++;
 			}
 			$writer = new Xlsx($spreadsheet);

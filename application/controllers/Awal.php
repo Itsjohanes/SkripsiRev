@@ -12,7 +12,7 @@ class Awal extends CI_Controller
     }
     public function index()
     {
-        $data['title'] = "Alpro";
+        $data['title'] = "Home";
         $this->load->view('frontend/header.php', $data);
         $this->load->view('frontend/index.php');
         $this->load->view('frontend/footer.php');

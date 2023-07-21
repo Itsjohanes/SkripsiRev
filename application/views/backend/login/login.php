@@ -9,7 +9,7 @@
           >
             <div class="container-fluid ps-2 pe-0">
             
-    Algoritma dan Pemrograman  
+    Branching & Looping 
        </a>
               <button
                 class="navbar-toggler shadow-none ms-2"

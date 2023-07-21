@@ -3,7 +3,7 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="">
-        <span class="ms-1 font-weight-bold text-white">Algoritma & Pemrograman</span>
+        <span class="ms-1 font-weight-bold text-white">Branching & Looping</span>
       </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
@@ -345,7 +345,8 @@
             </li>
               <li class="nav-item dropdown pe-2 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-bell cursor-pointer"></i>
+                <i class="fa fa-envelope cursor-pointer"></i>
+                <span> <?php echo count($notifchat); ?> </span>
               </a>
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                 <li class="mb-2">
@@ -401,7 +402,7 @@
             </li>
            
             <li class="nav-item d-flex align-items-center">
-              <a href="<?php echo base_url('Profile');?>" class="nav-link text-body font-weight-bold px-0">
+              <a href="<?php echo base_url('profile');?>" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $user['nama'] ;?> </span>
               </a>
