@@ -55,6 +55,7 @@ class KelolaListSiswa extends CI_Controller {
                 $data = [
                     'nama' => htmlspecialchars($this->input->post('nama', true)),
                     'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+                    'role' => htmlspecialchars($this->input->post('role', true))
                 ];
                 $this->Kelolalistsiswa_model->updateSiswa($this->input->post('id'), $data);
 

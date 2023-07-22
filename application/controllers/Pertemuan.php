@@ -148,25 +148,38 @@ class Pertemuan extends CI_Controller {
     }
 
     public function hapusTugas($id) {
-            $file = $this->Pertemuan_model->getHasilTugasById($id);
-            $filename = $file['upload'];
+            //cek apakah id_usernya sama dengan 
 
-            //cek kolom nilai pada tb_hasiltugas sudah ada isi
-            $hasiltugas = $this->Pertemuan_model->getHasilTugasById($id);
-            $nilai = $hasiltugas['nilai'];
-            var_dump($nilai);
-            if ($nilai != null) {
-                //jika sudah ada nilai
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Tugas sudah dinilai</div>');
-                redirect($this->agent->referrer());
+            
+            $id_siswa = $this->session->userdata('id');
+            $id_hasiltugas = $this->Pertemuan_model->getHasilTugasById($id);
+            $id_user = $id_hasiltugas['id_siswa'];
+            if ($id_siswa != $id_user) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda Tidak Dapat Menghapus Tugas Milik Orang Lain!</div>');
+                redirect('siswa');
             }else{
-                $this->Pertemuan_model->deleteHasilTugas($id);
-                //unlink file based on id_hasiltugas
-                unlink(FCPATH . 'assets/tugassiswa/' . $filename);
-                //setflash
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tugas berhasil dihapus</div>');
-                redirect($this->agent->referrer());
+                $file = $this->Pertemuan_model->getHasilTugasById($id);
+                $filename = $file['upload'];
+
+                //cek kolom nilai pada tb_hasiltugas sudah ada isi
+                $hasiltugas = $this->Pertemuan_model->getHasilTugasById($id);
+                $nilai = $hasiltugas['nilai'];
+                var_dump($nilai);
+                if ($nilai != null) {
+                    //jika sudah ada nilai
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Tugas sudah dinilai</div>');
+                    redirect($this->agent->referrer());
+                }else{
+                    $this->Pertemuan_model->deleteHasilTugas($id);
+                    //unlink file based on id_hasiltugas
+                    unlink(FCPATH . 'assets/tugassiswa/' . $filename);
+                    //setflash
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tugas berhasil dihapus</div>');
+                    redirect($this->agent->referrer());
+                }
+
             }
+            
 
             
 

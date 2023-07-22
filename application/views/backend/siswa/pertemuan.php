@@ -64,9 +64,6 @@
                             //hapus dengan konfirmasi menggunakan alert
                             echo '</br>';
                             echo '<a href = "' . base_url('pertemuan/hapustugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger hapus-btn">Delete</a>';
-
-
-                            //delete data by Id button aja
                         } else {
 
                             echo form_open_multipart('pertemuan/tambahtugas');
@@ -154,7 +151,7 @@
                      &nbsp
                      <a href='<?= base_url('assets/tugas/') . $tugas['tugas']; ?>' target='_blank'><i class="fas fa-tasks"> Tugas</i></a>
                      &nbsp
-                    <a href='<?php echo $tp['videoconference'];?>'><i class="fas fa-video">Link Conference</i></a>
+                    <a href='<?php echo $tp['videoconference'];?>'><i class="fas fa-video"> Link Conference</i></a>
 
                  </div>
              </div>

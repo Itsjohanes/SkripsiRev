@@ -44,9 +44,30 @@
 
                                 </div>
                             </div>
+                            <div class=" form-group">
+                                <label for="email">Role</label>
+                                <div class="input-group input-group-outline">
+                                    <select required class="form-control form-control-user" name = "role">
+                                        <?php
+                                            if($siswa['role'] == '0'){
+                                                echo '<option selected value = "0"> Siswa </option>';
+                                                echo '<option  value = "1"> Admin </option>';
+                                            }else{
+                                                echo '<option  value = "0"> Siswa </option>';
+                                                echo '<option selected value = "1"> Admin </option>';
+                                            }
+                                        ?>
+                                        
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            </br>
+
                             <Button type="submit" class="btn btn-primary btn-user btn-block">
                                 Edit Account
                             </Button>
+
 
                         </form>
                         <hr>
