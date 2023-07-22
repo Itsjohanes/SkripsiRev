@@ -19,7 +19,7 @@
             <div class="input-group input-group-outline">
             <input type = "text" required class="form-control" disabled id = "pertemuan" name = "pertemuan" value = "<?php echo $materi['pertemuan'];?>">
             </div>
-             <label for="nilai">Penjelasan</label>
+            <label for="nilai">Penjelasan</label>
             <div class="input-group input-group-outline">
             <textarea type="textarea" required class="form-control" id="penjelasan" name="penjelasan"><?php echo $materi['penjelasan'];  ?></textarea>
             </div>
@@ -32,13 +32,15 @@
             <textarea type="textarea" required class="form-control" id="tp" name="tp"><?php echo $materi['tp'];  ?></textarea>
             </div>
             <label for="nilai">Gambar</label>
+            <img src="<?= base_url('assets/pertemuan/' . $materi['gambar']) ?>" width = "150px" height = "100px" alt="Gambar"></img>
             <div class="input-group input-group-outline">
-            <input type="file" class="form-control" id="gambar" name="gambar">
+            <input type="file" required class="form-control" id="gambar" name="gambar">
             </div>
+            
             
 
         </div>
-
+        <br>
         <button type="submit" class="btn btn-primary">Edit</button>
         </form>
     </div>

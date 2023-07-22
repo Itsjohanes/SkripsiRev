@@ -111,23 +111,21 @@ class KelolaPretest extends CI_Controller {
             $kunci = $this->input->post('kunci');
             $gambar = $_FILES['gambar']['name'];
             //jika gambar lama sama dengan gambar baru tidak perlu diganti
-
             if ($gambar) {
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
                 $config['max_size'] = '2048';
                 $config['upload_path'] = './assets/img/pretest/';
-                if ($gambar_lama != $gambar) {
-                    $this->load->library('upload', $config);
-                    if ($this->upload->do_upload('gambar')) {
-                        //unlink
-                        unlink(FCPATH . 'assets/img/pretest/' . $gambar_lama);
-                        $gambar = $this->upload->data('file_name');
-                    } else {
-                        echo $this->upload->display_errors();
-                    }
+                $this->load->library('upload', $config);
+                unlink(FCPATH . 'assets/img/pretest/' . $gambar_lama);
+                if ($this->upload->do_upload('gambar')) {                   
+                    $gambar = $this->upload->data('file_name');
                 } else {
-                    $gambar = $gambar_lama;
+                    echo $this->upload->display_errors();
                 }
+                
+            }else{
+                //Jika tidak dimasukan gambar baru hapus saja yang sebelumnya
+                unlink(FCPATH . 'assets/img/pretest/' . $gambar_lama);
             }
             $data = [
                 'soal' => $soal,

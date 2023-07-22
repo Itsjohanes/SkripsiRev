@@ -89,15 +89,10 @@ class KelolaPertemuan extends CI_Controller {
     }
     public function deletePertemuan($id)
     {
-            if($id == 1){
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Khusus pertemuan satu tidak bisa dihapus</div>');
-                redirect('kelolapertemuan');
-            }
-
             $pertemuan = $this->Kelolapertemuan_model->getPertemuanById($id);
-            $gambar = $pertemuan['gambar'];
-            unlink(FCPATH . 'assets/pertemuan/' . $gambar);
             if($this->Kelolapertemuan_model->hapusPertemuan($id) == "Gagal"){
+                $gambar = $pertemuan['gambar'];
+                unlink(FCPATH . 'assets/pertemuan/' . $gambar);
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertemuan gagal dihapus karena ada foreign key</div>');
                 redirect('kelolapertemuan');
             }else{
@@ -118,17 +113,13 @@ class KelolaPertemuan extends CI_Controller {
                 $config['allowed_types'] = 'jpg|jpeg|png';
                 $config['max_size'] = '2048';
                 $config['upload_path'] = './assets/pertemuan/';
-                if ($gambarLama != $gambar) {
-                    $this->load->library('upload', $config);
-                    if ($this->upload->do_upload('gambar')) {
-                        unlink(FCPATH . './assets/pertemuan/' . $gambarLama);
-                        $gambar = $this->upload->data('file_name');
-                    } else {
-                        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertemuan gagal diubah</div>');
-                        redirect('kelolaPertemuan');
-                    }
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('gambar')) {
+                    unlink(FCPATH . './assets/pertemuan/' . $gambarLama);
+                    $gambar = $this->upload->data('file_name');
                 } else {
-                    $gambar = $gambarLama;
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertemuan gagal diubah</div>');
+                    redirect('kelolaPertemuan');
                 }
             } else {
                 $gambar = $gambarLama;

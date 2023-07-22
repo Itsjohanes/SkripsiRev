@@ -88,20 +88,15 @@ class KelolaTugas extends CI_Controller {
                 $config['allowed_types'] = 'pdf';
                 $config['max_size'] = '2048';
                 $config['upload_path'] = './assets/tugas/';
-                if ($tugasLama != $tugas) {
-                    $this->load->library('upload', $config);
-                    if ($this->upload->do_upload('tugas')) {
-                        unlink(FCPATH . './assets/tugas/' . $tugasLama);
-                        $tugas = $this->upload->data('file_name');
-                    } else {
-                        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Tugas gagal diubah</div>');
-                        redirect('kelolatugas');
-                    }
+                $this->load->library('upload', $config);
+                unlink(FCPATH . './assets/tugas/' . $tugasLama);
+                if ($this->upload->do_upload('tugas')) {
+                    $tugas = $this->upload->data('file_name');
                 } else {
-                    $tugas = $tugasLama;
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Tugas gagal diubah</div>');
+                    redirect('kelolatugas');
                 }
-            } else {
-                $tugas = $tugasLama;
+                
             }
 
             $data = array(

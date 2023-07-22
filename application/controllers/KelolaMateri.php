@@ -86,24 +86,19 @@ class KelolaMateri extends CI_Controller {
             $pertemuan = $this->input->post('pertemuan');
             $materiLama = $this->input->post('file_lama');
             $materi = $_FILES['materi']['name'];
-
             if ($materi) {
                 $config['allowed_types'] = 'pdf';
                 $config['max_size'] = '8192';
                 $config['upload_path'] = './assets/materi/';
-
-                if ($materiLama != $materi) {
-                    $this->load->library('upload', $config);
-
-                    if ($this->upload->do_upload('materi')) {
-                        unlink(FCPATH . './assets/materi/' . $materiLama);
-                        $materi = $this->upload->data('file_name');
-                    } else {
-                        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Materi gagal diubah</div>');
-                    }
+                $this->load->library('upload', $config);
+                unlink(FCPATH . './assets/materi/' . $materiLama);
+                if ($this->upload->do_upload('materi')) {
+                    $materi = $this->upload->data('file_name');
                 } else {
-                    $materi = $materiLama;
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Materi gagal diubah</div>');
                 }
+               
+            }
 
                 $data = array(
                     'id_pertemuan' => $pertemuan,
@@ -113,7 +108,7 @@ class KelolaMateri extends CI_Controller {
                 $this->Kelolamateri_model->updateMateri($id, $data);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Materi berhasil diubah</div>');
                 redirect('kelolamateri');
-            }
+            
         
     }
 

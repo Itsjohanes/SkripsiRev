@@ -15,33 +15,7 @@
             <input type="hidden" class="form-control" id="id_materi" name="id_materi" value="<?php echo $materi['id_materi'];  ?>">
             <label for="link">Pertemuan</label>
             <div class="input-group input-group-outline">
-            <select required class="form-control" id="exampleFormControlSelect1" id="pertemuan" name="pertemuan">
-                <?php
-                if ($materi['id_pertemuan'] == 1) {
-                    echo '<option value="1" selected>1</option>';
-                    echo '<option value="2">2</option>';
-                    echo '<option value="3">3</option>';
-                    echo '<option value="4">4</option>';
-                } else if ($materi['id_pertemuan'] == 2) {
-                    echo '<option value="1">1</option>';
-                    echo '<option value="2" selected>2</option>';
-                    echo '<option value="3">3</option>';
-                    echo '<option value="4">4</option>';
-                } else if ($materi['id_pertemuan'] == 3) {
-                    echo '<option value="1">1</option>';
-                    echo '<option value="2">2</option>';
-                    echo '<option value="3" selected>3</option>';
-                    echo '<option value="4">4</option>';
-                } else if ($materi['id_pertemuan'] == 4) {
-                    echo '<option value="1">1</option>';
-                    echo '<option value="2">2</option>';
-                    echo '<option value="3">3</option>';
-                    echo '<option value="4" selected>4</option>';
-                }
-                ?>
-
-
-            </select>
+            <input type="text" class="form-control" required id="pertemuan" name="pertemuan" value="<?php echo $materi['id_pertemuan'];  ?>">
             </div>
             <label for="nilai">Link Youtube</label>
             <div class="input-group input-group-outline">
