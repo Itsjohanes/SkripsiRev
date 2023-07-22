@@ -40,7 +40,12 @@
             <input type="text" required class="form-control" required id="kunci" name="kunci" value="<?php echo $soal['kunci'];  ?>"></div>
             <label for="nilai">Gambar</label>
             <div class="input-group input-group-outline">
-            <a href="<?= base_url('assets/img/pretest/') . $soal['gambar']; ?>" target="_blank">Lihat Gambar</a></div>
+            <?php
+            if($soal['gambar'] != ''){
+                echo '<img src="'.base_url('assets/img/pretest/'.$soal['gambar']).'" width="30%" height="30%"/>';
+            }
+            ?>
+            
             <div class="input-group input-group-outline">
             <input type="file" class="form-control" id="gambar" name="gambar"></div>
 

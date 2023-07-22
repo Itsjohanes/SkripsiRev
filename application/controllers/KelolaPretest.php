@@ -73,7 +73,7 @@ class KelolaPretest extends CI_Controller {
     {
 
             //delete soal and unlink picture by id 
-            $pretest = $this->kelolapretest_model->getPretestById($id);
+            $pretest = $this->Kelolapretest_model->getPretestById($id);
             $gambar = $pretest['gambar'];
             unlink(FCPATH . 'assets/img/pretest/' . $gambar);
             $this->Kelolapretest_model->hapusPretest($id);
