@@ -23,13 +23,10 @@ class Admin extends CI_Controller
             $data['posttest'] = $this->Admin_model->getTotalPosttests();
             $data['ranking'] = $this->Admin_model->getRanking();
             $jumlahSiswa = $this->Admin_model->getTotalStudents();
-            $pertemuan = $this->Kelolapertemuan_model->getPertemuan();
             $jumlahPretest = $this->Admin_model->getTotalHasilPretest();
             $jumlahPosttest = $this->Admin_model->getTotalHasilPosttest();
-             $this->db->select_max('id_pertemuan');
-            $query = $this->db->get('tb_pertemuan');
-            $result = $query->row_array();
-            $jumlahPertemuan = $result['id_pertemuan'];
+            
+            $jumlahPertemuan = $this->Kelolapertemuan_model->getMax();
             for($i = 1;$i<=$jumlahPertemuan;$i++){
                 if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
                     $tugas[$i] = $this->Admin_model->getTotalHasilTugas($i);
@@ -56,7 +53,19 @@ class Admin extends CI_Controller
             $this->db->join('tb_akun', 'tb_pesan.id = tb_akun.id');
             $this->db->where('tb_pesan.id_lawan', $id_lawan_sesi);
             $query = $this->db->get();
-            $data['pertemuan'] = $pertemuan;
+            $pertemuan = $this->Kelolapertemuan_model->getPertemuan();
+            $data['pertemuan'] = array();
+
+            // Membuat array baru untuk menyimpan data pertemuan dengan indeks dimulai dari 1
+            foreach ($pertemuan as $item) {
+                $data['pertemuan'][$item['id_pertemuan']] = $item;
+            }
+            $totalPertemuan = $jumlahPertemuan; 
+            for ($i = 1; $i <= $totalPertemuan; $i++) {
+                if (!isset($data['pertemuan'][$i])) {
+                    $data['pertemuan'][$i] = null;
+                }
+            }
             $data['notifchat'] = $this->ChatModel->getChatData();
             $data['jumlahpertemuan'] = $jumlahPertemuan;
             $data['nilaiTertinggi'] = $this->Admin_model->getNilaiTertinggi();

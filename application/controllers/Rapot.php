@@ -20,7 +20,6 @@ class Rapot extends CI_Controller
             $data['user'] = $this->Rapot_model->getUserByEmail($this->session->userdata('email'));
             $data['pretest'] = $this->Rapot_model->getPretestBySiswaId($this->session->userdata('id'));
             $data['posttest'] = $this->Rapot_model->getPosttestBySiswaId($this->session->userdata('id'));
-            $pertemuan = $this->Kelolapertemuan_model->getPertemuan();
             $maxPertemuan = $this->Kelolapertemuan_model->getMax();
             //Pertemuan dimulai dari 1
             for($i = 1; $i<=$maxPertemuan; $i++){
@@ -32,7 +31,19 @@ class Rapot extends CI_Controller
             //send data
             $data['tugas'] = $tugas;
             $data['maxpertemuan'] = $maxPertemuan;
-            $data['pertemuan'] = $pertemuan;
+            $data['jumlahTugas'] = $this->Kelolapertemuan_model->getMax();
+
+            $pertemuan = $this->Kelolapertemuan_model->getPertemuan();
+            $data['pertemuan'] = array();
+            foreach ($pertemuan as $item) {
+                $data['pertemuan'][$item['id_pertemuan']] = $item;
+            }
+            $totalPertemuan = $data['jumlahTugas'];
+            for ($i = 1; $i <= $totalPertemuan; $i++) {
+                if (!isset($data['pertemuan'][$i])) {
+                    $data['pertemuan'][$i] = null;
+                }
+            }                        
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar', $data);
             $this->load->view('backend/siswa/rapot', $data);

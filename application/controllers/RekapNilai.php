@@ -19,10 +19,21 @@ class RekapNilai extends CI_Controller
             // Mendapatkan data user
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['jumlahTugas'] = $this->Kelolapertemuan_model->getMax();
+
             // Mendapatkan data report
             $data['report'] = $this->ReportNilai_model->getReportData();
-            $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
-            $data['jumlahTugas'] = $this->Kelolapertemuan_model->getMax();
+            $pertemuan = $this->Kelolapertemuan_model->getPertemuan();
+            $data['pertemuan'] = array();
+            foreach ($pertemuan as $item) {
+                $data['pertemuan'][$item['id_pertemuan']] = $item;
+            }
+            $totalPertemuan = $data['jumlahTugas'];
+            for ($i = 1; $i <= $totalPertemuan; $i++) {
+                if (!isset($data['pertemuan'][$i])) {
+                    $data['pertemuan'][$i] = null;
+                }
+            }            
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/rekapnilai', $data);

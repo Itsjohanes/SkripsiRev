@@ -26,7 +26,7 @@
                                     <th scope="col">Pre Test</th>
                                     <?php
                                         for ($i = 1; $i <= $jumlahTugas; $i++) {
-                                            if($pertemuan[$i-1] != null){
+                                            if($pertemuan[$i] != null){
                                                 echo "<th scope='col'>Tugas " . $i . "</th>";
                                             }
                                             
@@ -44,7 +44,9 @@
                                     <th scope="col">Pre Test</th>
                                    <?php
                                     for ($i = 1; $i <= $jumlahTugas; $i++) {
-                                        echo "<th scope='col'>Tugas " . $i . "</th>";
+                                        if($pertemuan[$i] != null){
+                                            echo "<th scope='col'>Tugas " . $i . "</th>";
+                                        }
                                     }
                                     ?>
                                     <th scope="col">Post Test</th>
@@ -61,7 +63,7 @@
                                         <td><?= $j['pretest']; ?></td>
                                         <?php
                                             for ($i = 1; $i <= $jumlahTugas; $i++) {
-                                                if($pertemuan[$i-1] != null){
+                                                if($pertemuan[$i] != null){
                                                     echo "<td>" . $j['tugas_' . $i] . "</td>";
                                                 }
                                         }

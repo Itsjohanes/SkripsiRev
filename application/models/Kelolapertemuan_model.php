@@ -21,6 +21,7 @@ class KelolaPertemuan_model extends CI_Model {
        
     }
     public function getMax(){
+        
         $this->db->select_max('id_pertemuan');
         $query = $this->db->get('tb_pertemuan');
         $result = $query->row_array();

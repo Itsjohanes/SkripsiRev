@@ -20,7 +20,7 @@
                                     <th scope="col">Post-Test</th>
                                     <?php
                                         for ($i = 1; $i <= $maxpertemuan; $i++) {
-                                            if($pertemuan[$i-1] != null){
+                                            if($pertemuan[$i] != null){
                                                 echo "<th scope='col'>Tugas " . $i . "</th>";
                                             }
                                             
@@ -52,7 +52,7 @@
                                     </td>
                                          <?php
                                         for ($i = 1; $i <= $maxpertemuan; $i++) {
-                                            if($pertemuan[$i-1] != null){
+                                            if($pertemuan[$i] != null){
                                             echo "<td>";
                                             if ($tugas[$i] != null) {
                                                 if($tugas[$i]['nilai'] == null){
