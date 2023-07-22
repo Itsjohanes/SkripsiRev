@@ -4,7 +4,7 @@ class Pertemuan extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Komentar_model');
-        $this->load->model('Pertemuan_model'); // Load the model
+        $this->load->model('Pertemuan_model'); 
         $this->load->library('user_agent');
         $this->load->model('ChatModel');
         checkRole(0);
@@ -14,7 +14,6 @@ class Pertemuan extends CI_Controller {
     public function index($id = '') {
             //Query semua id_materi pada tb_pertemuan jika $id terdaftar
             $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
-
             if($id_pertemuan){
                 $data['notifchat'] = $this->ChatModel->getChatData();
                 $data['title'] = "Materi Pertemuan";
@@ -42,6 +41,7 @@ class Pertemuan extends CI_Controller {
                 }
 
             }else{
+                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan tidak ada</div>');
                 redirect('materi');
             }
             
@@ -52,7 +52,6 @@ class Pertemuan extends CI_Controller {
 
     public function save_comment() {
         // Proses menyimpan komentar
-            
             $data = array(
                 'id_user' => $this->input->post('id_user'),
                 'comment' => $this->input->post('comment'),
@@ -87,6 +86,7 @@ class Pertemuan extends CI_Controller {
                     redirect('materi');
                 }    
             }else{
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan tidak ada</div>');
                     redirect('materi');
                 
             }
@@ -147,10 +147,8 @@ class Pertemuan extends CI_Controller {
         
     }
 
-    public function hapusTugas($id) {
-            //cek apakah id_usernya sama dengan 
-
-            
+    public function hapusTugas($id = '') {
+            //cek apakah id_usernya sama dengan id_pemilik tugas
             $id_siswa = $this->session->userdata('id');
             $id_hasiltugas = $this->Pertemuan_model->getHasilTugasById($id);
             $id_user = $id_hasiltugas['id_siswa'];
@@ -160,7 +158,6 @@ class Pertemuan extends CI_Controller {
             }else{
                 $file = $this->Pertemuan_model->getHasilTugasById($id);
                 $filename = $file['upload'];
-
                 //cek kolom nilai pada tb_hasiltugas sudah ada isi
                 $hasiltugas = $this->Pertemuan_model->getHasilTugasById($id);
                 $nilai = $hasiltugas['nilai'];
@@ -173,17 +170,11 @@ class Pertemuan extends CI_Controller {
                     $this->Pertemuan_model->deleteHasilTugas($id);
                     //unlink file based on id_hasiltugas
                     unlink(FCPATH . 'assets/tugassiswa/' . $filename);
-                    //setflash
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tugas berhasil dihapus</div>');
                     redirect($this->agent->referrer());
                 }
 
             }
-            
-
-            
-
-       
     }
 
     public function editTugas() {

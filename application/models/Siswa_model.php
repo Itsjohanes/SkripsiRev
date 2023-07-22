@@ -3,6 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Siswa_model extends CI_Model
 {
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('Kelolapertemuan_model');
+    }
     public function getUserByEmail($email)
     {
         return $this->db->get_where('tb_akun', ['email' => $email])->row_array();
@@ -40,11 +45,16 @@ class Siswa_model extends CI_Model
     }
     public function getRanking(){
 
-        $pertemuan =  $this->db->get('tb_pertemuan')->result_array();
-        $jumlahPertemuan = count($pertemuan);
+        $this->db->select_max('id_pertemuan');
+        $query = $this->db->get('tb_pertemuan');
+        $result = $query->row_array();
+        $jumlahPertemuan = $result['id_pertemuan'];
         $string = "nama, (COALESCE(pretest, 0) + COALESCE(posttest, 0)";
         for($i = 1;$i<=$jumlahPertemuan;$i++){
-            $string = $string." + COALESCE(tugas_".$i.", 0)";
+            if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                $string = $string." + COALESCE(tugas_".$i.", 0)";
+            }
+            
 
         }
         $string = $string.") AS total_nilai";

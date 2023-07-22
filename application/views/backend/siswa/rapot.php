@@ -19,8 +19,11 @@
                                     <th scope="col">Pre-Test</th>
                                     <th scope="col">Post-Test</th>
                                     <?php
-                                        for ($i = 1; $i <= $pertemuan; $i++) {
-                                            echo "<th scope='col'>Tugas " . $i . "</th>";
+                                        for ($i = 1; $i <= $maxpertemuan; $i++) {
+                                            if($pertemuan[$i-1] != null){
+                                                echo "<th scope='col'>Tugas " . $i . "</th>";
+                                            }
+                                            
                                         }
                                         ?>
 
@@ -48,15 +51,23 @@
                                         ?>
                                     </td>
                                          <?php
-                                        for ($i = 1; $i <= $pertemuan; $i++) {
+                                        for ($i = 1; $i <= $maxpertemuan; $i++) {
+                                            if($pertemuan[$i-1] != null){
                                             echo "<td>";
                                             if ($tugas[$i] != null) {
-                                                echo $tugas[$i]['nilai'];
+                                                if($tugas[$i]['nilai'] == null){
+                                                    echo "Belum Dinilai";
+                                                }else{
+                                                    echo $tugas[$i]['nilai'];
+
+                                                }
+                                                
                                             } else {
                                                 echo "Belum Dikerjakan";
                                             }
                                             echo "</td>";
                                         }
+                                    }
                                         ?>   
                                 </tr>
                             </tbody>

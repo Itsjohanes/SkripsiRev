@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class KelolaPertemuan_model extends CI_Model {
 
+    
+
     public function getUserByEmail($email)
     {
         return $this->db->get_where('tb_akun', ['email' => $email])->row_array();
@@ -17,6 +19,12 @@ class KelolaPertemuan_model extends CI_Model {
         return $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array();
 
        
+    }
+    public function getMax(){
+        $this->db->select_max('id_pertemuan');
+        $query = $this->db->get('tb_pertemuan');
+        $result = $query->row_array();
+        return $result['id_pertemuan'];
     }
     public function tambahPertemuan($data)
     {

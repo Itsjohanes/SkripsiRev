@@ -25,17 +25,22 @@ class Siswa extends CI_Controller
             $pretest = $this->Siswa_model->getPretestCount($this->session->userdata('id'));
             $posttest = $this->Siswa_model->getPosttestCount($this->session->userdata('id'));
             $pertemuan = $this->Kelolapertemuan_model->getPertemuan();
+            //Mendapatkan jumlah Pertemuan
             $countPertemuan = count($pertemuan);
-            //Pertemuan dimulai dari 1
-            for($i = 1; $i<=$countPertemuan; $i++){
-                $tugas[$i] = $this->Siswa_model->getTugasCount($this->session->userdata('id'), $i);
-
+            //Mendapatkan id_pertemuan terakhir
+            $maxPertemuan = $this->Kelolapertemuan_model->getMax();
+            for($i = 1; $i<=$maxPertemuan; $i++){
+                //Jika id_pertemuan ada pada table tb_pertemuan
+                if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                    $tugas[$i] = $this->Siswa_model->getTugasCount($this->session->userdata('id'), $i);
+                }
             }
             $jumlah = 0;
-            for($i = 1;$i<=$countPertemuan;$i++){
-                 $jumlah = $jumlah + $tugas[$i];
+            for($i = 1;$i<=$maxPertemuan;$i++){
+                if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                    $jumlah = $jumlah + $tugas[$i];
+                } 
             }
-
             $data['persentasetugas'] = ($jumlah / $countPertemuan) * 100;
             $data['ranking'] = $this->Siswa_model->getRanking();
             $data['persentasetest'] = ($pretest + $posttest) / 2 * 100;
@@ -49,14 +54,16 @@ class Siswa extends CI_Controller
             if ($posttest != null) {
                 $tesSudah = $tesSudah . "Posttest ";
             }
-            for($i = 1;$i<=$countPertemuan;$i++){
-                if ($tugas[$i] != null) {
+            for($i = 1;$i<=$maxPertemuan;$i++){
+
+                if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                    if ($tugas[$i] != null) {
                     $sudahSelesai = $sudahSelesai . "Tugas " . $i . ", ";
-                }else{
-                    $belumSelesai = $belumSelesai . "Tugas " . $i . ", ";
+                    }else{
+                        $belumSelesai = $belumSelesai . "Tugas " . $i . ", ";
+                    }
                 }
             }
-            
             $data['tesSudah'] = $tesSudah;
             $data['sudahSelesai'] = $sudahSelesai;
             $data['belumSelesai'] = $belumSelesai;

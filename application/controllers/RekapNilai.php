@@ -21,8 +21,8 @@ class RekapNilai extends CI_Controller
             $data['notifchat'] = $this->ChatModel->getChatData();
             // Mendapatkan data report
             $data['report'] = $this->ReportNilai_model->getReportData();
-            $pertemuan = $this->Kelolapertemuan_model->getPertemuan();
-            $data['jumlahTugas'] = count($pertemuan);
+            $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
+            $data['jumlahTugas'] = $this->Kelolapertemuan_model->getMax();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/rekapnilai', $data);
@@ -35,7 +35,7 @@ class RekapNilai extends CI_Controller
 	public function cetakPDF()
 	{
         $pertemuan = $this->Kelolapertemuan_model->getPertemuan();
-        $jumlahTugas = count($pertemuan);
+        $jumlahTugas = $this->Kelolapertemuan_model->getMax();
         $pdf = new FPDF('L', 'mm', 'a3');
         $pdf->AddPage();
 
@@ -49,7 +49,10 @@ class RekapNilai extends CI_Controller
         $pdf->Cell(100, 10, 'Nama Siswa', 1, 0, 'C');
         $pdf->Cell(35, 10, 'Pre-Test', 1, 0, 'C');
         for($i = 1;$i<=$jumlahTugas;$i++){
-            $pdf->Cell(35, 10, 'Tugas '.$i, 1, 0, 'C');
+            if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                $pdf->Cell(35, 10, 'Tugas '.$i, 1, 0, 'C');
+            }
+            
 
         }
         $pdf->Cell(35, 10, 'Post-Test', 1, 1, 'C');
@@ -63,8 +66,9 @@ class RekapNilai extends CI_Controller
             $pdf->Cell(100, 10, $data['nama'], 1, 0);
             $pdf->Cell(35, 10, $data['pretest'], 1, 0);
             for($i = 1;$i<=$jumlahTugas;$i++){
-                
-                $pdf->Cell(35, 10, $data['tugas_'.$i], 1, 0);
+                if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                    $pdf->Cell(35, 10, $data['tugas_'.$i], 1, 0);
+                }
 
             }
             $pdf->Cell(35, 10, $data['posttest'], 1, 1);

@@ -99,11 +99,15 @@
                 </div>
                 <?php
                     for ($i = 1; $i <= $jumlahpertemuan; $i++) {
-                        $persentaseTugas = ${"persentasetugas" . $i};
-                        echo '<label>Mengerjakan Tugas ' . $i . ' (<span class="float-right">' . $persentaseTugas . '%</span>)</label>';
-                        echo '<div class="progress mb-4">';
-                        echo '<div class="progress-bar bg-success" role="progressbar" style="width: ' . $persentaseTugas . '%" aria-valuenow="' . $persentaseTugas . '" aria-valuemin="0" aria-valuemax="100"></div>';
-                        echo '</div>';
+                        if($pertemuan[$i-1] != null){
+                            $persentaseTugas = ${"persentasetugas" . $i};
+                            echo '<label>Mengerjakan Tugas ' . $i . ' (<span class="float-right">' . $persentaseTugas . '%</span>)</label>';
+                            echo '<div class="progress mb-4">';
+                            echo '<div class="progress-bar bg-success" role="progressbar" style="width: ' . $persentaseTugas . '%" aria-valuenow="' . $persentaseTugas . '" aria-valuemin="0" aria-valuemax="100"></div>';
+                            echo '</div>';
+
+                        }
+                        
                     }
 
                 ?>

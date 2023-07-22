@@ -26,7 +26,10 @@
                                     <th scope="col">Pre Test</th>
                                     <?php
                                         for ($i = 1; $i <= $jumlahTugas; $i++) {
-                                            echo "<th scope='col'>Tugas " . $i . "</th>";
+                                            if($pertemuan[$i-1] != null){
+                                                echo "<th scope='col'>Tugas " . $i . "</th>";
+                                            }
+                                            
                                         }
                                         ?>
                                     <th scope="col">Post Test</th>
@@ -50,22 +53,23 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <?php $i = 1; ?>
+                                <?php $a = 1; ?>
                                 <?php foreach ($report as $j) : ?>
                                     <tr>
-                                        <th scope="row"><?= $i; ?></th>
+                                        <th scope="row"><?= $a; ?></th>
                                         <td><?= $j['nama']; ?></td>
                                         <td><?= $j['pretest']; ?></td>
                                         <?php
                                             for ($i = 1; $i <= $jumlahTugas; $i++) {
-                                                echo "<td>" . $j['tugas_' . $i] . "</td>";
-
+                                                if($pertemuan[$i-1] != null){
+                                                    echo "<td>" . $j['tugas_' . $i] . "</td>";
+                                                }
                                         }
                                         ?>
                                         <td><?= $j['posttest'];?></td>
                                        
                                     </tr>
-                                    <?php $i++; ?>
+                                    <?php $a++; ?>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
