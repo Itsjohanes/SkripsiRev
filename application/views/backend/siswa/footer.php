@@ -89,6 +89,7 @@
       </div>
     </div>
   </div>
+  
   <!--   Core JS Files   -->
   <script src="<?php echo base_url('assets/js/core/popper.min.js');?>"></script>
   <script src="<?php echo base_url('assets/js/core/bootstrap.min.js');?>"></script>

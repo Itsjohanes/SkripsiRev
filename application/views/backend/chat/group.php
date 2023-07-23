@@ -1,55 +1,6 @@
 
-<style>
-        body {
-            font-family: Arial, sans-serif;
-        }
+  <link rel="stylesheet" href="<?= base_url('assets/css/globalchat.css'); ?>">
 
-        h1 {
-            text-align: center;
-        }
-
-        .chat-container {
-            width: 500px;
-            margin: 0 auto;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-
-        .chat-messages {
-            height: 300px;
-            overflow-y: scroll;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-
-        .chat-message {
-            margin-bottom: 10px;
-        }
-
-        .chat-message strong {
-            font-weight: bold;
-        }
-
-        .chat-input {
-            margin-top: 10px;
-        }
-
-        .chat-input input,
-        .chat-input textarea {
-            width: 100%;
-            padding: 5px;
-        }
-
-        .chat-input button {
-            margin-top: 5px;
-            padding: 5px 10px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             // Refresh chat messages every 2 seconds
@@ -85,8 +36,6 @@
             });
         });
     </script>
-</head>
-<body>
     <h1>Group Chat</h1>
     <div class="chat-container">
         <div class="chat-messages"></div>
@@ -95,5 +44,4 @@
             <button id="send_message">Send</button>
         </div>
     </div>
-</body>
 

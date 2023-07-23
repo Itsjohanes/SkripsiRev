@@ -1,5 +1,5 @@
 <?php
-class Chat_model extends CI_Model
+class Chatglobal_model extends CI_Model
 {
     public function get_chat_messages()
     {

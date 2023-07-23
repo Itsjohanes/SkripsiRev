@@ -38,7 +38,7 @@
                             echo '<div class="form-group">';
                             echo '<label for="textArea">Text</label>';
                             echo '<div class="input-group input-group-outline">';
-                            echo '<textarea class = "form-control" id="textArea" name="text" rows="3">' . $hasiltugas['text'] . '</textarea>';
+                            echo '<textarea required class = "form-control" id="textArea" name="text" rows="3">' . $hasiltugas['text'] . '</textarea>';
                             echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
@@ -58,7 +58,7 @@
                             echo '</br>';
                             //file pdf yang diupload
                             echo '<a href="' . base_url('assets/tugassiswa/' . $hasiltugas['upload']) . '" target="_blank">' . $hasiltugas['upload'] . '</a>';
-                            echo '<input type="file" class="form-control-file" name="upload" id="fileUpload">';
+                            echo '<input type="file" class="form-control-file" required name="upload" id="fileUpload">';
 
                             echo '</div>';
                             //hapus dengan konfirmasi menggunakan alert
@@ -78,13 +78,13 @@
                             echo '<div class="form-group">';
                             echo '<label for="textArea">Text</label>';
                             echo '<div class="input-group input-group-outline">';
-                            echo '<textarea class="form-control" id="textArea" name="text" rows="3"></textarea>';
+                            echo '<textarea  required class="form-control" id="textArea" name="text" rows="3"></textarea>';
                             echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
                             echo '<label for="fileUpload">Upload File (max 2mb) (PDF)</label>';
                             echo '</br>';
-                            echo '<input type="file" class="form-control-file" name="upload" id="fileUpload">';
+                            echo '<input type="file" required class="form-control-file" name="upload" id="fileUpload">';
                             echo '</div>';
                             echo '</br>';
                         }

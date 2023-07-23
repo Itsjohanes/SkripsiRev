@@ -27,7 +27,7 @@
 	}
 	.card-warna{
 
-		height: 500px;
+		height: 750px;
 		border-radius: 15px !important;
 		background-color: rgba(34, 34, 36, 0.9) !important;
 

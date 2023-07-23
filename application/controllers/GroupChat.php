@@ -7,7 +7,7 @@ class GroupChat extends CI_Controller
         
         parent::__construct();
         $this->load->model('ChatModel');
-        $this->load->model('chatgroup_model');
+        $this->load->model('Chatgroup_model');
         checkRole(0);
         $this->role = $this->session->userdata('role');
     }
@@ -30,7 +30,7 @@ class GroupChat extends CI_Controller
                  $result = $query->row();
                 $kelompok = $result->kelompok;
                 $data['notifchat'] = $this->ChatModel->getChatData();
-                $data['chat_messages'] = $this->chatgroup_model->get_chat_messages($kelompok);
+                $data['chat_messages'] = $this->Chatgroup_model->get_chat_messages($kelompok);
                 $data['title'] = "Group Chat";
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $this->load->view('backend/siswa/header', $data);
@@ -52,7 +52,7 @@ class GroupChat extends CI_Controller
             $result = $query->row();
             $kelompok = $result->kelompok;
         }
-        $chat_messages = $this->chatgroup_model->get_chat_messages($kelompok);
+        $chat_messages = $this->Chatgroup_model->get_chat_messages($kelompok);
         echo json_encode($chat_messages);
     }
 
@@ -62,7 +62,7 @@ class GroupChat extends CI_Controller
          $id_user = $this->session->userdata('id');
          $query = $this->db->get_where('tb_random', ['id_user' => $id_user]);
          
-        $chat_messages = $this->chatgroup_model->get_chat_messages($kelompok);
+        $chat_messages = $this->Chatgroup_model->get_chat_messages($kelompok);
         echo json_encode($chat_messages);
     }
     public function save_message()
@@ -84,7 +84,7 @@ class GroupChat extends CI_Controller
             'created_at' => date('Y-m-d H:i:s')
         );
 
-        $this->chatgroup_model->insert_chat_message($data);
+        $this->Chatgroup_model->insert_chat_message($data);
     }
 
     public function saveadmin_message()
@@ -102,7 +102,7 @@ class GroupChat extends CI_Controller
             'created_at' => date('Y-m-d H:i:s')
         );
 
-        $this->chatgroup_model->insert_chat_message($data);
+        $this->Chatgroup_model->insert_chat_message($data);
     }
     public function chooseGroup(){
         if ($this->role  == 1) {
@@ -111,7 +111,7 @@ class GroupChat extends CI_Controller
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
         $data['kelompok'] = $this->input->post('kelompok');
         $kelompok = $this->input->post('kelompok');
-        $data['chat_messages'] = $this->chatgroup_model->get_chat_messages($kelompok);
+        $data['chat_messages'] = $this->Chatgroup_model->get_chat_messages($kelompok);
         $this->load->view('backend/admin/header', $data);
         $this->load->view('backend/admin/sidebar', $data);
         $this->load->view('backend/chat/group_admin', $data);
