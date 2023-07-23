@@ -5,13 +5,13 @@ class Materi extends CI_Controller {
         parent::__construct();
         $this->load->model('Materi_model'); // Load the model
         $this->load->model('Kelolapertemuan_model');
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
         checkRole(0);
     }
 
     public function index() {
             $data['title'] = "Materi";
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $pretest = $this->Materi_model->getJumlahPretest($this->session->userdata('id'));
             $posttest = $this->Materi_model->getJumlahPosttest($this->session->userdata('id'));
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();

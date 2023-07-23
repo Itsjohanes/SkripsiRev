@@ -7,14 +7,14 @@ class Posttest extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Posttest_model'); // Load the Posttest_model
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
         checkRole(0);
     }
 
     public function index()
     {
             $data['title'] = "Post-Test";
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $data['user'] = $this->Posttest_model->getUserByEmail($this->session->userdata('email'));
             $data['soal'] = $this->Posttest_model->getPosttestQuestions();
             $data['jumlah'] = $this->Posttest_model->getPosttestQuestionCount();

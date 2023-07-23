@@ -6,7 +6,7 @@ class Pertemuan extends CI_Controller {
         $this->load->model('Komentar_model');
         $this->load->model('Pertemuan_model'); 
         $this->load->library('user_agent');
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
         checkRole(0);
 
     }
@@ -15,7 +15,7 @@ class Pertemuan extends CI_Controller {
             //Query semua id_materi pada tb_pertemuan jika $id terdaftar
             $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
             if($id_pertemuan){
-                $data['notifchat'] = $this->ChatModel->getChatData();
+                $data['notifchat'] = $this->Chat_model->getChatData();
                 $data['title'] = "Materi Pertemuan";
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $data['materi'] = $this->db->get_where('tb_youtube', ['id_pertemuan' => $id])->result_array();
@@ -71,7 +71,7 @@ class Pertemuan extends CI_Controller {
 
             $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
             if($id_pertemuan){
-                $data['notifchat'] = $this->ChatModel->getChatData();
+                $data['notifchat'] = $this->Chat_model->getChatData();
                 $data['title'] = "Materi Pertemuan ". $id;
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $data['materi'] = $this->db->get_where('tb_materi', ['id_pertemuan' => $id])->row_array();

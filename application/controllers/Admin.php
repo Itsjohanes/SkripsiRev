@@ -9,7 +9,7 @@ class Admin extends CI_Controller
         parent::__construct();
         $this->load->model('Admin_model');
         $this->load->model('Kelolapertemuan_model');
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
         checkRole(1);
        
     }
@@ -66,7 +66,7 @@ class Admin extends CI_Controller
                     $data['pertemuan'][$i] = null;
                 }
             }
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $data['jumlahpertemuan'] = $jumlahPertemuan;
             $data['nilaiTertinggi'] = $this->Admin_model->getNilaiTertinggi();
             $this->load->view('backend/admin/header', $data);

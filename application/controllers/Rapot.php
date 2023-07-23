@@ -9,6 +9,7 @@ class Rapot extends CI_Controller
         $this->load->model('Rapot_model');
         $this->load->library('cetak_pdf');
         $this->load->model('Kelolapertemuan_model');
+        $this->load->model('Chat_model');
         checkRole(0);
     }
 
@@ -16,7 +17,7 @@ class Rapot extends CI_Controller
     {
         
             $data['title'] = "Report";
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $data['user'] = $this->Rapot_model->getUserByEmail($this->session->userdata('email'));
             $data['pretest'] = $this->Rapot_model->getPretestBySiswaId($this->session->userdata('id'));
             $data['posttest'] = $this->Rapot_model->getPosttestBySiswaId($this->session->userdata('id'));

@@ -6,7 +6,7 @@ class KelolaListSiswa extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
         $this->load->model('Kelolalistsiswa_model'); // Load the ListSiswa_model
         checkRole(1);
     }
@@ -16,7 +16,7 @@ class KelolaListSiswa extends CI_Controller {
         $data['title'] = "List Siswa";
         $data['user'] = $this->Kelolalistsiswa_model->getUserByEmail($this->session->userdata('email'));
         $data['siswa'] = $this->Kelolalistsiswa_model->getSiswa();
-        $data['notifchat'] = $this->ChatModel->getChatData();
+        $data['notifchat'] = $this->Chat_model->getChatData();
         $this->load->view('backend/admin/header', $data);
         $this->load->view('backend/admin/sidebar', $data);
         $this->load->view('backend/admin/listsiswa', $data);
@@ -29,7 +29,7 @@ class KelolaListSiswa extends CI_Controller {
         $data['title'] = "List Siswa";
         $data['user'] = $this->Kelolalistsiswa_model->getUserByEmail($this->session->userdata('email'));
         $data['siswa'] = $this->Kelolalistsiswa_model->getSiswaById($id);
-        $data['notifchat'] = $this->ChatModel->getChatData();
+        $data['notifchat'] = $this->Chat_model->getChatData();
         $this->load->view('backend/admin/header', $data);
         $this->load->view('backend/admin/sidebar', $data);
         $this->load->view('backend/admin/editsiswa', $data);

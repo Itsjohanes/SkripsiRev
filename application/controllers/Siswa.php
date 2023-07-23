@@ -10,7 +10,7 @@ class Siswa extends CI_Controller
         parent::__construct();
         $this->load->model('Siswa_model');
         $this->load->model('Kelolapertemuan_model');
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
         checkRole(0); 
     }
     public function index()
@@ -20,7 +20,7 @@ class Siswa extends CI_Controller
             $data['kelompok'] = $this->Siswa_model->getKelompokByIdUser($this->session->userdata('id'));
             $data['user'] = $this->Siswa_model->getUserByEmail($this->session->userdata('email'));
             $data['jumlahSiswa'] = $this->Siswa_model->getJumlahSiswa();
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
 
             $pretest = $this->Siswa_model->getPretestCount($this->session->userdata('id'));
             $posttest = $this->Siswa_model->getPosttestCount($this->session->userdata('id'));

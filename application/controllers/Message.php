@@ -7,14 +7,14 @@ class Message extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Message_model'); // Load the Message_model
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
         checkRole(1);
     }
 
     public function index()
     {
             $data['title'] = "Message";
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $data['user'] = $this->Message_model->getUserByEmail($this->session->userdata('email'));
             $data['pesan'] = $this->Message_model->getMessages();
             $this->load->view('backend/admin/header', $data);

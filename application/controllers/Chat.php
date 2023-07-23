@@ -10,8 +10,7 @@ class Chat extends CI_Controller
         ini_set('max_execution_time', 0);
         ini_set('memory_limit', '2048M');
         parent::__construct();
-        $this->load->model('ChatModel');
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
         //default role = 0
         checkRole(0);
         $this->role = $this->session->userdata('role');
@@ -22,8 +21,8 @@ class Chat extends CI_Controller
     {
         
             $no =  $this->uri->segment(2);
-            $data['data'] = $this->ChatModel->getDataById($no);
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['data'] = $this->Chat_model->getDataById($no);
+            $data['notifchat'] = $this->Chat_model->getChatData();
             if ($data['data'] == null) {
                 die("user tidak ada nih");
             } else {
@@ -48,7 +47,7 @@ class Chat extends CI_Controller
     {
         $id =     $this->input->post('id');
         $id_lawan =     $this->input->post('id_lawan');
-        $data = $this->ChatModel->getPesan($id, $id_lawan);
+        $data = $this->Chat_model->getPesan($id, $id_lawan);
 
         echo json_encode(array(
             'data' => $data
@@ -73,7 +72,7 @@ class Chat extends CI_Controller
             'waktu' => $now,
         );
 
-        $this->ChatModel->TambahChatKeSatu($in);
+        $this->Chat_model->TambahChatKeSatu($in);
         $log = array('status' => true);
         echo json_encode($log);
         return true;
@@ -85,7 +84,7 @@ class Chat extends CI_Controller
     public function GetAllOrang()
     {
         $id = $this->input->post('id');
-        $data = $this->ChatModel->GetAllOrangKecUser($id);
+        $data = $this->Chat_model->GetAllOrangKecUser($id);
 
         echo json_encode(array(
             'data' => $data
@@ -95,7 +94,7 @@ class Chat extends CI_Controller
     }
     public function menu()
     {
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
        
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
 

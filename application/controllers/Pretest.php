@@ -7,14 +7,14 @@ class Pretest extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Pretest_model'); // Load the Pretest_model
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
         checkRole(0);
     }
 
     public function index()
     {
             $data['title'] = "Pre-Test";
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $data['user'] = $this->Pretest_model->getUserByEmail($this->session->userdata('email'));
             $data['soal'] = $this->Pretest_model->getPretestQuestions();
             $data['jumlah'] = $this->Pretest_model->getPretestQuestionCount();

@@ -9,7 +9,7 @@ class KelolaYoutube extends CI_Controller {
         // Load model
         $this->load->model('Kelolayoutube_model');
         $this->load->model('Kelolapertemuan_model');
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
         checkRole(1);
     }
 
@@ -19,7 +19,7 @@ class KelolaYoutube extends CI_Controller {
             $data['user'] = $this->Kelolayoutube_model->getUserByEmail($this->session->userdata('email'));
             $data['materi'] = $this->Kelolayoutube_model->getYoutubeMateri();
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/youtube', $data);
@@ -57,7 +57,7 @@ class KelolaYoutube extends CI_Controller {
             $data['title'] = 'Edit Youtube';
             $data['user'] = $this->Kelolayoutube_model->getUserByEmail($this->session->userdata('email'));
             $data['materi'] = $this->Kelolayoutube_model->getYoutubeMateriById($id_materi);
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/edityoutube', $data);

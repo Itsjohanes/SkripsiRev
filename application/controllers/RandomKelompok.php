@@ -8,7 +8,7 @@ class RandomKelompok extends CI_Controller {
         parent::__construct();
         $this->load->model('Randomkelompok_model');
         $this->load->model('Kelolalistsiswa_model');
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
         checkRole(1);
     }
 
@@ -19,7 +19,7 @@ class RandomKelompok extends CI_Controller {
             $result = $query->row();
             $maxKelompok = $result->kelompok;
             $data['jumkel'] = $maxKelompok;
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['siswa'] = $this->Kelolalistsiswa_model->getSiswa();
             $data['randoms'] = $this->Randomkelompok_model->getRandoms();

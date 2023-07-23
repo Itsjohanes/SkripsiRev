@@ -9,7 +9,7 @@ class MenilaiPertemuan extends CI_Controller {
         // Load model
         $this->load->model('Menilaipertemuan_model');
         $this->load->model('Kelolapertemuan_model');
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
         // Load the user agent library
         $this->load->library('user_agent');
         checkRole(1);
@@ -21,7 +21,7 @@ class MenilaiPertemuan extends CI_Controller {
             $pertemuan = $this->Kelolapertemuan_model->getPertemuanbyId($id);
 
             if($pertemuan){
-                $data['notifchat'] = $this->ChatModel->getChatData();
+                $data['notifchat'] = $this->Chat_model->getChatData();
                 $data['title'] = "Hasil Pertemuan ". $id;
                 $data['user'] = $this->Menilaipertemuan_model->getUserByEmail($this->session->userdata('email'));
                 $data['hasiltugas'] = $this->Menilaipertemuan_model->getHasilTugasPertemuan($id);
@@ -40,7 +40,7 @@ class MenilaiPertemuan extends CI_Controller {
     public function menilaiById($id = '')
     {
             $data['title'] = "Hasil Tugas";
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $data['user'] = $this->Menilaipertemuan_model->getUserByEmail($this->session->userdata('email'));
             $data['pertemuan'] = $this->Menilaipertemuan_model->getHasilTugasById($id);
             $this->load->view('backend/admin/header', $data);

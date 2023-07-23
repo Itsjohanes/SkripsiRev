@@ -7,7 +7,7 @@ class KelolaPertemuan extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Kelolapertemuan_model'); // Load the KelolaPertemuan_model
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
         checkRole(1);
     }
 
@@ -16,7 +16,7 @@ class KelolaPertemuan extends CI_Controller {
             $data['title'] = "Atur Pertemuan";
             $data['user'] = $this->Kelolapertemuan_model->getUserByEmail($this->session->userdata('email'));
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/aturpertemuan', $data);
@@ -46,7 +46,7 @@ class KelolaPertemuan extends CI_Controller {
             $data['title'] = "Edit Pertemuan";
             $data['user'] = $this->Kelolapertemuan_model->getUserByEmail($this->session->userdata('email'));
             $data['materi'] = $this->Kelolapertemuan_model->getPertemuanbyId($id);
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar', $data);
             $this->load->view('backend/admin/editpertemuan', $data);
@@ -91,11 +91,11 @@ class KelolaPertemuan extends CI_Controller {
     {
             $pertemuan = $this->Kelolapertemuan_model->getPertemuanById($id);
             if($this->Kelolapertemuan_model->hapusPertemuan($id) == "Gagal"){
-                $gambar = $pertemuan['gambar'];
-                unlink(FCPATH . 'assets/pertemuan/' . $gambar);
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertemuan gagal dihapus karena ada foreign key</div>');
                 redirect('kelolapertemuan');
             }else{
+                $gambar = $pertemuan['gambar'];
+                unlink(FCPATH . 'assets/pertemuan/' . $gambar);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pertemuan berhasil dihapus</div>');
                 redirect('kelolapertemuan');
             }
@@ -114,15 +114,14 @@ class KelolaPertemuan extends CI_Controller {
                 $config['max_size'] = '2048';
                 $config['upload_path'] = './assets/pertemuan/';
                 $this->load->library('upload', $config);
+                //Hapus dulu gambar sebelumnya
+                unlink(FCPATH . './assets/pertemuan/' . $gambarLama);
                 if ($this->upload->do_upload('gambar')) {
-                    unlink(FCPATH . './assets/pertemuan/' . $gambarLama);
                     $gambar = $this->upload->data('file_name');
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertemuan gagal diubah</div>');
                     redirect('kelolaPertemuan');
                 }
-            } else {
-                $gambar = $gambarLama;
             }
 
            $this->Kelolapertemuan_model->editPertemuan($id_pertemuan,$penjelasan,$gambar,$tp,$link);

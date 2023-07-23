@@ -9,7 +9,7 @@ class Menilai extends CI_Controller {
         // Load model
         $this->load->model('Menilai_model');
         $this->load->model('Kelolapertemuan_model');
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
 
         // Load the user agent library
         $this->load->library('user_agent');
@@ -22,7 +22,7 @@ class Menilai extends CI_Controller {
             // Select siswa from database
             $data['siswa'] = $this->Menilai_model->getSiswa();
             $data['title'] = 'Menilai';
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $data['user'] = $this->Menilai_model->getUserByEmail($this->session->userdata('email'));
             $data['materi'] = $this->Menilai_model->getMateri();
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();

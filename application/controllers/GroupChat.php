@@ -6,7 +6,7 @@ class GroupChat extends CI_Controller
     {
         
         parent::__construct();
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
         $this->load->model('Chatgroup_model');
         checkRole(0);
         $this->role = $this->session->userdata('role');
@@ -15,7 +15,7 @@ class GroupChat extends CI_Controller
     public function index()
     {
         if ($this->role == 1) {
-        $data['notifchat'] = $this->ChatModel->getChatData();
+        $data['notifchat'] = $this->Chat_model->getChatData();
         $data['title'] = "Group Chat";
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('backend/admin/header', $data);
@@ -29,7 +29,7 @@ class GroupChat extends CI_Controller
             if($query->num_rows() > 0){
                  $result = $query->row();
                 $kelompok = $result->kelompok;
-                $data['notifchat'] = $this->ChatModel->getChatData();
+                $data['notifchat'] = $this->Chat_model->getChatData();
                 $data['chat_messages'] = $this->Chatgroup_model->get_chat_messages($kelompok);
                 $data['title'] = "Group Chat";
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
@@ -106,7 +106,7 @@ class GroupChat extends CI_Controller
     }
     public function chooseGroup(){
         if ($this->role  == 1) {
-        $data['notifchat'] = $this->ChatModel->getChatData();
+        $data['notifchat'] = $this->Chat_model->getChatData();
         $data['title'] = "Group Chat";
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
         $data['kelompok'] = $this->input->post('kelompok');

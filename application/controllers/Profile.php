@@ -9,7 +9,7 @@ class Profile extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Profile_model'); // Load the Profile_model
-        $this->load->model('ChatModel');
+        $this->load->model('Chat_model');
         //Role Defaultnya 0
         checkRole(0);
         $this->role = $this->session->userdata('role');
@@ -18,7 +18,7 @@ class Profile extends CI_Controller
     public function index()
     {
         if ($this->role == 1) {
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $data['title'] = "Profile";
             $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
             $this->load->view('backend/admin/header', $data);
@@ -26,7 +26,7 @@ class Profile extends CI_Controller
             $this->load->view('backend/admin/profile', $data);
             $this->load->view('backend/admin/footer');
         } else if ($this->role  == 0){
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
              $data['title'] = "Profile";
              $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
              $this->load->view('backend/siswa/header', $data);
@@ -43,7 +43,7 @@ class Profile extends CI_Controller
     public function editProfile()
     {
         if ($this->role  == 1) {
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $data['title'] = "Edit Profile";
             $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
 
@@ -52,7 +52,7 @@ class Profile extends CI_Controller
             $this->load->view('backend/admin/editprofile', $data);
             $this->load->view('backend/admin/footer');
         } else {
-            $data['notifchat'] = $this->ChatModel->getChatData();
+            $data['notifchat'] = $this->Chat_model->getChatData();
             $data['title'] = "Edit Profile";
             $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
 
@@ -76,7 +76,7 @@ class Profile extends CI_Controller
 
             if ($this->form_validation->run('runEdit') == false) {
                 $data['title'] = "Edit Profile";
-                $data['notifchat'] = $this->ChatModel->getChatData();
+                $data['notifchat'] = $this->Chat_model->getChatData();
                 $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
 
                 $this->load->view('backend/admin/header', $data);
@@ -103,7 +103,7 @@ class Profile extends CI_Controller
             $this->form_validation->set_rules('password2', 'Password Confirmation', 'required|trim|matches[password1]');
 
             if ($this->form_validation->run('runEdit') == false) {
-                $data['notifchat'] = $this->ChatModel->getChatData();
+                $data['notifchat'] = $this->Chat_model->getChatData();
                 $data['title'] = "Edit Profile";
                 $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
 

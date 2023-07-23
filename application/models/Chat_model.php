@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class ChatModel extends CI_Model
+class Chat_model extends CI_Model
 {
 
 
