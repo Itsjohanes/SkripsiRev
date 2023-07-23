@@ -374,7 +374,7 @@
                       <div class="d-flex flex-column justify-content-center">
                           <h6 class="text-sm font-weight-normal mb-1">
 
-                            <div  onclick="window.location.href='<?php echo base_url('chat/'.$s->id); ?>';" class="font-weight-bold"> New message from <?php echo $s->nama; ?> </div>
+                            <div  onclick="window.location.href='<?php echo base_url('chat/'.$s->id_pengirim); ?>';" class="font-weight-bold"> New message from <?php echo $s->nama; ?> </div>
 
                           </h6>
                           <p class="text-xs text-secondary mb-0">

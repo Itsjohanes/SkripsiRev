@@ -9,9 +9,9 @@ class Chat_model extends CI_Model
     public function getPesan($id, $id_lawan)
     {
         $this->db->from('tb_pesan');
-        $this->db->where('id= ' . $id . ' 
+        $this->db->where('id_pengirim= ' . $id . ' 
 	and id_lawan=' . $id_lawan . ' 
-	or id= ' . $id_lawan . ' 
+	or id_pengirim= ' . $id_lawan . ' 
 	and id_lawan=' . $id);
 
         $r = $this->db->get();
@@ -57,7 +57,7 @@ class Chat_model extends CI_Model
 
         $this->db->select('tb_pesan.*, tb_akun.nama');
         $this->db->from('tb_pesan');
-        $this->db->join('tb_akun', 'tb_pesan.id = tb_akun.id');
+        $this->db->join('tb_akun', 'tb_pesan.id_pengirim = tb_akun.id');
         $this->db->where('tb_pesan.id_lawan', $id_lawan_sesi);
         $query = $this->db->get();
         return $query->result();

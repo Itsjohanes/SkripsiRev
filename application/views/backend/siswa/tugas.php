@@ -1,8 +1,4 @@
 
-
-
-
-
 <style>
     .pdf-container {
         position: relative;
@@ -21,11 +17,11 @@
 
 <?php
 // Assuming $materi is an array of materials with 'materi' key containing the file name
-$materials = $materi; // Replace this with your actual array of materials
+$materials = $tugas; // Replace this with your actual array of materials
 
 foreach ($materials as $material) {
-    $link = $material['materi'];
-    $pdf = base_url('assets/materi/') . $link;
+    $link = $material['tugas'];
+    $pdf = base_url('assets/tugas/') . $link;
 ?>
 
 <div class="pdf-container">

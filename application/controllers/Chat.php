@@ -24,7 +24,7 @@ class Chat extends CI_Controller
             $data['data'] = $this->Chat_model->getDataById($no);
             $data['notifchat'] = $this->Chat_model->getChatData();
             if ($data['data'] == null) {
-                die("user tidak ada nih");
+                redirect('chat/menu');
             } else {
                 $data['title']  = 'Chat';
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
@@ -45,9 +45,9 @@ class Chat extends CI_Controller
     
     public function loadChat()
     {
-        $id =     $this->input->post('id');
+        $id_pengirim =     $this->input->post('id_pengirim');
         $id_lawan =     $this->input->post('id_lawan');
-        $data = $this->Chat_model->getPesan($id, $id_lawan);
+        $data = $this->Chat_model->getPesan($id_pengirim, $id_lawan);
 
         echo json_encode(array(
             'data' => $data
@@ -66,7 +66,7 @@ class Chat extends CI_Controller
         // $id_user =2;
         // $id_lawan =1;
         $in = array(
-            'id' => $id,
+            'id_pengirim' => $id,
             'id_lawan' => $id_lawan,
             'pesan' => $pesan,
             'waktu' => $now,

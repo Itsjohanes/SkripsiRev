@@ -58,14 +58,14 @@ $id = $this->session->userdata('id');
 				type: "post",
 				url: "<?= base_url() ?>chat/loadchat",
 				data: {
-					id: '<?= $id ?>',
+					id_pengirim: '<?= $id ?>',
 					id_lawan: id_lawan
 				},
 				dataType: "json",
 			success: function(r) {
     var messages = [];
     var d = r.data;
-    id = '<?= $id ?>';
+    id= '<?= $id ?>';
     var today = new Date(); // Tanggal saat ini
 
     d.forEach(d => {
@@ -82,7 +82,7 @@ $id = $this->session->userdata('id');
         }
 
         var message = {
-            id: d.id,
+            id: d.id_pengirim,
             pesan: d.pesan,
             waktu: times,
             kapan: kapan,
