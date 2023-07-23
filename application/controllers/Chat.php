@@ -43,25 +43,7 @@ class Chat extends CI_Controller
             }
         
     }
-    public function dua()
-    {
-        $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-        $data['notifchat'] = $this->ChatModel->getChatData();
-        $data['title'] = 'Chat';
-        if ($this->role == '1') {
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar',$data);
-            $this->load->view('backend/chat/dua');
-            $this->load->view('backend/admin/footer');
-        } else if($this->role == '0') {
-            $this->load->view('backend/siswa/header', $data);
-            $this->load->view('backend/siswa/sidebar');
-            $this->load->view('backend/chat/dua');
-            $this->load->view('backend/siswa/footer');
-        }else{
-            redirect('Auth/login');
-        }
-    }
+    
     public function loadChat()
     {
         $id =     $this->input->post('id');
