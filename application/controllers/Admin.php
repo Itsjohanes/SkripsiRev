@@ -45,14 +45,6 @@ class Admin extends CI_Controller
             } else {
                 $data['persentasetugas'.$i] = 0 * 100;
             }
-            //ambil id dari session
-            $id_lawan_sesi = $this->session->userdata('id');
-            
-            $this->db->select('tb_pesan.*, tb_akun.nama');
-            $this->db->from('tb_pesan');
-            $this->db->join('tb_akun', 'tb_pesan.id = tb_akun.id');
-            $this->db->where('tb_pesan.id_lawan', $id_lawan_sesi);
-            $query = $this->db->get();
             $pertemuan = $this->Kelolapertemuan_model->getPertemuan();
             $data['pertemuan'] = array();
 

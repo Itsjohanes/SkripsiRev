@@ -6,7 +6,7 @@
                 <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
                     <div class="card mb-5">
                         <div class="card-body p-sm-5">
-                            <form method="post" action="<?php echo base_url('groupchat/choosegroup'); ?>">
+                            <form method="post" action="<?php echo base_url('admingroupchat/choosegroup'); ?>">
                             <h2 class="text-center mb-4 ">Choose Group</h2><input type="number" name = "kelompok">
                                 <div class="mb-3"></div>
                                 <div class="mb-3"></div>

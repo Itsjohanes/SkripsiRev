@@ -56,7 +56,7 @@ class Pretest extends CI_Controller
 
                 if (empty($pilihan[$nomor])) {
                     $kosong++;
-                    $str_jawaban = $str_jawaban . " ";
+                    $str_jawaban = $str_jawaban . "X";
                 } else {
                     $jawaban = $pilihan[$nomor];
                     $str_jawaban = $str_jawaban . $pilihan[$nomor];
@@ -75,6 +75,9 @@ class Pretest extends CI_Controller
             $hasil = number_format($score, 2);
 
             $id = $this->session->userdata('id');
+            //buat timestamp
+            
+           
 
             $data = [
                 'id_siswa' => $id,
@@ -83,7 +86,8 @@ class Pretest extends CI_Controller
                 'salah' => $salah,
                 'kosong' => $kosong,
                 'score' => $hasil,
-                'id_test' => 1
+                'id_test' => 1,
+                'created_at' => date('Y-m-d H:i:s')
             ];
 
             $this->Pretest_model->savePretestResult($data);

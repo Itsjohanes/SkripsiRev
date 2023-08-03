@@ -66,6 +66,8 @@ class Rapot extends CI_Controller
         $pdf = new FPDF('P', 'mm', 'a4');
         $pdf->AddPage();
         $pdf->SetFont('Arial', 'B', 16);
+        $backgroundurl = base_url('assets/img/rapot.jpg'); 
+         $pdf->Image($backgroundurl, 0, 0, 210, 270);
         $pdf->Cell(0, 7, 'Rapot Nilai Siswa', 0, 1, 'C');
         $pdf->Cell(10, 10, '', 0, 1);
         $pdf->SetFont('Arial', '' , 10);

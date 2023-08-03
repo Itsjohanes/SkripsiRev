@@ -17,8 +17,16 @@ if (!function_exists('checkRole')) {
         if ($role == '1') {
             if ($CI->session->userdata('role') !== '1') {
                 // Jika pengguna bukan admin, arahkan ke halaman blokir
-                redirect('Auth/blocked');
+                redirect('siswa');
             }
         }
+        if($role == '0'){
+            if ($CI->session->userdata('role') !== '0') {
+                // Jika pengguna bukan siswa, arahkan ke halaman blokir
+                redirect('admin');
+            }
+        }
+       
+
     }
 }

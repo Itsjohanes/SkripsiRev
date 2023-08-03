@@ -74,4 +74,5 @@ class Siswa extends CI_Controller
             $this->load->view('backend/siswa/footer');
         
     } 
+    
 }

@@ -1,13 +1,12 @@
   <link rel="stylesheet" href="<?= base_url('assets/css/globalchat.css'); ?>">
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             // Refresh chat messages every 2 seconds
             setInterval(function() {
                 var kelompok = $('#kelompok').val();
                 $.ajax({
-                    url: '<?php echo base_url("groupchat/fetchadmin_chat_messages"); ?>/' + kelompok,
+                    url: '<?php echo base_url("admingroupchat/fetchadmin_chat_messages"); ?>/' + kelompok,
                     type: 'get',
                     dataType: 'json',
                     success: function(response) {
@@ -26,7 +25,7 @@
                  var kelompok = $('#kelompok').val();
 
                 $.ajax({
-                    url: '<?php echo base_url("groupchat/saveadmin_message"); ?>',
+                    url: '<?php echo base_url("admingroupchat/saveadmin_message"); ?>',
                     type: 'post',
                     data: {
                         message: message,

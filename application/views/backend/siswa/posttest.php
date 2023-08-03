@@ -31,31 +31,31 @@
             ?>
             <div class="ans ml-2">
               <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="opsi_a" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_a')">
+                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="A" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_a')">
                 <span>&nbsp<?php echo $data['opsi_a']; ?></span>
               </label>
             </div>
             <div class="ans ml-2">
               <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="opsi_b" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_b')">
+                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="B" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_b')">
                 <span>&nbsp<?php echo $data['opsi_b']; ?></span>
               </label>
             </div>
             <div class="ans ml-2">
               <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="opsi_c" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_c')">
+                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="C" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_c')">
                 <span>&nbsp<?php echo $data['opsi_c']; ?></span>
               </label>
             </div>
             <div class="ans ml-2">
               <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="opsi_d" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_d')">
+                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="D" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_d')">
                 <span>&nbsp<?php echo $data['opsi_d']; ?></span>
               </label>
             </div>
             <div class="ans ml-2">
               <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="opsi_e" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_e')">
+                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="E" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_e')">
                 <span>&nbsp<?php echo $data['opsi_e']; ?></span>
               </label>
             </div>
@@ -89,6 +89,7 @@
 
     // Tampilkan waktu pada elemen dengan id 'timer'
     document.getElementById('timer').innerHTML = minutes + ' menit ' + seconds + ' detik';
+    document.getElementById('timer2').innerHTML = minutes + ' menit ' + seconds + ' detik';
 
     if (timeLeftPosttest === 0) {
       clearInterval(timerId);

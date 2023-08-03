@@ -28,6 +28,7 @@
                                     <th scope="col">Benar</th>
                                     <th scope="col">Salah</th>
                                     <th scope="col">Kosong</th>
+                                    <th scope="col">Timestamp</th>
                                     <th scope="col">Action</th>
 
 
@@ -42,6 +43,7 @@
                                     <th scope="col">Benar</th>
                                     <th scope="col">Salah</th>
                                     <th scope="col">Kosong</th>
+                                    <th scope="col">Timestamp</th>
                                     <th scope="col">Action</th>
 
 
@@ -58,6 +60,7 @@
                                         <td><?= $j['benar']; ?></td>
                                         <td><?= $j['salah']; ?></td>
                                         <td><?= $j['kosong']; ?></td>
+                                        <td><?= $j['created_at'];?></td>
                                         <td>
                                             <a class="btn btn-danger hapus-btn" href="<?= base_url('MenilaiPretest/hapusHasilPretest/') . $j['id_hasiltest']; ?>"><i class="fas fa-trash-alt"></i></a>
                                         </td>

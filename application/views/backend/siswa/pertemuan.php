@@ -8,9 +8,6 @@
 
                  <!-- Default Card Example -->
 
-
-
-
                  <div class="card mb-4">
                      <div class="card-header">
                          <?= $this->session->flashdata("message");
@@ -39,6 +36,24 @@
                             echo '<label for="textArea">Text</label>';
                             echo '<div class="input-group input-group-outline">';
                             echo '<textarea required class = "form-control" id="textArea" name="text" rows="3">' . $hasiltugas['text'] . '</textarea>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<div class="form-group">';
+                            echo '<label for="textArea">Tanggal Pengumpulan</label>';
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<textarea class = "form-control" id="textArea" disabled name="text" rows="1">' . $hasiltugas['created_at'] . '</textarea>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<div class="form-group">';
+                            echo '<label for="textArea">Tanggal Perubahan</label>';
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<textarea class = "form-control" id="textArea" disabled name="text" rows="1">' . $hasiltugas['updated_at'] . '</textarea>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<div class="form-group">';
+                            echo '<label for="textArea">Tanggal Penilaian</label>';
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<textarea class = "form-control" id="textArea" disabled name="text" rows="1">' . $hasiltugas['scored_at'] . '</textarea>';
                             echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
@@ -154,6 +169,26 @@
                     <a href='<?php echo $tp['videoconference'];?>'><i class="fas fa-video"> Link Conference</i></a>
 
                  </div>
+                 </div>
+                <div class="card shadow mb-4">
+                 <!-- Card Header - Dropdown -->
+                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                     <h6 class="m-0 font-weight-bold text-primary">Online IDE</h6>
+                     <div class="dropdown no-arrow">
+
+                     </div>
+                 </div>
+                 <div class="card-body">
+                     <div
+                        data-pym-src="https://www.jdoodle.com/plugin"
+                        data-language="cpp"
+                        data-version-index="3" 
+                        data-libs="cppstdc++" 
+                        >
+                      
+                        </div>
+                 </div>
+
              </div>
 
              <!-- Collapsable Card Example -->
@@ -166,3 +201,7 @@
 
          </div>
          <!-- /.container-fluid -->
+        <script
+        src="https://www.jdoodle.com/assets/jdoodle-pym.min.js"
+        type="text/javascript"
+        ></script>

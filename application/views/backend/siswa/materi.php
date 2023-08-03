@@ -84,7 +84,7 @@
            <p class="text-sm "> 
 
                  <?php 
-                 if($pretest == null){
+                 if($posttest == null){
                     echo "Post-Test Belum Selesai";
                  }else{
                     echo "Post-Test Sudah Selesai";

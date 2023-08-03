@@ -11,8 +11,8 @@ class Chat extends CI_Controller
         ini_set('memory_limit', '2048M');
         parent::__construct();
         $this->load->model('Chat_model');
-        //default role = 0
-        checkRole(0);
+        //Bisa keduanya baik Admin maupun siswa
+        checkRole('');
         $this->role = $this->session->userdata('role');
     }
 

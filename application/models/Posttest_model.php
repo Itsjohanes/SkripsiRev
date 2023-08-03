@@ -52,7 +52,9 @@ class Posttest_model extends CI_Model
     public function savePosttestResult($data)
     {
         $this->db->insert('tb_hasilprepost', $data);    
-        //update juga nilai di tb_akun
+        
+        $id = $data['id_siswa'];
+        $score = $data['score'];
         $this->db->where('id', $id);
         $this->db->update('tb_akun', array('posttest' => $score));
     }

@@ -7,7 +7,7 @@ class GlobalChat extends CI_Controller
         parent::__construct();
         $this->load->model('Chatglobal_model');
         $this->load->model('Chat_model');
-        checkRole(0);
+        checkRole('');
         $this->role = $this->session->userdata('role');
     }
 

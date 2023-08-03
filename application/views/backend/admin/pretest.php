@@ -158,7 +158,13 @@
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Kunci" id="kunci" name="kunci">
+                        <select  required class="form-control"  id="kunci" name="kunci">
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        </select>
                     </div>
                     </div>
                 </div>

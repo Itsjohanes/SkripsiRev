@@ -55,7 +55,7 @@ class Posttest extends CI_Controller
 
                 if (empty($pilihan[$nomor])) {
                     $kosong++;
-                    $str_jawaban = $str_jawaban . " ";
+                    $str_jawaban = $str_jawaban . "X";
                 } else {
                     $jawaban = $pilihan[$nomor];
                     $str_jawaban = $str_jawaban . $pilihan[$nomor];
@@ -82,7 +82,8 @@ class Posttest extends CI_Controller
                 'salah' => $salah,
                 'kosong' => $kosong,
                 'score' => $hasil,
-                'id_test' => 2
+                'id_test' => 2,
+                'created_at' => date('Y-m-d H:i:s')
             ];
 
             $this->Posttest_model->savePosttestResult($data);

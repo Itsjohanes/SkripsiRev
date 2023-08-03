@@ -36,7 +36,14 @@
             <input type="text" class="form-control" required id="opsi_e" name="opsi_e" value="<?php echo $soal['opsi_e'];  ?>"></div>
             <label for="nilai">Kunci</label>
             <div class="input-group input-group-outline">
-            <input type="text" class="form-control" required id="kunci" name="kunci" value="<?php echo $soal['kunci'];  ?>"></div>
+            <select  required class="form-control"  id="kunci" name="kunci">
+                                    <option>A</option>
+                                    <option>B</option>
+                                    <option>C</option>
+                                    <option>D</option>
+                                    <option>E</option>
+                                    </select>
+            </div>
             <label for="nilai">Gambar</label>
             <div class="input-group input-group-outline">
             <?php

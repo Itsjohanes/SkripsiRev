@@ -59,7 +59,8 @@ class MenilaiPertemuan extends CI_Controller {
             $pertemuan = $this->input->post('pertemuan');
             $data = [
                 'nilai' => $nilai,
-                'komentar' => $komentar
+                'komentar' => $komentar,
+                'scored_at' => date('Y-m-d H:i:s')
             ];
             $this->Menilaipertemuan_model->updateHasilTugas($id, $data);
             $this->session->set_flashdata('category_success', 'Nilai berhasil diubah');
@@ -72,7 +73,8 @@ class MenilaiPertemuan extends CI_Controller {
             // Menghapus by id
             $data = [
                 'nilai' => null,
-                'komentar' => null
+                'komentar' => null,
+                'scored_at' => null
             ];
             $this->Menilaipertemuan_model->updateHasilTugas($id, $data);
             $this->session->set_flashdata('category_success', 'Nilai berhasil dihapus');

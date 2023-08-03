@@ -159,7 +159,8 @@ class Pertemuan extends CI_Controller {
                         'id_siswa' => $id_siswa,
                         'id_pertemuan' => $pertemuan,
                         'text' => $text,
-                        'upload' => $new_upload
+                        'upload' => $new_upload,
+                        'created_at' => date('Y-m-d H:i:s')
                     ];
                     //setAlert
                     $this->Pertemuan_model->insertHasilTugas($data);
@@ -227,7 +228,8 @@ class Pertemuan extends CI_Controller {
                             'id_hasiltugas' => $id,
                             'id_pertemuan' => $pertemuan,
                             'upload' => $new_upload,
-                            'text' => $text
+                            'text' => $text,
+                            'updated_at' => date('Y-m-d H:i:s')
                         ];
                         $this->Pertemuan_model->updateHasilTugas($id, $data);
                     } else {

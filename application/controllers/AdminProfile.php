@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Profile extends CI_Controller
+class AdminProfile extends CI_Controller
 {
     
     public function __construct()
@@ -9,36 +9,31 @@ class Profile extends CI_Controller
         parent::__construct();
         $this->load->model('Profile_model'); // Load the Profile_model
         $this->load->model('Chat_model');
-        checkRole(0);
-        $this->role = $this->session->userdata('role');
+        checkRole(1);
     }
 
     public function index()
     {
-           
-       
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['title'] = "Profile";
             $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
-            $this->load->view('backend/siswa/header', $data);
-            $this->load->view('backend/siswa/sidebar', $data);
-            $this->load->view('backend/siswa/profile', $data);
-            $this->load->view('backend/siswa/footer');
-        
-    }
+            $this->load->view('backend/admin/header', $data);
+            $this->load->view('backend/admin/sidebar', $data);
+            $this->load->view('backend/admin/profile', $data);
+            $this->load->view('backend/admin/footer');
+    } 
 
     public function editProfile()
     {
-      
+        
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['title'] = "Edit Profile";
             $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
 
-            $this->load->view('backend/siswa/header', $data);
-            $this->load->view('backend/siswa/sidebar', $data);
-            $this->load->view('backend/siswa/editprofile', $data);
-            $this->load->view('backend/siswa/footer');
-           
+            $this->load->view('backend/admin/header', $data);
+            $this->load->view('backend/admin/sidebar', $data);
+            $this->load->view('backend/admin/editprofile', $data);
+            $this->load->view('backend/admin/footer');
         
     }
 
@@ -53,14 +48,14 @@ class Profile extends CI_Controller
             $this->form_validation->set_rules('password2', 'Password Confirmation', 'required|trim|matches[password1]');
 
             if ($this->form_validation->run('runEdit') == false) {
-                $data['notifchat'] = $this->Chat_model->getChatData();
                 $data['title'] = "Edit Profile";
+                $data['notifchat'] = $this->Chat_model->getChatData();
                 $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
 
-                $this->load->view('backend/siswa/header', $data);
-                $this->load->view('backend/siswa/sidebar', $data);
-                $this->load->view('backend/siswa/editProfile', $data);
-                $this->load->view('backend/siswa/footer');
+                $this->load->view('backend/admin/header', $data);
+                $this->load->view('backend/admin/sidebar', $data);
+                $this->load->view('backend/admin/editProfile', $data);
+                $this->load->view('backend/admin/footer');
             } else {
                 // Update data in the database
                 $data = [
@@ -70,9 +65,11 @@ class Profile extends CI_Controller
                 $this->Profile_model->updateUser($this->session->userdata('email'), $data);
 
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulations! Your account has been edited.</div>');
-                redirect('profile');
+                redirect('adminprofile');
             }
-            
         
+            
+            
     }
+    
 }
