@@ -238,11 +238,11 @@
        <li class="nav-item">
  <?php 
             if($title == 'Chat'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('chat/menu') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('adminchat/menu') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('chat/menu') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('adminchat/menu') . '">';
 
 
             }
@@ -271,11 +271,11 @@
         <li class="nav-item">
         <?php 
             if($title == 'Global Chat'){
-                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('globalchat') . '">';
+                echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('adminglobalchat') . '">';
 
                
             }else{
-               echo '<a class="nav-link text-white " href="' . base_url('globalchat') . '">';
+               echo '<a class="nav-link text-white " href="' . base_url('adminglobalchat') . '">';
 
 
             }

@@ -2,16 +2,16 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Chat extends CI_Controller
+class AdminChat extends CI_Controller
 {
+    private $role;
     public function __construct()
     {
         ini_set('max_execution_time', 0);
         ini_set('memory_limit', '2048M');
         parent::__construct();
         $this->load->model('Chat_model');
-        checkRole(0);
-        $this->role = $this->session->userdata('role');
+        checkRole(1);
     }
 
 
@@ -26,11 +26,10 @@ class Chat extends CI_Controller
             } else {
                 $data['title']  = 'Chat';
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-                
-                $this->load->view('backend/siswa/header', $data);
-                $this->load->view('backend/siswa/sidebar');
-                $this->load->view('backend/chat/chat', $data);
-                $this->load->view('backend/siswa/footer');
+                $this->load->view('backend/admin/header', $data);
+                $this->load->view('backend/admin/sidebar');
+                $this->load->view('backend/chat/adminchat', $data);
+                $this->load->view('backend/admin/footer');
                 
             }
         
@@ -92,11 +91,11 @@ class Chat extends CI_Controller
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
 
             $data['title'] = 'Chat';
-           
-            $this->load->view('backend/siswa/header', $data);
-            $this->load->view('backend/siswa/sidebar');
-            $this->load->view('backend/chat/menu');
-            $this->load->view('backend/siswa/footer');
+            
+            $this->load->view('backend/admin/header', $data);
+            $this->load->view('backend/admin/sidebar');
+            $this->load->view('backend/chat/adminmenu');
+            $this->load->view('backend/admin/footer');
             
         
     }

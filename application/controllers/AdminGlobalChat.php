@@ -1,26 +1,27 @@
 <?php
-class GlobalChat extends CI_Controller
+class AdminGlobalChat extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
         $this->load->model('Chatglobal_model');
         $this->load->model('Chat_model');
-        checkRole(0);
+        checkRole(1);
+        
     }
 
     public function index()
     {
-      
-        $data['notifchat'] = $this->Chat_model->getChatData();   
+       
+        $data['notifchat'] = $this->Chat_model->getChatData();
         $data['chat_messages'] = $this->Chatglobal_model->get_chat_messages();
         $data['title'] = "Global Chat";
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('backend/admin/header', $data);
+        $this->load->view('backend/admin/sidebar', $data);
+        $this->load->view('backend/chat/adminglobal', $data);
+        $this->load->view('backend/admin/footer');
 
-        $this->load->view('backend/siswa/header', $data);
-        $this->load->view('backend/siswa/sidebar', $data);
-        $this->load->view('backend/chat/global', $data);
-        $this->load->view('backend/siswa/footer');
     }
      public function fetch_chat_messages()
 

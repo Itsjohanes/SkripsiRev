@@ -3,7 +3,7 @@
 class Materi extends CI_Controller {
     public function __construct() {
         parent::__construct();
-        $this->load->model('Materi_model'); // Load the model
+        $this->load->model('Materi_model');
         $this->load->model('Kelolapertemuan_model');
         $this->load->model('Chat_model');
         checkRole(0);
