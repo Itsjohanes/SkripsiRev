@@ -25,7 +25,7 @@ class GroupChat extends CI_Controller
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $this->load->view('backend/siswa/header', $data);
                 $this->load->view('backend/siswa/sidebar', $data);
-                $this->load->view('backend/chat/group', $data);
+                $this->load->view('groupchat_siswa/group', $data);
                 $this->load->view('backend/siswa/footer');
             }else{
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda belum memiliki kelompok</div>');

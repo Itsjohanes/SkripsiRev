@@ -13,16 +13,16 @@ class Awal extends CI_Controller
     public function index()
     {
         $data['title'] = "Home";
-        $this->load->view('frontend/header.php', $data);
-        $this->load->view('frontend/index.php');
-        $this->load->view('frontend/footer.php');
+        $this->load->view('halaman_awal/header.php', $data);
+        $this->load->view('halaman_awal/index.php');
+        $this->load->view('halaman_awal/footer.php');
     }
     public function informasi()
     {
         $data['title'] = "Informasi";
-        $this->load->view('frontend/header.php', $data);
-        $this->load->view('frontend/informasi.php');
-        $this->load->view('frontend/footer.php');
+        $this->load->view('halaman_awal/header.php', $data);
+        $this->load->view('halaman_awal/informasi.php');
+        $this->load->view('halaman_awal/footer.php');
     }
     public function materi()
     {
@@ -30,9 +30,9 @@ class Awal extends CI_Controller
 
         //ambil data dari tb_pertemuan
         $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
-        $this->load->view('frontend/header.php', $data);
-        $this->load->view('frontend/materi.php',$data);
-        $this->load->view('frontend/footer.php');
+        $this->load->view('halaman_awal/header.php', $data);
+        $this->load->view('halaman_awal/materi.php',$data);
+        $this->load->view('halaman_awal/footer.php');
     }
     public function tambahKontak()
     {

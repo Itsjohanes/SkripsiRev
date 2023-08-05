@@ -19,7 +19,7 @@ class AdminGroupChat extends CI_Controller
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('backend/admin/header', $data);
         $this->load->view('backend/admin/sidebar', $data);
-        $this->load->view('backend/chat/pilih', $data);
+        $this->load->view('groupchat_admin/pilih', $data);
         $this->load->view('backend/admin/footer');
         
     }
@@ -61,7 +61,7 @@ class AdminGroupChat extends CI_Controller
         $data['chat_messages'] = $this->Chatgroup_model->get_chat_messages($kelompok);
         $this->load->view('backend/admin/header', $data);
         $this->load->view('backend/admin/sidebar', $data);
-        $this->load->view('backend/chat/group_admin', $data);
+        $this->load->view('groupchat_admin/admingroup', $data);
         $this->load->view('backend/admin/footer');
         } else{
            redirect('siswa');

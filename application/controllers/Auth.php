@@ -7,16 +7,15 @@ class Auth extends CI_Controller
   {
     parent::__construct();
     $this->load->model('Auth_model');
-    // Load necessary libraries or helpers
   }
 
   public function index()
   {
     $data['title'] = 'Login';
     if ($this->session->userdata('email') == '') {
-      $this->load->view('backend/login/auth_header', $data);
-      $this->load->view('backend/login/login');
-      $this->load->view('backend/login/auth_footer');
+      $this->load->view('auth/auth_header', $data);
+      $this->load->view('auth/login');
+      $this->load->view('auth/auth_footer');
     } else {
       if ($this->session->userdata('role') == 1) {
         redirect('admin');
@@ -59,9 +58,9 @@ class Auth extends CI_Controller
   public function register()
   {
     $data['title'] = 'Register';
-    $this->load->view('backend/login/auth_header', $data);
-    $this->load->view('backend/login/register');
-    $this->load->view('backend/login/auth_footer');
+    $this->load->view('auth/auth_header', $data);
+    $this->load->view('auth/register');
+    $this->load->view('auth/auth_footer');
   }
 
   public function registration()
@@ -78,9 +77,9 @@ class Auth extends CI_Controller
 
     if ($this->form_validation->run('registration') == false) {
       $data['title'] = 'Register';
-      $this->load->view('backend/login/auth_header', $data);
-      $this->load->view('backend/login/register');
-      $this->load->view('backend/login/auth_footer');
+      $this->load->view('auth/auth_header', $data);
+      $this->load->view('auth/register');
+      $this->load->view('auth/auth_footer');
     } else {
       $email = htmlspecialchars($this->input->post('email', true));
       $nama = htmlspecialchars($this->input->post('nama', true));
@@ -97,7 +96,7 @@ class Auth extends CI_Controller
   public function blocked()
   {
     $data['title'] = 'Access Blocked';
-    $this->load->view('backend/login/blocked', $data);
+    $this->load->view('auth/blocked', $data);
   }
 
   public function logout()
