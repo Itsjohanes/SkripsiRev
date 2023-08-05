@@ -31,7 +31,7 @@ class Chat extends CI_Controller
                 
                 $this->load->view('backend/siswa/header', $data);
                 $this->load->view('backend/siswa/sidebar');
-                $this->load->view('chatsiswa/chat', $data);
+                $this->load->view('chat_siswa/chat', $data);
                 $this->load->view('backend/siswa/footer');
                 
             }
@@ -98,7 +98,7 @@ class Chat extends CI_Controller
             $data['nama'] = $this->session->userdata('nama');
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar');
-            $this->load->view('chatsiswa/menu');
+            $this->load->view('chat_siswa/menu');
             $this->load->view('backend/siswa/footer');
             
         
