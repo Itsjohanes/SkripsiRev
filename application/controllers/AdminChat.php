@@ -19,12 +19,15 @@ class AdminChat extends CI_Controller
     {
         
             $no =  $this->uri->segment(2);
+            
             $data['data'] = $this->Chat_model->getDataById($no);
             $data['notifchat'] = $this->Chat_model->getChatData();
             if ($data['data'] == null) {
                 redirect('chat/menu');
             } else {
                 $data['title']  = 'Chat';
+                $data['id'] = $this->session->userdata('id');
+                $data['nama'] = $this->session->userdata('nama');
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $this->load->view('backend/admin/header', $data);
                 $this->load->view('backend/admin/sidebar');
@@ -87,7 +90,8 @@ class AdminChat extends CI_Controller
     public function menu()
     {
             $data['notifchat'] = $this->Chat_model->getChatData();
-       
+            $data['id'] = $this->session->userdata('id');
+            $data['nama'] = $this->session->userdata('nama');
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
 
             $data['title'] = 'Chat';

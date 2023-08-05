@@ -1,16 +1,5 @@
 
-
-
-<?php
-
-$id = $_SESSION['id'];
-$nama = $_SESSION['nama'];
-?>
-
-
 <link rel="stylesheet" href="<?= base_url('assets/css/chat.css'); ?>">
-
-<body>
 	<div class="container-fluid h-100">
 		<div class="row justify-content-center h-100">
 			<div class="col-md-4 col-xl-3 chat">
@@ -67,9 +56,8 @@ $nama = $_SESSION['nama'];
 			</div>
 		</div>
 	</div>
-</body>
 <script>
-</>
+
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>

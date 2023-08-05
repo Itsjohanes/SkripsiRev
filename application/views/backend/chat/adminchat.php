@@ -2,14 +2,6 @@
 <!------ Include the above in your HEAD tag ---------->
   <link rel="stylesheet" href="<?= base_url('assets/css/chat.css'); ?>">
 
-
-<?php
-
-//ambil id user dari session
-$id = $this->session->userdata('id');
-// var_dump($_SESSION);die;
-// var_dump($_SESSION['id_user']);die;
-?>
 <script>
 	orang()
 

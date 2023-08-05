@@ -24,6 +24,8 @@ class Chat extends CI_Controller
             if ($data['data'] == null) {
                 redirect('chat/menu');
             } else {
+                $data['id'] = $this->session->userdata('id');
+                $data['nama'] = $this->session->userdata('nama');
                 $data['title']  = 'Chat';
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 
@@ -92,7 +94,8 @@ class Chat extends CI_Controller
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
 
             $data['title'] = 'Chat';
-           
+            $data['id'] = $this->session->userdata('id');
+            $data['nama'] = $this->session->userdata('nama');
             $this->load->view('backend/siswa/header', $data);
             $this->load->view('backend/siswa/sidebar');
             $this->load->view('backend/chat/menu');
