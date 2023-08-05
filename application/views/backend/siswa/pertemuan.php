@@ -1,7 +1,4 @@
 
-
-
-
          <div class="row">
 
              <div class="col-lg-6">
@@ -166,7 +163,7 @@
                      &nbsp
                      <a href='<?= base_url('pertemuan/tugas/'.$pertemuan); ?>' target='_blank'><i class="fas fa-tasks"> Tugas</i></a>
                      &nbsp
-                    <a href='<?php echo $tp['videoconference'];?>'><i class="fas fa-video"> Link Conference</i></a>
+                    <a href='<?= base_url('pertemuan/conference/'.$pertemuan); ?>'><i class="fas fa-video"> Link Conference</i></a>
 
                  </div>
                  </div>

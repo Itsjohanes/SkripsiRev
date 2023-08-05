@@ -10,6 +10,9 @@ class Awal extends CI_Controller
         $this->load->model('Contact_model');
         $this->load->model('Kelolapertemuan_model');
     }
+    function coba(){
+        $this->load->view('coba');
+    }
     public function index()
     {
         $data['title'] = "Home";

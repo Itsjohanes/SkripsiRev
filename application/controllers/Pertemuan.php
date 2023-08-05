@@ -245,4 +245,29 @@ class Pertemuan extends CI_Controller {
             redirect($this->agent->referrer());
         
     }
+    public function conference($id = ''){
+
+            $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
+            if($id_pertemuan){
+                $data['notifchat'] = $this->Chat_model->getChatData();
+                $data['title'] = "Materi Pertemuan ". $id;
+                $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+                $data['pertemuan'] = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+                if($data['pertemuan']['aktif'] == '1'){
+                    $this->load->view('backend/siswa/header', $data);
+                    $this->load->view('backend/siswa/sidebar', $data);
+                    $this->load->view('backend/siswa/conference', $data);
+                    $this->load->view('backend/siswa/footer');
+                }else{
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('materi');
+                }    
+            }else{
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan tidak ada</div>');
+                    redirect('materi');
+                
+            }
+          
+         
+    }
 }
