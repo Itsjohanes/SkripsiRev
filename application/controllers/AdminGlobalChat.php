@@ -19,7 +19,7 @@ class AdminGlobalChat extends CI_Controller
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('backend/admin/header', $data);
         $this->load->view('backend/admin/sidebar', $data);
-        $this->load->view('globalchat_admin/global', $data);
+        $this->load->view('admin/globalchat/global', $data);
         $this->load->view('backend/admin/footer');
 
     }

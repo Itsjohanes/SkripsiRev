@@ -31,7 +31,7 @@ class AdminChat extends CI_Controller
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $this->load->view('backend/admin/header', $data);
                 $this->load->view('backend/admin/sidebar');
-                $this->load->view('chat_admin/chat', $data);
+                $this->load->view('admin/chat/chat', $data);
                 $this->load->view('backend/admin/footer');
                 
             }
@@ -98,7 +98,7 @@ class AdminChat extends CI_Controller
             
             $this->load->view('backend/admin/header', $data);
             $this->load->view('backend/admin/sidebar');
-            $this->load->view('chat_admin/menu');
+            $this->load->view('admin/chat/menu');
             $this->load->view('backend/admin/footer');
             
         
