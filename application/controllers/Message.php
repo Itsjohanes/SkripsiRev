@@ -17,10 +17,10 @@ class Message extends CI_Controller {
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['user'] = $this->Message_model->getUserByEmail($this->session->userdata('email'));
             $data['pesan'] = $this->Message_model->getMessages();
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/message', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/message/message', $data);
+            $this->load->view('admin/template/footer');
         
     }
 }

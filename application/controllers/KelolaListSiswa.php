@@ -17,10 +17,10 @@ class KelolaListSiswa extends CI_Controller {
         $data['user'] = $this->Kelolalistsiswa_model->getUserByEmail($this->session->userdata('email'));
         $data['siswa'] = $this->Kelolalistsiswa_model->getSiswa();
         $data['notifchat'] = $this->Chat_model->getChatData();
-        $this->load->view('backend/admin/header', $data);
-        $this->load->view('backend/admin/sidebar', $data);
-        $this->load->view('backend/admin/listsiswa', $data);
-        $this->load->view('backend/admin/footer');
+        $this->load->view('admin/template/header', $data);
+        $this->load->view('admin/template/sidebar', $data);
+        $this->load->view('admin/kelolalistsiswa/listsiswa', $data);
+        $this->load->view('admin/template/footer');
         
     }
 
@@ -30,10 +30,10 @@ class KelolaListSiswa extends CI_Controller {
         $data['user'] = $this->Kelolalistsiswa_model->getUserByEmail($this->session->userdata('email'));
         $data['siswa'] = $this->Kelolalistsiswa_model->getSiswaById($id);
         $data['notifchat'] = $this->Chat_model->getChatData();
-        $this->load->view('backend/admin/header', $data);
-        $this->load->view('backend/admin/sidebar', $data);
-        $this->load->view('backend/admin/editsiswa', $data);
-        $this->load->view('backend/admin/footer');
+        $this->load->view('admin/template/header', $data);
+        $this->load->view('admin/template/sidebar', $data);
+        $this->load->view('admin/kelolalistsiswa/editsiswa', $data);
+        $this->load->view('admin/template/footer');
         
     }
     

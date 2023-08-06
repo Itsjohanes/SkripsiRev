@@ -61,10 +61,10 @@ class Admin extends CI_Controller
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['jumlahpertemuan'] = $jumlahPertemuan;
             $data['nilaiTertinggi'] = $this->Admin_model->getNilaiTertinggi();
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/index', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/home/index', $data);
+            $this->load->view('admin/template/footer');
         
     }
 }

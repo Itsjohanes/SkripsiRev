@@ -17,10 +17,10 @@ class GlobalChat extends CI_Controller
         $data['title'] = "Global Chat";
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
 
-        $this->load->view('backend/siswa/header', $data);
-        $this->load->view('backend/siswa/sidebar', $data);
+        $this->load->view('siswa/template/header', $data);
+        $this->load->view('siswa/template/sidebar', $data);
         $this->load->view('siswa/globalchat/global', $data);
-        $this->load->view('backend/siswa/footer');
+        $this->load->view('siswa/template/footer');
     }
      public function fetch_chat_messages()
 

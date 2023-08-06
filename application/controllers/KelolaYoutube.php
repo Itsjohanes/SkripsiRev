@@ -20,10 +20,10 @@ class KelolaYoutube extends CI_Controller {
             $data['materi'] = $this->Kelolayoutube_model->getYoutubeMateri();
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
             $data['notifchat'] = $this->Chat_model->getChatData();
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/youtube', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/kelolayoutube/youtube', $data);
+            $this->load->view('admin/template/footer');
         
     }
 
@@ -58,10 +58,10 @@ class KelolaYoutube extends CI_Controller {
             $data['user'] = $this->Kelolayoutube_model->getUserByEmail($this->session->userdata('email'));
             $data['materi'] = $this->Kelolayoutube_model->getYoutubeMateriById($id_materi);
             $data['notifchat'] = $this->Chat_model->getChatData();
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/edityoutube', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/kelolayoutube/edityoutube', $data);
+            $this->load->view('admin/template/footer');
         
     }
 

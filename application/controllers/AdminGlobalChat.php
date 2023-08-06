@@ -17,10 +17,10 @@ class AdminGlobalChat extends CI_Controller
         $data['chat_messages'] = $this->Chatglobal_model->get_chat_messages();
         $data['title'] = "Global Chat";
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->view('backend/admin/header', $data);
-        $this->load->view('backend/admin/sidebar', $data);
+        $this->load->view('admin/template/header', $data);
+        $this->load->view('admin/template/sidebar', $data);
         $this->load->view('admin/globalchat/global', $data);
-        $this->load->view('backend/admin/footer');
+        $this->load->view('admin/template/footer');
 
     }
      public function fetch_chat_messages()

@@ -17,10 +17,10 @@ class KelolaPertemuan extends CI_Controller {
             $data['user'] = $this->Kelolapertemuan_model->getUserByEmail($this->session->userdata('email'));
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
             $data['notifchat'] = $this->Chat_model->getChatData();
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/aturpertemuan', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/kelolapertemuan/aturpertemuan', $data);
+            $this->load->view('admin/template/footer');
         
     }
 
@@ -47,10 +47,10 @@ class KelolaPertemuan extends CI_Controller {
             $data['user'] = $this->Kelolapertemuan_model->getUserByEmail($this->session->userdata('email'));
             $data['materi'] = $this->Kelolapertemuan_model->getPertemuanbyId($id);
             $data['notifchat'] = $this->Chat_model->getChatData();
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/editpertemuan', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/kelolapertemuan/editpertemuan', $data);
+            $this->load->view('admin/template/footer');
 
        
 

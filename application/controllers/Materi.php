@@ -26,10 +26,10 @@ class Materi extends CI_Controller {
                 $data['siswa'] = $this->Materi_model->getSiswaByKelompok(0);
             }
 
-            $this->load->view('backend/siswa/header', $data);
-            $this->load->view('backend/siswa/sidebar', $data);
-            $this->load->view('backend/siswa/materi', $data);
-            $this->load->view('backend/siswa/footer');
+            $this->load->view('siswa/template/header', $data);
+            $this->load->view('siswa/template/sidebar', $data);
+            $this->load->view('siswa/materi/materi', $data);
+            $this->load->view('siswa/template/footer');
         
     }
 }

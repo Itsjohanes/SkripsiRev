@@ -29,11 +29,11 @@ class Pertemuan extends CI_Controller {
                 $data['tp'] = $status;
                 //query aktif
                 if($status['aktif'] == '1'){
-                    $this->load->view('backend/siswa/header', $data);
-                    $this->load->view('backend/siswa/sidebar', $data);
-                    $this->load->view('backend/siswa/pertemuan', $data);
-                    $this->load->view('backend/siswa/comments', $data);
-                    $this->load->view('backend/siswa/footer');
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/pertemuan/pertemuan', $data);
+                    $this->load->view('siswa/pertemuan/comments', $data);
+                    $this->load->view('siswa/template/footer');
                 } else {
                     //tampilkan tulisan belum diaktifasi
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
@@ -77,10 +77,10 @@ class Pertemuan extends CI_Controller {
                 $data['materi'] = $this->db->get_where('tb_materi', ['id_pertemuan' => $id])->result_array();
                 $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
                 if($status['aktif'] == '1'){
-                    $this->load->view('backend/siswa/header', $data);
-                    $this->load->view('backend/siswa/sidebar', $data);
-                    $this->load->view('backend/siswa/materipertemuan', $data);
-                    $this->load->view('backend/siswa/footer');
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/pertemuan/materipertemuan', $data);
+                    $this->load->view('siswa/template/footer');
                 }else{
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
                     redirect('materi');
@@ -104,10 +104,10 @@ class Pertemuan extends CI_Controller {
                 $data['tugas'] = $this->db->get_where('tb_tugas', ['id_pertemuan' => $id])->result_array();
                 $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
                 if($status['aktif'] == '1'){
-                    $this->load->view('backend/siswa/header', $data);
-                    $this->load->view('backend/siswa/sidebar', $data);
-                    $this->load->view('backend/siswa/tugas', $data);
-                    $this->load->view('backend/siswa/footer');
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/pertemuan/tugas', $data);
+                    $this->load->view('siswa/template/footer');
                 }else{
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
                     redirect('materi');
@@ -254,10 +254,10 @@ class Pertemuan extends CI_Controller {
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $data['pertemuan'] = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
                 if($data['pertemuan']['aktif'] == '1'){
-                    $this->load->view('backend/siswa/header', $data);
-                    $this->load->view('backend/siswa/sidebar', $data);
-                    $this->load->view('backend/siswa/conference', $data);
-                    $this->load->view('backend/siswa/footer');
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/pertemuan/conference', $data);
+                    $this->load->view('siswa/template/footer');
                 }else{
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
                     redirect('materi');

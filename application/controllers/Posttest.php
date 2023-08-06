@@ -30,10 +30,10 @@ class Posttest extends CI_Controller
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Post-Test belum aktif</div>');
                     redirect('Materi');
                 } else {
-                    $this->load->view('backend/siswa/header', $data);
-                    $this->load->view('backend/siswa/sidebar', $data);
-                    $this->load->view('backend/siswa/posttest', $data);
-                    $this->load->view('backend/siswa/footer');
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/posttest/posttest', $data);
+                    $this->load->view('siswa/template/footer');
                 }
             }
         

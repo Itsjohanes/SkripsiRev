@@ -31,10 +31,10 @@ class Pretest extends CI_Controller
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pre-Test belum aktif</div>');
                     redirect('materi');
                 } else {
-                    $this->load->view('backend/siswa/header', $data);
-                    $this->load->view('backend/siswa/sidebar', $data);
-                    $this->load->view('backend/siswa/pretest', $data);
-                    $this->load->view('backend/siswa/footer');
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/pretest/pretest', $data);
+                    $this->load->view('siswa/template/footer');
                 }
             }
         

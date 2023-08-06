@@ -20,10 +20,10 @@ class KelolaPretest extends CI_Controller {
             //select aktif dari tb_test
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['aktif'] = $this->db->get_where('tb_test', ['id_tes' => 1])->row_array();
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/pretest', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/kelolapretest/pretest', $data);
+            $this->load->view('admin/template/footer');
         
     }
 
@@ -91,10 +91,10 @@ class KelolaPretest extends CI_Controller {
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['soal'] = $this->Kelolapretest_model->getPretestById($id);
             $data['notifchat'] = $this->Chat_model->getChatData();
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/editPretest', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/kelolapretest/editpretest', $data);
+            $this->load->view('admin/template/footer');
         
     }
 

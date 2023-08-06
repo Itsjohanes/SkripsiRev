@@ -20,10 +20,10 @@ class Profile extends CI_Controller
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['title'] = "Profile";
             $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
-            $this->load->view('backend/siswa/header', $data);
-            $this->load->view('backend/siswa/sidebar', $data);
-            $this->load->view('backend/siswa/profile', $data);
-            $this->load->view('backend/siswa/footer');
+            $this->load->view('siswa/template/header', $data);
+            $this->load->view('siswa/template/sidebar', $data);
+            $this->load->view('siswa/profile/profile', $data);
+            $this->load->view('siswa/template/footer');
         
     }
 
@@ -34,10 +34,10 @@ class Profile extends CI_Controller
             $data['title'] = "Edit Profile";
             $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
 
-            $this->load->view('backend/siswa/header', $data);
-            $this->load->view('backend/siswa/sidebar', $data);
-            $this->load->view('backend/siswa/editprofile', $data);
-            $this->load->view('backend/siswa/footer');
+            $this->load->view('siswa/template/header', $data);
+            $this->load->view('siswa/template/sidebar', $data);
+            $this->load->view('siswa/profile/editprofile', $data);
+            $this->load->view('siswa/template/footer');
            
         
     }
@@ -57,10 +57,10 @@ class Profile extends CI_Controller
                 $data['title'] = "Edit Profile";
                 $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
 
-                $this->load->view('backend/siswa/header', $data);
-                $this->load->view('backend/siswa/sidebar', $data);
-                $this->load->view('backend/siswa/editProfile', $data);
-                $this->load->view('backend/siswa/footer');
+                $this->load->view('siswa/template/header', $data);
+                $this->load->view('siswa/template/sidebar', $data);
+                $this->load->view('siswa/profile/editProfile', $data);
+                $this->load->view('siswa/template/footer');
             } else {
                 // Update data in the database
                 $data = [

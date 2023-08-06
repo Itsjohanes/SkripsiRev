@@ -20,10 +20,10 @@ class KelolaMateri extends CI_Controller {
         $data['materi'] = $this->Kelolamateri_model->getMateri();
         $data['notifchat'] = $this->Chat_model->getChatData();
         $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
-        $this->load->view('backend/admin/header', $data);
-        $this->load->view('backend/admin/sidebar', $data);
-        $this->load->view('backend/admin/materi', $data);
-        $this->load->view('backend/admin/footer');
+        $this->load->view('admin/template/header', $data);
+        $this->load->view('admin/template/sidebar', $data);
+        $this->load->view('admin/kelolamateri/materi', $data);
+        $this->load->view('admin/template/footer');
        
     }
 
@@ -72,10 +72,10 @@ class KelolaMateri extends CI_Controller {
             $data['user'] = $this->Kelolamateri_model->getUserByEmail($this->session->userdata('email'));
             $data['materi'] = $this->Kelolamateri_model->getMateriById($id);
 
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/editmateri', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/kelolamateri/editmateri', $data);
+            $this->load->view('admin/template/footer');
         
     }
 

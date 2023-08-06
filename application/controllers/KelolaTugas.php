@@ -20,10 +20,10 @@ class KelolaTugas extends CI_Controller {
             $data['tugas'] = $this->Kelolatugas_model->getTugas();
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
             $data['notifchat'] = $this->Chat_model->getChatData();
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/tugas', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/kelolatugas/tugas', $data);
+            $this->load->view('admin/template/footer');
         
     }
 
@@ -70,10 +70,10 @@ class KelolaTugas extends CI_Controller {
             $data['user'] = $this->Kelolatugas_model->getUserByEmail($this->session->userdata('email'));
             $data['tugas'] = $this->Kelolatugas_model->getTugasById($id);
             $data['notifchat'] = $this->Chat_model->getChatData();
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/edittugas', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/kelolatugas/edittugas', $data);
+            $this->load->view('admin/template/footer');
        
     }
 

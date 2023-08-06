@@ -20,10 +20,10 @@ class KelolaPosttest extends CI_Controller {
             $data['soal'] = $this->Kelolaposttest_model->getPosttest();
             $data['aktif'] = $this->db->get_where('tb_test', ['id_tes' => 2])->row_array();
            
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/posttest', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/kelolaposttest/posttest', $data);
+            $this->load->view('admin/template/footer');
         
     }
     public function aturWaktu(){
@@ -96,10 +96,10 @@ class KelolaPosttest extends CI_Controller {
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['soal'] = $this->Kelolaposttest_model->getPosttestById($id);
             $data['notifchat'] = $this->Chat_model->getChatData();
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/editPostTest', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/kelolaposttesteditPostTest', $data);
+            $this->load->view('admin/template/footer');
         
     }
 
@@ -162,9 +162,6 @@ class KelolaPosttest extends CI_Controller {
             $this->db->update('tb_test');
             redirect('kelolaposttest');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Posttest telah diaktifkan</div>');
-
-
-        
     }
     public function mematikanPosttest(){
             //mengubah status pada tb_test menjadi 1

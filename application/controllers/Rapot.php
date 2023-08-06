@@ -45,10 +45,10 @@ class Rapot extends CI_Controller
                     $data['pertemuan'][$i] = null;
                 }
             }                        
-            $this->load->view('backend/siswa/header', $data);
-            $this->load->view('backend/siswa/sidebar', $data);
-            $this->load->view('backend/siswa/rapot', $data);
-            $this->load->view('backend/siswa/footer');
+            $this->load->view('siswa/template/header', $data);
+            $this->load->view('siswa/template/sidebar', $data);
+            $this->load->view('siswa/rapot/rapot', $data);
+            $this->load->view('siswa/template/footer');
         
     }
     public function cetakPDF()

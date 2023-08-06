@@ -26,10 +26,10 @@ class MenilaiPertemuan extends CI_Controller {
                 $data['user'] = $this->Menilaipertemuan_model->getUserByEmail($this->session->userdata('email'));
                 $data['hasiltugas'] = $this->Menilaipertemuan_model->getHasilTugasPertemuan($id);
                 $data['pertemuan'] = $id;
-                $this->load->view('backend/admin/header', $data);
-                $this->load->view('backend/admin/sidebar', $data);
-                $this->load->view('backend/admin/hasiltugas', $data);
-                $this->load->view('backend/admin/footer');
+                $this->load->view('admin/template/header', $data);
+                $this->load->view('admin/template/sidebar', $data);
+                $this->load->view('admin/menilaipertemuan/hasiltugas', $data);
+                $this->load->view('admin/template/footer');
             }else{
                 redirect('menilai');
             }
@@ -43,10 +43,10 @@ class MenilaiPertemuan extends CI_Controller {
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['user'] = $this->Menilaipertemuan_model->getUserByEmail($this->session->userdata('email'));
             $data['pertemuan'] = $this->Menilaipertemuan_model->getHasilTugasById($id);
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/nilaitugas', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/menilaipertemuan/nilaitugas', $data);
+            $this->load->view('admin/template/footer');
         
     }
 

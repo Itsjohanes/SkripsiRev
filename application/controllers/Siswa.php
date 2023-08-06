@@ -68,10 +68,10 @@ class Siswa extends CI_Controller
             $data['sudahSelesai'] = $sudahSelesai;
             $data['belumSelesai'] = $belumSelesai;
             $data['siswa'] = $this->Siswa_model->getSiswaByRole(0);
-            $this->load->view('backend/siswa/header', $data);
-            $this->load->view('backend/siswa/sidebar', $data);
-            $this->load->view('backend/siswa/index', $data);
-            $this->load->view('backend/siswa/footer');
+            $this->load->view('siswa/template/header', $data);
+            $this->load->view('siswa/template/sidebar', $data);
+            $this->load->view('siswa/home/index', $data);
+            $this->load->view('siswa/template/footer');
         
     } 
     

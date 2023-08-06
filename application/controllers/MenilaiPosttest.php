@@ -20,10 +20,10 @@ class MenilaiPosttest extends CI_Controller {
             $data['notifchat'] = $this->Chat_model->getChatData();
             // Join id_siswa dengan table siswa
             $data['posttest'] = $this->Menilaiposttest_model->getHasilPosttest();
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/hasilposttest', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/menilaiposttest/hasilposttest', $data);
+            $this->load->view('admin/template/footer');
         
     }
 

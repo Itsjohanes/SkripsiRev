@@ -19,10 +19,10 @@ class Komentar extends CI_Controller {
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['user'] = $this->Komentar_model->getUserByEmail($this->session->userdata('email'));
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/komentar', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/komentar/komentar', $data);
+            $this->load->view('admin/template/footer');
         
     }
     public function halamanKomentar($id = ''){
@@ -34,10 +34,10 @@ class Komentar extends CI_Controller {
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $data['pertemuan'] = $id;
                 $data['comments'] = $this->Komentar_model->get_comments($id);
-                $this->load->view('backend/admin/header', $data);
-                $this->load->view('backend/admin/sidebar', $data);
-                $this->load->view('backend/admin/comments', $data);
-                $this->load->view('backend/admin/footer');
+                $this->load->view('admin/template/header', $data);
+                $this->load->view('admin/template/sidebar', $data);
+                $this->load->view('admin/komentar/comments', $data);
+                $this->load->view('admin/template/footer');
             }else{
                 redirect('komentar');
             }

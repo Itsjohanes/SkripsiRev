@@ -20,10 +20,10 @@ class MenilaiPretest extends CI_Controller {
             $data['notifchat'] = $this->Chat_model->getChatData();
             // Join id_siswa dengan table siswa
             $data['pretest'] = $this->Menilaipretest_model->getHasilPretest();
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/hasilpretest', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/menilaipretest/hasilpretest', $data);
+            $this->load->view('admin/template/footer');
         
     }
 

@@ -17,10 +17,10 @@ class AdminProfile extends CI_Controller
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['title'] = "Profile";
             $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/profile', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/profile/profile', $data);
+            $this->load->view('admin/template/footer');
     } 
 
     public function editProfile()
@@ -30,10 +30,10 @@ class AdminProfile extends CI_Controller
             $data['title'] = "Edit Profile";
             $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
 
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/editprofile', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/profile/editprofile', $data);
+            $this->load->view('admin/template/footer');
         
     }
 
@@ -52,10 +52,10 @@ class AdminProfile extends CI_Controller
                 $data['notifchat'] = $this->Chat_model->getChatData();
                 $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
 
-                $this->load->view('backend/admin/header', $data);
-                $this->load->view('backend/admin/sidebar', $data);
-                $this->load->view('backend/admin/editProfile', $data);
-                $this->load->view('backend/admin/footer');
+                $this->load->view('admin/template/header', $data);
+                $this->load->view('admin/template/sidebar', $data);
+                $this->load->view('admin/profile/editProfile', $data);
+                $this->load->view('admin/template/footer');
             } else {
                 // Update data in the database
                 $data = [

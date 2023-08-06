@@ -34,10 +34,10 @@ class RekapNilai extends CI_Controller
                     $data['pertemuan'][$i] = null;
                 }
             }            
-            $this->load->view('backend/admin/header', $data);
-            $this->load->view('backend/admin/sidebar', $data);
-            $this->load->view('backend/admin/rekapnilai', $data);
-            $this->load->view('backend/admin/footer');
+            $this->load->view('admin/template/header', $data);
+            $this->load->view('admin/template/sidebar', $data);
+            $this->load->view('admin/rekapnilai/rekapnilai', $data);
+            $this->load->view('admin/template/footer');
        
     }
 

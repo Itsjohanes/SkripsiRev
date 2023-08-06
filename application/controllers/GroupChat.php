@@ -23,10 +23,10 @@ class GroupChat extends CI_Controller
                 $data['chat_messages'] = $this->Chatgroup_model->get_chat_messages($kelompok);
                 $data['title'] = "Group Chat";
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-                $this->load->view('backend/siswa/header', $data);
-                $this->load->view('backend/siswa/sidebar', $data);
+                $this->load->view('siswa/template/header', $data);
+                $this->load->view('siswa/template/sidebar', $data);
                 $this->load->view('siswa/groupchat/group', $data);
-                $this->load->view('backend/siswa/footer');
+                $this->load->view('siswa/template/footer');
             }else{
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda belum memiliki kelompok</div>');
                 redirect('siswa');

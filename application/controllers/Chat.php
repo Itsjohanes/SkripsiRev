@@ -29,10 +29,10 @@ class Chat extends CI_Controller
                 $data['title']  = 'Chat';
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 
-                $this->load->view('backend/siswa/header', $data);
-                $this->load->view('backend/siswa/sidebar');
+                $this->load->view('siswa/template/header', $data);
+                $this->load->view('siswa/template/sidebar');
                 $this->load->view('siswa/chat/chat', $data);
-                $this->load->view('backend/siswa/footer');
+                $this->load->view('siswa/template/footer');
                 
             }
         
@@ -96,10 +96,10 @@ class Chat extends CI_Controller
             $data['title'] = 'Chat';
             $data['id'] = $this->session->userdata('id');
             $data['nama'] = $this->session->userdata('nama');
-            $this->load->view('backend/siswa/header', $data);
-            $this->load->view('backend/siswa/sidebar');
+            $this->load->view('siswa/template/header', $data);
+            $this->load->view('siswa/template/sidebar');
             $this->load->view('siswa/chat/menu');
-            $this->load->view('backend/siswa/footer');
+            $this->load->view('siswa/template/footer');
             
         
     }
