@@ -19,7 +19,7 @@ class KelolaPertemuan extends CI_Controller {
             $data['notifchat'] = $this->Chat_model->getChatData();
             $this->load->view('admin/template/header', $data);
             $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/kelolapertemuan/aturpertemuan', $data);
+            $this->load->view('admin/kelolapertemuan/pertemuan', $data);
             $this->load->view('admin/template/footer');
         
     }

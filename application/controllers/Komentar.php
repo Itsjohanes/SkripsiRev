@@ -36,7 +36,7 @@ class Komentar extends CI_Controller {
                 $data['comments'] = $this->Komentar_model->get_comments($id);
                 $this->load->view('admin/template/header', $data);
                 $this->load->view('admin/template/sidebar', $data);
-                $this->load->view('admin/komentar/comments', $data);
+                $this->load->view('admin/komentar/tambahkomentar', $data);
                 $this->load->view('admin/template/footer');
             }else{
                 redirect('komentar');

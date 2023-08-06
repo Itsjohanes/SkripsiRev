@@ -45,7 +45,7 @@ class MenilaiPertemuan extends CI_Controller {
             $data['pertemuan'] = $this->Menilaipertemuan_model->getHasilTugasById($id);
             $this->load->view('admin/template/header', $data);
             $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/menilaipertemuan/nilaitugas', $data);
+            $this->load->view('admin/menilaipertemuan/menilaitugas', $data);
             $this->load->view('admin/template/footer');
         
     }
