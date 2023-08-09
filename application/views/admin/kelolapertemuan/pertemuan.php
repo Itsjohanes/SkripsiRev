@@ -149,6 +149,10 @@
                                             }
                                             ?>
                                             <?php
+                                                echo '<a href="'.base_url('kelolapertemuan/conference/'.$j['id_pertemuan']).'" class="btn btn-success btn-sm">Conference Pertemuan</a>';
+
+                                            ?>
+                                            <?php
                                                 echo '<a href="'.base_url('kelolapertemuan/editpertemuan/'.$j['id_pertemuan']).'" class="btn btn-warning btn-sm">Edit Pertemuan</a>';
 
                                             ?>

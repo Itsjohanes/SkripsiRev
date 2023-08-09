@@ -13,9 +13,9 @@ class Auth extends CI_Controller
   {
     $data['title'] = 'Login';
     if ($this->session->userdata('email') == '') {
-      $this->load->view('auth/auth_header', $data);
+      $this->load->view('auth/header', $data);
       $this->load->view('auth/login');
-      $this->load->view('auth/auth_footer');
+      $this->load->view('auth/footer');
     } else {
       if ($this->session->userdata('role') == 1) {
         redirect('admin');
@@ -58,9 +58,9 @@ class Auth extends CI_Controller
   public function register()
   {
     $data['title'] = 'Register';
-    $this->load->view('auth/auth_header', $data);
+    $this->load->view('auth/header', $data);
     $this->load->view('auth/register');
-    $this->load->view('auth/auth_footer');
+    $this->load->view('auth/footer');
   }
 
   public function registration()
@@ -77,9 +77,9 @@ class Auth extends CI_Controller
 
     if ($this->form_validation->run('registration') == false) {
       $data['title'] = 'Register';
-      $this->load->view('auth/auth_header', $data);
+      $this->load->view('auth/header', $data);
       $this->load->view('auth/register');
-      $this->load->view('auth/auth_footer');
+      $this->load->view('auth/footer');
     } else {
       $email = htmlspecialchars($this->input->post('email', true));
       $nama = htmlspecialchars($this->input->post('nama', true));
@@ -92,13 +92,6 @@ class Auth extends CI_Controller
       redirect('auth');
     }
   }
-
-  public function blocked()
-  {
-    $data['title'] = 'Access Blocked';
-    $this->load->view('auth/blocked', $data);
-  }
-
   public function logout()
   {
     $this->session->unset_userdata('email');

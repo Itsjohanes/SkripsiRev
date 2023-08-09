@@ -8,21 +8,18 @@ if (!function_exists('checkRole')) {
 
         // Periksa apakah ada sesi yang aktif
         if (!$CI->session->userdata('email')) {
-
             // Jika tidak ada sesi, arahkan pengguna ke halaman login
-            redirect('Auth/login');
+            redirect('auth/login');
         }
 
         // Periksa role pengguna
         if ($role == '1') {
             if ($CI->session->userdata('role') !== '1') {
-                // Jika pengguna bukan admin, arahkan ke halaman blokir
                 redirect('siswa');
             }
         }
         if($role == '0'){
             if ($CI->session->userdata('role') !== '0') {
-                // Jika pengguna bukan siswa, arahkan ke halaman blokir
                 redirect('admin');
             }
         }

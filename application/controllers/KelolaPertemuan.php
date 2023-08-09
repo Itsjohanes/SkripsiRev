@@ -6,8 +6,9 @@ class KelolaPertemuan extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Kelolapertemuan_model'); // Load the KelolaPertemuan_model
+        $this->load->model('Kelolapertemuan_model'); 
         $this->load->model('Chat_model');
+        $this->load->model('Pertemuan_model'); 
         checkRole(1);
     }
 
@@ -127,6 +128,31 @@ class KelolaPertemuan extends CI_Controller {
            $this->Kelolapertemuan_model->editPertemuan($id_pertemuan,$penjelasan,$gambar,$tp,$link);
            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pertemuan berhasil diubah!</div>');
            redirect('kelolapertemuan');
+    }
+    public function conference($id = ''){
+
+            $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
+            if($id_pertemuan){
+                $data['notifchat'] = $this->Chat_model->getChatData();
+                $data['title'] = "Conference Pertemuan ". $id;
+                $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+                $data['pertemuan'] = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+                if($data['pertemuan']['aktif'] == '1'){
+                    $this->load->view('admin/template/header', $data);
+                    $this->load->view('admin/template/sidebar', $data);
+                    $this->load->view('admin/kelolapertemuan/conference', $data);
+                    $this->load->view('admin/template/footer');
+                }else{
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('kelolapertemuan');
+                }    
+            }else{
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan tidak ada</div>');
+                    redirect('kelolapertemuan');
+                
+            }
+          
+         
     }
 
 }
