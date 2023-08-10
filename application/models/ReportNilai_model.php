@@ -5,10 +5,10 @@ class ReportNilai_model extends CI_Model
 {
     public function getReportData()
     {
-        $query = $this->db->select('*')
-            ->from('tb_akun')
-            ->where('role', 0)
-            ->order_by('nama', 'ASC')
+        $query = $this->db->select('tb_nilai.*, tb_akun.nama')
+            ->from('tb_nilai')
+            ->join('tb_akun', 'tb_akun.id = tb_nilai.id_siswa')
+            ->order_by('tb_akun.nama', 'ASC')
             ->get();
 
         if ($query->num_rows() > 0) {
