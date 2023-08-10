@@ -14,7 +14,8 @@ class Posttest_model extends CI_Model
         $result = $this->db->get('tb_prepost')->result_array();
         return $result;
     }
-    public function getWaktu(){
+    public function getWaktu()
+    {
         $this->db->where('id_tes', 2);
         $result = $this->db->get('tb_test')->row_array();
         return $result;
@@ -22,7 +23,7 @@ class Posttest_model extends CI_Model
 
     public function getPosttestQuestionCount()
     {
-       $this->db->where('id_test', 2);
+        $this->db->where('id_test', 2);
         $result = $this->db->get('tb_prepost')->num_rows();
         return $result;
     }
@@ -51,11 +52,11 @@ class Posttest_model extends CI_Model
 
     public function savePosttestResult($data)
     {
-        $this->db->insert('tb_hasilprepost', $data);    
-        
+        $this->db->insert('tb_hasilprepost', $data);
+
         $id = $data['id_siswa'];
         $score = $data['score'];
-        $this->db->where('id', $id);
-        $this->db->update('tb_akun', array('posttest' => $score));
+        $this->db->where('id_siswa', $id);
+        $this->db->update('tb_nilai', array('posttest' => $score));
     }
 }

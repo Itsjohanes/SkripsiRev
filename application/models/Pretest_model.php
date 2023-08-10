@@ -10,13 +10,13 @@ class Pretest_model extends CI_Model
 
     public function getPretestQuestions()
     {
-        
+
         $this->db->where('id_test', 1);
         $result = $this->db->get('tb_prepost')->result_array();
         return $result;
-
     }
-    public function getWaktu(){
+    public function getWaktu()
+    {
         $this->db->where('id_tes', 1);
         $result = $this->db->get('tb_test')->row_array();
         return $result;
@@ -57,10 +57,7 @@ class Pretest_model extends CI_Model
 
         $id = $data['id_siswa'];
         $score = $data['score'];
-        $this->db->where('id', $id);
-        $this->db->update('tb_akun', array('pretest' => $score));
-        
-        
-        
+        $this->db->where('id_siswa', $id);
+        $this->db->update('tb_nilai', array('pretest' => $score));
     }
 }

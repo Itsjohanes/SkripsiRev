@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Menilaipertemuan_model extends CI_Model {
+class Menilaipertemuan_model extends CI_Model
+{
 
     public function getSiswa()
     {
@@ -31,7 +32,7 @@ class Menilaipertemuan_model extends CI_Model {
 
     public function updateHasilTugas($id, $data)
     {
-       
+
         // Mendapatkan id_pertemuan berdasarkan id_hasil_tugas
         $this->db->select('id_pertemuan');
         $this->db->where('id_hasiltugas', $id);
@@ -49,19 +50,14 @@ class Menilaipertemuan_model extends CI_Model {
             if ($query->num_rows() > 0) {
                 $row = $query->row();
                 $id_siswa = $row->id_siswa;
-                
-                $this->db->set('tugas_'.$id_pertemuan, $data['nilai']);
-                $this->db->where('id', $id_siswa);
-                $this->db->update('tb_akun');
-                
+
+                $this->db->set('tugas_' . $id_pertemuan, $data['nilai']);
+                $this->db->where('id_siswa', $id_siswa);
+                $this->db->update('tb_nilai');
             }
 
             $this->db->where('id_hasiltugas', $id);
             $this->db->update('tb_hasiltugas', $data);
-
-           
-
-         }
+        }
     }
-
 }
