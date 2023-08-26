@@ -164,7 +164,8 @@
                      <a href='<?= base_url('pertemuan/tugas/'.$pertemuan); ?>' target='_blank'><i class="fas fa-tasks"> Tugas</i></a>
                      &nbsp
                     <a href='<?= base_url('pertemuan/conference/'.$pertemuan); ?>'><i class="fas fa-video"> Link Conference</i></a>
-
+                    &nbsp
+                    <a href='<?= base_url('pertemuan/scratch/'.$pertemuan); ?>' target='_blank'><i class="fas fa-gamepad"  > Scratch</i></a>
                  </div>
                  </div>
                 <div class="card shadow mb-4">
