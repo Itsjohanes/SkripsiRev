@@ -1,9 +1,11 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin_model extends CI_Model {
+class Admin_model extends CI_Model
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('Kelolapertemuan_model');
     }
@@ -36,7 +38,7 @@ class Admin_model extends CI_Model {
 
     public function getTotalHasilPretest()
     {
-         $this->db->where('id_test', 1);
+        $this->db->where('id_test', 1);
         $result = $this->db->get('tb_hasilprepost')->num_rows();
         return $result;
     }
@@ -52,23 +54,24 @@ class Admin_model extends CI_Model {
     {
         return $this->db->get_where('tb_hasiltugas', ['id_pertemuan' => $pertemuan])->num_rows();
     }
-    public function getNilaiTertinggi(){
+    public function getNilaiTertinggi()
+    {
         $this->db->select_max('id_pertemuan');
         $query = $this->db->get('tb_pertemuan');
         $result = $query->row_array();
         $jumlahPertemuan = $result['id_pertemuan'];
 
-        $string = "nama, (COALESCE(pretest, 0) + COALESCE(posttest, 0)";
-        for($i = 1;$i<=$jumlahPertemuan;$i++){
-            if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
-                 $string = $string." + COALESCE(tugas_".$i.", 0)";
+        $string = "tb_akun.nama, (COALESCE(tb_nilai.pretest, 0) + COALESCE(tb_nilai.posttest, 0)";
+        for ($i = 1; $i <= $jumlahPertemuan; $i++) {
+            if ($this->Kelolapertemuan_model->getPertemuanbyId($i) != null) {
+                $string = $string . " + COALESCE(tb_nilai.tugas_" . $i . ", 0)";
             }
-           
-
         }
-        $string = $string.") AS total_nilai";
+        $string = $string . ") AS total_nilai";
         $this->db->select($string);
-        $this->db->from('tb_akun');
+        $this->db->from('tb_nilai');
+        //joinkan dengan table tb_akun
+        $this->db->join('tb_akun', 'tb_nilai.id_siswa = tb_akun.id');
         $this->db->order_by('total_nilai', 'desc');
         $this->db->order_by('nama', 'asc');
         $this->db->limit(1);
@@ -85,25 +88,25 @@ class Admin_model extends CI_Model {
         }
 
         return $data['siswa'];
-
     }
-    public function getRanking(){
+    public function getRanking()
+    {
 
         $this->db->select_max('id_pertemuan');
         $query = $this->db->get('tb_pertemuan');
         $result = $query->row_array();
         $jumlahPertemuan = $result['id_pertemuan'];
-        $string = "nama, (COALESCE(pretest, 0) + COALESCE(posttest, 0)";
-        for($i = 1;$i<=$jumlahPertemuan;$i++){
-            if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
-                $string = $string." + COALESCE(tugas_".$i.", 0)";
+        $string = "tb_akun.nama, (COALESCE(tb_nilai.pretest, 0) + COALESCE(tb_nilai.posttest, 0)";
+        for ($i = 1; $i <= $jumlahPertemuan; $i++) {
+            if ($this->Kelolapertemuan_model->getPertemuanbyId($i) != null) {
+                $string = $string . " + COALESCE(tb_nilai.tugas_" . $i . ", 0)";
             }
-
         }
-        $string = $string.") AS total_nilai";
+        $string = $string . ") AS total_nilai";
         $this->db->select($string);
-        $this->db->from('tb_akun');
-        $this->db->where('role','0');
+        $this->db->from('tb_nilai');
+        //joinkan dengan table tb_akun
+        $this->db->join('tb_akun', 'tb_nilai.id_siswa = tb_akun.id');
         $this->db->order_by('total_nilai', 'desc');
         $this->db->order_by('nama', 'asc');
         $query = $this->db->get();
@@ -121,7 +124,5 @@ class Admin_model extends CI_Model {
         }
 
         return $data['ranking_siswa'];
-
-
     }
 }

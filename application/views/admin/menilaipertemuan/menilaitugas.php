@@ -3,8 +3,8 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-  <?= $this->session->flashdata("message");
-                            ?>
+    <?= $this->session->flashdata("message");
+    ?>
 </div>
 <!-- /.container-fluid -->
 <div class="card shadow mb-4">
@@ -18,35 +18,32 @@
             <input type="hidden" class="form-control" id="pertemuan" name="pertemuan" value="<?php echo $pertemuan['id_pertemuan'];  ?>">
             <label for="text">Hasil Tugas</label>
             </br>
-            <textarea id="textArea" class = "form-control" disabled name="text" rows="3"><?php echo $pertemuan['text']; ?></textarea>
+            <textarea id="textArea" class="form-control" disabled name="text" rows="3"><?php echo $pertemuan['text']; ?></textarea>
             </br>
             <label for="text">File</label><br>
             <a href="<?= base_url(); ?>assets/tugassiswa/<?= $pertemuan['upload']; ?>" <i class="fas fa-file-pdf"></i></a>
             <br>
-            <div class="input-group input-group-outline">
-            <input type="text" class="form-control" id="nilai" name="nilai" value="<?php echo $pertemuan['nilai'];  ?>">
-            </div>
             <label for="text">Tanggal Pengumpulan</label><br>
             <div class="input-group input-group-outline">
-            <input type="text" class="form-control" id="tgl_pengumpulan" name="tgl_pengumpulan" value="<?php echo $pertemuan['created_at'];  ?>">
+                <input type="text" class="form-control" id="tgl_pengumpulan" disabled name="tgl_pengumpulan" value="<?php echo $pertemuan['created_at'];  ?>">
             </div>
             <label for="text">Tanggal Perbaikan</label><br>
             <div class="input-group input-group-outline">
-            <input type="text" class="form-control" id="tgl_perbaikan" name="tgl_perbaikan" value="<?php echo $pertemuan['updated_at'];  ?>">
+                <input type="text" class="form-control" id="tgl_perbaikan" disabled name="tgl_perbaikan" value="<?php echo $pertemuan['updated_at'];  ?>">
             </div>
             <label for="text">Tanggal Penilaian</label><br>
             <div class="input-group input-group-outline">
-            <input type="text" class="form-control" id="tgl_penilaian" name="tgl_penilaian" value="<?php echo $pertemuan['scored_at'];  ?>">
+                <input type="text" class="form-control" id="tgl_penilaian" disabled name="tgl_penilaian" value="<?php echo $pertemuan['scored_at'];  ?>">
             </div>
             <label for="link">Nilai</label>
             <div class="input-group input-group-outline">
-            <input type="text" class="form-control" id="nilai" name="nilai" value="<?php echo $pertemuan['nilai'];  ?>">
+                <input type="text" class="form-control" id="nilai" name="nilai" value="<?php echo $pertemuan['nilai'];  ?>">
             </div>
 
-            
+
             <label for="nilai">Komentar</label>
             <div class="input-group input-group-outline">
-            <input type="text" class="form-control" id="komentar" name="komentar" value="<?php echo $pertemuan['komentar'];  ?>">
+                <input type="text" class="form-control" id="komentar" name="komentar" value="<?php echo $pertemuan['komentar'];  ?>">
             </div>
 
 

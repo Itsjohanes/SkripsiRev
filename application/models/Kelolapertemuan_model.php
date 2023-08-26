@@ -1,9 +1,10 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class KelolaPertemuan_model extends CI_Model {
+class KelolaPertemuan_model extends CI_Model
+{
 
-    
+
 
     public function getUserByEmail($email)
     {
@@ -17,11 +18,10 @@ class KelolaPertemuan_model extends CI_Model {
     public function getPertemuanbyId($id)
     {
         return $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array();
-
-       
     }
-    public function getMax(){
-        
+    public function getMax()
+    {
+
         $this->db->select_max('id_pertemuan');
         $query = $this->db->get('tb_pertemuan');
         $result = $query->row_array();
@@ -31,18 +31,15 @@ class KelolaPertemuan_model extends CI_Model {
     {
         $this->db->insert('tb_pertemuan', $data);
         //tambahkan collumn pada tb_akun 
-        $this->db->query("ALTER TABLE tb_akun ADD COLUMN `tugas_".$this->db->insert_id()."` INT  NULL  AFTER `posttest`");
-
-
-        
-        
+        $this->db->query("ALTER TABLE tb_nilai ADD COLUMN `tugas_" . $this->db->insert_id() . "` INT  NULL  AFTER `posttest`");
     }
-    public function hapusPertemuan($id) {
+    public function hapusPertemuan($id)
+    {
         // Check if data exists in tb_materi
         $this->db->where('id_pertemuan', $id);
         $materi_exists = $this->db->count_all_results('tb_materi');
 
-         $this->db->where('id_pertemuan', $id);
+        $this->db->where('id_pertemuan', $id);
         $komentar_exists = $this->db->count_all_results('tb_comments');
 
         // Check if data exists in tb_youtube
@@ -60,17 +57,15 @@ class KelolaPertemuan_model extends CI_Model {
         // Check if any of the tables have data related to the id_pertemuan
         if ($materi_exists > 0 || $youtube_exists > 0 || $tugas_exists > 0 || $hasiltugas_exists > 0 || $komentar_exists > 0) {
             // If data exists in any of the related tables, do not delete
-            return("Gagal");
-           
+            return ("Gagal");
         } else {
             // If no data exists in any of the related tables, proceed with deleting the record from 'tb_pertemuan'
             $this->db->where('id_pertemuan', $id);
             $this->db->delete('tb_pertemuan');
-            $this->db->query("ALTER TABLE tb_akun DROP COLUMN `tugas_".$id."`");
-            return("Berhasil");
-          
+            $this->db->query("ALTER TABLE tb_nilai DROP COLUMN `tugas_" . $id . "`");
+            return ("Berhasil");
         }
-}
+    }
 
 
     public function aktifkanPertemuan($id)
@@ -86,13 +81,13 @@ class KelolaPertemuan_model extends CI_Model {
         $this->db->where('id_pertemuan', $id);
         $this->db->update('tb_pertemuan');
     }
-    public function editPertemuan($id, $penjelasan, $gambar, $tp, $link){
-        $this->db->set('videoconference',$link);
+    public function editPertemuan($id, $penjelasan, $gambar, $tp, $link)
+    {
+        $this->db->set('videoconference', $link);
         $this->db->set('tp', $tp);
-        $this->db->set('gambar',$gambar);
+        $this->db->set('gambar', $gambar);
         $this->db->set('penjelasan', $penjelasan);
         $this->db->where('id_pertemuan', $id);
         $this->db->update('tb_pertemuan');
     }
-    
 }

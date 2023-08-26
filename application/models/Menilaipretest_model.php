@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Menilaipretest_model extends CI_Model {
+class Menilaipretest_model extends CI_Model
+{
 
     public function getUserByEmail($email)
     {
@@ -30,16 +31,13 @@ class Menilaipretest_model extends CI_Model {
         if ($query->num_rows() > 0) {
             $row = $query->row();
             $id_siswa = $row->id_siswa;
-            $this->db->where('id', $id_siswa);
-            $this->db->update('tb_akun', array('pretest' => null));
+            $this->db->where('id_siswa', $id_siswa);
+            $this->db->update('tb_nilai', array('pretest' => null));
         }
 
-        
-        
+
+
         $this->db->where('id_hasiltest', $id);
         $this->db->delete('tb_hasilprepost');
-
-        
     }
-
 }

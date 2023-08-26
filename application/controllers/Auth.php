@@ -30,7 +30,7 @@ class Auth extends CI_Controller
     $email = $this->input->post('email');
     $password = $this->input->post('password');
     $user = $this->Auth_model->get_user_by_email($email);
-    
+
     if ($user) {
       if (password_verify($password, $user['password'])) {
         $data = [
@@ -85,9 +85,11 @@ class Auth extends CI_Controller
       $nama = htmlspecialchars($this->input->post('nama', true));
       $password = password_hash($this->input->post('password1'), PASSWORD_DEFAULT);
       $role = 0;
-      
+
       $this->Auth_model->register_user($email, $nama, $password, $role);
-      
+      $idSiswa = $this->Auth_model->getIdAkun($email, $nama, $password);
+      $this->Auth_model->RegisterNilai($idSiswa);
+
       $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! Your account has been created. Please login.</div>');
       redirect('auth');
     }
