@@ -1,4 +1,11 @@
 <!-- Begin Page Content -->
+
+ <script>
+    angular.module('myApp',['angularjs-datetime-picker']);
+    angular.module('myApp').run(function($rootScope) {
+      $rootScope.gmtDate = new Date('2015-01-01 00:00:00 -00:00');
+    });
+  </script>
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -35,6 +42,13 @@
             <img src="<?= base_url('assets/pertemuan/' . $materi['gambar']) ?>" width = "150px" height = "100px" alt="Gambar"></img>
             <div class="input-group input-group-outline">
             <input type="file" required class="form-control" id="gambar" name="gambar">
+            </div>
+            <label for="date">Dateline Tugas:</label>
+            <div class="input-group input-group-outline">
+            <h6>Sebelumnya: <?php echo $materi['dateline_tgs'];?></h6>
+            </div>
+            <div class="row" ng-app="myApp">
+                <input ng-model="date3" ng-init="date3='<?php echo $materi['dateline_tgs'];?>';" name="dateline-tgs" datetime-picker date-format="yyyy-MM-dd HH:mm:ss"  size="100"  /> <br/> <br/>
             </div>
             
             

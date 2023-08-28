@@ -12,7 +12,7 @@
     <div class="card-body">
         <?php echo form_open_multipart('kelolaYoutube/runedityoutube'); ?>
         <div class="form-group">
-            <input type="hidden" class="form-control" id="id_materi" name="id_materi" value="<?php echo $materi['id_materi'];  ?>">
+            <input type="hidden" class="form-control" id="id_youtube" name="id_youtube" value="<?php echo $materi['id_youtube'];  ?>">
             <label for="link">Pertemuan</label>
             <div class="input-group input-group-outline">
             <input type="text" class="form-control" required id="pertemuan" name="pertemuan" value="<?php echo $materi['id_pertemuan'];  ?>">

@@ -52,11 +52,11 @@ class KelolaYoutube extends CI_Controller {
         
     }
 
-    public function editYoutube($id_materi)
+    public function editYoutube($id_youtube)
     {
             $data['title'] = 'Edit Youtube';
             $data['user'] = $this->Kelolayoutube_model->getUserByEmail($this->session->userdata('email'));
-            $data['materi'] = $this->Kelolayoutube_model->getYoutubeMateriById($id_materi);
+            $data['materi'] = $this->Kelolayoutube_model->getYoutubeMateriById($id_youtube);
             $data['notifchat'] = $this->Chat_model->getChatData();
             $this->load->view('admin/template/header', $data);
             $this->load->view('admin/template/sidebar', $data);
@@ -67,14 +67,14 @@ class KelolaYoutube extends CI_Controller {
 
     public function runEditYoutube()
     {
-            $id_materi = $this->input->post('id_materi');
+            $id_youtube = $this->input->post('id_youtube');
             $pertemuan = $this->input->post('pertemuan');
             $youtube = $this->input->post('youtube');
             $data = array(
                 'id_pertemuan' => $pertemuan,
                 'youtube' => $youtube
             );
-            $this->Kelolayoutube_model->updateYoutubeMateri($id_materi, $data);
+            $this->Kelolayoutube_model->updateYoutubeMateri($id_youtube, $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Video Berhasil diubah!</div>');
 
             redirect('kelolayoutube');

@@ -111,8 +111,8 @@
 </td>
 
                                         <td>
-                                            <a href="<?= base_url(); ?>kelolayoutube/hapusyoutube/<?= $j['id_materi']; ?>" class="btn btn-danger hapus-btn" ><i class="fas fa-trash-alt"></i></a>
-                                            <a href="<?= base_url(); ?>Kelolayoutube/edityoutube/<?= $j['id_materi']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                            <a href="<?= base_url(); ?>kelolayoutube/hapusyoutube/<?= $j['id_youtube']; ?>" class="btn btn-danger hapus-btn" ><i class="fas fa-trash-alt"></i></a>
+                                            <a href="<?= base_url(); ?>Kelolayoutube/edityoutube/<?= $j['id_youtube']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                         </td>
 
                                     </tr>

@@ -1,5 +1,10 @@
 
-
+  <script>
+    angular.module('myApp',['angularjs-datetime-picker']);
+    angular.module('myApp').run(function($rootScope) {
+      $rootScope.gmtDate = new Date('2015-01-01 00:00:00 -00:00');
+    });
+  </script>
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -80,6 +85,21 @@
                     </div>
                 </div>
                 <br>
+                <div class="row">
+                    <div class="col">
+                    <label for = "pertemuan">Dateline Tugas</label>
+                    </div>
+                </div>
+                <div class="row" ng-app="myApp" ng-init="
+                date1='01-01-2015 00:00:00';
+                date2='Thu Jan 01 2015 00:00:00 GMT-0500 (EST)';
+                date3='2023-01-01T00:00:00-0400';
+                date4='2015-01-01';">
+                        <input ng-model="date3" name="dateline-tgs" datetime-picker date-format="yyyy-MM-dd HH:mm:ss"  size="10"  /> <br/> <br/>
+                 </div>
+
+
+                <br>
                  <div class="row">
                     <div class="col">
                    <input type = "submit" class="btn btn-success"/>
@@ -114,6 +134,7 @@
                                     <th scope="col">Tujuan Pembelajaran</th>
                                     <th scope="col">Video Conference</th>
                                     <th scope="col">Gambar</th>
+                                    <th scope="col">Dateline Tugas</th>
                                     <th scope="col">Aksi</th>
 
                                 </tr>
@@ -126,6 +147,7 @@
                                     <th scope="col">Tujuan Pembelajaran</th>
                                     <th scope="col">Video Conference</th>
                                     <th scope="col">Gambar</th>
+                                    <th scope="col">Dateline Tugas</th>
                                     <th scope="col">Aksi</th>
                                     
                                 </tr>
@@ -140,6 +162,8 @@
                                         <td><?= $j['tp'];?></td>
                                         <td><?= $j['videoconference'];?></td>
                                         <td><img src="<?= base_url('assets/pertemuan/' . $j['gambar']) ?>" width = "150px" height = "100px" alt="Gambar"></img>
+                                        <td><?= $j['dateline_tgs'];?></td>
+
                                         <td>
                                             <?php 
                                             if($j['aktif'] == '1'){
@@ -195,4 +219,3 @@
     document.getElementById('myForm').submit();
   });
 </script>
-

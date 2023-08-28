@@ -27,6 +27,11 @@
   <script src="<?= base_url('assets/sweetalert/sweetalert2.min.js');?>"></script>
   <!--Jquery -->
   <script src="<?= base_url('assets/js/jquery-3.6.0.min.js');?>"></script>
+  <!-- Datetimepicker -->
+  <link rel="stylesheet" href="<?= base_url('assets/datetime/angularjs-datetime-picker.css');?>">
+  <script src="<?= base_url('assets/datetime/bower_components/angular/angular.js');?>"></script>
+  <script src="<?= base_url('assets/datetime/angularjs-datetime-picker.js')?>"></script>
+
 
 
 

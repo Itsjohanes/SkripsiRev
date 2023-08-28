@@ -20,18 +20,18 @@ class Kelolayoutube_model extends CI_Model {
 
     public function getYoutubeMateriById($id)
     {
-        return $this->db->get_where('tb_youtube', ['id_materi' => $id])->row_array();
+        return $this->db->get_where('tb_youtube', ['id_youtube' => $id])->row_array();
     }
 
     public function hapusYoutubeMateri($id)
     {
-        $this->db->where('id_materi', $id);
+        $this->db->where('id_youtube', $id);
         $this->db->delete('tb_youtube');
     }
 
     public function updateYoutubeMateri($id, $data)
     {
-        $this->db->where('id_materi', $id);
+        $this->db->where('id_youtube', $id);
         $this->db->update('tb_youtube', $data);
     }
 

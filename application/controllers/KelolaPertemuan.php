@@ -61,6 +61,7 @@ class KelolaPertemuan extends CI_Controller {
             $gambar = $_FILES['gambar']['name'];
             $penjelasan = $this->input->post('penjelasan');
             $tp = $this->input->post('tp');
+            $dateline_tgs = $this->input->post('dateline-tgs');
             $videoconference = $this->input->post('videoconference');
             if ($gambar) {
                 $config['allowed_types'] = 'jpg|jpeg|png';
@@ -75,6 +76,7 @@ class KelolaPertemuan extends CI_Controller {
                         'penjelasan'   => $penjelasan,
                         'videoconference' => $videoconference,
                         'tp'               => $tp,
+                        'dateline_tgs'   => $dateline_tgs,
                         'aktif'        => 0,
                         'gambar' => $gambar
                     );
@@ -110,6 +112,7 @@ class KelolaPertemuan extends CI_Controller {
            $link = $this->input->post('link');
            $gambarLama = $this->input->post('gambar_lama');
            $gambar = $_FILES['gambar']['name'];
+           $dateline_tgs = $this->input->post('dateline-tgs');
             if ($gambar) {
                 $config['allowed_types'] = 'jpg|jpeg|png';
                 $config['max_size'] = '2048';
@@ -123,11 +126,12 @@ class KelolaPertemuan extends CI_Controller {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertemuan gagal diubah</div>');
                     redirect('kelolaPertemuan');
                 }
+                $this->Kelolapertemuan_model->editPertemuan($id_pertemuan,$penjelasan,$gambar,$tp,$link,$dateline_tgs);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pertemuan berhasil diubah!</div>');
+                redirect('kelolapertemuan');
             }
 
-           $this->Kelolapertemuan_model->editPertemuan($id_pertemuan,$penjelasan,$gambar,$tp,$link);
-           $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pertemuan berhasil diubah!</div>');
-           redirect('kelolapertemuan');
+           
     }
     public function conference($id = ''){
 

@@ -10,6 +10,16 @@
                          <?= $this->session->flashdata("message");
                             ?>
                          <h6 class="m-0 font-weight-bold text-primary">Form Pengumpulan Tugas <?php echo $pertemuan;?></h6>
+                         <?php
+                            $timestamp = strtotime($tp['dateline_tgs']);
+                            setlocale(LC_TIME, 'id_ID');
+                            // Alternatif penggunaan dengan date()
+                            $formattedDateAlt = date('l, j F Y H:i:s', $timestamp);
+                            echo "<br>";
+                            echo "Dateline: " .$formattedDateAlt;
+                         ?>
+                         
+
                      </div>
 
                      <?php
@@ -75,7 +85,11 @@
                             echo '</div>';
                             //hapus dengan konfirmasi menggunakan alert
                             echo '</br>';
-                            echo '<a href = "' . base_url('pertemuan/hapustugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger hapus-btn">Delete</a>';
+                            $waktuSekarang = time(); // atau menggunakan date('Y-m-d H:i:s')
+                            $waktuDeadline = strtotime($tp['dateline_tgs']);
+                            if($waktuSekarang <= $waktuDeadline ){
+                                echo '<a href = "' . base_url('pertemuan/hapustugas/' . $hasiltugas['id_hasiltugas']) . '" class="btn btn-danger hapus-btn">Delete</a>';
+                            }
                         } else {
 
                             echo form_open_multipart('pertemuan/tambahtugas');
@@ -101,7 +115,16 @@
                             echo '</br>';
                         }
                         ?>
-                     <button type="submit" class="btn btn-success">Submit</button>
+                     <?php
+                            $waktuSekarang = time(); // atau menggunakan date('Y-m-d H:i:s')
+                            $waktuDeadline = strtotime($tp['dateline_tgs']);
+                            if($waktuSekarang <= $waktuDeadline ){ 
+                                echo '<button type="submit" class="btn btn-success">Submit</button>';
+                            }else{
+                                echo 'Maaf  waktu pengumpulan tugas sudah selesai';
+                            }
+
+                     ?>
                      </form>
                  </div>
              </div>
