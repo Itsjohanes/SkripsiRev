@@ -71,7 +71,7 @@
                             <div class="form-group">
                                 <textarea name="comment" placeholder="Reply" required class="form-control"></textarea>
                             </div>
-                            <input type="hidden" name="parent_id" value="<?php echo $comment->id; ?>">
+                            <input type="hidden" name="parent_id" value="<?php echo $comment->id_comment; ?>">
                             <input type="submit" value="Submit" class="btn btn-primary">
                         </form>
                     </div>
@@ -80,7 +80,7 @@
                     <?php foreach ($comment->replies as $reply) { ?>
                         <div class="comment">
                             <div class="comment-header">
-                                User: <?php echo $comment->nama; ?>
+                                User: <?php echo $reply->nama; ?>
                             </div>
                             <div class="comment-body">
                                 <?php echo $reply->comment; ?>

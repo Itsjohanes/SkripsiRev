@@ -105,6 +105,7 @@
   <script src="<?= base_url('assets/backend/vendor/datatables/'); ?>jquery.dataTables.min.js"></script>
   <script src="<?= base_url('assets/backend/vendor/datatables/'); ?>dataTables.bootstrap4.min.js"></script>
   <script src="<?= base_url('assets/backend/js/demo/'); ?>datatables-demo.js"></script>
+  <!--Button hapus -->
   <script>
   document.addEventListener('DOMContentLoaded', function() {
     const hapusBtns = document.querySelectorAll('.hapus-btn');
@@ -132,6 +133,14 @@
     });
   });
   </script>
+  <!--Loader-->
+  <script>
+      $(function () {
+        if (renderPage) {
+          $("body").addClass("loaded");
+        }
+      });
+ </script>
 
 </body>
 

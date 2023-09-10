@@ -10,13 +10,154 @@ class Pertemuan extends CI_Controller {
         checkRole(0);
 
     }
+    public function penjelasan($id = ''){
+        $data['notifchat'] = $this->Chat_model->getChatData();
+        $data['title'] = "Penjelasan";
+        $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+        $data['id'] = $id;
+        $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+        if($status['aktif'] == 1){
+            $this->load->view('siswa/template/header', $data);
+            $this->load->view('siswa/template/sidebar', $data);
+            $this->load->view('siswa/pertemuan/penjelasan', $data);
+            $this->load->view('siswa/template/footer');
+
+        }else{
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+            redirect('materi');
+        }
+        
+    }
+    public function tp($id = ''){
+        $data['notifchat'] = $this->Chat_model->getChatData();
+        $data['title'] = "Tujuan Pembelajaran";
+        $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+        $data['id'] = $id;
+        $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+        $data['tp'] = $status;
+        if($status['aktif'] == 1){
+            $this->load->view('siswa/template/header', $data);
+            $this->load->view('siswa/template/sidebar', $data);
+            $this->load->view('siswa/pertemuan/tujuanpembelajaran', $data);
+            $this->load->view('siswa/template/footer');
+
+        }else{
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+            redirect('materi');
+        }
+        
+    }
+    
 
     public function index($id = '') {
             //Query semua id_materi pada tb_pertemuan jika $id terdaftar
             $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
             if($id_pertemuan){
                 $data['notifchat'] = $this->Chat_model->getChatData();
-                $data['title'] = "Materi Pertemuan";
+                $data['title'] = "Pertemuan";
+                $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+                $data['pertemuan'] = $id;
+                //query status dari tb_pertemuan
+                $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array();
+                $data['tp'] = $status;
+                
+                //query aktif
+                if($status['aktif'] == '1'){
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/pertemuan/menu', $data);
+                    $this->load->view('siswa/template/footer');
+                } else {
+                    //tampilkan tulisan belum diaktifasi
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('materi');
+                }
+
+            }else{
+                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan tidak ada</div>');
+                redirect('materi');
+            }
+            
+        
+
+       
+    }
+     public function video($id = '') {
+            //Query semua id_materi pada tb_pertemuan jika $id terdaftar
+            $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
+            if($id_pertemuan){
+                $data['notifchat'] = $this->Chat_model->getChatData();
+                $data['title'] = "Video Pertemuan";
+                $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+                $data['pertemuan'] = $id;
+                $data['materi'] = $this->db->get_where('tb_youtube', ['id_pertemuan' => $id])->result_array();
+                
+                //query status dari tb_pertemuan
+                $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array();
+                $data['tp'] = $status;
+                
+                //query aktif
+                if($status['aktif'] == '1'){
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/pertemuan/video', $data);
+                    $this->load->view('siswa/template/footer');
+                } else {
+                    //tampilkan tulisan belum diaktifasi
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('materi');
+                }
+
+            }else{
+                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan tidak ada</div>');
+                redirect('materi');
+            }
+            
+        
+
+       
+    }
+     public function jisti($id = '') {
+            //Query semua id_materi pada tb_pertemuan jika $id terdaftar
+            $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
+            if($id_pertemuan){
+                $data['notifchat'] = $this->Chat_model->getChatData();
+                $data['title'] = "Conference Pertemuan";
+                $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+                $data['materi'] = $this->db->get_where('tb_youtube', ['id_pertemuan' => $id])->result_array();
+                $data['pertemuan'] = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+                //query status dari tb_pertemuan
+                $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array();
+                $data['tp'] = $status;
+                
+                //query aktif
+                if($status['aktif'] == '1'){
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/pertemuan/conference', $data);
+                    $this->load->view('siswa/template/footer');
+                } else {
+                    //tampilkan tulisan belum diaktifasi
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('materi');
+                }
+
+            }else{
+                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan tidak ada</div>');
+                redirect('materi');
+            }
+            
+        
+
+       
+    }
+
+    public function form($id = '') {
+            //Query semua id_materi pada tb_pertemuan jika $id terdaftar
+            $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
+            if($id_pertemuan){
+                $data['notifchat'] = $this->Chat_model->getChatData();
+                $data['title'] = "Pengumpulan Tugas";
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $data['materi'] = $this->db->get_where('tb_youtube', ['id_pertemuan' => $id])->result_array();
                 $data['hasiltugas'] = $this->db->get_where('tb_hasiltugas', ['id_pertemuan' => $id, 'id_siswa' => $this->session->userdata('id')])->row_array();
@@ -32,7 +173,7 @@ class Pertemuan extends CI_Controller {
                 if($status['aktif'] == '1'){
                     $this->load->view('siswa/template/header', $data);
                     $this->load->view('siswa/template/sidebar', $data);
-                    $this->load->view('siswa/pertemuan/pertemuan', $data);
+                    $this->load->view('siswa/pertemuan/form', $data);
                     $this->load->view('siswa/pertemuan/comments', $data);
                     $this->load->view('siswa/template/footer');
                 } else {
@@ -77,6 +218,7 @@ class Pertemuan extends CI_Controller {
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $data['materi'] = $this->db->get_where('tb_materi', ['id_pertemuan' => $id])->result_array();
                 $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+                $data['pertemuan']  = $id;
                 if($status['aktif'] == '1'){
                     $this->load->view('siswa/template/header', $data);
                     $this->load->view('siswa/template/sidebar', $data);
@@ -100,10 +242,11 @@ class Pertemuan extends CI_Controller {
             $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
             if($id_pertemuan){
                 $data['notifchat'] = $this->Chat_model->getChatData();
-                $data['title'] = "Materi Pertemuan ". $id;
+                $data['title'] = "Tugas Pertemuan ". $id;
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $data['tugas'] = $this->db->get_where('tb_tugas', ['id_pertemuan' => $id])->result_array();
                 $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+                $data['pertemuan'] = $id;
                 if($status['aktif'] == '1'){
                     $this->load->view('siswa/template/header', $data);
                     $this->load->view('siswa/template/sidebar', $data);
@@ -258,6 +401,31 @@ class Pertemuan extends CI_Controller {
                     $this->load->view('siswa/template/header', $data);
                     $this->load->view('siswa/template/sidebar', $data);
                     $this->load->view('siswa/pertemuan/scratch', $data);
+                    $this->load->view('siswa/template/footer');
+                }else{
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('materi');
+                }    
+            }else{
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan tidak ada</div>');
+                    redirect('materi');
+                
+            }
+          
+         
+    }
+    public function ide($id = ''){
+
+            $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
+            if($id_pertemuan){
+                $data['notifchat'] = $this->Chat_model->getChatData();
+                $data['title'] = "Scratch";
+                $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+                $data['pertemuan'] = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+                if($data['pertemuan']['aktif'] == '1'){
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/pertemuan/ide', $data);
                     $this->load->view('siswa/template/footer');
                 }else{
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');

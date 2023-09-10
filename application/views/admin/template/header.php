@@ -31,8 +31,22 @@
   <link rel="stylesheet" href="<?= base_url('assets/datetime/angularjs-datetime-picker.css');?>">
   <script src="<?= base_url('assets/datetime/bower_components/angular/angular.js');?>"></script>
   <script src="<?= base_url('assets/datetime/angularjs-datetime-picker.js')?>"></script>
-
+  <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/loader.css" />
 
 
 
 </head>
+<script>
+      var renderPage = true;
+
+      if (
+        navigator.userAgent.indexOf("MSIE") !== -1 ||
+        navigator.appVersion.indexOf("Trident/") > 0
+      ) {
+        /* Microsoft Internet Explorer detected in. */
+        alert(
+          "Please view this in a modern browser such as Chrome or Microsoft Edge."
+        );
+        renderPage = false;
+      }
+</script>

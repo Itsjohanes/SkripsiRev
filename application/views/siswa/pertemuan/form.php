@@ -1,7 +1,6 @@
 
          <div class="row">
 
-             <div class="col-lg-6">
 
                  <!-- Default Card Example -->
 
@@ -10,6 +9,8 @@
                          <?= $this->session->flashdata("message");
                             ?>
                          <h6 class="m-0 font-weight-bold text-primary">Form Pengumpulan Tugas <?php echo $pertemuan;?></h6>
+                         <div class="my-2"><a class="btn btn-primary fs-9 py-2 px-4" role="button" href="<?php echo base_url('pertemuan/').$pertemuan;?>">Kembali</a></div>
+
                          <?php
                             $timestamp = strtotime($tp['dateline_tgs']);
                             setlocale(LC_TIME, 'id_ID');
@@ -131,98 +132,6 @@
 
 
              <!-- Basic Card Example -->
-             <div class="card shadow mb-4">
-                 <div class="card-header py-3">
-                     <h6 class="m-0 font-weight-bold text-primary">Video</h6>
-                 </div>
-                 <div class="card-body">
-                     <?php
-                        foreach ($materi as $v) {
-                            $iframe = '<iframe width="500" height="315" src="https://www.youtube.com/embed/' . $v['youtube'] . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-                            echo $iframe;
-                        }
-                        ?>
-
-                 </div>
-             </div>
+            
 
          </div>
-
-         <div class="col-lg-6">
-
-         <div class="card shadow mb-4">
-                 <!-- Card Header - Dropdown -->
-                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                     <h6 class="m-0 font-weight-bold text-primary">Tujuan Pembelajaran dapat dibaca disini: </h6>
-                     <div class="dropdown no-arrow">
-
-                     </div>
-                 </div>
-                 <!-- Card Body -->
-
-                 <div class="card-body">
-                    <ol>
-                   <?php
-                   echo $tp['tp'];
-                   ?>
-
-
-                    </ol>
-                 </div>
-             </div>
-             <!-- Dropdown Card Example -->
-             <div class="card shadow mb-4">
-                 <!-- Card Header - Dropdown -->
-                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                     <h6 class="m-0 font-weight-bold text-primary">Baca Materi dan Tugas Lengkap disini:</h6>
-                     <div class="dropdown no-arrow">
-
-                     </div>
-                 </div>
-                 <!-- Card Body -->
-
-                 <div class="card-body">
-                     <a href='<?= base_url('pertemuan/materipertemuan/'.$pertemuan); ?>' target='_blank'><i class="fas fa-book"> Materi</i></a>
-                     &nbsp
-                     <a href='<?= base_url('pertemuan/tugas/'.$pertemuan); ?>' target='_blank'><i class="fas fa-tasks"> Tugas</i></a>
-                     &nbsp
-                    <a href='<?= base_url('pertemuan/conference/'.$pertemuan); ?>'><i class="fas fa-video"> Link Conference</i></a>
-                    &nbsp
-                    <a href='<?= base_url('pertemuan/scratch/'.$pertemuan); ?>' target='_blank'><i class="fas fa-gamepad"  > Scratch</i></a>
-                 </div>
-                 </div>
-                <div class="card shadow mb-4">
-                 <!-- Card Header - Dropdown -->
-                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                     <h6 class="m-0 font-weight-bold text-primary">Online IDE</h6>
-                     <div class="dropdown no-arrow">
-
-                     </div>
-                 </div>
-                 <div class="card-body">
-                     <div
-                        data-pym-src="https://www.jdoodle.com/plugin"
-                        data-language="cpp"
-                        data-version-index="3" 
-                        data-libs="cppstdc++" 
-                        >
-                      
-                        </div>
-                 </div>
-
-             </div>
-
-             <!-- Collapsable Card Example -->
-
-              
-
-         </div>
-
-         </div>
-
-         </div>
-         <!-- /.container-fluid -->
-        <script
-        src="https://www.jdoodle.com/assets/jdoodle-pym.min.js"
-        type="text/javascript"
-        ></script>

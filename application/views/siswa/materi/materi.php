@@ -24,7 +24,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('pertemuan/' . $item['id_pertemuan']); ?>"> Pertemuan <?php echo $item['id_pertemuan'];?>  </a>
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/penjelasan/' . $item['id_pertemuan']); ?>"> Pertemuan <?php echo $item['id_pertemuan'];?>  </a>
              
               <hr class="dark horizontal">
               <div class="d-flex ">

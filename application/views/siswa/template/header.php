@@ -28,7 +28,22 @@
   <script src="<?= base_url('assets/sweetalert/sweetalert2.min.js');?>"></script>
   <!--Jquery -->
   <script src="<?= base_url('assets/js/jquery-3.6.0.min.js');?>"></script>
+  <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/loader.css" />
 
 
 
 </head>
+<script>
+      var renderPage = true;
+
+      if (
+        navigator.userAgent.indexOf("MSIE") !== -1 ||
+        navigator.appVersion.indexOf("Trident/") > 0
+      ) {
+        /* Microsoft Internet Explorer detected in. */
+        alert(
+          "Please view this in a modern browser such as Chrome or Microsoft Edge."
+        );
+        renderPage = false;
+      }
+</script>
