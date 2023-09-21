@@ -16,6 +16,28 @@ class Pretest extends CI_Controller
             $data['title'] = "Pre-Test";
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['user'] = $this->Pretest_model->getUserByEmail($this->session->userdata('email'));
+            $data['pretest'] = $this->Pretest_model->getPretestCountBySiswaId($this->session->userdata('id'));
+            if ($data['pretest'] > 0) {
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah pernah mengerjakan Pre-Test</div>');
+                redirect('materi');
+            } else {
+                $aktif = $this->Pretest_model->getPretestStatus();
+                if ($aktif['aktif'] == 0) {
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pre-Test belum aktif</div>');
+                    redirect('materi');
+                } else {
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/pretest/ketentuan', $data);
+                    $this->load->view('siswa/template/footer');
+                }
+            }
+        
+    }
+    public function pretest(){
+        $data['title'] = "Pre-Test";
+            $data['notifchat'] = $this->Chat_model->getChatData();
+            $data['user'] = $this->Pretest_model->getUserByEmail($this->session->userdata('email'));
             $data['soal'] = $this->Pretest_model->getPretestQuestions();
             $data['jumlah'] = $this->Pretest_model->getPretestQuestionCount();
             $data['pretest'] = $this->Pretest_model->getPretestCountBySiswaId($this->session->userdata('id'));
@@ -37,7 +59,7 @@ class Pretest extends CI_Controller
                     $this->load->view('siswa/template/footer');
                 }
             }
-        
+
     }
 
     public function simpanPreTest()

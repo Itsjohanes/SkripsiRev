@@ -54,6 +54,10 @@ class Admin_model extends CI_Model
     {
         return $this->db->get_where('tb_hasiltugas', ['id_pertemuan' => $pertemuan])->num_rows();
     }
+    public function getTotalHasilQuiz($pertemuan)
+    {
+        return $this->db->get_where('tb_hasilquiz', ['id_pertemuan' => $pertemuan])->num_rows();
+    }
     public function getNilaiTertinggi()
     {
         $this->db->select_max('id_pertemuan');
@@ -65,6 +69,11 @@ class Admin_model extends CI_Model
         for ($i = 1; $i <= $jumlahPertemuan; $i++) {
             if ($this->Kelolapertemuan_model->getPertemuanbyId($i) != null) {
                 $string = $string . " + COALESCE(tb_nilai.tugas_" . $i . ", 0)";
+            }
+        }
+        for ($i = 1; $i <= $jumlahPertemuan; $i++) {
+            if ($this->Kelolapertemuan_model->getPertemuanbyId($i) != null) {
+                $string = $string . " + COALESCE(tb_nilai.quiz_" . $i . ", 0)";
             }
         }
         $string = $string . ") AS total_nilai";

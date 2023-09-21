@@ -29,7 +29,14 @@ class Rapot extends CI_Controller
                 }
 
             }
+             for($i = 1; $i<=$maxPertemuan; $i++){
+                if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                    $quiz[$i] = $this->Rapot_model->getQuizBySiswaIdAndPertemuan($this->session->userdata('id'), $i);
+                }
+
+            }
             //send data
+            $data['quiz'] = $quiz;
             $data['tugas'] = $tugas;
             $data['maxpertemuan'] = $maxPertemuan;
             $data['jumlahTugas'] = $this->Kelolapertemuan_model->getMax();
@@ -63,6 +70,11 @@ class Rapot extends CI_Controller
                 $tugas[$i] = $this->Rapot_model->getTugasBySiswaIdAndPertemuan($this->session->userdata('id'), $i);
             }
         }
+         for($i = 1; $i<=$maxPertemuan; $i++){
+            if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                $quiz[$i] = $this->Rapot_model->getQuizBySiswaIdAndPertemuan($this->session->userdata('id'), $i);
+            }
+        }
         $pdf = new FPDF('P', 'mm', 'a4');
         $pdf->AddPage();
         $pdf->SetFont('Arial', 'B', 16);
@@ -79,9 +91,15 @@ class Rapot extends CI_Controller
         } else {
             $pdf->Cell(80, 10, $pretest['score'], 1, 1);
         }
+        $pdf->Cell(80, 10, 'Post-Test', 1, 0);
+        if ($posttest == null) {
+            $pdf->Cell(80, 10, "Belum dikerjakan", 1, 1);
+        } else {
+            $pdf->Cell(80, 10, $posttest['score'], 1, 1);
+        }
         for($i = 1;$i<= $maxPertemuan;$i++){
             if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
-                $pdf->Cell(80, 10, 'Pertemuan '.$i, 1, 0);
+                $pdf->Cell(80, 10, 'Tugas '.$i, 1, 0);
                 if ($tugas[$i] == null) {
                     $pdf->Cell(80, 10, "Belum dikerjakan", 1, 1);
                 } else {
@@ -93,6 +111,21 @@ class Rapot extends CI_Controller
                 }
             }
         }
+        for($i = 1;$i<= $maxPertemuan;$i++){
+            if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                $pdf->Cell(80, 10, 'Quiz '.$i, 1, 0);
+                if ($quiz[$i] == null) {
+                    $pdf->Cell(80, 10, "Belum dikerjakan", 1, 1);
+                } else {
+                    if ($quiz[$i]['nilai'] == null) {
+                        $pdf->Cell(80, 10, "Belum dinilai", 1, 1);
+                    } else {
+                        $pdf->Cell(80, 10, $quiz[$i]['nilai'], 1, 1);
+                    }
+                }
+            }
+        }
+        
         $pdf->Output('D','Raport.pdf');
 	}
 }

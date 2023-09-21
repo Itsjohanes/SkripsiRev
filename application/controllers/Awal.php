@@ -27,6 +27,13 @@ class Awal extends CI_Controller
         $this->load->view('halaman_awal/informasi.php');
         $this->load->view('halaman_awal/footer.php');
     }
+    public function petunjuk()
+    {
+        $data['title'] = "Petunjuk";
+        $this->load->view('halaman_awal/header.php', $data);
+        $this->load->view('halaman_awal/petunjuk.php');
+        $this->load->view('halaman_awal/footer.php');
+    }
     public function materi()
     {
         $data['title'] = "Materi";

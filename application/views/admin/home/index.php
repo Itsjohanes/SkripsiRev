@@ -113,6 +113,22 @@
                     }
 
                 ?>
+                <?php
+                    for ($i = 1; $i <= $jumlahpertemuan; $i++) {
+                        if($pertemuan[$i] != ''){
+                           
+                            $persentasequiz = ${"persentasequiz" . $i};
+                            echo '<label>Mengerjakan Quiz ' . $i . ' (<span class="float-right">' . $persentasequiz . '%</span>)</label>';
+                            echo '<div class="progress mb-4">';
+                            echo '<div class="progress-bar bg-success" role="progressbar" style="width: ' . $persentasequiz . '%" aria-valuenow="' . $persentasequiz . '" aria-valuemin="0" aria-valuemax="100"></div>';
+                            echo '</div>';
+                        }else{
+                            continue;
+                        }
+                        
+                    }
+
+                ?>
                 <label>Mengerjakan Post-Test (<span class="float-right"><?php echo $persentaseposttest;  ?>%)</span></label>
                 <div class="progress mb-4">
                     <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $persentaseposttest; ?>%" aria-valuenow="<?php echo $persentaseposttest; ?>" aria-valuemin="0" aria-valuemax="100"></div>

@@ -18,7 +18,6 @@ class Admin extends CI_Controller
             $data['title'] = "Home Admin";
             $data['user'] = $this->Admin_model->getUserByEmail($this->session->userdata('email'));
             $data['siswa'] = $this->Admin_model->getTotalStudents();
-            
             $data['pretest'] = $this->Admin_model->getTotalPretests();
             $data['posttest'] = $this->Admin_model->getTotalPosttests();
             $data['ranking'] = $this->Admin_model->getRanking();
@@ -45,6 +44,25 @@ class Admin extends CI_Controller
             } else {
                 $data['persentasetugas'.$i] = 0 * 100;
             }
+
+            for($i = 1;$i<=$jumlahPertemuan;$i++){
+                if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                    $quiz[$i] = $this->Admin_model->getTotalHasilQuiz($i);
+                }
+                
+            }
+            if ($jumlahSiswa != 0) {
+              
+                for($i = 1;$i<=$jumlahPertemuan;$i++){
+                    if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                        $data['persentasequiz'.$i] = ($quiz[$i] / $jumlahSiswa) * 100;
+                    }
+                }
+              
+            } else {
+                $data['persentasequiz'.$i] = 0 * 100;
+            }
+
             $pertemuan = $this->Kelolapertemuan_model->getPertemuan();
             $data['pertemuan'] = array();
 

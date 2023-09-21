@@ -22,4 +22,8 @@ class Rapot_model extends CI_Model
     {
         return $this->db->get_where('tb_hasiltugas', ['id_siswa' => $siswaId, 'id_pertemuan' => $pertemuan])->row_array();
     }
+    public function getQuizBySiswaIdAndPertemuan($siswaId, $pertemuan)
+    {
+        return $this->db->get_where('tb_hasilquiz', ['id_siswa' => $siswaId, 'id_pertemuan' => $pertemuan])->row_array();
+    }
 }

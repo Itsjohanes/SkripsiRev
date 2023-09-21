@@ -40,6 +40,12 @@ class Siswa_model extends CI_Model
         return $this->db->get_where('tb_hasiltugas', ['id_siswa' => $id_siswa, 'id_pertemuan' => $pertemuan])->num_rows();
     }
 
+     public function getQuizCount($id_siswa, $pertemuan)
+    {
+        return $this->db->get_where('tb_hasilquiz', ['id_siswa' => $id_siswa, 'id_pertemuan' => $pertemuan])->num_rows();
+    }
+
+
     public function getSiswaByRole($role)
     {
         return $this->db->get_where('tb_akun', ['role' => $role])->result_array();
@@ -55,6 +61,11 @@ class Siswa_model extends CI_Model
         for ($i = 1; $i <= $jumlahPertemuan; $i++) {
             if ($this->Kelolapertemuan_model->getPertemuanbyId($i) != null) {
                 $string = $string . " + COALESCE(tb_nilai.tugas_" . $i . ", 0)";
+            }
+        }
+         for ($i = 1; $i <= $jumlahPertemuan; $i++) {
+            if ($this->Kelolapertemuan_model->getPertemuanbyId($i) != null) {
+                $string = $string . " + COALESCE(tb_nilai.quiz_" . $i . ", 0)";
             }
         }
         $string = $string . ") AS total_nilai";

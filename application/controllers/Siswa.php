@@ -33,15 +33,17 @@ class Siswa extends CI_Controller
                 //Jika id_pertemuan ada pada table tb_pertemuan
                 if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
                     $tugas[$i] = $this->Siswa_model->getTugasCount($this->session->userdata('id'), $i);
-                }
+                    $quiz[$i] = $this->Siswa_model->getQuizCount($this->session->userdata('id'), $i);
+                 }
             }
             $jumlah = 0;
             for($i = 1;$i<=$maxPertemuan;$i++){
                 if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
-                    $jumlah = $jumlah + $tugas[$i];
+                    $jumlah = $jumlah + $tugas[$i] + $quiz[$i];
                 } 
+               
             }
-            $data['persentasetugas'] = ($jumlah / $countPertemuan) * 100;
+            $data['persentasetugas'] = ($jumlah / ($countPertemuan * 2)) * 100;
             $data['ranking'] = $this->Siswa_model->getRanking();
             $data['persentasetest'] = ($pretest + $posttest) / 2 * 100;
             $belumSelesai = "";
@@ -57,10 +59,17 @@ class Siswa extends CI_Controller
             for($i = 1;$i<=$maxPertemuan;$i++){
 
                 if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
-                    if ($tugas[$i] != null) {
+                    if ($tugas[$i] != null ) {
                     $sudahSelesai = $sudahSelesai . "Tugas " . $i . ", ";
                     }else{
                         $belumSelesai = $belumSelesai . "Tugas " . $i . ", ";
+                    }
+                }
+                if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                    if ($quiz[$i] != null ) {
+                    $sudahSelesai = $sudahSelesai . "Quiz " . $i . ", ";
+                    }else{
+                        $belumSelesai = $belumSelesai . "Quiz " . $i . ", ";
                     }
                 }
             }

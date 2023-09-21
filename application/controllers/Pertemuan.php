@@ -5,6 +5,7 @@ class Pertemuan extends CI_Controller {
         parent::__construct();
         $this->load->model('Komentar_model');
         $this->load->model('Pertemuan_model'); 
+        $this->load->model('Quiz_model');
         $this->load->library('user_agent');
         $this->load->model('Chat_model');
         checkRole(0);
@@ -438,6 +439,98 @@ class Pertemuan extends CI_Controller {
             }
           
          
+    }
+    public function Quiz($id = ''){
+        $data['title'] = "Quiz";
+            $data['notifchat'] = $this->Chat_model->getChatData();
+            $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+            $data['soal'] = $this->Quiz_model->getQuizQuestions($id);
+            $data['jumlah'] = $this->Quiz_model->getQuizQuestionCount($id);
+            $data['pertemuan'] = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+            $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
+            $data['id_pertemuan'] = $id;
+            if($id_pertemuan){
+            if($data['pertemuan']['aktif'] == '1'){
+            $data['quiz'] = $this->Quiz_model->getQuizCountBySiswaId($this->session->userdata('id'),$id);
+                if ($data['quiz'] > 0) {
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah pernah mengerjakan Quiz ini</div>');
+                    redirect('materi');
+                }else{
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/pertemuan/quiz', $data);
+                    $this->load->view('siswa/template/footer');
+
+                }
+            
+            }else{
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                redirect('materi');
+
+            }
+            }else{
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan tidak ada</div>');
+                redirect('materi');
+            }
+        
+
+    }
+
+    public function simpanQuiz()
+    {
+            $pilihan = $this->input->post('pilihan');
+            $id_quiz = $this->input->post('id_quiz');
+            $jumlah = $this->input->post('jumlah');
+            $id_pertemuan  = $this->input->post('id_pertemuan');
+            $score = 0;
+            $benar = 0;
+            $salah = 0;
+            $kosong = 0;
+            $str_jawaban = "";
+
+            for ($i = 0; $i < $jumlah; $i++) {
+                $nomor = $id_quiz[$i];
+
+                if (empty($pilihan[$nomor])) {
+                    $kosong++;
+                    $str_jawaban = $str_jawaban . "X";
+                } else {
+                    $jawaban = $pilihan[$nomor];
+                    $str_jawaban = $str_jawaban . $pilihan[$nomor];
+                    $isAnswerCorrect = $this->Quiz_model->checkAnswer($nomor, $jawaban,$id_pertemuan);
+
+                    if ($isAnswerCorrect) {
+                        $benar++;
+                    } else {
+                        $salah++;
+                    }
+                }
+            }
+
+            $jumlah_soal = $this->Quiz_model->getQuizQuestionCount($id_pertemuan);
+            $score = 100 / $jumlah_soal * $benar;
+            $hasil = number_format($score, 2);
+
+            $id = $this->session->userdata('id');
+            //buat timestamp
+            
+           
+
+            $data = [
+                'id_siswa' => $id,
+                'jawaban' => $str_jawaban,
+                'id_pertemuan' => $id_pertemuan,
+                'benar' => $benar,
+                'salah' => $salah,
+                'kosong' => $kosong,
+                'nilai' => $hasil,
+                'timestamp' => date('Y-m-d H:i:s')
+            ];
+
+            $this->Quiz_model->saveQuizResult($data);
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah pernah mengerjakan Quiz</div>');
+            redirect('materi');
+        
     }
 }
 

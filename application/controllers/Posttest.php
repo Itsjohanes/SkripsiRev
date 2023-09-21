@@ -16,6 +16,29 @@ class Posttest extends CI_Controller
             $data['title'] = "Post-Test";
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['user'] = $this->Posttest_model->getUserByEmail($this->session->userdata('email'));
+            $data['posttest'] = $this->Posttest_model->getPosttestCountBySiswaId($this->session->userdata('id'));
+            if ($data['posttest'] > 0) {
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah mengerjakan Post-Test</div>');
+                redirect('Materi');
+            } else {
+                $aktif = $this->Posttest_model->getPosttestStatus();
+                if ($aktif['aktif'] == 0) {
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Post-Test belum aktif</div>');
+                    redirect('Materi');
+                } else {
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/posttest/ketentuan', $data);
+                    $this->load->view('siswa/template/footer');
+                }
+            }
+        
+    }
+    public function posttest()
+    {
+            $data['title'] = "Post-Test";
+            $data['notifchat'] = $this->Chat_model->getChatData();
+            $data['user'] = $this->Posttest_model->getUserByEmail($this->session->userdata('email'));
             $data['soal'] = $this->Posttest_model->getPosttestQuestions();
             $data['jumlah'] = $this->Posttest_model->getPosttestQuestionCount();
             $data['posttest'] = $this->Posttest_model->getPosttestCountBySiswaId($this->session->userdata('id'));
@@ -38,6 +61,7 @@ class Posttest extends CI_Controller
             }
         
     }
+
 
     public function simpanPostTest()
     {

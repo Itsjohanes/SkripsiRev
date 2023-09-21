@@ -135,6 +135,21 @@
         <li class="nav-item">
 
           <?php
+          if ($title == 'Quiz') {
+            echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('kelolaquiz') . '">';
+          } else {
+            echo '<a class="nav-link text-white " href="' . base_url('kelolaquiz') . '">';
+          }
+          ?>
+          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="material-icons opacity-10">quiz</i>
+          </div>
+          <span class="nav-link-text ms-1">Quiz</span>
+          </a>
+        </li>
+        <li class="nav-item">
+
+          <?php
           if ($title == 'Post-Test') {
             echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('kelolaposttest') . '">';
           } else {

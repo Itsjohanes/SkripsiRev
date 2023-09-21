@@ -32,6 +32,14 @@
                                             
                                         }
                                         ?>
+                                    <?php
+                                        for ($i = 1; $i <= $jumlahTugas; $i++) {
+                                            if($pertemuan[$i] != null){
+                                                echo "<th scope='col'>Quiz " . $i . "</th>";
+                                            }
+                                            
+                                        }
+                                        ?>
                                     <th scope="col">Post Test</th>
 
 
@@ -42,6 +50,7 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Nama Siswa</th>
                                     <th scope="col">Pre Test</th>
+                                    
                                    <?php
                                     for ($i = 1; $i <= $jumlahTugas; $i++) {
                                         if($pertemuan[$i] != null){
@@ -49,6 +58,14 @@
                                         }
                                     }
                                     ?>
+                                     <?php
+                                        for ($i = 1; $i <= $jumlahTugas; $i++) {
+                                            if($pertemuan[$i] != null){
+                                                echo "<th scope='col'>Quiz " . $i . "</th>";
+                                            }
+                                            
+                                        }
+                                        ?>
                                     <th scope="col">Post Test</th>
 
 
@@ -61,10 +78,18 @@
                                         <th scope="row"><?= $a; ?></th>
                                         <td><?= $j['nama']; ?></td>
                                         <td><?= $j['pretest']; ?></td>
+                                       
                                         <?php
                                             for ($i = 1; $i <= $jumlahTugas; $i++) {
                                                 if($pertemuan[$i] != null){
                                                     echo "<td>" . $j['tugas_' . $i] . "</td>";
+                                                }
+                                        }
+                                        ?>
+                                        <?php
+                                            for ($i = 1; $i <= $jumlahTugas; $i++) {
+                                                if($pertemuan[$i] != null){
+                                                    echo "<td>" . $j['quiz_' . $i] . "</td>";
                                                 }
                                         }
                                         ?>

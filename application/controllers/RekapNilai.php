@@ -57,11 +57,18 @@ class RekapNilai extends CI_Controller
         $pdf->SetFont('Arial', 'B', 10);
 
         $pdf->Cell(8, 10, 'No', 1, 0, 'C');
-        $pdf->Cell(100, 10, 'Nama Siswa', 1, 0, 'C');
+        $pdf->Cell(50, 10, 'Nama Siswa', 1, 0, 'C');
         $pdf->Cell(35, 10, 'Pre-Test', 1, 0, 'C');
         for($i = 1;$i<=$jumlahTugas;$i++){
             if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
                 $pdf->Cell(35, 10, 'Tugas '.$i, 1, 0, 'C');
+            }
+            
+
+        }
+         for($i = 1;$i<=$jumlahTugas;$i++){
+            if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                $pdf->Cell(35, 10, 'Quiz '.$i, 1, 0, 'C');
             }
             
 
@@ -74,11 +81,18 @@ class RekapNilai extends CI_Controller
         $no = 1;
         foreach ($data as $data) {
             $pdf->Cell(8, 10, $no, 1, 0);
-            $pdf->Cell(100, 10, $data['nama'], 1, 0);
+            $pdf->Cell(50, 10, $data['nama'], 1, 0);
             $pdf->Cell(35, 10, $data['pretest'], 1, 0);
+            
             for($i = 1;$i<=$jumlahTugas;$i++){
                 if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
                     $pdf->Cell(35, 10, $data['tugas_'.$i], 1, 0);
+                }
+
+            }
+            for($i = 1;$i<=$jumlahTugas;$i++){
+                if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                    $pdf->Cell(35, 10, $data['quiz_'.$i], 1, 0);
                 }
 
             }

@@ -37,13 +37,13 @@
             <input type="text" required class="form-control" required id="opsi_e" name="opsi_e" value="<?php echo $soal['opsi_e'];  ?>"></div>
             <label for="nilai">Kunci</label>
             <div class="input-group input-group-outline">
-            <select  required class="form-control"  id="kunci" name="kunci">
-                                    <option>A</option>
-                                    <option>B</option>
-                                    <option>C</option>
-                                    <option>D</option>
-                                    <option>E</option>
-                                    </select>
+            <select required class="form-control" id="kunci" name="kunci">
+                <option <?php echo ($soal['kunci'] === 'A') ? 'selected' : ''; ?>>A</option>
+                <option <?php echo ($soal['kunci'] === 'B') ? 'selected' : ''; ?>>B</option>
+                <option <?php echo ($soal['kunci'] === 'C') ? 'selected' : ''; ?>>C</option>
+                <option <?php echo ($soal['kunci'] === 'D') ? 'selected' : ''; ?>>D</option>
+                <option <?php echo ($soal['kunci'] === 'E') ? 'selected' : ''; ?>>E</option>
+            </select>
             </div>
             <label for="nilai">Gambar</label>
             <div class="input-group input-group-outline">

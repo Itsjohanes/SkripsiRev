@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Untitled</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/Features-Large-Icons-icons.css">
-</head>
-
-<body>
     <div class="container py-4 py-xl-5">
         <section class="py-4 py-xl-5">
             <div class="container h-100">
@@ -30,7 +19,7 @@
                 <div class="d-flex align-items-center align-items-md-start align-items-xl-center">
                     <div>
                         <h4>Soal / Masalah</h4>
-                        <p>Soal dan Masalah dapat anda akses pada button soal</p>
+                        <p>Soal dan Masalah dapat anda akses pada button tugas</p>
                     </div>
                 </div>
                 <hr class="my-5">
@@ -56,7 +45,14 @@
                 <div class="d-flex align-items-center align-items-md-start align-items-xl-center">
                     <div>
                         <h4>Diskusi</h4>
-                        <p>Jika ingin berdiskusi secara online anda dapat menggunakan fitur komentar, chat pribadi, global chat, dan group chat yang disediakan</p>
+                        <p>Jika ingin berdiskusi secara online anda dapat menggunakan chat pribadi, global chat, dan group chat yang disediakan</p>
+                    </div>
+                </div>
+                <hr class="my-5">
+                <div class="d-flex align-items-center align-items-md-start align-items-xl-center">
+                    <div>
+                        <h4>Komentar</h4>
+                        <p>Jika ingin berkomentar silakan menggunakan button form pengumpulan tugas</p>
                     </div>
                 </div>
                 <hr class="my-5">
@@ -68,7 +64,4 @@
                 </div>
             </div>
         </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
 
-</html>

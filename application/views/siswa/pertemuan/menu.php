@@ -74,5 +74,14 @@
                 <div class="my-2"><a class="a btn-info fs-5 py-2 px-4" role="button" href="<?php echo base_url('pertemuan/jisti/').$pertemuan;?>">Conference</a></div>
             </div>
         </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="text-white bg-success border rounded border-0 border-success d-flex flex-column justify-content-between p-4 p-md-5">
+                <div class="pb-2 pb-lg-1">
+                    <h2 class="fw-bold mb-2">Quiz</h2>
+                    <p class="mb-0">Quiz</p>
+                </div>
+                <div class="my-2"><a class="a btn-info fs-5 py-2 px-4" role="button" href="<?php echo base_url('pertemuan/quiz/').$pertemuan;?>">Quiz</a></div>
+            </div>
+        </div>
     </div>
 </div>

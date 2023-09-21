@@ -59,4 +59,5 @@ $route['login'] = 'Chat/login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['pertemuan/(:num)'] = 'Pertemuan/index/$1';
+$route['menilaiquiz/(:num)'] = 'MenilaiQuiz/index/$1';
 $route['menilaipertemuan/(:num)'] = 'MenilaiPertemuan/index/$1';

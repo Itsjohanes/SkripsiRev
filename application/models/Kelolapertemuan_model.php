@@ -32,6 +32,8 @@ class KelolaPertemuan_model extends CI_Model
         $this->db->insert('tb_pertemuan', $data);
         //tambahkan collumn pada tb_akun 
         $this->db->query("ALTER TABLE tb_nilai ADD COLUMN `tugas_" . $this->db->insert_id() . "` INT  NULL  AFTER `posttest`");
+        $this->db->query("ALTER TABLE tb_nilai ADD COLUMN `quiz_" . $this->db->insert_id() . "` INT  NULL  AFTER `posttest`");
+
     }
     public function hapusPertemuan($id)
     {
@@ -46,6 +48,9 @@ class KelolaPertemuan_model extends CI_Model
         $this->db->where('id_pertemuan', $id);
         $youtube_exists = $this->db->count_all_results('tb_youtube');
 
+        $this->db->where('id_pertemuan',$id);
+        $quiz_exists = $this->db->count_all_results('tb_quiz');
+
         // Check if data exists in tb_tugas
         $this->db->where('id_pertemuan', $id);
         $tugas_exists = $this->db->count_all_results('tb_tugas');
@@ -55,7 +60,7 @@ class KelolaPertemuan_model extends CI_Model
         $hasiltugas_exists = $this->db->count_all_results('tb_hasiltugas');
 
         // Check if any of the tables have data related to the id_pertemuan
-        if ($materi_exists > 0 || $youtube_exists > 0 || $tugas_exists > 0 || $hasiltugas_exists > 0 || $komentar_exists > 0) {
+        if ($materi_exists > 0 || $youtube_exists > 0 || $tugas_exists > 0 || $hasiltugas_exists > 0 || $komentar_exists > 0 || $quiz_exists > 0) {
             // If data exists in any of the related tables, do not delete
             return ("Gagal");
         } else {
@@ -63,6 +68,7 @@ class KelolaPertemuan_model extends CI_Model
             $this->db->where('id_pertemuan', $id);
             $this->db->delete('tb_pertemuan');
             $this->db->query("ALTER TABLE tb_nilai DROP COLUMN `tugas_" . $id . "`");
+            $this->db->query("ALTER TABLE tb_nilai DROP COLUMN `quiz_" . $id . "`");
             return ("Berhasil");
         }
     }

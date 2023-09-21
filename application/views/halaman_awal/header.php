@@ -53,6 +53,11 @@
                                                 echo 'active';
                                             } ?>"" href=" <?= base_url('awal/materi'); ?>">Materi</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($title == 'Petunjuk') {
+                                                echo 'active';
+                                            } ?>"" href=" <?= base_url('awal/petunjuk'); ?>">Petunjuk</a>
+                    </li>
                 </ul>
                 <a href="<?= base_url('auth'); ?>" class="btn btn-primary" type="button">Login</a>
             </div>

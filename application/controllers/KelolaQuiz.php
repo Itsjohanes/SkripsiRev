@@ -1,43 +1,35 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class KelolaPosttest extends CI_Controller {
-
+class KelolaQuiz extends CI_Controller {
 
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Kelolaposttest_model');
+        $this->load->model('Kelolaquiz_model');
+        $this->load->model('Kelolapertemuan_model');
         $this->load->model('Chat_model');
         checkRole(1);
     }
 
-    public function index()
+
+     public function index()
     {
-            $data['title'] = "Post-Test";
-            $data['notifchat'] = $this->Chat_model->getChatData();
+            $data['title'] = "Quiz";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-            $data['soal'] = $this->Kelolaposttest_model->getPosttest();
-            $data['aktif'] = $this->db->get_where('tb_test', ['id_tes' => 2])->row_array();
-           
+            $data['soal'] = $this->Kelolaquiz_model->getQuiz();
+            $data['notifchat'] = $this->Chat_model->getChatData();
+            $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
             $this->load->view('admin/template/header', $data);
             $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/kelolaposttest/posttest', $data);
+            $this->load->view('admin/kelolaquiz/quiz', $data);
             $this->load->view('admin/template/footer');
         
     }
-    public function aturWaktu(){
-        $waktu = $this->input->post('waktu');
-        $data = [
-            'waktu' => $waktu
-        ];
-        $this->Kelolaposttest_model->aturWaktu($data);
-        redirect('kelolaposttest');
-    }
 
-
-    public function tambahPostTest()
+    public function tambahQuiz()
     {
+
             $soal = $this->input->post('soal');
             $opsi_a = $this->input->post('a');
             $opsi_b = $this->input->post('b');
@@ -45,12 +37,13 @@ class KelolaPosttest extends CI_Controller {
             $opsi_d = $this->input->post('d');
             $opsi_e = $this->input->post('e');
             $kunci = $this->input->post('kunci');
+            $pertemuan = $this->input->post('pertemuan');
 
             $gambar = $_FILES['gambar']['name'];
             if ($gambar) {
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
                 $config['max_size'] = '2048';
-                $config['upload_path'] = './assets/img/posttest/';
+                $config['upload_path'] = './assets/img/quiz/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('gambar')) {
                     $gambar = $this->upload->data('file_name');
@@ -67,46 +60,50 @@ class KelolaPosttest extends CI_Controller {
                 'opsi_e' => $opsi_e,
                 'kunci' => $kunci,
                 'gambar' => $gambar,
-                'id_test'=>2
+                'id_pertemuan' => $pertemuan
             ];
-            $this->Kelolaposttest_model->tambahPosttest($data);
-            //Berikan alert soal berhasil ditambahkan
+            $this->Kelolaquiz_model->tambahQuiz($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Soal Berhasil ditambahkan!</div>');
 
-
-
-            redirect('kelolaposttest');
+            redirect('kelolaquiz');
         
     }
-    
-    public function hapusPosttest($id)
+
+    public function hapusQuiz($id)
     {
+
             //delete soal and unlink picture by id 
-            $gambar = $this->Kelolaposttest_model->getPosttestById($id)['gambar'];
-            unlink(FCPATH . 'assets/img/posttest/' . $gambar);
-            $this->Kelolaposttest_model->hapusPosttest($id);
+            $quiz = $this->Kelolaquiz_model->getQuizById($id);
+            $gambar = $quiz['gambar'];
+            unlink(FCPATH . 'assets/img/quiz/' . $gambar);
+            $this->Kelolaquiz_model->hapusQuiz($id);
             $this->session->set_flashdata('category_success', 'Soal berhasil dihapus');
-            redirect('kelolaposttest');
+            //Hapus juga file gambarnya
+
+
+            redirect('kelolaquiz');
         
     }
 
-    public function editPostTest($id)
+    public function editQuiz($id)
     {
-            $data['title'] = 'Edit Post-Test';
+            $data['title'] = "Edit Quiz";
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-            $data['soal'] = $this->Kelolaposttest_model->getPosttestById($id);
+            $data['soal'] = $this->Kelolaquiz_model->getQuizById($id);
             $data['notifchat'] = $this->Chat_model->getChatData();
+            $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
             $this->load->view('admin/template/header', $data);
             $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/kelolaposttest/editPostTest', $data);
+            $this->load->view('admin/kelolaquiz/editquiz', $data);
             $this->load->view('admin/template/footer');
         
     }
 
-    public function runEditPostTest()
+    public function runEditQuiz()
     {
-            $id_posttest = $this->input->post('id_posttest');
+            $id_soal = $this->input->post('id_soal');
             $soal = $this->input->post('soal');
+            $pertemuan = $this->input->post('pertemuan');
             $gambar_lama = $this->input->post('gambar_lama');
             $opsi_a = $this->input->post('opsi_a');
             $opsi_b = $this->input->post('opsi_b');
@@ -115,21 +112,22 @@ class KelolaPosttest extends CI_Controller {
             $opsi_e = $this->input->post('opsi_e');
             $kunci = $this->input->post('kunci');
             $gambar = $_FILES['gambar']['name'];
+            //jika gambar lama sama dengan gambar baru tidak perlu diganti
             if ($gambar) {
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
                 $config['max_size'] = '2048';
-                $config['upload_path'] = './assets/img/posttest/';
+                $config['upload_path'] = './assets/img/quiz/';
                 $this->load->library('upload', $config);
-                unlink(FCPATH . 'assets/img/posttest/' . $gambar_lama);
-
-                if ($this->upload->do_upload('gambar')) {
+                unlink(FCPATH . 'assets/img/quiz/' . $gambar_lama);
+                if ($this->upload->do_upload('gambar')) {                   
                     $gambar = $this->upload->data('file_name');
                 } else {
                     echo $this->upload->display_errors();
                 }
+                
             }else{
-                unlink(FCPATH . 'assets/img/posttest/' . $gambar_lama);
-
+                //Jika tidak dimasukan gambar baru hapus saja yang sebelumnya
+                unlink(FCPATH . 'assets/img/quiz/' . $gambar_lama);
             }
             $data = [
                 'soal' => $soal,
@@ -138,39 +136,17 @@ class KelolaPosttest extends CI_Controller {
                 'opsi_c' => $opsi_c,
                 'opsi_d' => $opsi_d,
                 'opsi_e' => $opsi_e,
+                'id_pertemuan' => $pertemuan,
                 'kunci' => $kunci,
                 'gambar' => $gambar
             ];
-            $this->Kelolaposttest_model->updatePosttest($id_posttest, $data);
+            $this->Kelolaquiz_model->updateQuiz($id_soal, $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Soal Berhasil diedit!</div>');
 
-            redirect('kelolaposttest');
+            redirect('kelolaquiz');
         
     }
-     public function postTestHandler(){
-        if ($this->input->post('posttes')) {
-        $this->activasiPosttest();
-    } else {
-        $this->mematikanPosttest();
-    }
 
-    }
 
-    public function activasiPosttest(){
-            $this->db->set('aktif', 1);
-            $this->db->where('id_tes', 2);
-            $this->db->update('tb_test');
-            redirect('kelolaposttest');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Posttest telah diaktifkan</div>');
-    }
-    public function mematikanPosttest(){
-            //mengubah status pada tb_test menjadi 1
-            $this->db->set('aktif', 0);
-            $this->db->where('id_tes', 2);
-            $this->db->update('tb_test');
-            redirect('kelolaposttest');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Posttest telah dimatikan</div>');
-
-        
-    }
+   
 }

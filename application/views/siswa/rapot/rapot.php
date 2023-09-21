@@ -26,6 +26,14 @@
                                             
                                         }
                                         ?>
+                                    <?php
+                                        for ($i = 1; $i <= $maxpertemuan; $i++) {
+                                            if($pertemuan[$i] != null){
+                                                echo "<th scope='col'>Quiz " . $i . "</th>";
+                                            }
+                                            
+                                        }
+                                        ?>
 
                                 </tr>
                             </thead>
@@ -69,6 +77,25 @@
                                         }
                                     }
                                         ?>   
+                                         <?php
+                                        for ($i = 1; $i <= $maxpertemuan; $i++) {
+                                            if($pertemuan[$i] != null){
+                                            echo "<td>";
+                                            if ($quiz[$i] != null) {
+                                                if($quiz[$i]['nilai'] == null){
+                                                    echo "Belum Dinilai";
+                                                }else{
+                                                    echo $quiz[$i]['nilai'];
+
+                                                }
+                                                
+                                            } else {
+                                                echo "Belum Dikerjakan";
+                                            }
+                                            echo "</td>";
+                                        }
+                                    }
+                                        ?>  
                                 </tr>
                             </tbody>
                         </table>
