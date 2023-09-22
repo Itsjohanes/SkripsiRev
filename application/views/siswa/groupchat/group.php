@@ -13,7 +13,7 @@
                         $('.chat-messages').html('');
                         $.each(response, function(index, data) {
                             // Mengecualikan tag HTML <stdio.h> dan <iostream>
-                            var message = data.message.replace(/<stdio\.h>|<iostream>/g, function(match) {
+                            var message = data.message.replace(/<stdio\.h>|<iostream>|<string>/g, function(match) {
                                 return match.replace(/</g, "&lt;").replace(/>/g, "&gt;");
                             });
                             // Mengganti karakter baris baru (\n) dengan tag HTML <br>

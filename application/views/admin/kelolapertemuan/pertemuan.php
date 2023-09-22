@@ -62,18 +62,6 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                    <label for = "pertemuan">Link Meet</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                    <div class="input-group input-group-outline">
-                        <input type = "text" required class="form-control" name = "videoconference" id = "videoconference"></input>
-                    </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
                     <label for = "pertemuan">Gambar</label>
                     </div>
                 </div>
@@ -132,7 +120,6 @@
                                     <th scope="col">Pertemuan</th>
                                     <th scope="col">Penjelasan</th>
                                     <th scope="col">Tujuan Pembelajaran</th>
-                                    <th scope="col">Video Conference</th>
                                     <th scope="col">Gambar</th>
                                     <th scope="col">Dateline Tugas</th>
                                     <th scope="col">Aksi</th>
@@ -145,7 +132,6 @@
                                     <th scope="col">Pertemuan</th>
                                     <th scope="col">Penjelasan</th>
                                     <th scope="col">Tujuan Pembelajaran</th>
-                                    <th scope="col">Video Conference</th>
                                     <th scope="col">Gambar</th>
                                     <th scope="col">Dateline Tugas</th>
                                     <th scope="col">Aksi</th>
@@ -160,7 +146,6 @@
                                         <td><?= $j['pertemuan']; ?></td>
                                         <td><?= $j['penjelasan']; ?></td>
                                         <td><?= $j['tp'];?></td>
-                                        <td><?= $j['videoconference'];?></td>
                                         <td><img src="<?= base_url('assets/pertemuan/' . $j['gambar']) ?>" width = "150px" height = "100px" alt="Gambar"></img>
                                         <td><?= $j['dateline_tgs'];?></td>
 
@@ -171,10 +156,6 @@
                                             }else{
                                                 echo '<a href="'.base_url('kelolapertemuan/aktifkanpertemuan/'.$j['id_pertemuan']).'" class="btn btn-success btn-sm">Aktifkan</a>';
                                             }
-                                            ?>
-                                            <?php
-                                                echo '<a href="'.base_url('kelolapertemuan/conference/'.$j['id_pertemuan']).'" class="btn btn-success btn-sm">Conference Pertemuan</a>';
-
                                             ?>
                                             <?php
                                                 echo '<a href="'.base_url('kelolapertemuan/editpertemuan/'.$j['id_pertemuan']).'" class="btn btn-warning btn-sm">Edit Pertemuan</a>';

@@ -30,10 +30,6 @@
             <div class="input-group input-group-outline">
             <textarea type="textarea" required class="form-control" id="penjelasan" name="penjelasan"><?php echo $materi['penjelasan'];  ?></textarea>
             </div>
-            <label for="nilai">Video Conference Link</label>
-            <div class="input-group input-group-outline">
-            <input type="text" required class="form-control" id="link" name="link" value="<?php echo $materi['videoconference'];  ?>">
-            </div>
             <label for="nilai">Tujuan Pembelajaran</label>
             <div class="input-group input-group-outline">
             <textarea type="textarea" required class="form-control" id="tp" name="tp"><?php echo $materi['tp'];  ?></textarea>

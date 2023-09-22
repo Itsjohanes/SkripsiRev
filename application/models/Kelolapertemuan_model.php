@@ -87,9 +87,8 @@ class KelolaPertemuan_model extends CI_Model
         $this->db->where('id_pertemuan', $id);
         $this->db->update('tb_pertemuan');
     }
-    public function editPertemuan($id, $penjelasan, $gambar, $tp, $link,$dateline_tgs)
+    public function editPertemuan($id, $penjelasan, $gambar, $tp,$dateline_tgs)
     {
-        $this->db->set('videoconference', $link);
         $this->db->set('tp', $tp);
         $this->db->set('gambar', $gambar);
         $this->db->set('penjelasan', $penjelasan);

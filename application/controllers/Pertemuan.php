@@ -118,41 +118,6 @@ class Pertemuan extends CI_Controller {
 
        
     }
-     public function jisti($id = '') {
-            //Query semua id_materi pada tb_pertemuan jika $id terdaftar
-            $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
-            if($id_pertemuan){
-                $data['notifchat'] = $this->Chat_model->getChatData();
-                $data['title'] = "Conference Pertemuan";
-                $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-                $data['materi'] = $this->db->get_where('tb_youtube', ['id_pertemuan' => $id])->result_array();
-                $data['pertemuan'] = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
-                //query status dari tb_pertemuan
-                $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array();
-                $data['tp'] = $status;
-                
-                //query aktif
-                if($status['aktif'] == '1'){
-                    $this->load->view('siswa/template/header', $data);
-                    $this->load->view('siswa/template/sidebar', $data);
-                    $this->load->view('siswa/pertemuan/conference', $data);
-                    $this->load->view('siswa/template/footer');
-                } else {
-                    //tampilkan tulisan belum diaktifasi
-                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
-                    redirect('materi');
-                }
-
-            }else{
-                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan tidak ada</div>');
-                redirect('materi');
-            }
-            
-        
-
-       
-    }
-
     public function form($id = '') {
             //Query semua id_materi pada tb_pertemuan jika $id terdaftar
             $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
@@ -453,8 +418,10 @@ class Pertemuan extends CI_Controller {
             if($data['pertemuan']['aktif'] == '1'){
             $data['quiz'] = $this->Quiz_model->getQuizCountBySiswaId($this->session->userdata('id'),$id);
                 if ($data['quiz'] > 0) {
-                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah pernah mengerjakan Quiz ini</div>');
-                    redirect('materi');
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/pertemuan/pembahasanquiz', $data);
+                    $this->load->view('siswa/template/footer');
                 }else{
                     $this->load->view('siswa/template/header', $data);
                     $this->load->view('siswa/template/sidebar', $data);
