@@ -11,8 +11,14 @@
                     dataType: 'json',
                     success: function(response) {
                         $('.chat-messages').html('');
-                        $.each(response, function(index, data) {
-                            var chatMessage = '<div class="chat-message"><strong>' + data.nama + ': </strong>' + data.message + '</div>';
+                         $.each(response, function(index, data) {
+                            // Mengecualikan tag HTML <stdio.h> dan <iostream>
+                            var message = data.message.replace(/<stdio\.h>|<iostream>/g, function(match) {
+                                return match.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                            });
+                            // Mengganti karakter baris baru (\n) dengan tag HTML <br>
+                            message = message.replace(/\n/g, '<br>');
+                            var chatMessage = '<div class="chat-message"><strong>' + data.nama + ': </strong>' + message + '</div>';
                             $('.chat-messages').append(chatMessage);
                         });
                     }
@@ -22,6 +28,9 @@
             // Send chat message
             $('#send_message').on('click', function() {
                 var message = $('#message').val();
+                
+                // Mengganti karakter baris baru (\n) dengan tag HTML <br> sebelum mengirim ke server
+                message = message.replace(/\n/g, '<br>');
                  var kelompok = $('#kelompok').val();
 
                 $.ajax({
