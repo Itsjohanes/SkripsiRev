@@ -124,6 +124,8 @@
                         <label for="waktu">Kunci </label>
                     </div>
                 </div>
+                
+                 
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
@@ -135,6 +137,18 @@
                         <option>E</option>
                         </select>
                     </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="waktu">Pembahasan </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group input-group-outline">
+                        <input type="text" required class="form-control" placeholder="pembahasan" id="pembahasan" name="pembahasan">
+                        </div>
                     </div>
                 </div>
                  <div class="row">
@@ -194,6 +208,7 @@
                                     <th scope="col">Opsi D</th>
                                     <th scope="col">Opsi E</th>
                                     <th scope="col">Kunci</th>
+                                    <th scope="col">Pembahasan</th>
                                     <th scope="col">Pertemuan</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
@@ -209,6 +224,7 @@
                                     <th scope="col">Opsi D</th>
                                     <th scope="col">Opsi E</th>
                                     <th scope="col">Kunci</th>
+                                    <th scope="col">Pembahasan</th>
                                     <th scope="col">Pertemuan</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
@@ -226,6 +242,7 @@
                                         <td><?= $j['opsi_d']; ?></td>
                                         <td><?= $j['opsi_e']; ?></td>
                                         <td><?= $j['kunci']; ?></td>
+                                        <td><?= $j['pembahasan']; ?></td>
                                         <td><?= $j['id_pertemuan']; ?></td>
                                         <td>
                                             <a href="<?= base_url(); ?>kelolaquiz/hapusquiz/<?= $j['id_soal']; ?>" class="btn btn-danger hapus-btn"><i class="fas fa-trash-alt"></i></a>

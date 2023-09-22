@@ -37,6 +37,7 @@ class KelolaQuiz extends CI_Controller {
             $opsi_d = $this->input->post('d');
             $opsi_e = $this->input->post('e');
             $kunci = $this->input->post('kunci');
+            $pembahasan = $this->input->post('pembahasan');
             $pertemuan = $this->input->post('pertemuan');
 
             $gambar = $_FILES['gambar']['name'];
@@ -58,6 +59,7 @@ class KelolaQuiz extends CI_Controller {
                 'opsi_c' => $opsi_c,
                 'opsi_d' => $opsi_d,
                 'opsi_e' => $opsi_e,
+                'pembahasan' => $pembahasan,
                 'kunci' => $kunci,
                 'gambar' => $gambar,
                 'id_pertemuan' => $pertemuan
@@ -105,6 +107,7 @@ class KelolaQuiz extends CI_Controller {
             $soal = $this->input->post('soal');
             $pertemuan = $this->input->post('pertemuan');
             $gambar_lama = $this->input->post('gambar_lama');
+            $pembahasan = $this->input->post('pembahasan');
             $opsi_a = $this->input->post('opsi_a');
             $opsi_b = $this->input->post('opsi_b');
             $opsi_c = $this->input->post('opsi_c');
@@ -138,6 +141,7 @@ class KelolaQuiz extends CI_Controller {
                 'opsi_e' => $opsi_e,
                 'id_pertemuan' => $pertemuan,
                 'kunci' => $kunci,
+                'pembahasan' => $pembahasan,
                 'gambar' => $gambar
             ];
             $this->Kelolaquiz_model->updateQuiz($id_soal, $data);

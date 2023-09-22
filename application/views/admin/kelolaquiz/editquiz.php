@@ -50,6 +50,9 @@
                 <option <?php echo ($soal['kunci'] === 'E') ? 'selected' : ''; ?>>E</option>
             </select>
             </div>
+            <label for="nilai">Pembahasan</label>
+            <div class="input-group input-group-outline">
+            <input type="text" required class="form-control" required id="pembahasan" name="pembahasan" value="<?php echo $soal['pembahasan'];  ?>"></div>
             <label for="nilai">Gambar</label>
             <div class="input-group input-group-outline">
             <?php

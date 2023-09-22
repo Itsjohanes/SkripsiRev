@@ -95,6 +95,8 @@
                 <span>&nbsp<?php echo $data['opsi_e']; ?></span>
               </label>
             </div>
+            <h5>Pembahasan</h5>
+            <p><?php echo $data['pembahasan'];?></p>
 
         <?php
         endforeach;
