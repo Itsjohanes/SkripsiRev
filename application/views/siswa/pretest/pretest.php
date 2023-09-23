@@ -32,31 +32,31 @@
             <div class="ans ml-2">
               <label class="radio">
                 <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="A" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_a')">
-                <span>&nbsp<?php echo $data['opsi_a']; ?></span>
+                <span>&nbsp<?php echo nl2br(htmlspecialchars($data['opsi_a'])); ?></span>
               </label>
             </div>
             <div class="ans ml-2">
               <label class="radio">
                 <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="B" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_b')">
-                <span>&nbsp<?php echo $data['opsi_b']; ?></span>
+                <span>&nbsp<?php echo nl2br(htmlspecialchars($data['opsi_b'])); ?></span>
               </label>
             </div>
             <div class="ans ml-2">
               <label class="radio">
                 <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="C" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_c')">
-                <span>&nbsp<?php echo $data['opsi_c']; ?></span>
+                <span>&nbsp<?php echo nl2br(htmlspecialchars($data['opsi_c'])); ?></span>
               </label>
             </div>
             <div class="ans ml-2">
               <label class="radio">
                 <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="D" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_d')">
-                <span>&nbsp<?php echo $data['opsi_d']; ?></span>
+                <span>&nbsp<?php echo nl2br(htmlspecialchars($data['opsi_d'])); ?></span>
               </label>
             </div>
             <div class="ans ml-2">
               <label class="radio">
                 <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="E" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_e')">
-                <span>&nbsp<?php echo $data['opsi_e']; ?></span>
+                <span>&nbsp<?php echo nl2br(htmlspecialchars($data['opsi_e'])); ?></span>
               </label>
             </div>
 

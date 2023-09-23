@@ -95,18 +95,20 @@
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Opsi A" id="a" name="a"></div>
+                        <textarea required class="form-control" placeholder="Opsi A" id="a" name="a"> </textarea>
+                    </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <label for="waktu">Opsi B </label>
                     </div>
-                </div>
-                <div class="row">
+                </div>   
+                <div class="row"> 
                     <div class="col">
-                        <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Opsi B" id="b" name="b"></div>
+                        <div class="input-group input-group-outline"> 
+                        <textarea required class="form-control" placeholder="Opsi B" id="b" name="b"> </textarea>
+                    </div>
                     </div>
                 </div>
                 <div class="row">
@@ -114,10 +116,11 @@
                         <label for="waktu">Opsi C </label>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row"> 
                     <div class="col">
-                        <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Opsi C" id="c" name="c"></div>
+                         <div class="input-group input-group-outline">
+                        <textarea  required class="form-control" placeholder="Opsi C" id="c" name="c"> </textarea>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -125,10 +128,11 @@
                         <label for="waktu">Opsi D </label>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row"> 
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Opsi D" id="d" name="d"></div>
+                        <textarea required class="form-control" placeholder="Opsi D" id="d" name="d"> </textarea>
+                    </div>
                     </div>
                 </div>
                 <div class="row">
@@ -136,10 +140,11 @@
                         <label for="waktu">Opsi E </label>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row"> 
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Opsi E" id="e" name="e"></div>
+                        <textarea required class="form-control" placeholder="Opsi E" id="e" name="e"> </textarea>
+                    </div>
                     </div>
                 </div>
                 <div class="row">

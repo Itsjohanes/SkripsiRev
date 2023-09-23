@@ -98,7 +98,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Opsi A" id="a" name="a">
+                        <textarea required class="form-control" placeholder="Opsi A" id="a" name="a"> </textarea>
                     </div>
                     </div>
                 </div>
@@ -109,8 +109,8 @@
                 </div>   
                 <div class="row"> 
                     <div class="col">
-                        <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Opsi B" id="b" name="b">
+                        <div class="input-group input-group-outline"> 
+                        <textarea required class="form-control" placeholder="Opsi B" id="b" name="b"> </textarea>
                     </div>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                 <div class="row"> 
                     <div class="col">
                          <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Opsi C" id="c" name="c">
+                        <textarea  required class="form-control" placeholder="Opsi C" id="c" name="c"> </textarea>
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                 <div class="row"> 
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Opsi D" id="d" name="d">
+                        <textarea required class="form-control" placeholder="Opsi D" id="d" name="d"> </textarea>
                     </div>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
                 <div class="row"> 
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Opsi E" id="e" name="e">
+                        <textarea required class="form-control" placeholder="Opsi E" id="e" name="e"> </textarea>
                     </div>
                     </div>
                 </div>
@@ -249,12 +249,12 @@
                                         <th scope="row"><?= $i; ?></th>
                                         <td><?= $j['soal']; ?></td>
                                         <td><img src = "<?php echo base_url('assets/img/pretest/').$j['gambar'];?>" width = '300px' width = '150px' alt = "Tidak ada gambar"> </img></td>
-                                        <td><?= $j['opsi_a']; ?></td>
-                                        <td><?= $j['opsi_b']; ?></td>
-                                        <td><?= $j['opsi_c']; ?></td>
-                                        <td><?= $j['opsi_d']; ?></td>
-                                        <td><?= $j['opsi_e']; ?></td>
-                                        <td><?= $j['kunci']; ?></td>
+                                        <td><?=  nl2br(htmlspecialchars($j['opsi_a'])); ?></td>
+                                        <td><?= nl2br(htmlspecialchars($j['opsi_b'])); ?></td>
+                                        <td><?= nl2br(htmlspecialchars($j['opsi_c'])); ?></td>
+                                        <td><?= nl2br(htmlspecialchars($j['opsi_d'])); ?></td>
+                                        <td><?= nl2br(htmlspecialchars($j['opsi_e'])); ?></td>
+                                        <td><?= nl2br(htmlspecialchars($j['kunci'])); ?></td>
                                         <td>
                                             <a href="<?= base_url(); ?>kelolapretest/hapuspretest/<?= $j['id_soal']; ?>" class="btn btn-danger hapus-btn"><i class="fas fa-trash-alt"></i></a>
                                             <a href="<?= base_url(); ?>Kelolapretest/editpretest/<?= $j['id_soal']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>

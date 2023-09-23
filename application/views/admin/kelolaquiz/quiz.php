@@ -1,4 +1,3 @@
-<!-- Begin Page Content -->
 
 <link rel="stylesheet" href="<?= base_url('assets/css/slider.css'); ?>">
 <div class="container-fluid">
@@ -67,7 +66,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Opsi A" id="a" name="a">
+                        <textarea required class="form-control" placeholder="Opsi A" id="a" name="a"> </textarea>
                     </div>
                     </div>
                 </div>
@@ -78,8 +77,8 @@
                 </div>   
                 <div class="row"> 
                     <div class="col">
-                        <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Opsi B" id="b" name="b">
+                        <div class="input-group input-group-outline"> 
+                        <textarea required class="form-control" placeholder="Opsi B" id="b" name="b"> </textarea>
                     </div>
                     </div>
                 </div>
@@ -91,7 +90,7 @@
                 <div class="row"> 
                     <div class="col">
                          <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Opsi C" id="c" name="c">
+                        <textarea  required class="form-control" placeholder="Opsi C" id="c" name="c"> </textarea>
                         </div>
                     </div>
                 </div>
@@ -103,7 +102,7 @@
                 <div class="row"> 
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Opsi D" id="d" name="d">
+                        <textarea required class="form-control" placeholder="Opsi D" id="d" name="d"> </textarea>
                     </div>
                     </div>
                 </div>
@@ -115,7 +114,7 @@
                 <div class="row"> 
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="Opsi E" id="e" name="e">
+                        <textarea required class="form-control" placeholder="Opsi E" id="e" name="e"> </textarea>
                     </div>
                     </div>
                 </div>
@@ -147,7 +146,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <input type="text" required class="form-control" placeholder="pembahasan" id="pembahasan" name="pembahasan">
+                        <input type="text" required class="form-control" placeholder="Pembahasan" id="pembahasan" name="pembahasan">
                         </div>
                     </div>
                 </div>
@@ -236,11 +235,11 @@
                                         <th scope="row"><?= $i; ?></th>
                                         <td><?= $j['soal']; ?></td>
                                         <td><img src = "<?php echo base_url('assets/img/quiz/').$j['gambar'];?>" width = '300px' width = '150px' alt = "Tidak ada gambar"> </img></td>
-                                        <td><?= $j['opsi_a']; ?></td>
-                                        <td><?= $j['opsi_b']; ?></td>
-                                        <td><?= $j['opsi_c']; ?></td>
-                                        <td><?= $j['opsi_d']; ?></td>
-                                        <td><?= $j['opsi_e']; ?></td>
+                                        <td><?= nl2br(htmlspecialchars($j['opsi_a'])); ?></td>
+                                        <td><?= nl2br(htmlspecialchars($j['opsi_b'])); ?></td>
+                                        <td><?= nl2br(htmlspecialchars($j['opsi_c'])); ?></td>
+                                        <td><?= nl2br(htmlspecialchars($j['opsi_d'])); ?></td>
+                                        <td><?= nl2br(htmlspecialchars($j['opsi_e'])); ?></td>
                                         <td><?= $j['kunci']; ?></td>
                                         <td><?= $j['pembahasan']; ?></td>
                                         <td><?= $j['id_pertemuan']; ?></td>
