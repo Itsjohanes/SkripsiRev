@@ -1,78 +1,146 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-lg-3">
-            <div class="text-white bg-primary border rounded border-0 border-success d-flex flex-column justify-content-between p-4 p-md-5">
-                <div class="pb-2 pb-lg-1">
-                    <h2 class="fw-bold mb-2">Tujuan Pembelajaran</h2>
-                    <p class="mb-0">Menampilkan Tujuan Pembelajaran&nbsp;</p>
+ <div class="row mt-4">
+
+ <div class="col-lg-4 mt-4 mb-2">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/menupertemuan/tujuanpembelajaran.jpg');?>" height="170"></img>
                 </div>
-                <div class="my-2"><a class="a btn-info fs-5 py-2 px-4" role="button" href="<?php echo base_url('pertemuan/tp/').$pertemuan;?>">Tujuan Pembelajaran</a></div>
+              </div>
             </div>
+            <div class="card-body">
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/tp/').$pertemuan;?>"> Tujuan Pembelajaran dan KKTP </a>
+              <hr class="dark horizontal">
+              <div class="d-flex ">
+              
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="text-white bg-warning border rounded border-0 border-warning d-flex flex-column justify-content-between p-4 p-md-5">
-                <div class="pb-2 pb-lg-1">
-                    <h2 class="fw-bold mb-2">Materi Pembelajaran (Text)</h2>
-                    <p class="mb-0">Menampilkan Materi Pelajaran</p>
+         <div class="col-lg-4 mt-4 mb-2">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/menupertemuan/materi.jpeg');?>" height="170"></img>
                 </div>
-                <div class="my-2"><a class="a btn-info fs-5 py-2 px-4" role="button" href="<?php echo base_url('pertemuan/materipertemuan/').$pertemuan;?>">Materi</a></div>
+              </div>
             </div>
+            <div class="card-body">
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/materipertemuan/').$pertemuan;?>"> Materi Pertemuan (PDF) </a>
+              <hr class="dark horizontal">
+              <div class="d-flex ">
+              
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="text-white bg-success border rounded border-0 border-success d-flex flex-column justify-content-between p-4 p-md-5">
-                <div class="pb-2 pb-lg-1">
-                    <h2 class="fw-bold mb-2">Tugas</h2>
-                    <p class="mb-0">Menampilkan Tugas</p>
+         <div class="col-lg-4 mt-4 mb-2">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/menupertemuan/tugas.jpg');?>" height="170"></img>
                 </div>
-                <div class="my-2"><a class="a btn-info fs-5 py-2 px-4" role="button" href="<?php echo base_url('pertemuan/tugas/').$pertemuan;?>">Tugas</a></div>
+              </div>
             </div>
+            <div class="card-body">
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/tugas/').$pertemuan;?>"> Tugas</a>
+              <hr class="dark horizontal">
+              <div class="d-flex ">
+              
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="text-white bg-primary border rounded border-0 border-primary d-flex flex-column justify-content-between p-4 p-md-5">
-                <div class="pb-2 pb-lg-1">
-                    <h2 class="fw-bold mb-2">Video</h2>
-                    <p class="mb-0">Menampilkan video pembelajaran</p>
+         <div class="col-lg-4 mt-4 mb-2">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/menupertemuan/youtub.png');?>" height="170"></img>
                 </div>
-                <div class="my-2"><a class="a btn-info fs-5 py-2 px-4" role="button" href="<?php echo base_url('pertemuan/video/').$pertemuan;?>">Video</a></div>
+              </div>
             </div>
+            <div class="card-body">
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/video/').$pertemuan;?>"> Video </a>
+              <hr class="dark horizontal">
+              <div class="d-flex ">
+              
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 col-lg-3">
-            <div class="text-white bg-warning border rounded border-0 border-warning d-flex flex-column justify-content-between p-4 p-md-5">
-                <div class="pb-2 pb-lg-1">
-                    <h2 class="fw-bold mb-2">Form Pengumpulan Tugas</h2>
-                    <p class="mb-0">Menampilkan Form Pengumpulan Tugas</p>
+          <div class="col-lg-4 mt-4 mb-2">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/menupertemuan/form.png');?>" height="170"></img>
                 </div>
-                <div class="my-2"><a class="a btn-info fs-5 py-2 px-4" role="button" href="<?php echo base_url('pertemuan/form/').$pertemuan;?>">Form</a></div>
+              </div>
             </div>
+            <div class="card-body">
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/form/').$pertemuan;?>"> Form </a>
+              <hr class="dark horizontal">
+              <div class="d-flex ">
+              
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="text-white bg-success border rounded border-0 border-success d-flex flex-column justify-content-between p-4 p-md-5">
-                <div class="pb-2 pb-lg-1">
-                    <h2 class="fw-bold mb-2">Online IDE</h2>
-                    <p class="mb-0">Menampilkan Online IDE</p>
+         <div class="col-lg-4 mt-4 mb-2">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/menupertemuan/ide.png');?>" height="170"></img>
                 </div>
-                <div class="my-2"><a class="a btn-info fs-5 py-2 px-4" role="button" href="<?php echo base_url('pertemuan/ide/').$pertemuan;?>">IDE</a></div>
+              </div>
             </div>
+            <div class="card-body">
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/ide/').$pertemuan;?>"> IDE </a>
+              <hr class="dark horizontal">
+              <div class="d-flex ">
+              
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="text-white bg-primary border rounded border-0 border-primary d-flex flex-column justify-content-between p-4 p-md-5">
-                <div class="pb-2 pb-lg-1">
-                    <h2 class="fw-bold mb-2">Scratch</h2>
-                    <p class="mb-0">Menampilkan Scratch</p>
+          <div class="col-lg-4 mt-4 mb-2">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/menupertemuan/scratch.png');?>" height="170"></img>
                 </div>
-                <div class="my-2"><a class="a btn-info fs-5 py-2 px-4" role="button" href="<?php echo base_url('pertemuan/scratch/').$pertemuan;?>">Scratch</a></div>
+              </div>
             </div>
+            <div class="card-body">
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/scratch/').$pertemuan;?>"> Scratch </a>
+              <hr class="dark horizontal">
+              <div class="d-flex ">
+              
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="text-white bg-success border rounded border-0 border-success d-flex flex-column justify-content-between p-4 p-md-5">
-                <div class="pb-2 pb-lg-1">
-                    <h2 class="fw-bold mb-2">Quiz</h2>
-                    <p class="mb-0">Quiz</p>
+                 <div class="col-lg-4 mt-4 mb-2">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/test.png');?>" height="170"></img>
                 </div>
-                <div class="my-2"><a class="a btn-info fs-5 py-2 px-4" role="button" href="<?php echo base_url('pertemuan/quiz/').$pertemuan;?>">Quiz</a></div>
+              </div>
             </div>
+            <div class="card-body">
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/quiz/').$pertemuan;?>"> Quiz </a>
+              <hr class="dark horizontal">
+              <div class="d-flex ">
+              
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-</div>

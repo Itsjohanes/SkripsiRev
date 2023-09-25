@@ -101,7 +101,7 @@
                     for ($i = 1; $i <= $jumlahpertemuan; $i++) {
                         if($pertemuan[$i] != ''){
                            
-                            $persentaseTugas = ${"persentasetugas" . $i};
+                            $persentaseTugas = round(${"persentasetugas" . $i});
                             echo '<label>Mengerjakan Tugas ' . $i . ' (<span class="float-right">' . $persentaseTugas . '%</span>)</label>';
                             echo '<div class="progress mb-4">';
                             echo '<div class="progress-bar bg-success" role="progressbar" style="width: ' . $persentaseTugas . '%" aria-valuenow="' . $persentaseTugas . '" aria-valuemin="0" aria-valuemax="100"></div>';
@@ -117,7 +117,7 @@
                     for ($i = 1; $i <= $jumlahpertemuan; $i++) {
                         if($pertemuan[$i] != ''){
                            
-                            $persentasequiz = ${"persentasequiz" . $i};
+                            $persentasequiz = round(${"persentasequiz" . $i});
                             echo '<label>Mengerjakan Quiz ' . $i . ' (<span class="float-right">' . $persentasequiz . '%</span>)</label>';
                             echo '<div class="progress mb-4">';
                             echo '<div class="progress-bar bg-success" role="progressbar" style="width: ' . $persentasequiz . '%" aria-valuenow="' . $persentasequiz . '" aria-valuemin="0" aria-valuemax="100"></div>';

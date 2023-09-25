@@ -385,7 +385,7 @@ class Pertemuan extends CI_Controller {
             $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
             if($id_pertemuan){
                 $data['notifchat'] = $this->Chat_model->getChatData();
-                $data['title'] = "Scratch";
+                $data['title'] = "Online IDE";
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $data['pertemuan'] = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
                 if($data['pertemuan']['aktif'] == '1'){
@@ -418,11 +418,13 @@ class Pertemuan extends CI_Controller {
             if($data['pertemuan']['aktif'] == '1'){
             $data['quiz'] = $this->Quiz_model->getQuizCountBySiswaId($this->session->userdata('id'),$id);
                 if ($data['quiz'] > 0) {
+                    $data['jawaban'] = $this->Quiz_model->getQuizAnswers($id, $this->session->userdata('id'));
                     $this->load->view('siswa/template/header', $data);
                     $this->load->view('siswa/template/sidebar', $data);
                     $this->load->view('siswa/pertemuan/pembahasanquiz', $data);
                     $this->load->view('siswa/template/footer');
                 }else{
+                    
                     $this->load->view('siswa/template/header', $data);
                     $this->load->view('siswa/template/sidebar', $data);
                     $this->load->view('siswa/pertemuan/quiz', $data);

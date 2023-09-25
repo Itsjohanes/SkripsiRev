@@ -47,9 +47,31 @@ class Quiz_model extends CI_Model
 
         $id = $data['id_siswa'];
         $id_pertemuan = $data['id_pertemuan'];
-        $score = $data['score'];
+        $nilai = $data['nilai'];
         $this->db->where('id_siswa', $id);
-        $this->db->update('tb_nilai', array('quiz_'.$id_pertemuan => $score));
+        $this->db->update('tb_nilai', array('quiz_'.$id_pertemuan => $nilai));
+    }
+   // Define a function to get quiz answers by pertemuan and siswa id
+    public function getQuizAnswers($id_pertemuan, $id_siswa) {
+        // Select the 'jawaban' field
+        $this->db->select('jawaban');
+        // Specify the table
+        $this->db->from('tb_hasilquiz');
+        // Add the WHERE clauses for id_pertemuan and id_siswa
+        $this->db->where('id_pertemuan', $id_pertemuan);
+        $this->db->where('id_siswa', $id_siswa);
+        
+        // Execute the query
+        $query = $this->db->get();
+        
+        // Check if the query was successful
+        if ($query) {
+            // Return the result as an array of objects
+            return $query->result();
+        } else {
+            // Handle the case where the query failed (e.g., log an error, return an error message)
+            return false;
+        }
     }
    
 }

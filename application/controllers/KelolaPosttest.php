@@ -39,13 +39,7 @@ class KelolaPosttest extends CI_Controller {
     public function tambahPostTest()
     {
             $soal = $this->input->post('soal');
-            $opsi_a = $this->input->post('a');
-            $opsi_b = $this->input->post('b');
-            $opsi_c = $this->input->post('c');
-            $opsi_d = $this->input->post('d');
-            $opsi_e = $this->input->post('e');
             $kunci = $this->input->post('kunci');
-
             $gambar = $_FILES['gambar']['name'];
             if ($gambar) {
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -58,13 +52,118 @@ class KelolaPosttest extends CI_Controller {
                     echo $this->upload->display_errors();
                 }
             }
+
+            $gambarA = "";
+            $opsiA = "";
+
+            if ($this->input->post('pilihana') == "Gambar") {
+
+                $gambarA = $_FILES['a']['name'];
+                $opsiA = $gambarA;
+            } else {
+                $opsiA = htmlspecialchars($this->input->post('a', true));
+            }
+            if ($gambarA != '') {
+                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['allowed_types'] = 'png|jpeg|jpg|bmp';
+
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('a')) {
+                    echo "File Gagal Diupload!";
+                } else {
+                    $opsiA = $this->upload->data('file_name');
+                }
+            }
+
+            $gambarB = "";
+            $opsiB = "";
+            if ($this->input->post('pilihanb') == "Gambar") {
+                $gambarB = $_FILES['b']['name'];
+                $opsiB = $gambarB;
+            } else {
+                $opsiB = htmlspecialchars($this->input->post('b', true));
+            }
+
+            if ($gambarB != '') {
+                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['allowed_types'] = 'png|jpeg|jpg|bmp';
+
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('b')) {
+                    echo "File Gagal Diupload!";
+                } else {
+                    $opsiB = $this->upload->data('file_name');
+                }
+            }
+            $gambarC = "";
+            $opsiC = "";
+            if ($this->input->post('pilihanc') == "Gambar") {
+                $gambarC = $_FILES['c']['name'];
+                $opsiC = $gambarC;
+            } else {
+                $opsiC = htmlspecialchars($this->input->post('c', true));
+            }
+
+            if ($gambarC != '') {
+                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['allowed_types'] = 'png|jpeg|jpg|bmp';
+
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('c')) {
+                    echo "File Gagal Diupload!";
+                } else {
+                    $opsiC = $this->upload->data('file_name');
+                }
+            }
+
+            $gambarD = "";
+            $opsiD = "";
+            if ($this->input->post('pilihand') == "Gambar") {
+                $gambarD = $_FILES['d']['name'];
+                $opsiD = $gambarD;
+            } else {
+                $opsiD = htmlspecialchars($this->input->post('d', true));
+            }
+
+            if ($gambarD != '') {
+                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['allowed_types'] = 'png|jpeg|jpg|bmp';
+
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('d')) {
+                    echo "File Gagal Diupload!";
+                } else {
+                    $opsiD = $this->upload->data('file_name');
+                }
+            }
+
+            $gambarE = "";
+            $opsiE = "";
+            if ($this->input->post('pilihane') == "Gambar") {
+                $gambarE = $_FILES['e']['name'];
+                $opsiE = $gambarE;
+            } else {
+                $opsiE = htmlspecialchars($this->input->post('e', true));
+            }
+
+            if ($gambarE != '') {
+                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['allowed_types'] = 'png|jpeg|jpg|bmp';
+
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('e')) {
+                    echo "File Gagal Diupload!";
+                } else {
+                    $opsiE = $this->upload->data('file_name');
+                }
+            }
             $data = [
                 'soal' => $soal,
-                'opsi_a' => $opsi_a,
-                'opsi_b' => $opsi_b,
-                'opsi_c' => $opsi_c,
-                'opsi_d' => $opsi_d,
-                'opsi_e' => $opsi_e,
+                'opsi_a' => $opsiA,
+                'opsi_b' => $opsiB,
+                'opsi_c' => $opsiC,
+                'opsi_d' => $opsiD,
+                'opsi_e' => $opsiE,
                 'kunci' => $kunci,
                 'gambar' => $gambar,
                 'id_test'=>2
@@ -82,8 +181,33 @@ class KelolaPosttest extends CI_Controller {
     public function hapusPosttest($id)
     {
             //delete soal and unlink picture by id 
-            $gambar = $this->Kelolaposttest_model->getPosttestById($id)['gambar'];
+            $posttest = $this->Kelolaposttest_model->getPosttestById($id);
+            $gambar = $posttest['gambar'];
+            $opsi_a = $posttest['opsi_a'];
+            $opsi_b = $posttest['opsi_b'];
+            $opsi_c = $posttest['opsi_c'];
+            $opsi_d = $posttest['opsi_d'];
+            $opsi_e = $posttest['opsi_e'];
+            //hapus jika ada
+            if (file_exists('./assets/img/opsiposttest/'.$opsi_a )&&$opsi_a!=''){
+                unlink('./assets/img/opsiposttest/'.$opsi_a);
+            }
+            //lanjut buat a-e
+            if (file_exists('./assets/img/opsiposttest/'.$opsi_b )&&$opsi_b!=''){
+                unlink('./assets/img/opsiposttest/'.$opsi_b);
+            }
+            if (file_exists('./assets/img/opsiposttest/'.$opsi_c )&&$opsi_c!=''){
+                unlink('./assets/img/opsiposttest/'.$opsi_c);
+            }
+            if (file_exists('./assets/img/opsiposttest/'.$opsi_d )&&$opsi_d!=''){
+                unlink('./assets/img/opsiposttest/'.$opsi_d);
+            }
+            if (file_exists('./assets/img/opsiposttest/'.$opsi_e )&&$opsi_e!=''){
+                unlink('./assets/img/opsiposttest/'.$opsi_e);
+            }
+            if(file_exists('./assets/img/posttest/' . $gambar) && $gambar != ''){
             unlink(FCPATH . 'assets/img/posttest/' . $gambar);
+            }
             $this->Kelolaposttest_model->hapusPosttest($id);
             $this->session->set_flashdata('category_success', 'Soal berhasil dihapus');
             redirect('kelolaposttest');
@@ -107,41 +231,175 @@ class KelolaPosttest extends CI_Controller {
     {
             $id_posttest = $this->input->post('id_posttest');
             $soal = $this->input->post('soal');
-            $gambar_lama = $this->input->post('gambar_lama');
-            $opsi_a = $this->input->post('opsi_a');
-            $opsi_b = $this->input->post('opsi_b');
-            $opsi_c = $this->input->post('opsi_c');
-            $opsi_d = $this->input->post('opsi_d');
-            $opsi_e = $this->input->post('opsi_e');
+            $opsi_a = $this->input->post('a');
+            $opsi_b = $this->input->post('b');
+            $opsi_c = $this->input->post('c');
+            $opsi_d = $this->input->post('d');
+            $opsi_e = $this->input->post('e');
             $kunci = $this->input->post('kunci');
+
+            $dataSoal = $this->Kelolaposttest_model->getPosttestById($id_posttest);
+            $gambar = $dataSoal['gambar'];
+            var_dump($dataSoal);
+            $gambar1 = $dataSoal['opsi_a'];
+            $gambar2 = $dataSoal['opsi_b'];
+            $gambar3 = $dataSoal['opsi_c'];
+            $gambar4 = $dataSoal['opsi_d'];
+            $gambar5= $dataSoal['opsi_e'];
+
+            if (file_exists('./assets/img/opsiposttest/' . $gambar) && $gambar != '') {
+                unlink('./assets/img/opsiposttest/' . $gambar);
+            }
+            if (file_exists('./assets/img/opsiposttest/' . $gambar1) && $gambar1 != '') {
+                unlink('./assets/img/opsiposttest/' . $gambar1);
+            }
+            if (file_exists('./assets/img/opsiposttest/' . $gambar2)) {
+                unlink('./assets/img/opsiposttest/' . $gambar2);
+            }
+            if (file_exists('./assets/img/opsiposttest/' . $gambar3)) {
+                unlink('./assets/img/opsiposttest/' . $gambar3);
+            }
+            if (file_exists('./assets/img/opsiposttest/' . $gambar4)) {
+                unlink('./assets/img/opsiposttest/' . $gambar4);
+            }
+            if (file_exists('./assets/img/opsiposttest/' . $gambar5)) {
+                unlink('./assets/img/opsiposttest/' . $gambar5);
+            }
+
             $gambar = $_FILES['gambar']['name'];
             if ($gambar) {
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
                 $config['max_size'] = '2048';
                 $config['upload_path'] = './assets/img/posttest/';
                 $this->load->library('upload', $config);
-                unlink(FCPATH . 'assets/img/posttest/' . $gambar_lama);
-
                 if ($this->upload->do_upload('gambar')) {
                     $gambar = $this->upload->data('file_name');
                 } else {
                     echo $this->upload->display_errors();
                 }
-            }else{
-                unlink(FCPATH . 'assets/img/posttest/' . $gambar_lama);
-
             }
+
+            $gambarA = "";
+            $opsiA = "";
+
+            if ($this->input->post('pilihana') == "Gambar") {
+
+                $gambarA = $_FILES['a']['name'];
+                $opsiA = $gambarA;
+            } else {
+                $opsiA = htmlspecialchars($this->input->post('a', true));
+            }
+            if ($gambarA != '') {
+                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['allowed_types'] = 'png|jpeg|jpg|bmp';
+
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('a')) {
+                    echo "File Gagal Diupload!";
+                } else {
+                    $opsiA = $this->upload->data('file_name');
+                }
+            }
+
+            $gambarB = "";
+            $opsiB = "";
+            if ($this->input->post('pilihanb') == "Gambar") {
+                $gambarB = $_FILES['b']['name'];
+                $opsiB = $gambarB;
+            } else {
+                $opsiB = htmlspecialchars($this->input->post('b', true));
+            }
+
+            if ($gambarB != '') {
+                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['allowed_types'] = 'png|jpeg|jpg|bmp';
+
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('b')) {
+                    echo "File Gagal Diupload!";
+                } else {
+                    $opsiB = $this->upload->data('file_name');
+                }
+            }
+            $gambarC = "";
+            $opsiC = "";
+            if ($this->input->post('pilihanc') == "Gambar") {
+                $gambarC = $_FILES['c']['name'];
+                $opsiC = $gambarC;
+            } else {
+                $opsiC = htmlspecialchars($this->input->post('c', true));
+            }
+
+            if ($gambarC != '') {
+                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['allowed_types'] = 'png|jpeg|jpg|bmp';
+
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('c')) {
+                    echo "File Gagal Diupload!";
+                } else {
+                    $opsiC = $this->upload->data('file_name');
+                }
+            }
+
+            $gambarD = "";
+            $opsiD = "";
+            if ($this->input->post('pilihand') == "Gambar") {
+                $gambarD = $_FILES['d']['name'];
+                $opsiD = $gambarD;
+            } else {
+                $opsiD = htmlspecialchars($this->input->post('d', true));
+            }
+
+            if ($gambarD != '') {
+                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['allowed_types'] = 'png|jpeg|jpg|bmp';
+
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('d')) {
+                    echo "File Gagal Diupload!";
+                } else {
+                    $opsiD = $this->upload->data('file_name');
+                }
+            }
+
+            $gambarE = "";
+            $opsiE = "";
+            if ($this->input->post('pilihane') == "Gambar") {
+                $gambarE = $_FILES['e']['name'];
+                $opsiE = $gambarE;
+            } else {
+                $opsiE = htmlspecialchars($this->input->post('e', true));
+            }
+
+            if ($gambarE != '') {
+                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['allowed_types'] = 'png|jpeg|jpg|bmp';
+
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('e')) {
+                    echo "File Gagal Diupload!";
+                } else {
+                    $opsiE = $this->upload->data('file_name');
+                }
+            }
+
             $data = [
                 'soal' => $soal,
-                'opsi_a' => $opsi_a,
-                'opsi_b' => $opsi_b,
-                'opsi_c' => $opsi_c,
-                'opsi_d' => $opsi_d,
-                'opsi_e' => $opsi_e,
+                'opsi_a' => $opsiA,
+                'opsi_b' => $opsiB,
+                'opsi_c' => $opsiC,
+                'opsi_d' => $opsiD,
+                'opsi_e' => $opsiE,
                 'kunci' => $kunci,
                 'gambar' => $gambar
             ];
+
+
+
             $this->Kelolaposttest_model->updatePosttest($id_posttest, $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Soal Berhasil diedit!</div>');
+
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Soal Berhasil diedit!</div>');
 
             redirect('kelolaposttest');

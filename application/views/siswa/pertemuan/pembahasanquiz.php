@@ -10,9 +10,14 @@
 
         <?php
         $no = 0;
+        $stringJawaban = $jawaban[0]->jawaban;
+        $arrayJawaban  = str_split($stringJawaban);
+
         foreach ($soal as $data) :
           $no++
+        
         ?>
+            
 
             <div class="question bg-white p-3 border-bottom">
               <input type="hidden" name="id_quiz[]" value="<?php echo $data['id_soal']; ?>">
@@ -32,11 +37,12 @@
             <div class="ans ml-2">
               <label class="radio">
                 <?php
-                    if ($data['kunci'] == 'A') {
+                    if ($arrayJawaban[$no-1] == 'A') {
                         echo '<input name="pilihan[' . $data['id_soal'] . ']" checked type="radio" value="A" onclick="saveSelectedOption(' . $data['id_soal'] . ', \'opsi_a\')">';
 
-                    } else {
-                        echo '<input name="pilihan[' . $data['id_soal'] . ']" type="radio" value="A" disabled onclick="saveSelectedOption(' . $data['id_soal'] . ', \'opsi_a\')">';
+                     
+                    }else {
+                        echo '<input name="pilihan[' . $data['id_soal'] . ']"  type="radio" value="A" disabled onclick="saveSelectedOption(' . $data['id_soal'] . ', \'opsi_a\')">';
                     }
                 ?>
 
@@ -46,10 +52,10 @@
             <div class="ans ml-2">
               <label class="radio">
                 <?php
-                    if ($data['kunci'] == 'B') {
+                    if ($arrayJawaban[$no-1] == 'B') {
                         echo '<input name="pilihan[' . $data['id_soal'] . ']" checked type="radio" value="B" onclick="saveSelectedOption(' . $data['id_soal'] . ', \'opsi_b\')">';
 
-                    } else {
+                    }else {
                         echo '<input name="pilihan[' . $data['id_soal'] . ']" type="radio" value="B" disabled onclick="saveSelectedOption(' . $data['id_soal'] . ', \'opsi_b\')">';
                     }
                 ?>               
@@ -59,10 +65,9 @@
             <div class="ans ml-2">
               <label class="radio">
                 <?php
-                    if ($data['kunci'] == 'C') {
+                    if ($arrayJawaban[$no-1] == 'C') {
                         echo '<input name="pilihan[' . $data['id_soal'] . ']" checked type="radio" value="C" onclick="saveSelectedOption(' . $data['id_soal'] . ', \'opsi_c\')">';
-
-                    } else {
+                    }else {
                         echo '<input name="pilihan[' . $data['id_soal'] . ']" type="radio" value="C" disabled onclick="saveSelectedOption(' . $data['id_soal'] . ', \'opsi_c\')">';
                     }
                 ?>                   
@@ -72,10 +77,9 @@
             <div class="ans ml-2">
               <label class="radio">
                 <?php
-                    if ($data['kunci'] == 'D') {
+                    if ($arrayJawaban[$no-1] == 'D') {
                         echo '<input name="pilihan[' . $data['id_soal'] . ']" checked type="radio" value="D" onclick="saveSelectedOption(' . $data['id_soal'] . ', \'opsi_d\')">';
-
-                    } else {
+                    }else {
                         echo '<input name="pilihan[' . $data['id_soal'] . ']" type="radio" value="D" disabled onclick="saveSelectedOption(' . $data['id_soal'] . ', \'opsi_d\')">';
                     }
                 ?>         
@@ -85,7 +89,7 @@
             <div class="ans ml-2">
               <label class="radio">
                 <?php
-                    if ($data['kunci'] == 'E') {
+                    if ($arrayJawaban[$no-1] == 'E') {
                         echo '<input name="pilihan[' . $data['id_soal'] . ']" checked type="radio" value="E" onclick="saveSelectedOption(' . $data['id_soal'] . ', \'opsi_e\')">';
 
                     } else {
@@ -96,6 +100,13 @@
               </label>
             </div>
             <h5>Pembahasan</h5>
+            <?php
+                if($arrayJawaban[$no-1] == $data['kunci']){
+                    echo '<p class="text-success">Jawaban Anda Benar</p>';
+                }else{
+                    echo '<p class="text-danger">Jawaban Anda Salah</p>';
+                }
+            ?>
             <p><?php echo $data['pembahasan'];?></p>
 
         <?php

@@ -19,5 +19,14 @@ class Menilaiquiz_model extends CI_Model
 
         return $this->db->get()->result_array();
     }
+    public function deleteHasilQuiz($id,$id_pertemuan,$id_siswa){
+        $this->db->where('id_hasilquiz', $id);
+        $this->db->delete('tb_hasilquiz');
+        //delete juga dari tb_nilai nilai dari column quiz_.$id_pertemuan berdasarkan id_siswa
+        $this->db->where('id_siswa', $id_siswa);
+        $this->db->set('quiz_'.$id_pertemuan, null);
+        $this->db->update('tb_nilai');
+
+    }
 
 }

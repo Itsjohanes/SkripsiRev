@@ -28,6 +28,7 @@
                                     <th scope="col">Salah</th>
                                     <th scope="col">Kosong</th>
                                     <th scope="col">Timestamp</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -40,6 +41,9 @@
                                     <th scope="col">Salah</th>
                                     <th scope="col">Kosong</th>
                                     <th scope="col">Timestamp</th>
+                                    <th scope="col">Action</th>
+
+
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -54,6 +58,9 @@
                                         <td><?= $j['salah']; ?></td>
                                         <td><?= $j['kosong']; ?></td>
                                         <td><?= $j['timestamp'];?></td>
+                                        <td>
+                                            <a href="<?= base_url('menilaiquiz/delete/') . $j['id_hasilquiz']; ?>" class="btn btn-info btn-sm">Hapus</a>
+                                        </td>
   
                                     </tr>
                                     <?php $i++; ?>

@@ -32,31 +32,61 @@
             <div class="ans ml-2">
               <label class="radio">
                 <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="A" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_a')">
-                <span>&nbsp<?php echo nl2br(htmlspecialchars($data['opsi_a'])); ?></span>
+                  <?php if (!empty($data['opsi_a'])) : ?>
+                       <?php if (file_exists('assets/img/opsipretest/' . $data['opsi_a'])) : ?>
+                       <img src="<?= base_url('assets/img/opsipretest/' . $data['opsi_a']); ?>" width="200px" alt="Gambar Opsi A">
+                    <?php else : ?>
+                      <?= nl2br(htmlspecialchars($data['opsi_a'])); ?>
+                    <?php endif; ?>
+                <?php endif; ?>
               </label>
             </div>
             <div class="ans ml-2">
               <label class="radio">
                 <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="B" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_b')">
-                <span>&nbsp<?php echo nl2br(htmlspecialchars($data['opsi_b'])); ?></span>
+                  <?php if (!empty($data['opsi_b'])) : ?>
+                       <?php if (file_exists('assets/img/opsipretest/' . $data['opsi_b'])) : ?>
+                       <img src="<?= base_url('assets/img/opsipretest/' . $data['opsi_b']); ?>" width="200px" alt="Gambar Opsi B">
+                    <?php else : ?>
+                      <?= nl2br(htmlspecialchars($data['opsi_b'])); ?>
+                    <?php endif; ?>
+                <?php endif; ?>
               </label>
             </div>
             <div class="ans ml-2">
               <label class="radio">
                 <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="C" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_c')">
-                <span>&nbsp<?php echo nl2br(htmlspecialchars($data['opsi_c'])); ?></span>
+                  <?php if (!empty($data['opsi_c'])) : ?>
+                       <?php if (file_exists('assets/img/opsipretest/' . $data['opsi_c'])) : ?>
+                       <img src="<?= base_url('assets/img/opsipretest/' . $data['opsi_c']); ?>" width="200px" alt="Gambar Opsi C">
+                    <?php else : ?>
+                      <?= nl2br(htmlspecialchars($data['opsi_c'])); ?>
+                    <?php endif; ?>
+                <?php endif; ?>
               </label>
             </div>
             <div class="ans ml-2">
               <label class="radio">
                 <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="D" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_d')">
-                <span>&nbsp<?php echo nl2br(htmlspecialchars($data['opsi_d'])); ?></span>
-              </label>
+                  <?php if (!empty($data['opsi_d'])) : ?>
+                       <?php if (file_exists('assets/img/opsipretest/' . $data['opsi_d'])) : ?>
+                       <img src="<?= base_url('assets/img/opsipretest/' . $data['opsi_d']); ?>" width="200px" alt="Gambar Opsi D">
+                    <?php else : ?>
+                      <?= nl2br(htmlspecialchars($data['opsi_d'])); ?>
+                    <?php endif; ?>
+                <?php endif; ?>            
+                </label>
             </div>
             <div class="ans ml-2">
               <label class="radio">
                 <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="E" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_e')">
-                <span>&nbsp<?php echo nl2br(htmlspecialchars($data['opsi_e'])); ?></span>
+                  <?php if (!empty($data['opsi_e'])) : ?>
+                       <?php if (file_exists('assets/img/opsipretest/' . $data['opsi_e'])) : ?>
+                       <img src="<?= base_url('assets/img/opsipretest/' . $data['opsi_e']); ?>" width="200px" alt="Gambar Opsi E">
+                    <?php else : ?>
+                      <?= nl2br(htmlspecialchars($data['opsi_e'])); ?>
+                    <?php endif; ?>
+                <?php endif; ?>              
               </label>
             </div>
 

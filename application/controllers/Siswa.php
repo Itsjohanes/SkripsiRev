@@ -39,7 +39,13 @@ class Siswa extends CI_Controller
             $jumlah = 0;
             for($i = 1;$i<=$maxPertemuan;$i++){
                 if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
-                    $jumlah = $jumlah + $tugas[$i] + $quiz[$i];
+                    $jumlah = $jumlah + $tugas[$i];
+                } 
+               
+            }
+            for($i = 1;$i<=$maxPertemuan;$i++){
+                if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                    $jumlah = $jumlah + $quiz[$i];
                 } 
                
             }

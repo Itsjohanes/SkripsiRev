@@ -90,63 +90,119 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col">
-                        <label for="waktu">Opsi A </label>
+                    <label for="exampleFormControlSelect1">Opsi Jawaban A</label><select class="form-control" id="exampleFormControlSelect1" name="pilihana">
+                        <option>Pilih Salah Satu</option>
+                        <option>Text</option>
+                        <option>Gambar</option>
+                    </select>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <textarea required class="form-control" placeholder="Opsi A" id="a" name="a"> </textarea>
+                        <textarea required class="form-control" placeholder="Opsi A" id="opsia_tulisan" name="a"> </textarea>
                     </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label for="waktu">Opsi B </label>
+                        <div class="input-group input-group-outline">
+                        <input type="file" class="form-control" id="opsia_gambar" name="a" />
                     </div>
-                </div>   
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <label for="exampleFormControlSelect1">Opsi Jawaban B</label><select class="form-control" id="exampleFormControlSelect2" name="pilihanb">
+                        <option>Pilih Salah Satu</option>
+                        <option>Text</option>
+                        <option>Gambar</option>
+                    </select>
+                    </div>
+                </div>  
                 <div class="row"> 
                     <div class="col">
                         <div class="input-group input-group-outline"> 
-                        <textarea required class="form-control" placeholder="Opsi B" id="b" name="b"> </textarea>
+                        <textarea required class="form-control" placeholder="Opsi B" id="opsib_tulisan" name="b"> </textarea>
                     </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label for="waktu">Opsi C </label>
+                        <div class="input-group input-group-outline">
+                        <input type="file" class="form-control" id="opsib_gambar" name="b" />
+                    </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                    <label for="exampleFormControlSelect1">Opsi Jawaban C</label><select class="form-control" id="exampleFormControlSelect3" name="pilihanc">
+                        <option>Pilih Salah Satu</option>
+                        <option>Text</option>
+                        <option>Gambar</option>
+                    </select>
+                    </div>
+                </div>  
                 <div class="row"> 
                     <div class="col">
                          <div class="input-group input-group-outline">
-                        <textarea  required class="form-control" placeholder="Opsi C" id="c" name="c"> </textarea>
+                        <textarea  required class="form-control" placeholder="Opsi C" id="opsic_tulisan" name="c"> </textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label for="waktu">Opsi D </label>
-                    </div>
-                </div>
-                <div class="row"> 
-                    <div class="col">
                         <div class="input-group input-group-outline">
-                        <textarea required class="form-control" placeholder="Opsi D" id="d" name="d"> </textarea>
+                        <input type="file" class="form-control" id="opsic_gambar" name="c" />
                     </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label for="waktu">Opsi E </label>
+                    <label for="exampleFormControlSelect1">Opsi Jawaban D</label><select class="form-control" id="exampleFormControlSelect4" name="pilihand">
+                        <option>Pilih Salah Satu</option>
+                        <option>Text</option>
+                        <option>Gambar</option>
+                    </select>
                     </div>
-                </div>
+                </div>  
                 <div class="row"> 
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <textarea required class="form-control" placeholder="Opsi E" id="e" name="e"> </textarea>
+                        <textarea required class="form-control" placeholder="Opsi D" id="opsid_tulisan" name="d"> </textarea>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group input-group-outline">
+                        <input type="file" class="form-control" id="opsid_gambar" name="d" />
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <label for="exampleFormControlSelect1">Opsi Jawaban E</label><select class="form-control" id="exampleFormControlSelect5" name="pilihane">
+                        <option>Pilih Salah Satu</option>
+                        <option>Text</option>
+                        <option>Gambar</option>
+                    </select>
+                    </div>
+                </div>  
+                <div class="row"> 
+                    <div class="col">
+                        <div class="input-group input-group-outline">
+                        <textarea required class="form-control" placeholder="Opsi E" id="opsie_tulisan" name="e"> </textarea>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group input-group-outline">
+                        <input type="file" class="form-control" id="opsie_gambar" name="e" />
                     </div>
                     </div>
                 </div>
@@ -249,11 +305,51 @@
                                         <th scope="row"><?= $i; ?></th>
                                         <td><?= $j['soal']; ?></td>
                                         <td><img src = "<?php echo base_url('assets/img/pretest/').$j['gambar'];?>" width = '300px' width = '150px' alt = "Tidak ada gambar"> </img></td>
-                                        <td><?=  nl2br(htmlspecialchars($j['opsi_a'])); ?></td>
-                                        <td><?= nl2br(htmlspecialchars($j['opsi_b'])); ?></td>
-                                        <td><?= nl2br(htmlspecialchars($j['opsi_c'])); ?></td>
-                                        <td><?= nl2br(htmlspecialchars($j['opsi_d'])); ?></td>
-                                        <td><?= nl2br(htmlspecialchars($j['opsi_e'])); ?></td>
+                                        <td>
+                                        <?php if (!empty($j['opsi_a'])) : ?>
+                                            <?php if (file_exists('assets/img/opsipretest/' . $j['opsi_a'])) : ?>
+                                                <img src="<?= base_url('assets/img/opsipretest/' . $j['opsi_a']); ?>" width="100px" alt="Gambar Opsi A">
+                                            <?php else : ?>
+                                                <?= nl2br(htmlspecialchars($j['opsi_a'])); ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                        </td>
+                                        <td>
+                                        <?php if (!empty($j['opsi_b'])) : ?>
+                                            <?php if (file_exists('assets/img/opsipretest/' . $j['opsi_b'])) : ?>
+                                                <img src="<?= base_url('assets/img/opsipretest/' . $j['opsi_b']); ?>" width="100px" alt="Gambar Opsi B">
+                                            <?php else : ?>
+                                                <?= nl2br(htmlspecialchars($j['opsi_b'])); ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                        </td>
+                                        <td>
+                                        <?php if (!empty($j['opsi_c'])) : ?>
+                                            <?php if (file_exists('assets/img/opsipretest/' . $j['opsi_c'])) : ?>
+                                                <img src="<?= base_url('assets/img/opsipretest/' . $j['opsi_c']); ?>" width="100px" alt="Gambar Opsi C">
+                                            <?php else : ?>
+                                                <?= nl2br(htmlspecialchars($j['opsi_c'])); ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                        </td>
+                                        <td>
+                                        <?php if (!empty($j['opsi_d'])) : ?>
+                                            <?php if (file_exists('assets/img/opsipretest/' . $j['opsi_d'])) : ?>
+                                                <img src="<?= base_url('assets/img/opsipretest/' . $j['opsi_d']); ?>" width="100px" alt="Gambar Opsi D">
+                                            <?php else : ?>
+                                                <?= nl2br(htmlspecialchars($j['opsi_d'])); ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                        </td>
+                                        <td>
+                                        <?php if (!empty($j['opsi_e'])) : ?>
+                                            <?php if (file_exists('assets/img/opsipretest/' . $j['opsi_e'])) : ?>
+                                                <img src="<?= base_url('assets/img/opsipretest/' . $j['opsi_e']); ?>" width="100px" alt="Gambar Opsi E">
+                                            <?php else : ?>
+                                                <?= nl2br(htmlspecialchars($j['opsi_e'])); ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                        </td>
                                         <td><?= nl2br(htmlspecialchars($j['kunci'])); ?></td>
                                         <td>
                                             <a href="<?= base_url(); ?>kelolapretest/hapuspretest/<?= $j['id_soal']; ?>" class="btn btn-danger hapus-btn"><i class="fas fa-trash-alt"></i></a>
@@ -293,3 +389,119 @@
   });
 </script>
 
+
+<script>
+    $(document).ready(function() {
+        $('#opsia_tulisan').hide();
+        $('#opsia_gambar').hide();
+
+
+        $('#opsib_tulisan').hide();
+        $('#opsib_gambar').hide();
+
+        $('#opsic_tulisan').hide();
+        $('#opsic_gambar').hide();
+
+        $('#opsid_tulisan').hide();
+        $('#opsid_gambar').hide();
+
+        $('#opsie_tulisan').hide();
+        $('#opsie_gambar').hide();
+        $('#exampleFormControlSelect1').on('change', function() {
+
+            var selectedOption = $(this).val(); // get the selected option value
+
+            if (selectedOption == 'Text') {
+                $('#opsia_gambar').hide();
+                $('#opsia_tulisan').show();
+            } else if (selectedOption == 'Gambar') {
+                $('#opsia_tulisan').hide();
+                $('#opsia_gambar').show();
+            } else if (selectedOption = "Pilih Salah Satu") {
+                $('#opsia_tulisan').hide();
+                $('#opsia_gambar').hide();
+
+
+            }
+        });
+
+
+        $('#exampleFormControlSelect2').on('change', function() {
+
+            var selectedOption = $(this).val(); // get the selected option value
+
+            if (selectedOption == 'Text') {
+                $('#opsib_gambar').hide();
+                $('#opsib_tulisan').show();
+            } else if (selectedOption == 'Gambar') {
+                $('#opsib_tulisan').hide();
+                $('#opsib_gambar').show();
+            } else if (selectedOption = "Pilih Salah Satu") {
+                $('#opsib_tulisan').hide();
+                $('#opsib_gambar').hide();
+
+
+            }
+        });
+
+        $('#exampleFormControlSelect3').on('change', function() {
+
+            var selectedOption = $(this).val(); // get the selected option value
+
+            if (selectedOption == 'Text') {
+                $('#opsic_gambar').hide();
+                $('#opsic_tulisan').show();
+            } else if (selectedOption == 'Gambar') {
+                $('#opsic_tulisan').hide();
+                $('#opsic_gambar').show();
+            } else if (selectedOption = "Pilih Salah Satu") {
+                $('#opsic_tulisan').hide();
+                $('#opsic_gambar').hide();
+
+
+            }
+        });
+
+
+
+
+        $('#exampleFormControlSelect4').on('change', function() {
+
+            var selectedOption = $(this).val(); // get the selected option value
+
+            if (selectedOption == 'Text') {
+                $('#opsid_gambar').hide();
+                $('#opsid_tulisan').show();
+            } else if (selectedOption == 'Gambar') {
+                $('#opsid_tulisan').hide();
+                $('#opsid_gambar').show();
+            } else if (selectedOption = "Pilih Salah Satu") {
+                $('#opsid_tulisan').hide();
+                $('#opsid_gambar').hide();
+
+
+            }
+        });
+        $('#exampleFormControlSelect5').on('change', function() {
+
+            var selectedOption = $(this).val(); // get the selected option value
+
+            if (selectedOption == 'Text') {
+                $('#opsie_gambar').hide();
+                $('#opsie_tulisan').show();
+            } else if (selectedOption == 'Gambar') {
+                $('#opse_tulisan').hide();
+                $('#opsie_gambar').show();
+            } else if (selectedOption = "Pilih Salah Satu") {
+                $('#opsie_tulisan').hide();
+                $('#opsie_gambar').hide();
+
+
+            }
+        });
+
+
+
+
+    });
+</script>

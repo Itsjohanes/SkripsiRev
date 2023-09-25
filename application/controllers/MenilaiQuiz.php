@@ -24,4 +24,17 @@ class MenilaiQuiz extends CI_Controller {
             $this->load->view('admin/template/footer');
         
     }
+    public function delete($id = ''){
+        //mendapat pertemuan
+        $this->db->select('*');
+        $this->db->from('tb_hasilquiz');
+        $this->db->where('id_hasilquiz', $id);
+        $data = $this->db->get()->row_array();
+        var_dump($data);
+        $id_pertemuan = $data['id_pertemuan'];
+        $id_siswa = $data['id_siswa'];
+        $this->Menilaiquiz_model->deleteHasilQuiz($id,$id_pertemuan,$id_siswa);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
+        redirect('menilaiquiz');
+    }
 }
