@@ -240,7 +240,6 @@ class KelolaPosttest extends CI_Controller {
 
             $dataSoal = $this->Kelolaposttest_model->getPosttestById($id_posttest);
             $gambar = $dataSoal['gambar'];
-            var_dump($dataSoal);
             $gambar1 = $dataSoal['opsi_a'];
             $gambar2 = $dataSoal['opsi_b'];
             $gambar3 = $dataSoal['opsi_c'];

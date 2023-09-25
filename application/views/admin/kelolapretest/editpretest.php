@@ -237,6 +237,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group input-group-outline">
+                        <img src = "<?php echo base_url('assets/img/pretest/').$soal['gambar'];?>" width = '300px' width = '150px' alt = "Tidak ada gambar"> </img>
+                        </div>
+                    </div>
+                </div>
                 <br>
                 <div class="row">
                     <div class="col">
