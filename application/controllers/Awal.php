@@ -44,22 +44,5 @@ class Awal extends CI_Controller
         $this->load->view('halaman_awal/materi.php',$data);
         $this->load->view('halaman_awal/footer.php');
     }
-    public function tambahKontak()
-    {
-        $nama = $this->input->post('nama');
-        $email = $this->input->post('email');
-        $pesan = $this->input->post('pesan');
-        $data = array(
-            'nama_pengirim' => $nama,
-            'email_pengirim' => $email,
-            'pesan_pengirim' => $pesan
-        );
-        if ($this->Contact_model->tambahKontak($data, 'tb_contact') == true) {
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pesan berhasil dikirim!</div>');
-            redirect('awal/informasi');
-        } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pesan gagal dikirim!</div>');
-            redirect('awal/informasi');
-        }
-    }
+    
 }

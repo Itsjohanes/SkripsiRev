@@ -73,5 +73,17 @@ class Quiz_model extends CI_Model
             return false;
         }
     }
+    public function getNilai($id_pertemuan,$id_siswa){
+        $this->db->select('nilai');
+        $this->db->from('tb_hasilquiz');
+        $this->db->where('id_pertemuan', $id_pertemuan);
+        $this->db->where('id_siswa', $id_siswa);
+        $query = $this->db->get();
+        if ($query) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
    
 }

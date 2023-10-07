@@ -4,7 +4,8 @@
       <div class="border">
         <div class="question bg-white p-3 border-bottom">
           <div class="d-flex flex-row justify-content-between align-items-center mcq">
-            <h4>Kunci Jawaban Quiz</h4>
+            <h4>Pembahasan Quiz</h4>
+              <?php  echo '<h5>Nilai Anda:'. $nilai[0]->nilai;?> 
           </div>
         </div>
 
@@ -46,7 +47,14 @@
                     }
                 ?>
 
-                <span>&nbsp<?php echo $data['opsi_a']; ?></span>
+                <?php if (!empty($data['opsi_a'])) : ?>
+                       <?php if (file_exists('assets/img/opsiquiz/' . $data['opsi_a'])) : ?>
+                       <img src="<?= base_url('assets/img/opsiquiz/' . $data['opsi_a']); ?>" width="200px" alt="Gambar Opsi A">
+                    <?php else : ?>
+                      <?= nl2br(htmlspecialchars($data['opsi_a'])); ?>
+                    <?php endif; ?>
+                <?php endif; ?>
+                
               </label>
             </div>
             <div class="ans ml-2">
@@ -58,7 +66,14 @@
                     }else {
                         echo '<input name="pilihan[' . $data['id_soal'] . ']" type="radio" value="B" disabled onclick="saveSelectedOption(' . $data['id_soal'] . ', \'opsi_b\')">';
                     }
-                ?>               
+                ?>   
+                <?php if (!empty($data['opsi_b'])) : ?>
+                       <?php if (file_exists('assets/img/opsiquiz/' . $data['opsi_b'])) : ?>
+                       <img src="<?= base_url('assets/img/opsiquiz/' . $data['opsi_b']); ?>" width="200px" alt="Gambar Opsi B">
+                    <?php else : ?>
+                      <?= nl2br(htmlspecialchars($data['opsi_b'])); ?>
+                    <?php endif; ?>
+                <?php endif; ?>            
                 <span>&nbsp<?php echo $data['opsi_b']; ?></span>
               </label>
             </div>
@@ -71,7 +86,13 @@
                         echo '<input name="pilihan[' . $data['id_soal'] . ']" type="radio" value="C" disabled onclick="saveSelectedOption(' . $data['id_soal'] . ', \'opsi_c\')">';
                     }
                 ?>                   
-                <span>&nbsp<?php echo $data['opsi_c']; ?></span>
+                  <?php if (!empty($data['opsi_c'])) : ?>
+                       <?php if (file_exists('assets/img/opsiquiz/' . $data['opsi_c'])) : ?>
+                       <img src="<?= base_url('assets/img/opsiquiz/' . $data['opsi_c']); ?>" width="200px" alt="Gambar Opsi C">
+                    <?php else : ?>
+                      <?= nl2br(htmlspecialchars($data['opsi_c'])); ?>
+                    <?php endif; ?>
+                <?php endif; ?>
               </label>
             </div>
             <div class="ans ml-2">
@@ -82,8 +103,15 @@
                     }else {
                         echo '<input name="pilihan[' . $data['id_soal'] . ']" type="radio" value="D" disabled onclick="saveSelectedOption(' . $data['id_soal'] . ', \'opsi_d\')">';
                     }
+                    
                 ?>         
-                <span>&nbsp<?php echo $data['opsi_d']; ?></span>
+               <?php if (!empty($data['opsi_d'])) : ?>
+                       <?php if (file_exists('assets/img/opsiquiz/' . $data['opsi_d'])) : ?>
+                       <img src="<?= base_url('assets/img/opsiquiz/' . $data['opsi_d']); ?>" width="200px" alt="Gambar Opsi D">
+                    <?php else : ?>
+                      <?= nl2br(htmlspecialchars($data['opsi_d'])); ?>
+                    <?php endif; ?>
+                <?php endif; ?>   
               </label>
             </div>
             <div class="ans ml-2">
@@ -96,8 +124,14 @@
                         echo '<input name="pilihan[' . $data['id_soal'] . ']" type="radio" value="E" disabled onclick="saveSelectedOption(' . $data['id_soal'] . ', \'opsi_e\')">';
                     }
                 ?>      
-                <span>&nbsp<?php echo $data['opsi_e']; ?></span>
-              </label>
+                  <?php if (!empty($data['opsi_e'])) : ?>
+                       <?php if (file_exists('assets/img/opsiquiz/' . $data['opsi_e'])) : ?>
+                       <img src="<?= base_url('assets/img/opsiquiz/' . $data['opsi_e']); ?>" width="200px" alt="Gambar Opsi E">
+                    <?php else : ?>
+                      <?= nl2br(htmlspecialchars($data['opsi_e'])); ?>
+                    <?php endif; ?>
+                <?php endif; ?> 
+             </label>
             </div>
             <h5>Pembahasan</h5>
             <?php

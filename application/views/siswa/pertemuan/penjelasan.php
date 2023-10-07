@@ -51,11 +51,19 @@
                 </div>
             </div>
         </div>
+        
         <div class="col-md-4 col-xl-3 mx-auto p-4">
             <div class="d-flex align-items-start">
                 <div>
                     <h4>Video Pembelajaran</h4>
                     <p>Video Materi dapat diakses pada menu Video</p>
+                </div>
+            </div>
+            <hr class="my-5">
+            <div class="d-flex align-items-start">
+                <div>
+                    <h4>Flowchart</h4>
+                    <p>Flowchart dapat dilihat pada menu Flowchart</p>
                 </div>
             </div>
             <hr class="my-5">

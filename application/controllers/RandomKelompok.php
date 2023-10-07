@@ -66,6 +66,27 @@ class RandomKelompok extends CI_Controller {
                     }
                     $i++;
                 }
+                $folderPath = './uploads/';
+                for ($i = 1; $i <= $jumlahKelompok; $i++) {
+                $folderName = $i;
+                // Path lengkap ke folder yang akan dibuat
+                $folderFullPath = $folderPath . $folderName;
+
+                // Cek apakah folder sudah ada atau belum
+                if (!is_dir($folderFullPath)) {
+                    // Jika folder belum ada, buat folder tersebut
+                    if (mkdir($folderFullPath)) {
+                        // Folder berhasil dibuat
+                        echo "Folder '$folderName' berhasil dibuat.<br>";
+                    } else {
+                        // Gagal membuat folder
+                        echo "Gagal membuat folder '$folderName'.<br>";
+                    }
+                } else {
+                    // Folder sudah ada
+                    echo "Folder '$folderName' sudah ada.<br>";
+                }
+    }
             }
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kelompok Berhasil ditambahkan!</div>');
             }else{
@@ -79,10 +100,37 @@ class RandomKelompok extends CI_Controller {
     {
 
             $this->Randomkelompok_model->deleteRandom();
+            // Path ke direktori tempat folder-folder disimpan
+            $folderPath = './uploads/';
+            $folders = scandir($folderPath);
+             // Hapus setiap folder
+            foreach ($folders as $folder) {
+                // Hanya proses folder yang bukan . (current directory) atau .. (parent directory)
+                if ($folder != "." && $folder != "..") {
+                    // Hapus folder dan isinya rekursif
+                    $this->deleteFolder($folderPath . $folder);
+                }
+            }
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kelompok berhasil dihapus</div>');
 
             redirect('randomkelompok');
         
+    }
+
+    private function deleteFolder($folderPath)
+    {
+        if (is_dir($folderPath)) {
+            // Ambil daftar file dalam folder
+            $files = glob($folderPath . '/*');
+
+            // Hapus file dalam folder
+            foreach ($files as $file) {
+                unlink($file);
+            }
+
+            // Hapus folder itu sendiri
+            rmdir($folderPath);
+        }
     }
 
 }

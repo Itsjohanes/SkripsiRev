@@ -405,6 +405,31 @@ class Pertemuan extends CI_Controller {
           
          
     }
+     public function flowchart($id = ''){
+
+            $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
+            if($id_pertemuan){
+                $data['notifchat'] = $this->Chat_model->getChatData();
+                $data['title'] = "Flowchart";
+                $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+                $data['pertemuan'] = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+                if($data['pertemuan']['aktif'] == '1'){
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/pertemuan/flowchart', $data);
+                    $this->load->view('siswa/template/footer');
+                }else{
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('materi');
+                }    
+            }else{
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan tidak ada</div>');
+                    redirect('materi');
+                
+            }
+          
+         
+    }
     public function Quiz($id = ''){
         $data['title'] = "Quiz";
             $data['notifchat'] = $this->Chat_model->getChatData();
@@ -418,13 +443,13 @@ class Pertemuan extends CI_Controller {
             if($data['pertemuan']['aktif'] == '1'){
             $data['quiz'] = $this->Quiz_model->getQuizCountBySiswaId($this->session->userdata('id'),$id);
                 if ($data['quiz'] > 0) {
+                    $data['nilai'] = $this->Quiz_model->getNilai($id,$this->session->userdata('id'));
                     $data['jawaban'] = $this->Quiz_model->getQuizAnswers($id, $this->session->userdata('id'));
                     $this->load->view('siswa/template/header', $data);
                     $this->load->view('siswa/template/sidebar', $data);
                     $this->load->view('siswa/pertemuan/pembahasanquiz', $data);
                     $this->load->view('siswa/template/footer');
                 }else{
-                    
                     $this->load->view('siswa/template/header', $data);
                     $this->load->view('siswa/template/sidebar', $data);
                     $this->load->view('siswa/pertemuan/quiz', $data);
@@ -482,9 +507,6 @@ class Pertemuan extends CI_Controller {
 
             $id = $this->session->userdata('id');
             //buat timestamp
-            
-           
-
             $data = [
                 'id_siswa' => $id,
                 'jawaban' => $str_jawaban,
@@ -498,7 +520,7 @@ class Pertemuan extends CI_Controller {
 
             $this->Quiz_model->saveQuizResult($data);
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah pernah mengerjakan Quiz</div>');
-            redirect('materi');
+            redirect($this->agent->referrer());
         
     }
 }

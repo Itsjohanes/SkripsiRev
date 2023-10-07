@@ -51,6 +51,7 @@
         <div class="chat-input">
             <textarea id="message" rows="4" placeholder="Your Message"></textarea>
             <button id="send_message">Send</button>
+            <a href= <?php echo base_url('filemanager');?> >File Manager</a>
         </div>
     </div>
 

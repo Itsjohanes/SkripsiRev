@@ -117,26 +117,6 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-5 col-xl-4">
-          <div>
-            <form class="p-3 p-xl-4" action="<?php echo base_url() . 'awal/tambahkontak'; ?>" method="post">
-              <div class="mb-3">
-                <input class="form-control" type="text" id="nama_pengirim" name="nama" required placeholder="Name" />
-              </div>
-              <div class="mb-3">
-                <input class="form-control" type="email" id="email_pengirim" name="email" required placeholder="Email" />
-              </div>
-              <div class="mb-3">
-                <textarea class="form-control" id="pesan_pengirim" name="pesan" rows="6" required placeholder="Message"></textarea>
-              </div>
-              <div>
-                <button class="btn btn-primary d-block w-100" type="submit" value="submit">
-                  Send
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
       </div>
     </div>
   </section>
