@@ -163,16 +163,55 @@
                     </div>
                     </div>
                 </div>
-            <label for="nilai">Kunci</label>
-            <div class="input-group input-group-outline">
-            <select required class="form-control" id="kunci" name="kunci">
-                <option <?php echo ($soal['kunci'] === 'A') ? 'selected' : ''; ?>>A</option>
-                <option <?php echo ($soal['kunci'] === 'B') ? 'selected' : ''; ?>>B</option>
-                <option <?php echo ($soal['kunci'] === 'C') ? 'selected' : ''; ?>>C</option>
-                <option <?php echo ($soal['kunci'] === 'D') ? 'selected' : ''; ?>>D</option>
-                <option <?php echo ($soal['kunci'] === 'E') ? 'selected' : ''; ?>>E</option>
-            </select>
-            </div>
+            <<div class="row">
+                    <div class="col">
+                        <label for="waktu">Kunci </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group input-group-outline">
+                        <select  required class="form-control"  id="kunci" name="kunci">
+                        <?php
+                            if ($soal['kunci'] == 'A') {
+                                echo '<option value = "A" selected="selected">A</option>';
+                            } else {
+                                echo '<option value = "A">A</option>';
+                            }
+                            ?>
+                            <?php
+                            if ($soal['kunci'] == 'B') {
+                                echo '<option value = "B" selected="selected">B</option>';
+                            } else {
+                                echo '<option value = "B">B</option>';
+                            }
+                            ?>
+                            <?php
+                            if ($soal['kunci'] == 'C') {
+                                echo '<option value = "C" selected="selected">C</option>';
+                            } else {
+                                echo '<option value = "C">C</option>';
+                            }
+                            ?>
+                            <?php
+                            if ($soal['kunci'] == 'D') {
+                                echo '<option value = "D" selected="selected">D</option>';
+                            } else {
+                                echo '<option value = "D">D</option>';
+                            }
+                            ?>
+                            <?php
+                            if ($soal['kunci'] == 'E') {
+                                echo '<option value = "E" selected="selected">E</option>';
+                            } else {
+                                echo '<option value = "E">E</option>';
+                            }
+                            ?>
+
+                        </select>
+                    </div>
+                    </div>
+                </div>
             <label for="nilai">Pembahasan</label>
             <div class="input-group input-group-outline">
             <input type="text" required class="form-control" required id="pembahasan" name="pembahasan" value="<?php echo $soal['pembahasan'];  ?>"></div>

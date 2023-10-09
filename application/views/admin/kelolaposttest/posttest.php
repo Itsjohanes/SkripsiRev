@@ -221,6 +221,23 @@
                 </div>
                 <div class="row">
                     <div class="col">
+                        <label for="waktu">Indikator Problem Solving </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group input-group-outline">
+                        <select  required class="form-control"  id="id_ps" name="id_ps">
+                        <option value = "1">Memahami Masalah</option>
+                        <option value = "2">Merencanakan Pemecahan Masalah</option>
+                        <option value = "3">Melaksanakan Pemecahan Masalah</option>
+                        <option value = "4">Memeriksa Kembali</option>
+                        </select>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
                         <label for="waktu">Gambar </label>
                     </div>
                 </div>
@@ -275,6 +292,8 @@
                                     <th scope="col">Opsi D</th>
                                     <th scope="col">Opsi E</th>
                                     <th scope="col">Kunci</th>
+                                     <th scope="col">Indikator PS</th>
+
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
@@ -289,6 +308,8 @@
                                     <th scope="col">Opsi D</th>
                                     <th scope="col">Opsi E</th>
                                     <th scope="col">Kunci</th>
+                                     <th scope="col">Indikator PS</th>
+
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </tfoot>
@@ -345,6 +366,19 @@
                                         <?php endif; ?>
                                         </td>                                        
                                         <td><?= $j['kunci']; ?></td>
+                                         <td>
+                                                <?php if($j['id_ps'] == 1){
+                                                    echo "Memahami Masalah";
+                                                }else if($j['id_ps'] == 2){
+                                                    echo "Merencanakan Pemecahan Masalah";
+                                                }else if($j['id_ps'] == 3){
+                                                    echo "Melaksanakan Pemecahan Masalah";
+                                                }else if($j['id_ps'] == 4){
+                                                    echo "Memeriksa Kembali";
+                                                }
+                                                ?>
+                                               
+                                        </td>
                                         <td>
                                             <a href="<?= base_url(); ?>kelolaposttest/hapusposttest/<?= $j['id_soal']; ?>" class="btn btn-danger hapus-btn"><i class="fas fa-trash-alt"></i></a>
                                             <a href="<?= base_url(); ?>kelolaposttest/editposttest/<?= $j['id_soal']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>

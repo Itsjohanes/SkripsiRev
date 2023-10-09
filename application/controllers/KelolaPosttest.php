@@ -41,6 +41,7 @@ class KelolaPosttest extends CI_Controller {
             $soal = $this->input->post('soal');
             $kunci = $this->input->post('kunci');
             $gambar = $_FILES['gambar']['name'];
+            $id_ps = $this->input->post('id_ps');
             if ($gambar) {
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
                 $config['max_size'] = '2048';
@@ -165,6 +166,7 @@ class KelolaPosttest extends CI_Controller {
                 'opsi_d' => $opsiD,
                 'opsi_e' => $opsiE,
                 'kunci' => $kunci,
+                'id_ps' => $id_ps,
                 'gambar' => $gambar,
                 'id_test'=>2
             ];
@@ -237,7 +239,7 @@ class KelolaPosttest extends CI_Controller {
             $opsi_d = $this->input->post('d');
             $opsi_e = $this->input->post('e');
             $kunci = $this->input->post('kunci');
-
+            $id_ps = $this->input->post('id_ps');
             $dataSoal = $this->Kelolaposttest_model->getPosttestById($id_posttest);
             $gambar = $dataSoal['gambar'];
             $gambar1 = $dataSoal['opsi_a'];
@@ -391,6 +393,7 @@ class KelolaPosttest extends CI_Controller {
                 'opsi_d' => $opsiD,
                 'opsi_e' => $opsiE,
                 'kunci' => $kunci,
+                'id_ps' => $id_ps,
                 'gambar' => $gambar
             ];
 

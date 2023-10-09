@@ -226,7 +226,7 @@
                     </div>
                 </div>
             <div class="row">
-                    <label for="nilai">Indikator Problem Solving</label>
+                    <label for="id_ps">Indikator Problem Solving</label>
                     <div class="input-group input-group-outline">
                             <div class="row">
                     <div class="col">

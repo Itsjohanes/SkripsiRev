@@ -230,7 +230,7 @@ class KelolaPretest extends CI_Controller {
             $opsi_d = $this->input->post('d');
             $opsi_e = $this->input->post('e');
             $kunci = $this->input->post('kunci');
-
+            $id_ps = $this->input->post('id_ps');
             $dataSoal = $this->Kelolapretest_model->getPretestById($id_pretest);
             $gambar = $dataSoal['gambar'];
             $gambar1 = $dataSoal['opsi_a'];
@@ -384,16 +384,14 @@ class KelolaPretest extends CI_Controller {
                 'opsi_d' => $opsiD,
                 'opsi_e' => $opsiE,
                 'kunci' => $kunci,
+                'id_ps' => $id_ps,
                 'gambar' => $gambar
             ];
-
-
 
             $this->Kelolapretest_model->updatePretest($id_pretest, $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Soal Berhasil diedit!</div>');
 
             redirect('kelolapretest');
-        
     }
 
 
@@ -432,7 +430,6 @@ class KelolaPretest extends CI_Controller {
             $this->db->where('id_tes', 1);
             $this->db->update('tb_test');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pretest telah dimatikan</div>');
-
             redirect('kelolapretest');
 
         
