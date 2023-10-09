@@ -48,6 +48,7 @@ class KelolaQuiz extends CI_Controller {
                     echo $this->upload->display_errors();
                 }
             }
+            
             $gambarA = "";
             $opsiA = "";
 
@@ -55,11 +56,9 @@ class KelolaQuiz extends CI_Controller {
 
                 $gambarA = $_FILES['a']['name'];
                 $opsiA = $gambarA;
-            } else {
-                $opsiA = htmlspecialchars($this->input->post('a', true));
-            }
-            if ($gambarA != '') {
-                $config['upload_path'] = './assets/img/opsiquiz/';
+
+                if ($gambarA != '') {
+                $config['upload_path'] = './assets/img/quiz/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -69,18 +68,18 @@ class KelolaQuiz extends CI_Controller {
                     $opsiA = $this->upload->data('file_name');
                 }
             }
+            } else {
+                $opsiA = htmlspecialchars($this->input->post('a', true));
+            }
+            
 
             $gambarB = "";
             $opsiB = "";
             if ($this->input->post('pilihanb') == "Gambar") {
                 $gambarB = $_FILES['b']['name'];
                 $opsiB = $gambarB;
-            } else {
-                $opsiB = htmlspecialchars($this->input->post('b', true));
-            }
-
-            if ($gambarB != '') {
-                $config['upload_path'] = './assets/img/opsiquiz/';
+                if ($gambarB != '') {
+                $config['upload_path'] = './assets/img/quiz/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -90,17 +89,18 @@ class KelolaQuiz extends CI_Controller {
                     $opsiB = $this->upload->data('file_name');
                 }
             }
+            } else {
+                $opsiB = htmlspecialchars($this->input->post('b', true));
+            }
+
+
             $gambarC = "";
             $opsiC = "";
             if ($this->input->post('pilihanc') == "Gambar") {
                 $gambarC = $_FILES['c']['name'];
                 $opsiC = $gambarC;
-            } else {
-                $opsiC = htmlspecialchars($this->input->post('c', true));
-            }
-
-            if ($gambarC != '') {
-                $config['upload_path'] = './assets/img/opsiquiz/';
+                if ($gambarC != '') {
+                $config['upload_path'] = './assets/img/quiz/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -110,18 +110,19 @@ class KelolaQuiz extends CI_Controller {
                     $opsiC = $this->upload->data('file_name');
                 }
             }
+            } else {
+                $opsiC = htmlspecialchars($this->input->post('c', true));
+            }
+
+
 
             $gambarD = "";
             $opsiD = "";
             if ($this->input->post('pilihand') == "Gambar") {
                 $gambarD = $_FILES['d']['name'];
                 $opsiD = $gambarD;
-            } else {
-                $opsiD = htmlspecialchars($this->input->post('d', true));
-            }
-
-            if ($gambarD != '') {
-                $config['upload_path'] = './assets/img/opsiquiz/';
+                if ($gambarD != '') {
+                $config['upload_path'] = './assets/img/quiz/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -131,18 +132,16 @@ class KelolaQuiz extends CI_Controller {
                     $opsiD = $this->upload->data('file_name');
                 }
             }
-
+            } else {
+                $opsiD = htmlspecialchars($this->input->post('d', true));
+            }
             $gambarE = "";
             $opsiE = "";
             if ($this->input->post('pilihane') == "Gambar") {
                 $gambarE = $_FILES['e']['name'];
                 $opsiE = $gambarE;
-            } else {
-                $opsiE = htmlspecialchars($this->input->post('e', true));
-            }
-
-            if ($gambarE != '') {
-                $config['upload_path'] = './assets/img/opsiquiz/';
+                if ($gambarE != '') {
+                $config['upload_path'] = './assets/img/quiz/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -152,6 +151,11 @@ class KelolaQuiz extends CI_Controller {
                     $opsiE = $this->upload->data('file_name');
                 }
             }
+            } else {
+                $opsiE = htmlspecialchars($this->input->post('e', true));
+            }
+
+           
             $data = [
                 'soal' => $soal,
                 'opsi_a' => $opsiA,
@@ -183,24 +187,24 @@ class KelolaQuiz extends CI_Controller {
             $opsi_d = $quiz['opsi_d'];
             $opsi_e = $quiz['opsi_e'];
             //hapus jika ada
-            if (file_exists('./assets/img/opsiquiz/'.$opsi_a )&&$opsi_a!=''){
-                unlink('./assets/img/opsiquiz/'.$opsi_a);
+            if (file_exists('./assets/img/quiz/'.$opsi_a )&&$opsi_a!=''){
+                unlink('./assets/img/quiz/'.$opsi_a);
             }
             //lanjut buat a-e
-            if (file_exists('./assets/img/opsiquiz/'.$opsi_b )&&$opsi_b!=''){
-                unlink('./assets/img/opsiquiz/'.$opsi_b);
+            if (file_exists('./assets/img/quiz/'.$opsi_b )&&$opsi_b!=''){
+                unlink('./assets/img/quiz/'.$opsi_b);
             }
-            if (file_exists('./assets/img/opsiquiz/'.$opsi_c )&&$opsi_c!=''){
-                unlink('./assets/img/opsiquiz/'.$opsi_c);
+            if (file_exists('./assets/img/quiz/'.$opsi_c )&&$opsi_c!=''){
+                unlink('./assets/img/quiz/'.$opsi_c);
             }
-            if (file_exists('./assets/img/opsiquiz/'.$opsi_d )&&$opsi_d!=''){
-                unlink('./assets/img/opsiquiz/'.$opsi_d);
+            if (file_exists('./assets/img/quiz/'.$opsi_d )&&$opsi_d!=''){
+                unlink('./assets/img/quiz/'.$opsi_d);
             }
-            if (file_exists('./assets/img/opsiquiz/'.$opsi_e )&&$opsi_e!=''){
-                unlink('./assets/img/opsiquiz/'.$opsi_e);
+            if (file_exists('./assets/img/quiz/'.$opsi_e )&&$opsi_e!=''){
+                unlink('./assets/img/quiz/'.$opsi_e);
             }
             if(file_exists('./assets/img/quiz/' . $gambar) && $gambar != ''){
-            unlink(FCPATH . 'assets/img/quiz/' . $gambar);
+            unlink(FCPATH . './assets/img/quiz/' . $gambar);
             }
 
 
@@ -250,30 +254,30 @@ class KelolaQuiz extends CI_Controller {
             $gambar4 = $dataSoal['opsi_d'];
             $gambar5= $dataSoal['opsi_e'];
 
-            if (file_exists('./assets/img/opsiquiz/' . $gambar) && $gambar != '') {
-                unlink('./assets/img/opsiquiz/' . $gambar);
+            if (file_exists('./assets/img/quiz/' . $gambar) && $gambar != '') {
+                unlink('./assets/img/quiz/' . $gambar);
             }
-            if (file_exists('./assets/img/opsiquiz/' . $gambar1) && $gambar1 != '') {
-                unlink('./assets/img/opsiquiz/' . $gambar1);
+            if (file_exists('./assets/img/quiz/' . $gambar1) && $gambar1 != '') {
+                unlink('./assets/img/quiz/' . $gambar1);
             }
-            if (file_exists('./assets/img/opsiquiz/' . $gambar2)) {
-                unlink('./assets/img/opsiquiz/' . $gambar2);
+            if (file_exists('./assets/img/quiz/' . $gambar2)) {
+                unlink('./assets/img/quiz/' . $gambar2);
             }
-            if (file_exists('./assets/img/opsiquiz/' . $gambar3)) {
-                unlink('./assets/img/opsiquiz/' . $gambar3);
+            if (file_exists('./assets/img/quiz/' . $gambar3)) {
+                unlink('./assets/img/quiz/' . $gambar3);
             }
-            if (file_exists('./assets/img/opsiquiz/' . $gambar4)) {
-                unlink('./assets/img/opsiquiz/' . $gambar4);
+            if (file_exists('./assets/img/quiz/' . $gambar4)) {
+                unlink('./assets/img/quiz/' . $gambar4);
             }
-            if (file_exists('./assets/img/opsiquiz/' . $gambar5)) {
-                unlink('./assets/img/opsiquiz/' . $gambar5);
+            if (file_exists('./assets/img/quiz/' . $gambar5)) {
+                unlink('./assets/img/quiz/' . $gambar5);
             }
 
             $gambar = $_FILES['gambar']['name'];
             if ($gambar) {
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
                 $config['max_size'] = '2048';
-                $config['upload_path'] = './assets/img/opsiquiz/';
+                $config['upload_path'] = './assets/img/quiz/';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('gambar')) {
                     $gambar = $this->upload->data('file_name');
@@ -293,7 +297,7 @@ class KelolaQuiz extends CI_Controller {
                 $opsiA = htmlspecialchars($this->input->post('a', true));
             }
             if ($gambarA != '') {
-                $config['upload_path'] = './assets/img/opsiquiz/';
+                $config['upload_path'] = './assets/img/quiz/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -314,7 +318,7 @@ class KelolaQuiz extends CI_Controller {
             }
 
             if ($gambarB != '') {
-                $config['upload_path'] = './assets/img/opsiquiz/';
+                $config['upload_path'] = './assets/img/quiz/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -334,7 +338,7 @@ class KelolaQuiz extends CI_Controller {
             }
 
             if ($gambarC != '') {
-                $config['upload_path'] = './assets/img/opsiquiz/';
+                $config['upload_path'] = './assets/img/quiz/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -355,7 +359,7 @@ class KelolaQuiz extends CI_Controller {
             }
 
             if ($gambarD != '') {
-                $config['upload_path'] = './assets/img/opsiquiz/';
+                $config['upload_path'] = './assets/img/quiz/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -376,7 +380,7 @@ class KelolaQuiz extends CI_Controller {
             }
 
             if ($gambarE != '') {
-                $config['upload_path'] = './assets/img/opsiquiz/';
+                $config['upload_path'] = './assets/img/quiz/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);

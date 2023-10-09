@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <img src="<?= base_url('assets/img/opsiquiz/' . $soal['opsi_a']); ?>" width="100px" id = "gambar_a" alt="Gambar Opsi A">
+                        <img src="<?= base_url('assets/img/quiz/' . $soal['opsi_a']); ?>" width="100px" id = "gambar_a" alt="Gambar Opsi A">
                     </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <img src="<?= base_url('assets/img/opsiquiz/' . $soal['opsi_b']); ?>" width="100px" id = "gambar_b" alt="Gambar Opsi B">
+                        <img src="<?= base_url('assets/img/quiz/' . $soal['opsi_b']); ?>" width="100px" id = "gambar_b" alt="Gambar Opsi B">
                     </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <img src="<?= base_url('assets/img/opsiquiz/' . $soal['opsi_c']); ?>" width="100px" id = "gambar_c" alt="Gambar Opsi C">
+                        <img src="<?= base_url('assets/img/quiz/' . $soal['opsi_c']); ?>" width="100px" id = "gambar_c" alt="Gambar Opsi C">
                     </div>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <img src="<?= base_url('assets/img/opsiquiz/' . $soal['opsi_d']); ?>" width="100px" id = "gambar_d" alt="Gambar Opsi D">
+                        <img src="<?= base_url('assets/img/quiz/' . $soal['opsi_d']); ?>" width="100px" id = "gambar_d" alt="Gambar Opsi D">
                     </div>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <img src="<?= base_url('assets/img/opsiquiz/' . $soal['opsi_e']); ?>" width="100px" id = "gambar_e" alt="Gambar Opsi E">
+                        <img src="<?= base_url('assets/img/quiz/' . $soal['opsi_e']); ?>" width="100px" id = "gambar_e" alt="Gambar Opsi E">
                     </div>
                     </div>
                 </div>

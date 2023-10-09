@@ -244,7 +244,7 @@
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                    <h6 class="text-white text-capitalize ps-3">Soal Pre-Test</h6>
+                    <h6 class="text-white text-capitalize ps-3">Soal Quiz</h6>
                 </div>
                 </div>
                 
@@ -292,8 +292,8 @@
                                         <td><img src = "<?php echo base_url('assets/img/quiz/').$j['gambar'];?>" width = '300px' width = '150px' alt = "Tidak ada gambar"> </img></td>
                                         <td>
                                         <?php if (!empty($j['opsi_a'])) : ?>
-                                            <?php if (file_exists('assets/img/opsiquiz/' . $j['opsi_a'])) : ?>
-                                                <img src="<?= base_url('assets/img/opsiquiz/' . $j['opsi_a']); ?>" width="100px" alt="Gambar Opsi A">
+                                            <?php if (file_exists('assets/img/quiz/' . $j['opsi_a'])) : ?>
+                                                <img src="<?= base_url('assets/img/quiz/' . $j['opsi_a']); ?>" width="100px" alt="Gambar Opsi A">
                                             <?php else : ?>
                                                 <?= nl2br(htmlspecialchars($j['opsi_a'])); ?>
                                             <?php endif; ?>
@@ -301,8 +301,8 @@
                                         </td>                                        
                                         <td>
                                         <?php if (!empty($j['opsi_b'])) : ?>
-                                            <?php if (file_exists('assets/img/opsiquiz/' . $j['opsi_b'])) : ?>
-                                                <img src="<?= base_url('assets/img/opsiquiz/' . $j['opsi_b']); ?>" width="100px" alt="Gambar Opsi B">
+                                            <?php if (file_exists('assets/img/quiz/' . $j['opsi_b'])) : ?>
+                                                <img src="<?= base_url('assets/img/quiz/' . $j['opsi_b']); ?>" width="100px" alt="Gambar Opsi B">
                                             <?php else : ?>
                                                 <?= nl2br(htmlspecialchars($j['opsi_b'])); ?>
                                             <?php endif; ?>
@@ -310,8 +310,8 @@
                                         </td>
                                         <td>
                                         <?php if (!empty($j['opsi_c'])) : ?>
-                                            <?php if (file_exists('assets/img/opsiquiz/' . $j['opsi_c'])) : ?>
-                                                <img src="<?= base_url('assets/img/opsiquiz/' . $j['opsi_c']); ?>" width="100px" alt="Gambar Opsi C">
+                                            <?php if (file_exists('assets/img/quiz/' . $j['opsi_c'])) : ?>
+                                                <img src="<?= base_url('assets/img/quiz/' . $j['opsi_c']); ?>" width="100px" alt="Gambar Opsi C">
                                             <?php else : ?>
                                                 <?= nl2br(htmlspecialchars($j['opsi_c'])); ?>
                                             <?php endif; ?>
@@ -319,8 +319,8 @@
                                         </td>  
                                         <td>       
                                         <?php if (!empty($j['opsi_d'])) : ?>
-                                            <?php if (file_exists('assets/img/opsiquiz/' . $j['opsi_d'])) : ?>
-                                                <img src="<?= base_url('assets/img/opsiquiz/' . $j['opsi_d']); ?>" width="100px" alt="Gambar Opsi D">
+                                            <?php if (file_exists('assets/img/quiz/' . $j['opsi_d'])) : ?>
+                                                <img src="<?= base_url('assets/img/quiz/' . $j['opsi_d']); ?>" width="100px" alt="Gambar Opsi D">
                                             <?php else : ?>
                                                 <?= nl2br(htmlspecialchars($j['opsi_d'])); ?>
                                             <?php endif; ?>
@@ -328,8 +328,8 @@
                                         </td>
                                         <td>
                                         <?php if (!empty($j['opsi_e'])) : ?>
-                                            <?php if (file_exists('assets/img/opsiquiz/' . $j['opsi_e'])) : ?>
-                                                <img src="<?= base_url('assets/img/opsiquiz/' . $j['opsi_e']); ?>" width="100px" alt="Gambar Opsi E">
+                                            <?php if (file_exists('assets/img/quiz/' . $j['opsi_e'])) : ?>
+                                                <img src="<?= base_url('assets/img/quiz/' . $j['opsi_e']); ?>" width="100px" alt="Gambar Opsi E">
                                             <?php else : ?>
                                                 <?= nl2br(htmlspecialchars($j['opsi_e'])); ?>
                                             <?php endif; ?>

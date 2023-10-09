@@ -30,7 +30,6 @@ class FileManager extends CI_Controller
     $config['upload_path'] = './uploads/'.$kelompok;
     $config['allowed_types'] = 'json|zip'; // Perhatikan tanda kutip di dalam karakter pipa
     $this->load->library('upload', $config);
-    
     if ($this->upload->do_upload('file')) {
         redirect('FileManager');
     } else {

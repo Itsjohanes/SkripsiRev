@@ -111,6 +111,11 @@ class Admin_model extends CI_Model
                 $string = $string . " + COALESCE(tb_nilai.tugas_" . $i . ", 0)";
             }
         }
+        for ($i = 1; $i <= $jumlahPertemuan; $i++) {
+            if ($this->Kelolapertemuan_model->getPertemuanbyId($i) != null) {
+                $string = $string . " + COALESCE(tb_nilai.quiz_" . $i . ", 0)";
+            }
+        }
         $string = $string . ") AS total_nilai";
         $this->db->select($string);
         $this->db->from('tb_nilai');

@@ -64,7 +64,7 @@ class KelolaPosttest extends CI_Controller {
                 $opsiA = htmlspecialchars($this->input->post('a', true));
             }
             if ($gambarA != '') {
-                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['upload_path'] = './assets/img/posttest/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -85,7 +85,7 @@ class KelolaPosttest extends CI_Controller {
             }
 
             if ($gambarB != '') {
-                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['upload_path'] = './assets/img/posttest/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -105,7 +105,7 @@ class KelolaPosttest extends CI_Controller {
             }
 
             if ($gambarC != '') {
-                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['upload_path'] = './assets/img/posttest/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -126,7 +126,7 @@ class KelolaPosttest extends CI_Controller {
             }
 
             if ($gambarD != '') {
-                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['upload_path'] = './assets/img/posttest/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -147,7 +147,7 @@ class KelolaPosttest extends CI_Controller {
             }
 
             if ($gambarE != '') {
-                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['upload_path'] = './assets/img/posttest/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -189,21 +189,21 @@ class KelolaPosttest extends CI_Controller {
             $opsi_d = $posttest['opsi_d'];
             $opsi_e = $posttest['opsi_e'];
             //hapus jika ada
-            if (file_exists('./assets/img/opsiposttest/'.$opsi_a )&&$opsi_a!=''){
-                unlink('./assets/img/opsiposttest/'.$opsi_a);
+            if (file_exists('./assets/img/posttest/'.$opsi_a )&&$opsi_a!=''){
+                unlink('./assets/img/posttest/'.$opsi_a);
             }
             //lanjut buat a-e
-            if (file_exists('./assets/img/opsiposttest/'.$opsi_b )&&$opsi_b!=''){
-                unlink('./assets/img/opsiposttest/'.$opsi_b);
+            if (file_exists('./assets/img/posttest/'.$opsi_b )&&$opsi_b!=''){
+                unlink('./assets/img/posttest/'.$opsi_b);
             }
-            if (file_exists('./assets/img/opsiposttest/'.$opsi_c )&&$opsi_c!=''){
-                unlink('./assets/img/opsiposttest/'.$opsi_c);
+            if (file_exists('./assets/img/posttest/'.$opsi_c )&&$opsi_c!=''){
+                unlink('./assets/img/posttest/'.$opsi_c);
             }
-            if (file_exists('./assets/img/opsiposttest/'.$opsi_d )&&$opsi_d!=''){
-                unlink('./assets/img/opsiposttest/'.$opsi_d);
+            if (file_exists('./assets/img/posttest/'.$opsi_d )&&$opsi_d!=''){
+                unlink('./assets/img/posttest/'.$opsi_d);
             }
-            if (file_exists('./assets/img/opsiposttest/'.$opsi_e )&&$opsi_e!=''){
-                unlink('./assets/img/opsiposttest/'.$opsi_e);
+            if (file_exists('./assets/img/posttest/'.$opsi_e )&&$opsi_e!=''){
+                unlink('./assets/img/posttest/'.$opsi_e);
             }
             if(file_exists('./assets/img/posttest/' . $gambar) && $gambar != ''){
             unlink(FCPATH . 'assets/img/posttest/' . $gambar);
@@ -246,23 +246,23 @@ class KelolaPosttest extends CI_Controller {
             $gambar4 = $dataSoal['opsi_d'];
             $gambar5= $dataSoal['opsi_e'];
 
-            if (file_exists('./assets/img/opsiposttest/' . $gambar) && $gambar != '') {
-                unlink('./assets/img/opsiposttest/' . $gambar);
+            if (file_exists('./assets/img/posttest/' . $gambar) && $gambar != '') {
+                unlink('./assets/img/posttest/' . $gambar);
             }
-            if (file_exists('./assets/img/opsiposttest/' . $gambar1) && $gambar1 != '') {
-                unlink('./assets/img/opsiposttest/' . $gambar1);
+            if (file_exists('./assets/img/posttest/' . $gambar1) && $gambar1 != '') {
+                unlink('./assets/img/posttest/' . $gambar1);
             }
-            if (file_exists('./assets/img/opsiposttest/' . $gambar2)) {
-                unlink('./assets/img/opsiposttest/' . $gambar2);
+            if (file_exists('./assets/img/posttest/' . $gambar2)) {
+                unlink('./assets/img/posttest/' . $gambar2);
             }
-            if (file_exists('./assets/img/opsiposttest/' . $gambar3)) {
-                unlink('./assets/img/opsiposttest/' . $gambar3);
+            if (file_exists('./assets/img/posttest/' . $gambar3)) {
+                unlink('./assets/img/posttest/' . $gambar3);
             }
-            if (file_exists('./assets/img/opsiposttest/' . $gambar4)) {
-                unlink('./assets/img/opsiposttest/' . $gambar4);
+            if (file_exists('./assets/img/posttest/' . $gambar4)) {
+                unlink('./assets/img/posttest/' . $gambar4);
             }
-            if (file_exists('./assets/img/opsiposttest/' . $gambar5)) {
-                unlink('./assets/img/opsiposttest/' . $gambar5);
+            if (file_exists('./assets/img/posttest/' . $gambar5)) {
+                unlink('./assets/img/posttest/' . $gambar5);
             }
 
             $gambar = $_FILES['gambar']['name'];
@@ -289,7 +289,7 @@ class KelolaPosttest extends CI_Controller {
                 $opsiA = htmlspecialchars($this->input->post('a', true));
             }
             if ($gambarA != '') {
-                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['upload_path'] = './assets/img/posttest/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -310,7 +310,7 @@ class KelolaPosttest extends CI_Controller {
             }
 
             if ($gambarB != '') {
-                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['upload_path'] = './assets/img/posttest/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -330,7 +330,7 @@ class KelolaPosttest extends CI_Controller {
             }
 
             if ($gambarC != '') {
-                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['upload_path'] = './assets/img/posttest/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -351,7 +351,7 @@ class KelolaPosttest extends CI_Controller {
             }
 
             if ($gambarD != '') {
-                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['upload_path'] = './assets/img/posttest/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
@@ -372,7 +372,7 @@ class KelolaPosttest extends CI_Controller {
             }
 
             if ($gambarE != '') {
-                $config['upload_path'] = './assets/img/opsiposttest/';
+                $config['upload_path'] = './assets/img/posttest/';
                 $config['allowed_types'] = 'png|jpeg|jpg|bmp';
 
                 $this->load->library('upload', $config);
