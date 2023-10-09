@@ -16,7 +16,7 @@
         ?>
           <form id="opsipretest-form" action="<?= base_url('Pretest/SimpanPreTest') ?>" method="POST">
             <div class="question bg-white p-3 border-bottom">
-              <input type="hidden" name="id_opsipretest[]" value="<?php echo $data['id_soal']; ?>">
+              <input type="hidden" name="id_pretest[]" value="<?php echo $data['id_soal']; ?>">
               <input type="hidden" name="jumlah" value="<?php echo $jumlah; ?>">
             </div>
             <div class="d-flex flex-row align-items-center question-title">

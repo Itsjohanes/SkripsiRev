@@ -45,6 +45,10 @@ class MenilaiPretest extends CI_Controller {
 			$sheet->setCellValue('E1', 'Benar');
 			$sheet->setCellValue('F1', 'Salah');
             $sheet->setCellValue('G1', 'Kosong');
+            $sheet->setCellValue('H1', 'Memahami Masalah');
+            $sheet->setCellValue('I1', 'Merencanakan Penyelesaian Masalah');
+            $sheet->setCellValue('J1', 'Melaksanakan Penyelesaian Masalah');
+            $sheet->setCellValue('K1', 'Memeriksa Kembali');
 			$siswa = $this->Menilaipretest_model->getHasilPretest();
 			$no = 1;
 			$x = 2;
@@ -57,6 +61,10 @@ class MenilaiPretest extends CI_Controller {
 				$sheet->setCellValue('E'.$x, $row['benar']);
                 $sheet->setCellValue('F'.$x, $row['salah']);
                 $sheet->setCellValue('G'.$x, $row['kosong']);
+                $sheet->setCellValue('H'.$x, $row['memahami_masalah']);
+                $sheet->setCellValue('I'.$x, $row['merencanakan_pemecahan_masalah']);
+                $sheet->setCellValue('J'.$x, $row['melaksanakan_pemecahan_masalah']);
+                $sheet->setCellValue('K'.$x, $row['memeriksa_kembali']);
 				$x++;
 			}
 			$writer = new Xlsx($spreadsheet);

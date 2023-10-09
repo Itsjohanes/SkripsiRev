@@ -188,37 +188,37 @@
                         <select  required class="form-control"  id="kunci" name="kunci">
                             <?php
                             if ($soal['kunci'] == 'A') {
-                                echo '<option selected="selected">A</option>';
+                                echo '<option value = "A" selected="selected">A</option>';
                             } else {
-                                echo '<option>A</option>';
+                                echo '<option value = "A">A</option>';
                             }
                             ?>
                             <?php
                             if ($soal['kunci'] == 'B') {
-                                echo '<option selected="selected">B</option>';
+                                echo '<option value = "B" selected="selected">B</option>';
                             } else {
-                                echo '<option>B</option>';
+                                echo '<option value = "B">B</option>';
                             }
                             ?>
                             <?php
                             if ($soal['kunci'] == 'C') {
-                                echo '<option selected="selected">C</option>';
+                                echo '<option value = "C" selected="selected">C</option>';
                             } else {
-                                echo '<option>C</option>';
+                                echo '<option value = "C">C</option>';
                             }
                             ?>
                             <?php
                             if ($soal['kunci'] == 'D') {
-                                echo '<option selected="selected">D</option>';
+                                echo '<option value = "D" selected="selected">D</option>';
                             } else {
-                                echo '<option>D</option>';
+                                echo '<option value = "D">D</option>';
                             }
                             ?>
                             <?php
                             if ($soal['kunci'] == 'E') {
-                                echo '<option selected="selected">E</option>';
+                                echo '<option value = "E" selected="selected">E</option>';
                             } else {
-                                echo '<option>E</option>';
+                                echo '<option value = "E">E</option>';
                             }
                             ?>
 

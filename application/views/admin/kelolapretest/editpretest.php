@@ -185,45 +185,87 @@
                     <div class="col">
                         <div class="input-group input-group-outline">
                         <select  required class="form-control"  id="kunci" name="kunci">
- <?php
+                        <?php
                             if ($soal['kunci'] == 'A') {
-                                echo '<option selected="selected">A</option>';
+                                echo '<option value = "A" selected="selected">A</option>';
                             } else {
-                                echo '<option>A</option>';
+                                echo '<option value = "A">A</option>';
                             }
                             ?>
                             <?php
                             if ($soal['kunci'] == 'B') {
-                                echo '<option selected="selected">B</option>';
+                                echo '<option value = "B" selected="selected">B</option>';
                             } else {
-                                echo '<option>B</option>';
+                                echo '<option value = "B">B</option>';
                             }
                             ?>
                             <?php
                             if ($soal['kunci'] == 'C') {
-                                echo '<option selected="selected">C</option>';
+                                echo '<option value = "C" selected="selected">C</option>';
                             } else {
-                                echo '<option>C</option>';
+                                echo '<option value = "C">C</option>';
                             }
                             ?>
                             <?php
                             if ($soal['kunci'] == 'D') {
-                                echo '<option selected="selected">D</option>';
+                                echo '<option value = "D" selected="selected">D</option>';
                             } else {
-                                echo '<option>D</option>';
+                                echo '<option value = "D">D</option>';
                             }
                             ?>
                             <?php
                             if ($soal['kunci'] == 'E') {
-                                echo '<option selected="selected">E</option>';
+                                echo '<option value = "E" selected="selected">E</option>';
                             } else {
-                                echo '<option>E</option>';
+                                echo '<option value = "E">E</option>';
                             }
                             ?>
 
                         </select>
                     </div>
                     </div>
+                </div>
+            <div class="row">
+                    <label for="nilai">Indikator Problem Solving</label>
+                    <div class="input-group input-group-outline">
+                            <div class="row">
+                    <div class="col">
+                        <div class="input-group input-group-outline">
+                        <select  required class="form-control"  id="id_ps" name="id_ps">
+                        <?php
+                            if ($soal['id_ps'] == 1) {
+                                echo '<option value = 1 selected="selected">Memahami Masalah</option>';
+                            } else {
+                                echo '<option value = 1>Memahami Masalah</option>';
+                            }
+                            ?>
+                            <?php
+                            if ($soal['id_ps'] == 2) {
+                                echo '<option value = 2 selected="selected">Merencanakan Penyelesaian Masalah</option>';
+                            } else {
+                                echo '<option value = 2>Merencanakan Penyelesaian Masalah</option>';
+                            }
+                            ?>
+                            <?php
+                            if ($soal['id_ps'] == 3) {
+                                echo '<option value = 3 selected="selected">Melaksanakan Penyelesaian Masalah</option>';
+                            } else {
+                                echo '<option value = 3>Melaksanakan Penyelesaian Masalah</option>';
+                            }
+                            ?>
+                            <?php
+                            if ($soal['id_ps'] == 4) {
+                                echo '<option value = 4 selected="selected">Memeriksa Kembali</option>';
+                            } else {
+                                echo '<option value = 4>Memeriksa Kembali</option>';
+                            }
+                            ?>
+                           
+
+                        </select>
+                    </div>
+                    </div>
+                </div>
                 </div>
                  <div class="row">
                     <div class="col">

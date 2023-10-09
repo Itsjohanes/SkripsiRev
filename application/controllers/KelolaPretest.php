@@ -33,6 +33,7 @@ class KelolaPretest extends CI_Controller {
             //memasukan soal dan gambar ke tb_pretest
             $soal = $this->input->post('soal');
             $kunci = $this->input->post('kunci');
+            $id_ps = $this->input->post('id_ps');
             $gambar = $_FILES['gambar']['name'];
             if ($gambar) {
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -160,6 +161,7 @@ class KelolaPretest extends CI_Controller {
                 'opsi_e' => $opsiE,
                 'kunci' => $kunci,
                 'gambar' => $gambar,
+                'id_ps' => $id_ps,
                 'id_test' => 1
             ];
             $this->Kelolapretest_model->tambahPretest($data);

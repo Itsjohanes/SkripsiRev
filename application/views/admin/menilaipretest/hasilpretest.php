@@ -28,27 +28,17 @@
                                     <th scope="col">Benar</th>
                                     <th scope="col">Salah</th>
                                     <th scope="col">Kosong</th>
+                                    <th scope="col">Memahami Masalah</th>
+                                    <th scope="col">Merencanakan Pemecahan Masalah</th>
+                                    <th scope="col">Melaksanakan Pemecahan Masalah</th>
+                                    <th scope="col">Memeriksa Kembali</th>
                                     <th scope="col">Timestamp</th>
                                     <th scope="col">Action</th>
 
 
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Nama Siswa</th>
-                                    <th scope="col">Jawaban</th>
-                                    <th scope="col">Score</th>
-                                    <th scope="col">Benar</th>
-                                    <th scope="col">Salah</th>
-                                    <th scope="col">Kosong</th>
-                                    <th scope="col">Timestamp</th>
-                                    <th scope="col">Action</th>
-
-
-                                </tr>
-                            </tfoot>
+                            
                             <tbody>
                                 <?php $i = 1; ?>
                                 <?php foreach ($pretest as $j) : ?>
@@ -60,6 +50,11 @@
                                         <td><?= $j['benar']; ?></td>
                                         <td><?= $j['salah']; ?></td>
                                         <td><?= $j['kosong']; ?></td>
+                                        <td><?= $j['memahami_masalah']; ?></td>
+                                        <td><?= $j['merencanakan_pemecahan_masalah']; ?></td>
+                                        <td><?= $j['melaksanakan_pemecahan_masalah']; ?></td>
+                                        <td><?= $j['memeriksa_kembali']; ?></td>
+
                                         <td><?= $j['created_at'];?></td>
                                         <td>
                                             <a class="btn btn-danger hapus-btn" href="<?= base_url('MenilaiPretest/hapusHasilPretest/') . $j['id_hasiltest']; ?>"><i class="fas fa-trash-alt"></i></a>

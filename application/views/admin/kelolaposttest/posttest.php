@@ -211,11 +211,11 @@
                     <div class="col">
                         <div class="input-group input-group-outline">
                         <select  required class="form-control"  id="kunci" name="kunci">
-                        <option>A</option>
-                        <option>B</option>
-                        <option>C</option>
-                        <option>D</option>
-                        <option>E</option>
+                        <option option value = "A">A</option>
+                        <option option value = "B">B</option>
+                        <option option value = "C">C</option>
+                        <option option value = "D">D</option>
+                        <option option value = "E">E</option>
                         </select>
                     </div>
                 </div>
