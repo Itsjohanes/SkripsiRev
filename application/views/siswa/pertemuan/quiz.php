@@ -1,12 +1,25 @@
+<style>
+  .border {
+    border: 1px solid #dee2e6;
+  }
+
+  .form-check-label {
+    margin-left: 1rem;
+  }
+
+  .form-check {
+    margin-bottom: 1rem;
+  }
+
+  .form-check-input[type="radio"] {
+    margin-top: 0.3rem;
+  }
+</style>
+
 <div class="container mt-5">
   <div class="d-flex justify-content-center row">
     <div class="col-md-10 col-lg-10">
-      <div class="border">
-        <div class="question bg-white p-3 border-bottom">
-          <div class="d-flex flex-row justify-content-between align-items-center mcq">
-            <h4>Quiz</h4>
-          </div>
-        </div>
+      <div class="border rounded p-4">
 
         <?php
         $no = 0;
@@ -14,92 +27,44 @@
           $no++
         ?>
           <form id="quiz-form" action="<?= base_url('pertemuan/simpanquiz') ?>" method="POST">
-            <div class="question bg-white p-3 border-bottom">
-              <input type="hidden" name="id_quiz[]" value="<?php echo $data['id_soal']; ?>">
-              <input type="hidden" name="id_pertemuan" value="<?php echo $data['id_pertemuan']; ?>">
-              <input type="hidden" name="jumlah" value="<?php echo $jumlah; ?>">
-            </div>
-            <div class="d-flex flex-row align-items-center question-title">
-              <h6 class="mt-1 ml-2"><?php echo $no; ?>.</h6>
-              <h6 class="mt-1 ml-2"><?php echo $data['soal']; ?></h6>
-            </div>
-            <?php
-            if (!empty($data['gambar'])) {
-              $nama = $data['gambar'];
-              echo "<tr><td></td><td><img src='" . base_url('assets/img/quiz/' . $nama) . "' class='img-fluid' alt='Responsive image'></td></tr>";
-            }
-            ?>
-          <div class="ans ml-2">
-              <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="A" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_a')">
-                  <?php if (!empty($data['opsi_a'])) : ?>
-                       <?php if (file_exists('assets/img/quiz/' . $data['opsi_a'])) : ?>
-                       <img src="<?= base_url('assets/img/quiz/' . $data['opsi_a']); ?>" width="200px" alt="Gambar Opsi A">
-                    <?php else : ?>
-                      <?= nl2br(htmlspecialchars($data['opsi_a'])); ?>
-                    <?php endif; ?>
-                <?php endif; ?>
-              </label>
-            </div>
-            <div class="ans ml-2">
-              <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="B" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_b')">
-                  <?php if (!empty($data['opsi_b'])) : ?>
-                       <?php if (file_exists('assets/img/quiz/' . $data['opsi_b'])) : ?>
-                       <img src="<?= base_url('assets/img/quiz/' . $data['opsi_b']); ?>" width="200px" alt="Gambar Opsi B">
-                    <?php else : ?>
-                      <?= nl2br(htmlspecialchars($data['opsi_b'])); ?>
-                    <?php endif; ?>
-                <?php endif; ?>
-              </label>
-            </div>
-            <div class="ans ml-2">
-              <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="C" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_c')">
-                  <?php if (!empty($data['opsi_c'])) : ?>
-                       <?php if (file_exists('assets/img/quiz/' . $data['opsi_c'])) : ?>
-                       <img src="<?= base_url('assets/img/quiz/' . $data['opsi_c']); ?>" width="200px" alt="Gambar Opsi C">
-                    <?php else : ?>
-                      <?= nl2br(htmlspecialchars($data['opsi_c'])); ?>
-                    <?php endif; ?>
-                <?php endif; ?>
-              </label>
-            </div>
-            <div class="ans ml-2">
-              <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="D" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_d')">
-                  <?php if (!empty($data['opsi_d'])) : ?>
-                       <?php if (file_exists('assets/img/quiz/' . $data['opsi_d'])) : ?>
-                       <img src="<?= base_url('assets/img/quiz/' . $data['opsi_d']); ?>" width="200px" alt="Gambar Opsi D">
-                    <?php else : ?>
-                      <?= nl2br(htmlspecialchars($data['opsi_d'])); ?>
-                    <?php endif; ?>
-                <?php endif; ?>            
-                </label>
-            </div>
-            <div class="ans ml-2">
-              <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="E" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_e')">
-                  <?php if (!empty($data['opsi_e'])) : ?>
-                       <?php if (file_exists('assets/img/quiz/' . $data['opsi_e'])) : ?>
-                       <img src="<?= base_url('assets/img/quiz/' . $data['opsi_e']); ?>" width="200px" alt="Gambar Opsi E">
-                    <?php else : ?>
-                      <?= nl2br(htmlspecialchars($data['opsi_e'])); ?>
-                    <?php endif; ?>
-                <?php endif; ?>              
-              </label>
-            </div>
+            <!-- Soal Quiz -->
+            <div class="mb-3">
+              <h6 class="font-weight-bold"><?= $no . '. ' . $data['soal']; ?></h6>
+              <!-- Tampilkan Gambar Jika Ada -->
+              <?php if (!empty($data['gambar'])) : ?>
+                <img src="<?= base_url('assets/img/quiz/' . $data['gambar']); ?>" class="img-fluid mb-3" alt="Gambar Soal">
+              <?php endif; ?>
 
-        <?php
-        endforeach;
-        ?>
+              <!-- Opsi Jawaban -->
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="pilihan[<?= $data['id_soal'] ?>]" value="A">
+                <label class="form-check-label"><?= $data['opsi_a']; ?></label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="pilihan[<?= $data['id_soal'] ?>]" value="B">
+                <label class="form-check-label"><?= $data['opsi_b']; ?></label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="pilihan[<?= $data['id_soal'] ?>]" value="C">
+                <label class="form-check-label"><?= $data['opsi_c']; ?></label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="pilihan[<?= $data['id_soal'] ?>]" value="D">
+                <label class="form-check-label"><?= $data['opsi_d']; ?></label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="pilihan[<?= $data['id_soal'] ?>]" value="E">
+                <label class="form-check-label"><?= $data['opsi_e']; ?></label>
+              </div>
+            </div>
+        <?php endforeach; ?>
 
-        <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
-          <input type="reset" class="btn btn-danger" value="Reset">
-          <input type="submit" class="btn btn-success" >
+        <!-- Tombol Reset dan Submit -->
+        <div class="d-flex justify-content-between mt-4">
+          <button type="reset" class="btn btn-danger">Reset</button>
+          <button type="submit" class="btn btn-success">Submit</button>
         </div>
-        </form>
-      </div>
+      </form>
     </div>
   </div>
 </div>
