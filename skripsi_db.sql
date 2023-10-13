@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 09, 2023 at 04:40 PM
+-- Generation Time: Oct 13, 2023 at 12:26 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -32,27 +32,21 @@ CREATE TABLE `tb_akun` (
   `email` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` int NOT NULL,
-  `pretest` int DEFAULT NULL,
-  `posttest` int DEFAULT NULL,
-  `tugas_1` int DEFAULT NULL,
-  `tugas_2` int DEFAULT NULL,
-  `tugas_3` int DEFAULT NULL,
-  `tugas_4` int DEFAULT NULL
+  `role` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_akun`
 --
 
-INSERT INTO `tb_akun` (`id`, `email`, `nama`, `password`, `role`, `pretest`, `posttest`, `tugas_1`, `tugas_2`, `tugas_3`, `tugas_4`) VALUES
-(2, 'johanesalex774@gmail.com', 'Johannes Alexander Putra', '$2y$10$DgitFkqtyYH.LyELrzS0JOq1UF7yfk/Yn7AvnnKgBXV3ulzTiTKWy', 1, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'johannes@upi.edu', 'Putra', '$2y$10$jUdluVMq/zoW1eob56Md9OmVHGnxvdPWwz3n2djYZX3ZRl9HOp.YW', 0, NULL, 0, 100, NULL, NULL, NULL),
-(11, 'a455lgrowtopia@gmail.com', 'Doni', '$2y$10$9GdFYSOfqLIqzyEE00dQ3e6aGK9jhPks7mcMJU7cw.F2WoNodCd4m', 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(12, 'a455dlgrowtopia@gmail.com', 'Kevin', '$2y$10$c4zrWxv6sJCiJGkbPjMruu318b.2sqwVLxGHNVNnLHQPu9B6ezqk2', 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(13, 'a455wwlgrowtopia@gmail.com', 'Jie', '$2y$10$wm4tkhRanDdLLC4OwVtcreMEBdAalXU3V620mx6NQTuH.WNm0DyP6', 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(14, 'johannesap@upi.edu', 'Kevina', '$2y$10$zROPeT9UQPHQpst1ArZimONOT7TLSPVyTHiAiC3KRhckBQKvpvKTG', 0, NULL, NULL, 100, NULL, NULL, NULL),
-(16, 'dian@upi.edu', 'Dian Lestari', '$2y$10$4JlgGisbr7cugCbF8YSkAuOr1xmZnVN2qW12vwIe6zbpe97mIR4Wm', 0, 50, 100, 100, 100, 100, 100);
+INSERT INTO `tb_akun` (`id`, `email`, `nama`, `password`, `role`) VALUES
+(2, 'johanesalex774@gmail.com', 'Johannes Alexander Putra', '$2y$10$DgitFkqtyYH.LyELrzS0JOq1UF7yfk/Yn7AvnnKgBXV3ulzTiTKWy', 1),
+(3, 'johannes@upi.edu', 'Putra', '$2y$10$jUdluVMq/zoW1eob56Md9OmVHGnxvdPWwz3n2djYZX3ZRl9HOp.YW', 0),
+(11, 'a455lgrowtopia@gmail.com', 'Doni', '$2y$10$9GdFYSOfqLIqzyEE00dQ3e6aGK9jhPks7mcMJU7cw.F2WoNodCd4m', 0),
+(12, 'a455dlgrowtopia@gmail.com', 'Kevin', '$2y$10$eLOxsiRTVEnDg9Mo8HAy8.hh5EC9Ym49dh5kFP80zAIHdT0GiY2Ne', 0),
+(13, 'a455wwlgrowtopia@gmail.com', 'Jie', '$2y$10$wm4tkhRanDdLLC4OwVtcreMEBdAalXU3V620mx6NQTuH.WNm0DyP6', 0),
+(14, 'johannesap@upi.edu', 'Kevina', '$2y$10$zROPeT9UQPHQpst1ArZimONOT7TLSPVyTHiAiC3KRhckBQKvpvKTG', 0),
+(16, 'dian@upi.edu', 'Dian Lestari', '$2y$10$eapx.RkFEI4ao2VZx46NvuXtiqVCs8wG3L/EgYDUI7Hkco858peBi', 0);
 
 -- --------------------------------------------------------
 
@@ -61,7 +55,7 @@ INSERT INTO `tb_akun` (`id`, `email`, `nama`, `password`, `role`, `pretest`, `po
 --
 
 CREATE TABLE `tb_comments` (
-  `id` int NOT NULL,
+  `id_comment` int NOT NULL,
   `id_pertemuan` int NOT NULL,
   `id_user` int NOT NULL,
   `comment` text NOT NULL,
@@ -74,7 +68,7 @@ CREATE TABLE `tb_comments` (
 -- Dumping data for table `tb_comments`
 --
 
-INSERT INTO `tb_comments` (`id`, `id_pertemuan`, `id_user`, `comment`, `parent_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tb_comments` (`id_comment`, `id_pertemuan`, `id_user`, `comment`, `parent_id`, `created_at`, `updated_at`) VALUES
 (10, 1, 14, 'Pertemuan 1 sangat hebat', 0, '2023-06-04 04:24:37', '2023-06-12 00:00:23'),
 (11, 1, 14, 'Benar', 10, '2023-06-04 04:24:43', '2023-06-12 00:00:26'),
 (12, 1, 14, 'Pertemuan 1 keren mas bro', 0, '2023-06-04 04:24:53', '2023-06-12 00:00:30'),
@@ -120,27 +114,16 @@ INSERT INTO `tb_comments` (`id`, `id_pertemuan`, `id_user`, `comment`, `parent_i
 (52, 1, 2, 'Pertemuan 1 masuk ajax', 0, '2023-08-03 11:59:17', '2023-08-03 11:59:17'),
 (53, 1, 2, 'rr', 0, '2023-08-03 11:59:37', '2023-08-03 11:59:37'),
 (54, 1, 2, 'dd', 52, '2023-08-03 11:59:57', '2023-08-03 11:59:57'),
-(55, 1, 2, 'ff', 53, '2023-08-03 12:01:09', '2023-08-03 12:01:09');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_contact`
---
-
-CREATE TABLE `tb_contact` (
-  `id_pengirim` int NOT NULL,
-  `nama_pengirim` varchar(255) NOT NULL,
-  `email_pengirim` varchar(255) NOT NULL,
-  `pesan_pengirim` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tb_contact`
---
-
-INSERT INTO `tb_contact` (`id_pengirim`, `nama_pengirim`, `email_pengirim`, `pesan_pengirim`) VALUES
-(19, 'Johannes Alexander Putra', 'johannes@upi.edu', 'baguss');
+(55, 1, 2, 'ff', 53, '2023-08-03 12:01:09', '2023-08-03 12:01:09'),
+(56, 1, 3, 'tes', 0, '2023-08-31 11:04:38', '2023-08-31 11:04:38'),
+(57, 1, 3, 'benar', 10, '2023-09-07 11:59:00', '2023-09-07 11:59:00'),
+(58, 1, 3, 'sekali', 10, '2023-09-07 11:59:11', '2023-09-07 11:59:11'),
+(59, 1, 3, 'rrr', 0, '2023-09-07 12:05:18', '2023-09-07 12:05:18'),
+(60, 1, 3, 'e', 10, '2023-09-07 12:10:18', '2023-09-07 12:10:18'),
+(61, 1, 3, '#include <stdio.h>\r\nint main(){\r\n printf(\"hello world\");\r\n}', 0, '2023-09-22 11:08:16', '2023-09-22 11:08:16'),
+(62, 1, 3, '#include <stdio.h>\r\nint main(){\r\n\r\n}', 0, '2023-09-22 11:18:24', '2023-09-22 11:18:24'),
+(63, 1, 2, '#include <stdio.h>\r\nint main(){\r\n\r\n}', 62, '2023-09-22 11:24:19', '2023-09-22 11:24:19'),
+(64, 1, 2, '#include <stdio.h>\nint main(){\nprintf(\"hello world\");\n}', 61, '2023-09-23 15:53:58', '2023-09-23 15:54:27');
 
 -- --------------------------------------------------------
 
@@ -149,7 +132,7 @@ INSERT INTO `tb_contact` (`id_pengirim`, `nama_pengirim`, `email_pengirim`, `pes
 --
 
 CREATE TABLE `tb_globalchat` (
-  `id` int NOT NULL,
+  `id_globalchat` int NOT NULL,
   `sender_id` int NOT NULL,
   `message` text NOT NULL,
   `created_at` datetime NOT NULL
@@ -159,13 +142,8 @@ CREATE TABLE `tb_globalchat` (
 -- Dumping data for table `tb_globalchat`
 --
 
-INSERT INTO `tb_globalchat` (`id`, `sender_id`, `message`, `created_at`) VALUES
-(5, 2, 'gt4es', '2023-06-18 13:27:51'),
-(6, 14, 'tes', '2023-06-18 13:30:25'),
-(7, 14, 'masuk', '2023-06-18 13:39:47'),
-(8, 2, 'pp', '2023-06-19 12:32:20'),
-(9, 2, 'tes', '2023-08-05 13:48:06'),
-(10, 2, 'dd', '2023-08-05 13:48:09');
+INSERT INTO `tb_globalchat` (`id_globalchat`, `sender_id`, `message`, `created_at`) VALUES
+(29, 2, '<br>#include <stdio.h><br>int main(){<br><br>char Z[4][4][10] = {<br>    \"Muhammad\",\"Rizal\",\"Rifky\",\" Sri\",<br>    \"Mulky   \",\"Meggy\",\"aulia\",\"    \",<br>    \"        \",\"Andika\",\"Tika\",\"Gina\",<br>    \"Umar    \",\"ihsan \",\"    \",\"tika\"<br><br>};<br><br>for (int i=0;i<4;i++){<br><br>    for(int j=0; j<4; j++)<br>    {<br>        printf(\"%s ,\", Z[i][j]);<br><br>    }<br>    printf(\"\\n\");<br><br>}<br><br>return 0 ;<br><br>}<br>', '2023-09-22 04:47:28');
 
 -- --------------------------------------------------------
 
@@ -174,12 +152,20 @@ INSERT INTO `tb_globalchat` (`id`, `sender_id`, `message`, `created_at`) VALUES
 --
 
 CREATE TABLE `tb_groupchat` (
-  `id` int NOT NULL,
+  `id_groupchat` int NOT NULL,
   `sender_id` int NOT NULL,
   `message` text NOT NULL,
   `kelompok` int NOT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_groupchat`
+--
+
+INSERT INTO `tb_groupchat` (`id_groupchat`, `sender_id`, `message`, `kelompok`, `created_at`) VALUES
+(18, 3, '#include <iostream><br><br>using namespace std;<br><br>int main()<br>{<br>    cout<<\"Hello World\";<br><br>    return 0;<br>}', 1, '2023-10-06 15:34:42'),
+(19, 3, 'Sudah kuupload ya ke file manager', 1, '2023-10-06 15:35:09');
 
 -- --------------------------------------------------------
 
@@ -191,6 +177,10 @@ CREATE TABLE `tb_hasilprepost` (
   `id_hasiltest` int NOT NULL,
   `id_siswa` int NOT NULL,
   `jawaban` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `memahami_masalah` int NOT NULL,
+  `merencanakan_pemecahan_masalah` int NOT NULL,
+  `melaksanakan_pemecahan_masalah` int NOT NULL,
+  `memeriksa_kembali` int NOT NULL,
   `score` int NOT NULL,
   `benar` int NOT NULL,
   `salah` int NOT NULL,
@@ -203,10 +193,39 @@ CREATE TABLE `tb_hasilprepost` (
 -- Dumping data for table `tb_hasilprepost`
 --
 
-INSERT INTO `tb_hasilprepost` (`id_hasiltest`, `id_siswa`, `jawaban`, `score`, `benar`, `salah`, `kosong`, `id_test`, `created_at`) VALUES
-(45, 3, 'A', 0, 0, 1, 0, 2, '2023-08-03 05:58:47'),
-(47, 16, 'AA', 50, 1, 1, 0, 1, '2023-08-05 19:21:42'),
-(48, 16, 'B', 100, 1, 0, 0, 2, '2023-08-07 08:54:11');
+INSERT INTO `tb_hasilprepost` (`id_hasiltest`, `id_siswa`, `jawaban`, `memahami_masalah`, `merencanakan_pemecahan_masalah`, `melaksanakan_pemecahan_masalah`, `memeriksa_kembali`, `score`, `benar`, `salah`, `kosong`, `id_test`, `created_at`) VALUES
+(63, 3, 'A', 0, 0, 100, 0, 100, 1, 0, 0, 2, '2023-10-09 06:47:59'),
+(64, 3, 'ABBCD', 100, 100, 100, 100, 100, 5, 0, 0, 1, '2023-10-09 07:17:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_hasilquiz`
+--
+
+CREATE TABLE `tb_hasilquiz` (
+  `id_hasilquiz` int NOT NULL,
+  `id_siswa` int NOT NULL,
+  `jawaban` varchar(255) NOT NULL,
+  `benar` int NOT NULL,
+  `salah` int NOT NULL,
+  `nilai` int NOT NULL,
+  `memahami_masalah` int NOT NULL,
+  `merencanakan_pemecahan_masalah` int NOT NULL,
+  `melaksanakan_pemecahan_masalah` int NOT NULL,
+  `memeriksa_kembali` int NOT NULL,
+  `kosong` int NOT NULL,
+  `id_pertemuan` int NOT NULL,
+  `timestamp` timestamp NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_hasilquiz`
+--
+
+INSERT INTO `tb_hasilquiz` (`id_hasilquiz`, `id_siswa`, `jawaban`, `benar`, `salah`, `nilai`, `memahami_masalah`, `merencanakan_pemecahan_masalah`, `melaksanakan_pemecahan_masalah`, `memeriksa_kembali`, `kosong`, `id_pertemuan`, `timestamp`) VALUES
+(9, 3, 'B', 1, 0, 100, 0, 0, 100, 0, 0, 1, '2023-10-11 06:43:35'),
+(11, 3, 'AA', 2, 0, 100, 100, 0, 0, 0, 0, 2, '2023-10-11 19:32:53');
 
 -- --------------------------------------------------------
 
@@ -232,13 +251,13 @@ CREATE TABLE `tb_hasiltugas` (
 --
 
 INSERT INTO `tb_hasiltugas` (`id_hasiltugas`, `nilai`, `id_pertemuan`, `id_siswa`, `komentar`, `text`, `upload`, `created_at`, `updated_at`, `scored_at`) VALUES
-(53, 100, 1, 14, 'keren bro', '', '3f1da01d781938ad969da5379f6742b9.pdf', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2023-08-05 07:11:02'),
+(53, 100, 1, 14, 'keren bro', '', '3f1da01d781938ad969da5379f6742b9.pdf', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2023-09-15 22:38:55'),
 (63, 100, 4, 16, '', 'tes', 'aaf72886eee2ed76370e99922aef83a8.pdf', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (65, 100, 1, 16, 'Baik, tapi harusya diupload ke classroom untuk tugas ini jika jawabannya ini', 'Ini tugas Pertemuan 1 ya bang', '0117976242289395c09886aaf5c32e63.pdf', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2023-08-05 07:16:51'),
 (67, 100, 3, 16, '', 'Pertemuan 3', '7cad9a792639ad06a8dd6048c0dc213b.pdf', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (68, 100, 2, 16, '', '', 'b0d5549652faf0aa13160e8f9b4fb5ca.pdf', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (73, 100, 1, 3, 'Ok bagus', 'Pa ini perbaikan saya ', 'c2a5a492846ffcea30bd417b42641300.pdf', '0000-00-00 00:00:00', '2023-07-23 06:44:15', '2023-07-23 06:47:43'),
-(81, NULL, 2, 3, '', 'tes', '4bdb8fe0c784cd88aa23289ef38792f0.pdf', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(81, 100, 2, 3, '', 'tes', '4bdb8fe0c784cd88aa23289ef38792f0.pdf', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2023-09-07 05:33:09');
 
 -- --------------------------------------------------------
 
@@ -265,6 +284,39 @@ INSERT INTO `tb_materi` (`id_materi`, `id_pertemuan`, `materi`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_nilai`
+--
+
+CREATE TABLE `tb_nilai` (
+  `id_nilai` int NOT NULL,
+  `id_siswa` int NOT NULL,
+  `pretest` int DEFAULT NULL,
+  `posttest` int DEFAULT NULL,
+  `tugas_1` int DEFAULT NULL,
+  `tugas_2` int DEFAULT NULL,
+  `tugas_3` int DEFAULT NULL,
+  `tugas_4` int DEFAULT NULL,
+  `quiz_1` int DEFAULT NULL,
+  `quiz_2` int DEFAULT NULL,
+  `quiz_3` int DEFAULT NULL,
+  `quiz_4` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_nilai`
+--
+
+INSERT INTO `tb_nilai` (`id_nilai`, `id_siswa`, `pretest`, `posttest`, `tugas_1`, `tugas_2`, `tugas_3`, `tugas_4`, `quiz_1`, `quiz_2`, `quiz_3`, `quiz_4`) VALUES
+(2, 3, 100, 100, 100, 100, NULL, NULL, 100, 100, NULL, NULL),
+(3, 14, NULL, NULL, 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 16, NULL, NULL, 100, 100, 100, 100, NULL, NULL, NULL, NULL),
+(5, 11, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_pertemuan`
 --
 
@@ -274,19 +326,20 @@ CREATE TABLE `tb_pertemuan` (
   `penjelasan` text NOT NULL,
   `aktif` int NOT NULL,
   `tp` text NOT NULL,
-  `videoconference` text,
-  `gambar` varchar(255) NOT NULL
+  `gambar` varchar(255) NOT NULL,
+  `kktp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `dateline_tgs` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_pertemuan`
 --
 
-INSERT INTO `tb_pertemuan` (`id_pertemuan`, `pertemuan`, `penjelasan`, `aktif`, `tp`, `videoconference`, `gambar`) VALUES
-(1, 1, 'Pada pertemuan pertama kita akan membahas jenis-jenis percabangan dan percabangan tunggal', 1, '<li> Memahami permasalahan yang berkaitan dengan jenis-jenis percabangan</li>\r\n<li> Menentukan pemecahan masalah dengan  jenis-jenis percabangan</li>\r\n<li> Melakukan implementasi  jenis-jenis percabangan untuk suatu permasalahan </li>\r\n<li> Melakukan evaluasi terhadap penggunaan  jenis-jenis percabangan</li>\r\n<li> Memahami permasalahan yang berkaitan dengan percabangan tunggal</li>\r\n<li> Menentukan pemecahan masalah dengan percabangan tunggal</li>\r\n<li> Melakukan implementasi flowchart untuk suatu percabangan tunggal</li>\r\n<li> Melakukan evaluasi terhadap penggunaan percabangan tunggal </li>\r\n', 'OffensiveHurricanesOccurHalf', 'pertemuan1.png'),
-(2, 2, 'Pada pertemuan kedua kita akan membahas percabangan dua kasus, tiga kasus atau lebih, dan switch', 1, '<li> Memahami permasalahan yang berkaitan dengan percabangan dua kasus</li>\r\n<li> Menentukan pemecahan masalah dengan percabangan dua kasus</li> \r\n<li> Melakukan implementasi percabangan dua kasusuntuk suatu permasalahan </li> \r\n<li> Melakukan evaluasi terhadap penggunaan percabangan dua kasus</li> \r\n<li> Memahami permasalahan yang berkaitan dengan percabangan tiga kasus </li> \r\n<li> Menentukan pemecahan masalah dengan percabangan tiga kasus </li> \r\n<li> Melakukan implementasi percabangan tiga kasusuntuk suatu masalah </li> \r\n<li> Melakukan evaluasi terhadap penggunaan percabangan tiga kasus </li> \r\n<li> Memahami permasalahan yang berkaitan dengan percabangan switch </li> \r\n<li> Menentukan pemecahan masalah dengan percabangan switch </li> \r\n<li> Melakukan implementasi percabangan switch untuk suatu masalah </li> \r\n<li> Melakukan evaluasi terhadap penggunaan percabangan switch </li>', 'https://meet.jit.si/OffensiveHurricanesOccurHalf	', 'percabangan2.png'),
-(3, 3, 'Pada pertemuan ketiga kita akan membahas jenis-jenis perulangan dan perulangan for', 1, ' <li> Memahami permasalahan yang berkaitan dengan jenis-jenis perulangan</li>  \r\n<li> Menentukan pemecahan masalah dengan jenis-jenis perulangan </li>  \r\n<li> Melakukan implementasi jenis-jenis perulangan untuk suatu permasalahan </li>  \r\n<li> Melakukan evaluasi terhadap penggunaan jenis-jenis perulangan </li>  \r\n<li> Memahami permasalahan yang berkaitan dengan perulangan for</li>  \r\n<li> Menentukan pemecahan masalah dengan perulangan for</li>  \r\n<li> Melakukan implementasi perulangan foruntuk suatu permasalahan </li>  \r\n<li> Melakukan evaluasi terhadap penggunaan perulangan for </li>', 'https://meet.jit.si/OffensiveHurricanesOccurHalf	', 'perulangan_for.jpg'),
-(4, 4, 'Pada pertemuan keempat kita akan mempelajari perulangan while dan perulangan do while', 1, '<li> Memahami permasalahan yang berkaitan dengan perulangan while</li> \r\n<li> Menentukan pemecahan masalah dengan perulangan while</li> \r\n<li> Melakukan implementasi perulangan while untuk suatu permasalahan </li> \r\n<li> Melakukan evaluasi terhadap penggunaan perulangan while</li>\r\n<li> Memahami permasalahan yang berkaitan dengan perulangan while</li> \r\n<li> Menentukan pemecahan masalah dengan perulangan do while</li> \r\n<li> Melakukan implementasi perulangan do while untuk suatu permasalahan </li> \r\n<li> Melakukan evaluasi terhadap penggunaan perulangan do while</li>', 'https://meet.jit.si/OffensiveHurricanesOccurHalf	', 'perulangan2.png');
+INSERT INTO `tb_pertemuan` (`id_pertemuan`, `pertemuan`, `penjelasan`, `aktif`, `tp`, `gambar`, `kktp`, `dateline_tgs`) VALUES
+(1, 1, 'Pada pertemuan pertama kita akan membahas jenis-jenis percabangan dan percabangan tunggal', 1, 'Siswa mampu mengaplikasikan percabangan yang paling tepat untuk menyelesaikan masalah. ', 'pertemuan1.png', 'Siswa mampu menentukan solusi permasalahan dengan percabangan tunggal, Siswa mampu menerapkan percabangan satu kasus untuk menyelesaikan permasalahan, Siswa mampu memanipulasi percabangan satu kasus untuk menyelesaikan permasalahan ', '2023-09-23 07:10:00'),
+(2, 2, 'Pada pertemuan kedua kita akan membahas percabangan dua kasus, tiga kasus atau lebih, dan switch', 1, 'Siswa mampu mengaplikasikan percabangan yang paling tepat untuk menyelesaikan masalah.', 'pertemuan2.png', 'Siswa mampu menentukan solusi permasalahan dengan percabangan dua kasus, Siswa mampu menerapkan percabangan dua kasus untuk menyelesaikan permasalahan, Siswa mampu memanipulasi percabangan dua kasus untuk menyelesaikan permasalahan, Siswa mampu menentukan solusi permasalahan dengan percabangan  tiga kasus/lebih, Siswa mampu menerapkan percabangan tiga kasus / lebih untuk menyelesaikan permasalahan, Siswa mampu memanipulasi percabangan tiga kasus / lebih untuk menyelesaikan permasalahan, Siswa mampu menentukan solusi permasalahan dengan percabangan switch, Siswa mampu menerapkan switch , Siswa mampu memanipulasi percabangan switch untuk menyelesaikan permasalahan', '2023-08-30 14:23:25'),
+(3, 3, 'Pada pertemuan ketiga kita akan membahas jenis-jenis perulangan dan perulangan for', 1, 'Siswa mampu mengaplikasikan perulangan yang paling tepat untuk menyelesaikan masalah', 'pertemuan31.jpg', 'Siswa mampu menentukan solusi permasalahan dengan perulangan for,  Siswa mampu menerapkan perulangan for untuk menyelesaikan permasalahan, Siswa mampu memanipulasi perulangan for untuk menyelesaikan permasalahan, Siswa mampu menentukan solusi permasalahan dengan perulangan while, Siswa mampu menerapkan perulangan while untuk menyelesaikan permasalahan, Siswa mampu memanipulasi perulangan while untuk menyelesaikan permasalahan', '2023-08-31 14:24:02'),
+(4, 4, 'Pada pertemuan keempat kita akan mempelajari perulangan while dan perulangan do while', 1, 'Siswa mampu mengaplikasikan perulangan yang paling tepat untuk menyelesaikan masalah', 'pertemuan41.png', 'Siswa mampu menentukan solusi permasalahan dengan perulangan do while, Siswa mampu menerapkan perulangan do while untuk menyelesaikan permasalahan, Siswa mampu memanipulasi perulangan do while untuk menyelesaikan permasalahan', '2023-08-28 17:00:00');
 
 -- --------------------------------------------------------
 
@@ -307,47 +360,12 @@ CREATE TABLE `tb_pesan` (
 --
 
 INSERT INTO `tb_pesan` (`id_pesan`, `id_pengirim`, `id_lawan`, `pesan`, `waktu`) VALUES
-(18, 3, 2, 'tes', '2023-03-26 02:24:04'),
-(19, 3, 2, 'tes', '2023-03-26 02:29:10'),
-(20, 3, 2, 'bisa', '2023-03-26 13:31:36'),
-(21, 14, 11, 'eee', '2023-05-23 11:23:24'),
-(22, 14, 11, 'Ini fitur chat anda', '2023-05-23 11:23:54'),
-(23, 14, 3, 'tes', '2023-05-23 12:21:53'),
-(24, 14, 11, 'tes', '2023-05-23 12:34:20'),
-(25, 14, 11, 'tes', '2023-05-24 02:48:48'),
-(26, 2, 3, 'coba', '2023-05-24 03:25:33'),
-(27, 2, 3, 't5es', '2023-05-24 03:30:45'),
-(28, 2, 3, 'nbisa bro', '2023-05-24 03:34:58'),
-(29, 14, 2, 'halo bro', '2023-05-24 03:35:25'),
-(30, 2, 14, 'siap', '2023-05-24 03:35:53'),
-(31, 14, 2, 'tes', '2023-06-01 12:51:30'),
-(32, 14, 2, 'TES', '2023-06-04 04:55:50'),
-(33, 14, 2, 'Coba saja', '2023-06-04 04:55:57'),
-(34, 2, 11, 'sss', '2023-06-19 12:32:49'),
-(35, 2, 11, 'tes', '2023-06-30 06:47:17'),
-(36, 3, 12, 'tes', '2023-07-07 15:19:08'),
-(37, 2, 11, 'tes', '2023-07-09 01:54:35'),
-(38, 3, 11, 'tes', '2023-07-10 07:26:19'),
-(39, 2, 3, 'tes', '2023-07-10 08:26:53'),
-(40, 3, 2, 'p', '2023-07-10 10:33:23'),
-(41, 3, 2, 'tes', '2023-07-23 02:25:44'),
-(42, 3, 2, 'res', '2023-07-23 02:25:51'),
-(43, 3, 2, 'r', '2023-07-23 02:51:09'),
-(44, 2, 3, 'apa sih', '2023-07-23 03:08:38'),
-(45, 2, 11, 'tes', '2023-07-23 04:02:58'),
-(46, 2, 3, 'apa', '2023-07-23 04:03:08'),
-(47, 2, 3, 'ee', '2023-07-23 04:04:06'),
-(48, 2, 3, 'dd', '2023-07-23 04:04:31'),
-(49, 2, 3, 'ee', '2023-07-23 04:04:59'),
-(50, 2, 14, 'aa', '2023-07-23 04:05:17'),
-(51, 3, 2, 'c', '2023-07-23 12:58:42'),
-(52, 3, 2, 'ddd', '2023-07-23 13:06:51'),
-(53, 3, 2, 'dddddeww', '2023-07-23 13:06:56'),
-(54, 3, 2, 'coba', '2023-07-23 13:20:22'),
-(55, 2, 3, 'tes', '2023-08-05 13:54:35'),
-(56, 2, 3, 'tes', '2023-08-05 13:59:04'),
-(57, 2, 3, 'tes', '2023-08-05 14:01:56'),
-(58, 3, 2, 'tes', '2023-08-05 14:04:03');
+(73, 3, 2, 'Permisi pa jo', '2023-09-22 11:08:59'),
+(86, 3, 2, '#include <stdio.h>', '2023-09-23 16:55:08'),
+(87, 2, 3, '#include <stdio.h><br>int main()', '2023-09-23 16:58:05'),
+(88, 2, 3, 'kon<br><br><br><br><br><br><br>', '2023-09-25 05:08:03'),
+(89, 2, 3, 'tes', '2023-09-25 05:08:14'),
+(90, 3, 2, '#include <iostream><br>', '2023-10-10 07:58:29');
 
 -- --------------------------------------------------------
 
@@ -365,17 +383,51 @@ CREATE TABLE `tb_prepost` (
   `opsi_d` varchar(255) NOT NULL,
   `opsi_e` varchar(255) NOT NULL,
   `kunci` varchar(255) NOT NULL,
-  `id_test` int NOT NULL
+  `id_test` int NOT NULL,
+  `id_ps` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_prepost`
 --
 
-INSERT INTO `tb_prepost` (`id_soal`, `soal`, `gambar`, `opsi_a`, `opsi_b`, `opsi_c`, `opsi_d`, `opsi_e`, `kunci`, `id_test`) VALUES
-(68, '1', '', '1', '1', '1', '1', '1', 'D', 1),
-(69, '1', '', '1', '1', '1', '1', '1', 'B', 2),
-(70, '2', '', '2', '1', '1', '1', '1', 'A', 1);
+INSERT INTO `tb_prepost` (`id_soal`, `soal`, `gambar`, `opsi_a`, `opsi_b`, `opsi_c`, `opsi_d`, `opsi_e`, `kunci`, `id_test`, `id_ps`) VALUES
+(76, 'Apa Sebutan Struktur Perulangan di bawah ini? ', 'c-while.png', 'a.png', 'b.png', 'c.png', 'd.png', 'e.png', 'A', 1, 1),
+(80, 'Aku Ganteng', '', '  Ya ', '  Tidak ', '  Mungkin ', ' Betul', ' Siap', 'B', 1, 1),
+(81, 'Aku Ganteng', '', '  Betul ', '  Tidak ', '  Salah ', ' Benar', ' Salah', 'A', 2, 3),
+(82, 'Apa Sebutan Struktur Perulangan di bawah ini? ', '', '  for ', '  while ', '  dowhile ', ' Foreach', ' Do each', 'B', 1, 2),
+(83, 'Apa keluaran code di bawah ini?', '', ' a', ' b', ' c', ' d', ' e', 'C', 1, 3),
+(84, 'Awalan dari pengulangan do while	', '', ' eee', ' wqwq', ' eqeqwq', ' wqwqwq', ' wqwqwq', 'D', 1, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_quiz`
+--
+
+CREATE TABLE `tb_quiz` (
+  `id_soal` int NOT NULL,
+  `soal` text NOT NULL,
+  `gambar` text NOT NULL,
+  `opsi_a` varchar(255) NOT NULL,
+  `opsi_b` varchar(255) NOT NULL,
+  `opsi_c` varchar(255) NOT NULL,
+  `opsi_d` varchar(255) NOT NULL,
+  `opsi_e` varchar(255) NOT NULL,
+  `kunci` varchar(255) NOT NULL,
+  `pembahasan` text NOT NULL,
+  `id_pertemuan` int NOT NULL,
+  `id_ps` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_quiz`
+--
+
+INSERT INTO `tb_quiz` (`id_soal`, `soal`, `gambar`, `opsi_a`, `opsi_b`, `opsi_c`, `opsi_d`, `opsi_e`, `kunci`, `pembahasan`, `id_pertemuan`, `id_ps`) VALUES
+(17, 'Test', '', '    1   ', '    2   ', '    3   ', ' 4', ' 5', 'B', 'Soal ini jawabannya B', 1, 3),
+(18, 'Apa Sebutan Struktur Perulangan di bawah ini? ', '', 'a4.png', 'b4.png', 'c4.png', 'd4.png', 'e4.png', 'A', 'Jawabannya adalah A', 2, 1),
+(19, 'Apa keluaran code di bawah ini?', '', ' Tes', ' tes', ' Tes', ' Test', ' Test', 'A', 'Kunci adalah A karena begitu dari sananya', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -395,12 +447,12 @@ CREATE TABLE `tb_random` (
 --
 
 INSERT INTO `tb_random` (`id_random`, `id_user`, `nama`, `kelompok`) VALUES
-(180, 12, 'Kevin', 1),
-(181, 3, 'Putra', 1),
-(182, 14, 'Kevina', 1),
-(183, 13, 'Jie', 2),
-(184, 11, 'Doni', 2),
-(185, 16, 'Dian Lestari', 2);
+(192, 16, 'Dian Lestari', 1),
+(193, 12, 'Kevin', 1),
+(194, 3, 'Putra', 1),
+(195, 13, 'Jie', 2),
+(196, 14, 'Kevina', 2),
+(197, 11, 'Doni', 2);
 
 -- --------------------------------------------------------
 
@@ -452,32 +504,34 @@ INSERT INTO `tb_tugas` (`id_tugas`, `id_pertemuan`, `tugas`) VALUES
 --
 
 CREATE TABLE `tb_youtube` (
-  `id_materi` int NOT NULL,
+  `id_youtube` int NOT NULL,
   `id_pertemuan` int NOT NULL,
-  `youtube` text NOT NULL
+  `youtube` text NOT NULL,
+  `kategori` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_youtube`
 --
 
-INSERT INTO `tb_youtube` (`id_materi`, `id_pertemuan`, `youtube`) VALUES
-(24, 1, 'gS_-I_bncnk'),
-(25, 3, '-zZQWl2kKBk'),
-(26, 1, 'W0wmmxRSZQY'),
-(27, 2, 'BUB-AdUMMac'),
-(28, 2, 'iOIiGqkSB0M'),
-(29, 3, '4KeFmlF7cNs'),
-(30, 3, 'zupTFpYQvLI'),
-(31, 4, 'qK271uDEKng'),
-(32, 4, 'uBCkUY2h5qE'),
-(33, 1, 'HxAswp8V8iU'),
-(34, 3, 'pfPguyBE-DU'),
-(35, 2, 'yiYsfpRf6Xo'),
-(36, 4, 'ukFF07IKIlg'),
-(38, 4, 'BjmVvjT6b1s'),
-(40, 2, ' qaeuaCVpcSI'),
-(41, 2, 'wKRo4jyLgn8');
+INSERT INTO `tb_youtube` (`id_youtube`, `id_pertemuan`, `youtube`, `kategori`) VALUES
+(24, 1, 'E1Igc7pcB_U', 'Materi'),
+(25, 3, '-zZQWl2kKBk', 'Materi'),
+(26, 1, 'W0wmmxRSZQY', 'Tugas'),
+(27, 2, 'BUB-AdUMMac', 'Tugas'),
+(28, 2, 'iOIiGqkSB0M', 'Tugas'),
+(29, 3, '4KeFmlF7cNs', 'Tugas'),
+(30, 3, 'zupTFpYQvLI', 'Tugas'),
+(31, 4, 'qK271uDEKng', 'Tugas'),
+(32, 4, 'uBCkUY2h5qE', 'Tugas'),
+(33, 1, 'HxAswp8V8iU', 'Tugas'),
+(34, 3, 'pfPguyBE-DU', 'Tugas'),
+(35, 2, 'yiYsfpRf6Xo', 'Tugas'),
+(36, 4, 'ukFF07IKIlg', 'Tugas'),
+(38, 4, 'BjmVvjT6b1s', 'Tugas'),
+(40, 2, ' qaeuaCVpcSI', 'Tugas'),
+(41, 2, 'wKRo4jyLgn8', 'Tugas'),
+(45, 2, 'JgIceGaOsmk', 'Materi');
 
 --
 -- Indexes for dumped tables
@@ -494,28 +548,22 @@ ALTER TABLE `tb_akun`
 -- Indexes for table `tb_comments`
 --
 ALTER TABLE `tb_comments`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id_comment`),
   ADD KEY `id_user` (`id_user`),
   ADD KEY `id_pertemuan` (`id_pertemuan`);
-
---
--- Indexes for table `tb_contact`
---
-ALTER TABLE `tb_contact`
-  ADD PRIMARY KEY (`id_pengirim`);
 
 --
 -- Indexes for table `tb_globalchat`
 --
 ALTER TABLE `tb_globalchat`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id_globalchat`),
   ADD KEY `sender_id` (`sender_id`);
 
 --
 -- Indexes for table `tb_groupchat`
 --
 ALTER TABLE `tb_groupchat`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id_groupchat`),
   ADD KEY `sender_id` (`sender_id`);
 
 --
@@ -525,6 +573,14 @@ ALTER TABLE `tb_hasilprepost`
   ADD PRIMARY KEY (`id_hasiltest`),
   ADD KEY `id_siswa` (`id_siswa`),
   ADD KEY `id_test` (`id_test`);
+
+--
+-- Indexes for table `tb_hasilquiz`
+--
+ALTER TABLE `tb_hasilquiz`
+  ADD PRIMARY KEY (`id_hasilquiz`),
+  ADD KEY `id_pertemuan` (`id_pertemuan`),
+  ADD KEY `id_siswa` (`id_siswa`);
 
 --
 -- Indexes for table `tb_hasiltugas`
@@ -540,6 +596,12 @@ ALTER TABLE `tb_hasiltugas`
 ALTER TABLE `tb_materi`
   ADD PRIMARY KEY (`id_materi`),
   ADD KEY `id_pertemuan` (`id_pertemuan`);
+
+--
+-- Indexes for table `tb_nilai`
+--
+ALTER TABLE `tb_nilai`
+  ADD PRIMARY KEY (`id_nilai`);
 
 --
 -- Indexes for table `tb_pertemuan`
@@ -561,6 +623,13 @@ ALTER TABLE `tb_pesan`
 ALTER TABLE `tb_prepost`
   ADD PRIMARY KEY (`id_soal`),
   ADD KEY `id_test` (`id_test`);
+
+--
+-- Indexes for table `tb_quiz`
+--
+ALTER TABLE `tb_quiz`
+  ADD PRIMARY KEY (`id_soal`),
+  ADD KEY `id_pertemuan` (`id_pertemuan`);
 
 --
 -- Indexes for table `tb_random`
@@ -586,7 +655,7 @@ ALTER TABLE `tb_tugas`
 -- Indexes for table `tb_youtube`
 --
 ALTER TABLE `tb_youtube`
-  ADD PRIMARY KEY (`id_materi`),
+  ADD PRIMARY KEY (`id_youtube`),
   ADD KEY `id_pertemuan` (`id_pertemuan`);
 
 --
@@ -597,49 +666,55 @@ ALTER TABLE `tb_youtube`
 -- AUTO_INCREMENT for table `tb_akun`
 --
 ALTER TABLE `tb_akun`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tb_comments`
 --
 ALTER TABLE `tb_comments`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
-
---
--- AUTO_INCREMENT for table `tb_contact`
---
-ALTER TABLE `tb_contact`
-  MODIFY `id_pengirim` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_comment` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `tb_globalchat`
 --
 ALTER TABLE `tb_globalchat`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_globalchat` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tb_groupchat`
 --
 ALTER TABLE `tb_groupchat`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_groupchat` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tb_hasilprepost`
 --
 ALTER TABLE `tb_hasilprepost`
-  MODIFY `id_hasiltest` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_hasiltest` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+
+--
+-- AUTO_INCREMENT for table `tb_hasilquiz`
+--
+ALTER TABLE `tb_hasilquiz`
+  MODIFY `id_hasilquiz` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tb_hasiltugas`
 --
 ALTER TABLE `tb_hasiltugas`
-  MODIFY `id_hasiltugas` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id_hasiltugas` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `tb_materi`
 --
 ALTER TABLE `tb_materi`
-  MODIFY `id_materi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_materi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `tb_nilai`
+--
+ALTER TABLE `tb_nilai`
+  MODIFY `id_nilai` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_pertemuan`
@@ -651,19 +726,25 @@ ALTER TABLE `tb_pertemuan`
 -- AUTO_INCREMENT for table `tb_pesan`
 --
 ALTER TABLE `tb_pesan`
-  MODIFY `id_pesan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_pesan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `tb_prepost`
 --
 ALTER TABLE `tb_prepost`
-  MODIFY `id_soal` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id_soal` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+
+--
+-- AUTO_INCREMENT for table `tb_quiz`
+--
+ALTER TABLE `tb_quiz`
+  MODIFY `id_soal` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tb_random`
 --
 ALTER TABLE `tb_random`
-  MODIFY `id_random` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
+  MODIFY `id_random` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
 
 --
 -- AUTO_INCREMENT for table `tb_test`
@@ -681,7 +762,7 @@ ALTER TABLE `tb_tugas`
 -- AUTO_INCREMENT for table `tb_youtube`
 --
 ALTER TABLE `tb_youtube`
-  MODIFY `id_materi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_youtube` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Constraints for dumped tables
@@ -714,6 +795,13 @@ ALTER TABLE `tb_hasilprepost`
   ADD CONSTRAINT `tb_hasilprepost_ibfk_2` FOREIGN KEY (`id_test`) REFERENCES `tb_test` (`id_tes`);
 
 --
+-- Constraints for table `tb_hasilquiz`
+--
+ALTER TABLE `tb_hasilquiz`
+  ADD CONSTRAINT `tb_hasilquiz_ibfk_1` FOREIGN KEY (`id_pertemuan`) REFERENCES `tb_pertemuan` (`id_pertemuan`),
+  ADD CONSTRAINT `tb_hasilquiz_ibfk_2` FOREIGN KEY (`id_siswa`) REFERENCES `tb_akun` (`id`);
+
+--
 -- Constraints for table `tb_hasiltugas`
 --
 ALTER TABLE `tb_hasiltugas`
@@ -738,6 +826,12 @@ ALTER TABLE `tb_pesan`
 --
 ALTER TABLE `tb_prepost`
   ADD CONSTRAINT `tb_prepost_ibfk_1` FOREIGN KEY (`id_test`) REFERENCES `tb_test` (`id_tes`);
+
+--
+-- Constraints for table `tb_quiz`
+--
+ALTER TABLE `tb_quiz`
+  ADD CONSTRAINT `tb_quiz_ibfk_1` FOREIGN KEY (`id_pertemuan`) REFERENCES `tb_pertemuan` (`id_pertemuan`);
 
 --
 -- Constraints for table `tb_random`
