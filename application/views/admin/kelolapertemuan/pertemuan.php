@@ -1,4 +1,14 @@
+<style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
+    .table-responsive td {
+        word-wrap: break-word;
+        white-space: normal;
+    } 
+</style>
   <script>
     angular.module('myApp',['angularjs-datetime-picker']);
     angular.module('myApp').run(function($rootScope) {
@@ -46,6 +56,18 @@
                     <div class="col">
                     <div class="input-group input-group-outline">
                         <textarea class="form-control" required name = "tp" id = "tp"></textarea>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <label for = "pertemuan">KKTP</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <div class="input-group input-group-outline">
+                        <textarea class="form-control" required name = "kktp" id = "kktp"></textarea>
                     </div>
                     </div>
                 </div>
@@ -121,6 +143,7 @@
                                     <th scope="col">Pertemuan</th>
                                     <th scope="col">Penjelasan</th>
                                     <th scope="col">Tujuan Pembelajaran</th>
+                                    <th scope="col">KKTP</th>
                                     <th scope="col">Gambar</th>
                                     <th scope="col">Dateline Tugas</th>
                                     <th scope="col">Aksi</th>
@@ -133,6 +156,7 @@
                                     <th scope="col">Pertemuan</th>
                                     <th scope="col">Penjelasan</th>
                                     <th scope="col">Tujuan Pembelajaran</th>
+                                    <th scope="col">KKTP</th>
                                     <th scope="col">Gambar</th>
                                     <th scope="col">Dateline Tugas</th>
                                     <th scope="col">Aksi</th>
@@ -140,6 +164,7 @@
                                 </tr>
                             </tfoot>
                             <tbody>
+
                                 <?php $i = 1; ?>
                                 <?php foreach ($pertemuan as $j) : ?>
                                     <tr>
@@ -147,6 +172,15 @@
                                         <td><?= $j['pertemuan']; ?></td>
                                         <td><?= $j['penjelasan']; ?></td>
                                         <td><?= $j['tp'];?></td>
+                                        <td>
+                                        <?php  echo '<ul>' ;
+                                        $kktpItems = explode(',', $j['kktp']);
+                                        foreach ($kktpItems as $item) {
+                                            echo '<li>' . htmlspecialchars($item) . '</li>';
+                                        }
+
+                                         echo '</ul>'; ?>
+                                        </td>
                                         <td><img src="<?= base_url('assets/pertemuan/' . $j['gambar']) ?>" width = "150px" height = "100px" alt="Gambar"></img>
                                         <td><?= $j['dateline_tgs'];?></td>
 

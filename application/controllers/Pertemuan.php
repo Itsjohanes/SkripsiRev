@@ -181,6 +181,7 @@ class Pertemuan extends CI_Controller {
             if($id_pertemuan){
                 $data['notifchat'] = $this->Chat_model->getChatData();
                 $data['title'] = "Materi Pertemuan ". $id;
+                $data['youtube'] = $this->db->get_where('tb_youtube', ['id_pertemuan' => $id, 'kategori' => "Materi"] )->result_array();
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
                 $data['materi'] = $this->db->get_where('tb_materi', ['id_pertemuan' => $id])->result_array();
                 $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
@@ -210,6 +211,7 @@ class Pertemuan extends CI_Controller {
                 $data['notifchat'] = $this->Chat_model->getChatData();
                 $data['title'] = "Tugas Pertemuan ". $id;
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+                $data['youtube'] = $this->db->get_where('tb_youtube', ['id_pertemuan' => $id, 'kategori' => "Tugas"] )->result_array();
                 $data['tugas'] = $this->db->get_where('tb_tugas', ['id_pertemuan' => $id])->result_array();
                 $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
                 $data['pertemuan'] = $id;
@@ -480,7 +482,15 @@ class Pertemuan extends CI_Controller {
             $benar = 0;
             $salah = 0;
             $kosong = 0;
+            $benar1 = 0;
+            $benar2 = 0;
+            $benar3 = 0;
+            $benar4 = 0;
             $str_jawaban = "";
+            $jumlahSoalPs1 = $this->Quiz_model->getCountIndikatorPS1($id_pertemuan);
+            $jumlahSoalPs2 = $this->Quiz_model->getCountIndikatorPS2($id_pertemuan);
+            $jumlahSoalPs3 = $this->Quiz_model->getCountIndikatorPS3($id_pertemuan);
+            $jumlahSoalPs4 = $this->Quiz_model->getCountIndikatorPS4($id_pertemuan);
 
             for ($i = 0; $i < $jumlah; $i++) {
                 $nomor = $id_quiz[$i];
@@ -492,14 +502,53 @@ class Pertemuan extends CI_Controller {
                     $jawaban = $pilihan[$nomor];
                     $str_jawaban = $str_jawaban . $pilihan[$nomor];
                     $isAnswerCorrect = $this->Quiz_model->checkAnswer($nomor, $jawaban,$id_pertemuan);
-
+                    $id_ps = $this->Quiz_model->checkPs($nomor);
                     if ($isAnswerCorrect) {
+                          switch($id_ps['id_ps']){
+                            case 1:
+                                $benar1++;
+                            break;
+                            case 2:
+                                $benar2++;
+                            break;
+                            case 3:
+                                $benar3++;
+                            break;
+                            case 4:
+                                $benar4++;
+                            break;
+                        }
                         $benar++;
                     } else {
                         $salah++;
                     }
                 }
             }
+            $jumlahSoalPs1 = $jumlahSoalPs1['jumlah'];
+            $jumlahSoalPs2 = $jumlahSoalPs2['jumlah'];
+            $jumlahSoalPs3 = $jumlahSoalPs3['jumlah'];
+            $jumlahSoalPs4 = $jumlahSoalPs4['jumlah'];
+            if($jumlahSoalPs1 != 0){
+                $score1 = 100 / $jumlahSoalPs1 * $benar1;
+            }else{
+                $score1 = 0;
+            }
+            if($jumlahSoalPs2 != 0){
+                $score2 = 100 / $jumlahSoalPs2 * $benar2;
+            }else{
+                $score2 = 0;
+            }
+            if($jumlahSoalPs3 != 0){
+                $score3 = 100 / $jumlahSoalPs3 * $benar3;
+            }else{
+                $score3 = 0;
+            }
+            if($jumlahSoalPs4 != 0){
+                $score4 = 100 / $jumlahSoalPs4 * $benar4;
+            }else{
+                $score4 = 0;
+            }
+
 
             $jumlah_soal = $this->Quiz_model->getQuizQuestionCount($id_pertemuan);
             $score = 100 / $jumlah_soal * $benar;
@@ -515,6 +564,10 @@ class Pertemuan extends CI_Controller {
                 'salah' => $salah,
                 'kosong' => $kosong,
                 'nilai' => $hasil,
+                'memahami_masalah' => $score1,
+                'merencanakan_pemecahan_masalah' => $score2,
+                'melaksanakan_pemecahan_masalah' => $score3,
+                'memeriksa_kembali' => $score4,
                 'timestamp' => date('Y-m-d H:i:s')
             ];
 

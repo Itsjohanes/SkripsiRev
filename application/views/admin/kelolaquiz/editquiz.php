@@ -22,7 +22,16 @@
             <div class="input-group input-group-outline">
             <input type="text" class="form-control" required id="pertemuan" name="pertemuan" value="<?php echo $soal['id_pertemuan'];  ?>">
             </div>
-                 <div class="row">
+                                 <div class="row">
+                    <div class="col">
+                    <label for="exampleFormControlSelect1">Opsi Jawaban A</label><select class="form-control" id="exampleFormControlSelect1" name="pilihana">
+                        <option>Pilih Salah Satu</option>
+                        <option>Text</option>
+                        <option>Gambar</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
                         <textarea required class="form-control" placeholder="Opsi A" id="opsia_tulisan" name="a"> <?php echo $soal['opsi_a'];?> </textarea>
@@ -32,7 +41,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="input-group input-group-outline">
-                        <img src="<?= base_url('assets/img/quiz/' . $soal['opsi_a']); ?>" width="100px" id = "gambar_a" alt="Gambar Opsi A">
+                        <img src="<?= base_url('assets/img/pretest/' . $soal['opsi_a']); ?>" width="100px" id = "gambar_a" alt="Gambar Opsi A">
                     </div>
                     </div>
                 </div>
@@ -163,7 +172,7 @@
                     </div>
                     </div>
                 </div>
-            <<div class="row">
+            <div class="row">
                     <div class="col">
                         <label for="waktu">Kunci </label>
                     </div>
@@ -212,6 +221,20 @@
                     </div>
                     </div>
                 </div>
+            <div class="row">
+                <label for="id_ps">Indikator Problem Solving</label>
+                <div class="input-group input-group-outline">
+                    <div class="col">
+                        <select required class="form-control" id="id_ps" name="id_ps">
+                            <option value="1" <?php echo ($soal['id_ps'] == 1) ? 'selected' : ''; ?>>Memahami Masalah</option>
+                            <option value="2" <?php echo ($soal['id_ps'] == 2) ? 'selected' : ''; ?>>Merencanakan Penyelesaian Masalah</option>
+                            <option value="3" <?php echo ($soal['id_ps'] == 3) ? 'selected' : ''; ?>>Melaksanakan Penyelesaian Masalah</option>
+                            <option value="4" <?php echo ($soal['id_ps'] == 4) ? 'selected' : ''; ?>>Memeriksa Kembali</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
             <label for="nilai">Pembahasan</label>
             <div class="input-group input-group-outline">
             <input type="text" required class="form-control" required id="pembahasan" name="pembahasan" value="<?php echo $soal['pembahasan'];  ?>"></div>

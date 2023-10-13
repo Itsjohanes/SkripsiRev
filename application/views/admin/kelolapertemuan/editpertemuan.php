@@ -34,6 +34,10 @@
             <div class="input-group input-group-outline">
             <textarea type="textarea" required class="form-control" id="tp" name="tp"><?php echo $materi['tp'];  ?></textarea>
             </div>
+            <label for="nilai">KKTP</label>
+            <div class="input-group input-group-outline">
+            <textarea type="textarea" required class="form-control" id="kktp" name="kktp"><?php echo $materi['kktp']; ?></textarea>
+            </div>
             <label for="nilai">Gambar</label>
             <img src="<?= base_url('assets/pertemuan/' . $materi['gambar']) ?>" width = "150px" height = "100px" alt="Gambar"></img>
             <div class="input-group input-group-outline">
@@ -41,13 +45,10 @@
             </div>
             <label for="date">Dateline Tugas:</label>
             <div class="input-group input-group-outline">
-            <h6>Sebelumnya: <?php echo $materi['dateline_tgs'];?></h6>
             </div>
             <div class="row" ng-app="myApp">
                 <input ng-model="date3" ng-init="date3='<?php echo $materi['dateline_tgs'];?>';" name="dateline-tgs" datetime-picker date-format="yyyy-MM-dd HH:mm:ss"  size="100"  /> <br/> <br/>
-            </div>
-            
-            
+            </div>  
 
         </div>
         <br>
@@ -58,3 +59,5 @@
 
 </div>
 <!-- End of Main Content -->
+
+

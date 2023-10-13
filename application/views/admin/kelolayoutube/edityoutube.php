@@ -24,6 +24,26 @@
             <label for="nilai">Video</label>
             <br>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= $materi['youtube']; ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+             <div class="row">
+                <div class="col">
+                    <label for="pertemuan">Kategori</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="input-group input-group-outline">
+                        &nbsp
+                        <select class="form-control" required id="exampleFormControlSelect1" id="kategori" name="kategori">
+                            <option value="Tugas" <?php echo ($materi['kategori'] == 'Tugas') ? 'selected' : ''; ?>>
+                                Tugas
+                            </option>
+                            <option value="Materi" <?php echo ($materi['kategori'] == 'Materi') ? 'selected' : ''; ?>>
+                                Materi
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
 
         </div>
 

@@ -1,80 +1,99 @@
 <style>
-  .border {
-    border: 1px solid #dee2e6;
+  /* CSS untuk radio button yang lebih menarik */
+  .radio-button {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4CAF50;
+    border-radius: 50%;
+    position: relative;
   }
 
-  .form-check-label {
-    margin-left: 1rem;
+  /* Sembunyikan radio button asli */
+  input[type="radio"] {
+    display: none;
   }
 
-  .form-check {
-    margin-bottom: 1rem;
+  /* Ketika radio button dipilih, ubah warna latar belakang */
+  input[type="radio"]:checked+.radio-button {
+    background-color: #4CAF50;
   }
 
-  .form-check-input[type="radio"] {
-    margin-top: 0.3rem;
+  /* Tanda centang di dalam radio button (gunakan pseudo-element ::before) */
+  input[type="radio"]:checked+.radio-button::before {
+    content: '\2713';
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 </style>
 
 <div class="container mt-5">
-  <div class="d-flex justify-content-center row">
+  <div class="row justify-content-center">
     <div class="col-md-10 col-lg-10">
-      <div class="border p-4 rounded">
-        <div class="question bg-white p-3 border-bottom">
-          <div class="d-flex flex-row justify-content-between align-items-center mcq">
-            <h4 class="mb-0">Pembahasan Quiz</h4>
-            <h5 class="mb-0">Nilai Anda: <?= $nilai[0]->nilai; ?></h5>
-          </div>
+      <div class="border p-3">
+        <div class="question-header bg-white p-3 mb-3">
+          <h4 class="mb-0">Pembahasan Quiz</h4>
+          <h5>Nilai Anda: <?= $nilai[0]->nilai; ?></h5>
         </div>
 
         <?php
         $no = 0;
         $stringJawaban = $jawaban[0]->jawaban;
-        $arrayJawaban  = str_split($stringJawaban);
+        $arrayJawaban = str_split($stringJawaban);
 
         foreach ($soal as $data) :
-          $no++
+          $no++;
+          $jawabanUser = $arrayJawaban[$no - 1]; // Ambil jawaban yang dipilih oleh user
         ?>
 
-        <div class="question bg-white p-3 border-bottom">
-          <div class="d-flex flex-row align-items-center question-title">
-            <h6 class="mt-1 mr-2"><?= $no; ?>.</h6>
-            <h6 class="mt-1"><?= $data['soal']; ?></h6>
-          </div>
-          <?php if (!empty($data['gambar'])) : ?>
-            <img src="<?= base_url('assets/img/quiz/' . $data['gambar']); ?>" class="img-fluid mb-3" alt="Gambar Soal">
-          <?php endif; ?>
-          
-          <!-- Opsi Jawaban -->
-          <?php foreach (range('A', 'E') as $option) : ?>
-            <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="pilihan[<?= $data['id_soal'] ?>]" value="<?= $option; ?>"
-                <?php
-                  if ($arrayJawaban[$no - 1] == $option) {
-                    echo 'checked';
-                  }
-                ?>
-                onclick="saveSelectedOption(<?= $data['id_soal'] ?>, 'opsi_<?= strtolower($option) ?>')">
-              <label class="form-check-label">
-                <?php if (!empty($data['opsi_' . strtolower($option)])) : ?>
-                  <?php if (file_exists('assets/img/quiz/' . $data['opsi_' . strtolower($option)])) : ?>
-                    <img src="<?= base_url('assets/img/quiz/' . $data['opsi_' . strtolower($option)]); ?>" width="200px" alt="Gambar Opsi <?= $option; ?>">
-                  <?php else : ?>
-                    <?= nl2br(htmlspecialchars($data['opsi_' . strtolower($option)])); ?>
-                  <?php endif; ?>
-                <?php endif; ?>
-              </label>
+          <div class="question bg-white p-3 border-bottom mb-3">
+            <!-- Tampilkan soal -->
+            <div class="question-text mb-3">
+              <h6><?= $no; ?>. <?= $data['soal']; ?></h6>
             </div>
-          <?php endforeach; ?>
 
-          <h5 class="mt-3">Pembahasan</h5>
-          <?php if ($arrayJawaban[$no - 1] == $data['kunci']) : ?>
-            <p class="text-success">Jawaban Anda Benar</p>
-          <?php else : ?>
-            <p class="text-danger">Jawaban Anda Salah</p>
-          <?php endif; ?>
-          <p><?= $data['pembahasan']; ?></p>
-        </div>
+            <!-- Tampilkan gambar jika ada -->
+            <?php if (!empty($data['gambar'])) : ?>
+              <img src="<?= base_url('assets/img/quiz/' . $data['gambar']); ?>" class="img-fluid mb-2" alt="Gambar Soal">
+            <?php endif; ?>
+
+            <!-- Tampilkan opsi jawaban -->
+            <div class="options">
+              <?php
+              $options = ['A', 'B', 'C', 'D', 'E'];
+              foreach ($options as $option) :
+                $optionKey = 'opsi_' . strtolower($option);
+                $selectedClass = ($jawabanUser == $option) ? 'checked' : ''; // Tambahkan kelas 'checked' jika jawaban ini dipilih oleh user
+              ?>
+
+                <div class="option mb-2">
+                  <input type="radio" id="<?= $data['id_soal'] . $option; ?>" name="pilihan[<?= $data['id_soal']; ?>]" value="<?= $option; ?>" disabled <?= $selectedClass; ?>>
+                  <label class="radio-button <?= $selectedClass; ?>" for="<?= $data['id_soal'] . $option; ?>"></label>
+                  <?php if (!empty($data[$optionKey])) : ?>
+                    <?php if (file_exists('assets/img/quiz/' . $data[$optionKey])) : ?>
+                      <img src="<?= base_url('assets/img/quiz/' . $data[$optionKey]); ?>" width="150px" alt="Gambar Opsi <?= $option; ?>">
+                    <?php else : ?>
+                      <?= nl2br(htmlspecialchars($data[$optionKey])); ?>
+                    <?php endif; ?>
+                  <?php endif; ?>
+                </div>
+
+              <?php endforeach; ?>
+            </div>
+
+            <!-- Tampilkan pembahasan -->
+            <h5 class="mt-3">Pembahasan</h5>
+            <?php if ($jawabanUser == $data['kunci']) : ?>
+              <p class="text-success">Jawaban Anda Benar</p>
+            <?php else : ?>
+              <p class="text-danger">Jawaban Anda Salah</p>
+            <?php endif; ?>
+            <p><?= $data['pembahasan']; ?></p>
+          </div>
 
         <?php endforeach; ?>
 

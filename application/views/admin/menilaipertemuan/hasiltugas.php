@@ -1,3 +1,14 @@
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+    .table-responsive td {
+        word-wrap: break-word;
+        white-space: normal;
+    } 
+</style>
     <div class="row">
             <div class="col-12">
             <div class="card my-4">

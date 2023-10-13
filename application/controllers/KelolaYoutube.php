@@ -31,9 +31,11 @@ class KelolaYoutube extends CI_Controller {
     {
             $pertemuan = $this->input->post('pertemuan');
             $link = $this->input->post('link');
+            $kategori = $this->input->post('kategori');
             $data = array(
                 'id_pertemuan' => $pertemuan,
-                'youtube' => $link
+                'youtube' => $link,
+                'kategori' =>$kategori
             );
             $this->Kelolayoutube_model->tambahYoutubeMateri($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Video Berhasil ditambahkan!</div>');
@@ -70,9 +72,11 @@ class KelolaYoutube extends CI_Controller {
             $id_youtube = $this->input->post('id_youtube');
             $pertemuan = $this->input->post('pertemuan');
             $youtube = $this->input->post('youtube');
+            $kategori = $this->input->post('kategori');
             $data = array(
                 'id_pertemuan' => $pertemuan,
-                'youtube' => $youtube
+                'youtube' => $youtube,
+                'kategori' =>$kategori
             );
             $this->Kelolayoutube_model->updateYoutubeMateri($id_youtube, $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Video Berhasil diubah!</div>');

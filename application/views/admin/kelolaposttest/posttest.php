@@ -1,4 +1,15 @@
 <!-- Begin Page Content -->
+<style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+    .table-responsive td {
+        word-wrap: break-word;
+        white-space: normal;
+    } 
+</style>
 <link rel="stylesheet" href="<?= base_url('assets/css/slider.css'); ?>">
 
 

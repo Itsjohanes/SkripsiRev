@@ -56,7 +56,7 @@
             <div class="d-flex align-items-start">
                 <div>
                     <h4>Video Pembelajaran</h4>
-                    <p>Video Materi dapat diakses pada menu Video</p>
+                    <p>Video Materi & Tugas dapat diakses pada menu Video</p>
                 </div>
             </div>
             <hr class="my-5">

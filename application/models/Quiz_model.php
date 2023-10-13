@@ -85,5 +85,28 @@ class Quiz_model extends CI_Model
             return false;
         }
     }
+    public function checkPs($nomor){
+        $query = $this->db->query("SELECT id_ps FROM tb_quiz WHERE id_soal='$nomor'");
+        //kembalikan id_ps
+        return $query->row_array();
+        
+    }
+    public function getCountIndikatorPS1($id_pertemuan){
+        $query = $this->db->query("SELECT COUNT(id_ps) as jumlah FROM tb_quiz WHERE id_ps = 1 AND  id_pertemuan='$id_pertemuan'");
+        return $query->row_array();
+        
+    }
+    public function getCountIndikatorPS2($id_pertemuan){
+        $query = $this->db->query("SELECT COUNT(id_ps) as jumlah FROM tb_quiz WHERE id_ps = 2 AND  id_pertemuan='$id_pertemuan'");
+        return $query->row_array();
+    }
+    public function getCountIndikatorPS3($id_pertemuan){
+        $query = $this->db->query("SELECT COUNT(id_ps) as jumlah FROM tb_quiz WHERE id_ps = 3 AND id_pertemuan='$id_pertemuan'");
+        return $query->row_array();
+    }
+    public function getCountIndikatorPS4($id_pertemuan){
+        $query = $this->db->query("SELECT COUNT(id_ps) as jumlah FROM tb_quiz WHERE id_ps = 4 AND id_pertemuan='$id_pertemuan'");
+        return $query->row_array();
+    }
    
 }

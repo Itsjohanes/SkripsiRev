@@ -62,6 +62,7 @@ class KelolaPertemuan extends CI_Controller {
             $penjelasan = $this->input->post('penjelasan');
             $tp = $this->input->post('tp');
             $dateline_tgs = $this->input->post('dateline-tgs');
+            $kktp = $this->input->post('kktp');
             if ($gambar) {
                 $config['allowed_types'] = 'jpg|jpeg|png';
                 $config['max_size'] = '2048';
@@ -76,7 +77,8 @@ class KelolaPertemuan extends CI_Controller {
                         'tp'               => $tp,
                         'dateline_tgs'   => $dateline_tgs,
                         'aktif'        => 0,
-                        'gambar' => $gambar
+                        'gambar' => $gambar,
+                        'kktp' => $kktp
                     );
                     $this->Kelolapertemuan_model->tambahPertemuan($data);
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pertemuan berhasil ditambahkan</div>');
@@ -109,6 +111,7 @@ class KelolaPertemuan extends CI_Controller {
            $penjelasan = $this->input->post('penjelasan');
            $gambarLama = $this->input->post('gambar_lama');
            $gambar = $_FILES['gambar']['name'];
+           $kktp = $this->input->post('kktp');
            $dateline_tgs = $this->input->post('dateline-tgs');
             if ($gambar) {
                 $config['allowed_types'] = 'jpg|jpeg|png';
@@ -123,7 +126,7 @@ class KelolaPertemuan extends CI_Controller {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertemuan gagal diubah</div>');
                     redirect('kelolaPertemuan');
                 }
-                $this->Kelolapertemuan_model->editPertemuan($id_pertemuan,$penjelasan,$gambar,$tp,$dateline_tgs);
+                $this->Kelolapertemuan_model->editPertemuan($id_pertemuan,$penjelasan,$gambar,$tp,$dateline_tgs,$kktp);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pertemuan berhasil diubah!</div>');
                 redirect('kelolapertemuan');
             }

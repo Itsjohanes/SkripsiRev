@@ -31,7 +31,7 @@ class KelolaQuiz extends CI_Controller {
     {
 
             $soal = $this->input->post('soal');
-            
+            $id_ps = $this->input->post('id_ps');
             $kunci = $this->input->post('kunci');
             $pembahasan = $this->input->post('pembahasan');
             $pertemuan = $this->input->post('pertemuan');
@@ -166,6 +166,7 @@ class KelolaQuiz extends CI_Controller {
                 'pembahasan' => $pembahasan,
                 'kunci' => $kunci,
                 'gambar' => $gambar,
+                'id_ps' => $id_ps,
                 'id_pertemuan' => $pertemuan
             ];
             $this->Kelolaquiz_model->tambahQuiz($data);
@@ -234,18 +235,14 @@ class KelolaQuiz extends CI_Controller {
     public function runEditQuiz()
     {
             $id_quiz = $this->input->post('id_quiz');
+            $id_ps = $this->input->post('id_ps');
             $soal = $this->input->post('soal');
-            $pertemuan = $this->input->post('pertemuan');
-            $gambar_lama = $this->input->post('gambar_lama');
-            $pembahasan = $this->input->post('pembahasan');
-            $opsi_a = $this->input->post('opsi_a');
-            $opsi_b = $this->input->post('opsi_b');
-            $opsi_c = $this->input->post('opsi_c');
-            $opsi_d = $this->input->post('opsi_d');
-            $opsi_e = $this->input->post('opsi_e');
+            $opsi_a = $this->input->post('a');
+            $opsi_b = $this->input->post('b');
+            $opsi_c = $this->input->post('c');
+            $opsi_d = $this->input->post('d');
+            $opsi_e = $this->input->post('e');
             $kunci = $this->input->post('kunci');
-            $gambar = $_FILES['gambar']['name'];
-
             $dataSoal = $this->Kelolaquiz_model->getQuizById($id_quiz);
             $gambar = $dataSoal['gambar'];
             $gambar1 = $dataSoal['opsi_a'];
@@ -253,6 +250,8 @@ class KelolaQuiz extends CI_Controller {
             $gambar3 = $dataSoal['opsi_c'];
             $gambar4 = $dataSoal['opsi_d'];
             $gambar5= $dataSoal['opsi_e'];
+            $pertemuan = $this->input->post('pertemuan');
+            $pembahasan = $this->input->post('pembahasan');
 
             if (file_exists('./assets/img/quiz/' . $gambar) && $gambar != '') {
                 unlink('./assets/img/quiz/' . $gambar);
@@ -401,11 +400,12 @@ class KelolaQuiz extends CI_Controller {
                 'id_pertemuan' => $pertemuan,
                 'kunci' => $kunci,
                 'pembahasan' => $pembahasan,
+                'id_ps' => $id_ps,
                 'gambar' => $gambar
             ];
-            $this->Kelolaquiz_model->updateQuiz($id_soal, $data);
+            //cara test apakah edit berhasil
+            $this->Kelolaquiz_model->updateQuiz($id_quiz, $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Soal Berhasil diedit!</div>');
-
             redirect('kelolaquiz');
         
     }

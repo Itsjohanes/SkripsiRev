@@ -57,7 +57,28 @@
                     </div>
                     </div>
                 </div>
-                </br>
+                <div class="row">
+                    <div class="col">
+                    <label for = "pertemuan">Kategori</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <div class="input-group input-group-outline">
+                        &nbsp
+                        <select class="form-control" required id="exampleFormControlSelect1" id="kategori" name="kategori">
+                        <option selected>Kategori</option>
+                            <option value="Tugas">
+                                Tugas
+                            </option>
+                            <option value="Materi">
+                                Materi
+                            </option>
+                        </select>
+                    </div>
+                    </div>
+                </div>
+                <br>
                 <div class="row">
                     <div class="col">
                         <Button class="btn btn-success">Submit</Button>
@@ -85,6 +106,7 @@
                                     <th scope="col">No.</th>
                                     <th scope="col">Pertemuan</th>
                                     <th scope="col">Link</th>
+                                    <th scope="col">Kategori</th>
                                     <th scope="col">Action</th>
 
 
@@ -95,6 +117,7 @@
                                     <th scope="col">No.</th>
                                     <th scope="col">Pertemuan</th>
                                     <th scope="col">Link</th>
+                                    <th scope="col">Kategori</th>
                                     <th scope="col">Action</th>
 
 
@@ -109,7 +132,7 @@
 <td>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= $j['youtube']; ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </td>
-
+                                        <td><?= $j['kategori']; ?></td>
                                         <td>
                                             <a href="<?= base_url(); ?>kelolayoutube/hapusyoutube/<?= $j['id_youtube']; ?>" class="btn btn-danger hapus-btn" ><i class="fas fa-trash-alt"></i></a>
                                             <a href="<?= base_url(); ?>Kelolayoutube/edityoutube/<?= $j['id_youtube']; ?>" class="btn btn-warning"><i class="fas fa-edit"></i></a>

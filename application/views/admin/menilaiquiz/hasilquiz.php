@@ -1,3 +1,14 @@
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+    .table-responsive td {
+        word-wrap: break-word;
+        white-space: normal;
+    } 
+</style>
     <div class="row">
             <div class="col-12">
             <div class="card my-4">
@@ -27,6 +38,10 @@
                                     <th scope="col">Benar</th>
                                     <th scope="col">Salah</th>
                                     <th scope="col">Kosong</th>
+                                    <th scope="col">Memahami Masalah</th>
+                                    <th scope="col">Merencanakan Pemecahan Masalah</th>
+                                    <th scope="col">Melaksanakan Pemecahan Masalah</th>
+                                    <th scope="col">Melihat Kembali</th>
                                     <th scope="col">Timestamp</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -40,9 +55,12 @@
                                     <th scope="col">Benar</th>
                                     <th scope="col">Salah</th>
                                     <th scope="col">Kosong</th>
+                                    <th scope="col">Memahami Masalah</th>
+                                    <th scope="col">Merencanakan Pemecahan Masalah</th>
+                                    <th scope="col">Melaksanakan Pemecahan Masalah</th>
+                                    <th scope="col">Melihat Kembali</th>
                                     <th scope="col">Timestamp</th>
                                     <th scope="col">Action</th>
-
 
                                 </tr>
                             </tfoot>
@@ -57,9 +75,13 @@
                                         <td><?= $j['benar']; ?></td>
                                         <td><?= $j['salah']; ?></td>
                                         <td><?= $j['kosong']; ?></td>
+                                        <td><?= $j['memahami_masalah']; ?></td>
+                                        <td><?= $j['merencanakan_pemecahan_masalah']; ?></td>
+                                        <td><?= $j['melaksanakan_pemecahan_masalah']; ?></td>
+                                        <td><?= $j['memeriksa_kembali']; ?></td>
                                         <td><?= $j['timestamp'];?></td>
                                         <td>
-                                            <a href="<?= base_url('menilaiquiz/delete/') . $j['id_hasilquiz']; ?>" class="btn btn-info btn-sm">Hapus</a>
+                                            <a href="<?= base_url('menilaiquiz/delete/') . $j['id_hasilquiz']; ?>" class="btn btn-info btn-sm hapus-btn">Hapus</a>
                                         </td>
   
                                     </tr>
