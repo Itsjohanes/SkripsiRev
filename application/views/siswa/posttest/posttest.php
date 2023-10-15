@@ -31,7 +31,7 @@
             ?>
   <div class="ans ml-2">
               <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="A" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_a')">
+                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="A" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'A')">
                   <?php if (!empty($data['opsi_a'])) : ?>
                        <?php if (file_exists('assets/img/posttest/' . $data['opsi_a'])) : ?>
                        <img src="<?= base_url('assets/img/posttest/' . $data['opsi_a']); ?>" width="200px" alt="Gambar Opsi A">
@@ -43,7 +43,7 @@
             </div>
             <div class="ans ml-2">
               <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="B" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_b')">
+                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="B" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'B')">
                   <?php if (!empty($data['opsi_b'])) : ?>
                        <?php if (file_exists('assets/img/posttest/' . $data['opsi_b'])) : ?>
                        <img src="<?= base_url('assets/img/posttest/' . $data['opsi_b']); ?>" width="200px" alt="Gambar Opsi B">
@@ -55,7 +55,7 @@
             </div>
             <div class="ans ml-2">
               <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="C" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_c')">
+                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="C" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'C')">
                   <?php if (!empty($data['opsi_c'])) : ?>
                        <?php if (file_exists('assets/img/posttest/' . $data['opsi_c'])) : ?>
                        <img src="<?= base_url('assets/img/posttest/' . $data['opsi_c']); ?>" width="200px" alt="Gambar Opsi C">
@@ -67,7 +67,7 @@
             </div>
             <div class="ans ml-2">
               <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="D" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_d')">
+                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="D" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'D')">
                   <?php if (!empty($data['opsi_d'])) : ?>
                        <?php if (file_exists('assets/img/posttest/' . $data['opsi_d'])) : ?>
                        <img src="<?= base_url('assets/img/posttest/' . $data['opsi_d']); ?>" width="200px" alt="Gambar Opsi D">
@@ -79,7 +79,7 @@
             </div>
             <div class="ans ml-2">
               <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="E" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_e')">
+                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="E" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'E')">
                   <?php if (!empty($data['opsi_e'])) : ?>
                        <?php if (file_exists('assets/img/posttest/' . $data['opsi_e'])) : ?>
                        <img src="<?= base_url('assets/img/posttest/' . $data['opsi_e']); ?>" width="200px" alt="Gambar Opsi E">
@@ -95,7 +95,6 @@
         ?>
 
         <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
-          <input type="reset" class="btn btn-danger" value="Reset">
           <input type="button" value="Jawab" class="btn btn-success" onclick="submitForm()">
         </div>
         </form>
@@ -105,6 +104,42 @@
 </div>
 
 <script>
+  function saveSelectedOption(id, value) {
+    var options = JSON.parse(localStorage.getItem('options')) || {};
+    options[id] = value;
+    localStorage.setItem('options', JSON.stringify(options));
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    var options = JSON.parse(localStorage.getItem('options'));
+    if (options) {
+      Object.keys(options).forEach(function(id) {
+        var radio = document.querySelector('input[name="pilihan[' + id + ']"][value="' + options[id] + '"]');
+        if (radio) {
+          radio.checked = true;
+        }
+      });
+    }
+  });
+
+  function submitForm() {
+    var options = JSON.parse(localStorage.getItem('options'));
+    if (options) {
+      Object.keys(options).forEach(function(id) {
+        var hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'selected_options[' + id + ']';
+        hiddenInput.value = options[id];
+        document.getElementById('posttest-form').appendChild(hiddenInput);
+      });
+    }
+
+    // Hapus data dari local storage setelah form dikirim
+    localStorage.removeItem('options');
+
+    document.getElementById('posttest-form').submit();
+  }
+
   // Timer Countdown
   var timeLeftPosttest = <?php echo $waktu; ?>;
   var timerId;
@@ -127,7 +162,7 @@
       document.getElementById('posttest-form').submit();
     } else {
       timeLeftPosttest--;
-      localStorage.setItem('timeLeftPosttest', timeLeftPosttest); 
+      localStorage.setItem('timeLeftPosttest', timeLeftPosttest);
     }
   }
 
@@ -135,51 +170,8 @@
   if (storedTimeLeft) {
     timeLeftPosttest = parseInt(storedTimeLeft);
   } else {
-    timeLeftPosttest = <?php echo $waktu; ?>; // Atur waktu default jika tidak ada waktu tersisa yang disimpan
+    timeLeftPosttest = <?php echo $waktu; ?>;
   }
-  
+
   startTimer();
-
-  // Simpan opsi yang dipilih pada session storage
-  function saveSelectedOption(id, value) {
-    var options = JSON.parse(sessionStorage.getItem('options')) || [];
-    var option = {
-      id: id,
-      value: value
-    };
-    options.push(option);
-    sessionStorage.setItem('options', JSON.stringify(options));
-  }
-
-  // Tampilkan opsi yang dipilih saat halaman dimuat
-  document.addEventListener("DOMContentLoaded", function() {
-    var options = sessionStorage.getItem('options');
-    if (options) {
-      options = JSON.parse(options);
-      options.forEach(function(option) {
-        var radio = document.querySelector('input[name="pilihan[' + option.id + ']"][value="' + option.value + '"]');
-        if (radio) {
-          radio.checked = true;
-        }
-      });
-    }
-  });
-
-  // Submit form
-  function submitForm() {
-    // Assign the selected options to hidden input fields in the form
-    var options = sessionStorage.getItem('options');
-    if (options) {
-      options = JSON.parse(options);
-      options.forEach(function(option) {
-        var hiddenInput = document.createElement('input');
-        hiddenInput.type = 'hidden';
-        hiddenInput.name = 'selected_options[' + option.id + ']';
-        hiddenInput.value = option.value;
-        document.getElementById('posttest-form').appendChild(hiddenInput);
-      });
-    }
-    // Submit the form
-    document.getElementById('posttest-form').submit();
-  }
 </script>

@@ -1,12 +1,13 @@
+
 <div class="container mt-5">
   <div class="d-flex justify-content-center row">
     <div class="col-md-10 col-lg-10">
       <div class="border">
         <div class="question bg-white p-3 border-bottom">
-          <div class="d-flex flex-row justify-content-between align-items-center mcq">
+        <div class="d-flex flex-row justify-content-between align-items-center">
             <h4>Pre-Test</h4>
-             <span id="timer"></span>
-          </div>
+            <span id="timer"></span>
+        </div>
         </div>
 
         <?php
@@ -31,7 +32,7 @@
             ?>
             <div class="ans ml-2">
               <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="A" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_a')">
+                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="A" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'A')">
                   <?php if (!empty($data['opsi_a'])) : ?>
                        <?php if (file_exists('assets/img/pretest/' . $data['opsi_a'])) : ?>
                        <img src="<?= base_url('assets/img/pretest/' . $data['opsi_a']); ?>" width="200px" alt="Gambar Opsi A">
@@ -43,7 +44,7 @@
             </div>
             <div class="ans ml-2">
               <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="B" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_b')">
+                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="B" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'B')">
                   <?php if (!empty($data['opsi_b'])) : ?>
                        <?php if (file_exists('assets/img/pretest/' . $data['opsi_b'])) : ?>
                        <img src="<?= base_url('assets/img/pretest/' . $data['opsi_b']); ?>" width="200px" alt="Gambar Opsi B">
@@ -55,7 +56,7 @@
             </div>
             <div class="ans ml-2">
               <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="C" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_c')">
+                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="C" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'C')">
                   <?php if (!empty($data['opsi_c'])) : ?>
                        <?php if (file_exists('assets/img/pretest/' . $data['opsi_c'])) : ?>
                        <img src="<?= base_url('assets/img/pretest/' . $data['opsi_c']); ?>" width="200px" alt="Gambar Opsi C">
@@ -67,7 +68,7 @@
             </div>
             <div class="ans ml-2">
               <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="D" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_d')">
+                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="D" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'D')">
                   <?php if (!empty($data['opsi_d'])) : ?>
                        <?php if (file_exists('assets/img/pretest/' . $data['opsi_d'])) : ?>
                        <img src="<?= base_url('assets/img/pretest/' . $data['opsi_d']); ?>" width="200px" alt="Gambar Opsi D">
@@ -79,7 +80,7 @@
             </div>
             <div class="ans ml-2">
               <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="E" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'opsi_e')">
+                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="E" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'E')">
                   <?php if (!empty($data['opsi_e'])) : ?>
                        <?php if (file_exists('assets/img/pretest/' . $data['opsi_e'])) : ?>
                        <img src="<?= base_url('assets/img/pretest/' . $data['opsi_e']); ?>" width="200px" alt="Gambar Opsi E">
@@ -95,7 +96,6 @@
         ?>
 
         <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
-          <input type="reset" class="btn btn-danger" value="Reset">
           <input type="button" value="Jawab" class="btn btn-success" onclick="submitForm()">
         </div>
         </form>
