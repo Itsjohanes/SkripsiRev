@@ -83,7 +83,7 @@ input[type="radio"]:checked + .radio-button::before {
                 ?>
 
                   <div class="option mb-2">
-                    <input type="radio" id="<?= $data['id_soal'] . $option; ?>" name="pilihan[<?= $data['id_soal']; ?>]" value="<?= $option; ?>" onclick="saveSelectedOption(<?= $data['id_soal'] ?>, 'opsi_<?= strtolower($option) ?>')">
+                    <input type="radio" id="<?= $data['id_soal'] . $option; ?>" name="pilihan[<?= $data['id_soal']; ?>]" value="<?= $option; ?>">
                     <label class="radio-button" for="<?= $data['id_soal'] . $option; ?>"></label>
                     <?php if (!empty($data[$optionKey])) : ?>
                       <?php if (file_exists('assets/img/quiz/' . $data[$optionKey])) : ?>
