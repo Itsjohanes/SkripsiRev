@@ -62,3 +62,5 @@ $route['pertemuan/(:num)'] = 'Pertemuan/index/$1';
 $route['menilaiquiz/(:num)'] = 'MenilaiQuiz/index/$1';
 $route['adminfilemanager/(:num)'] = 'AdminFileManager/index/$1';
 $route['menilaipertemuan/(:num)'] = 'MenilaiPertemuan/index/$1';
+$route['menilairefleksi/(:num)'] = 'MenilaiRefleksi/index/$1';
+$route['menilaiapersepsi/(:num)'] = 'MenilaiApersepsi/index/$1';

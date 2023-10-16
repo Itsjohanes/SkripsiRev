@@ -32,7 +32,7 @@ class MenilaiPosttest extends CI_Controller {
             // Delete berdasarkan id
             $this->Menilaiposttest_model->deleteHasilPosttest($id);
             $this->session->set_flashdata('category_success', 'Hasil Post-Test berhasil dihapus');
-            redirect('MenilaiPosttest');
+            redirect('menilaiposttest');
         
     }
     public function cetakExcel(){

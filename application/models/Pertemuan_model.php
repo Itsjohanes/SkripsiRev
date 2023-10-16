@@ -24,4 +24,12 @@ class Pertemuan_model extends CI_Model {
         $this->db->where('id_hasiltugas', $id);
         $this->db->update('tb_hasiltugas', $data);
     }
+    public function insertRefleksi($data){
+        $this->db->insert('tb_hasilrefleksi', $data);
+
+    }
+    public function getRefleksi($id_pert,$id_siswa){
+        return $this->db->get_where('tb_hasilrefleksi', ['id_pertemuan' => $id_pert,'id_siswa'=>$id_siswa])->row_array();
+
+    }
 }

@@ -29,6 +29,39 @@ class Pertemuan extends CI_Controller {
         }
         
     }
+    public function apersepsi($id = ''){
+        $data['notifchat'] = $this->Chat_model->getChatData();
+        $data['title'] = "Apersepsi";
+        $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+        $data['id'] = $id;
+        $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+        $data['pertemuan'] = $status;
+        if($status['aktif'] == 1){
+            $this->load->view('siswa/template/header', $data);
+            $this->load->view('siswa/template/sidebar', $data);
+            $this->load->view('siswa/pertemuan/apersepsi', $data);
+            $this->load->view('siswa/template/footer');
+
+        }else{
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+            redirect('materi');
+        }
+        
+    }
+    public function submitApersepsi(){
+        //parameter id_pertemuan dan jawaban
+        $id_pertemuan = $this->input->post('id_pertemuan');
+        $jawaban = $this->input->post('jawaban');
+        $id_siswa = $this->session->userdata('id');
+        $data = [
+            'id_pertemuan' => $id_pertemuan,
+            'id_siswa' => $id_siswa,
+            'jawaban' => $jawaban
+        ];
+        $this->db->insert('tb_hasilapersepsi', $data);
+        redirect('pertemuan/'.$id_pertemuan);
+
+    }
     public function tp($id = ''){
         $data['notifchat'] = $this->Chat_model->getChatData();
         $data['title'] = "Tujuan Pembelajaran";
@@ -64,10 +97,19 @@ class Pertemuan extends CI_Controller {
                 
                 //query aktif
                 if($status['aktif'] == '1'){
-                    $this->load->view('siswa/template/header', $data);
-                    $this->load->view('siswa/template/sidebar', $data);
-                    $this->load->view('siswa/pertemuan/menu', $data);
-                    $this->load->view('siswa/template/footer');
+                    //cek tb_hasilapersepsi apakah ada dengan data $id_siswa dan $id_pertemuan
+                    $id_siswa = $this->session->userdata('id');
+                    $data['hasilapersepsi'] = $this->db->get_where('tb_hasilapersepsi', ['id_siswa' => $id_siswa, 'id_pertemuan' => $id])->row_array();
+                    if($data['hasilapersepsi'] != null){
+                        $this->load->view('siswa/template/header', $data);
+                        $this->load->view('siswa/template/sidebar', $data);
+                        $this->load->view('siswa/pertemuan/menu', $data);
+                        $this->load->view('siswa/template/footer');
+
+                    }else{
+                        redirect('pertemuan/apersepsi/'.$id);
+                    }
+                    
                 } else {
                     //tampilkan tulisan belum diaktifasi
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
@@ -433,7 +475,7 @@ class Pertemuan extends CI_Controller {
          
     }
     public function Quiz($id = ''){
-        $data['title'] = "Quiz";
+            $data['title'] = "Quiz";
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['soal'] = $this->Quiz_model->getQuizQuestions($id);
@@ -575,6 +617,73 @@ class Pertemuan extends CI_Controller {
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda sudah pernah mengerjakan Quiz</div>');
             redirect($this->agent->referrer());
         
+    }
+    public function refleksi($id = ''){
+
+            $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
+            if($id_pertemuan){
+                $data['notifchat'] = $this->Chat_model->getChatData();
+                $data['title'] = "Refleksi";
+                $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+                $data['pertemuan'] = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+                if($data['pertemuan']['aktif'] == '1'){
+                    //jika data refleksi belum ada
+                    $data['refleksi'] = $this->Pertemuan_model->getRefleksi($id, $this->session->userdata('id'));
+                    if($data['refleksi']){
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Refleksi sudah dikerjakan</div>');
+                    redirect('materi');
+
+                    }else{
+                        $this->load->view('siswa/template/header', $data);
+                        $this->load->view('siswa/template/sidebar', $data);
+                        $this->load->view('siswa/pertemuan/refleksi', $data);
+                        $this->load->view('siswa/template/footer');
+                    
+                }
+                    
+                        
+
+                    
+                }else{
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('materi');
+                }    
+            }else{
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan tidak ada</div>');
+                    redirect('materi');
+                
+            }
+        
+
+
+    }
+    public function submitRefleksi(){
+
+        $pemahaman = $this->input->post('pemahaman');
+        $kesulitan = $this->input->post('kesulitan');
+        $waktu = $this->input->post('waktu');
+        $baik = $this->input->post('baik');
+        $penghambat = $this->input->post('penghambat');
+        $saran = $this->input->post('saran');
+        $komentar = $this->input->post('komentar');
+        $id_pertemuan = $this->input->post('id_pertemuan');
+        $id_siswa = $this->session->userdata('id');
+
+        $data = [
+            'id_siswa' => $id_siswa,
+            'id_pertemuan' => $id_pertemuan,
+            'seberapa_paham' => $pemahaman,
+            'seberapa_baik'  => $baik,
+            'seberapa_sulit' => $kesulitan,
+            'seberapa_cukup' => $waktu,
+            'penghambat' => $penghambat,
+            'saran' => $saran,
+            'komentar' =>$komentar
+        ];
+        $this->Pertemuan_model->insertRefleksi($data);
+        $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Refleksi sudah dikerjakan</div>');
+        redirect('materi');
+
     }
 }
 

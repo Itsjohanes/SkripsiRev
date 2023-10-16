@@ -73,6 +73,13 @@
                     <p>Quiz dapat dilihat pada menu Quiz</p>
                 </div>
             </div>
+            <hr class="my-5">
+            <div class="d-flex align-items-start">
+                <div>
+                    <h4>Refleksi</h4>
+                    <p>Refleksi dapat dilihat pada menu Refleksi</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

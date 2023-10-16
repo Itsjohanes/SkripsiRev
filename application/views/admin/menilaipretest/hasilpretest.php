@@ -68,7 +68,7 @@
 
                                         <td><?= $j['created_at'];?></td>
                                         <td>
-                                            <a class="btn btn-danger hapus-btn" href="<?= base_url('MenilaiPretest/hapusHasilPretest/') . $j['id_hasiltest']; ?>"><i class="fas fa-trash-alt"></i></a>
+                                            <a class="btn btn-danger hapus-btn" href="<?= base_url('menilaipretest/hapushasilpretest/') . $j['id_hasiltest']; ?>"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>

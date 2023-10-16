@@ -38,6 +38,10 @@
             <div class="input-group input-group-outline">
             <textarea type="textarea" required class="form-control" id="kktp" name="kktp"><?php echo $materi['kktp']; ?></textarea>
             </div>
+            <label for="nilai">Apersepsi</label>
+            <div class="input-group input-group-outline">
+            <textarea type="textarea" required class="form-control" id="apersepsi" name="apersepsi"><?php echo $materi['apersepsi']; ?></textarea>
+            </div>
             <label for="nilai">Gambar</label>
             <img src="<?= base_url('assets/pertemuan/' . $materi['gambar']) ?>" width = "150px" height = "100px" alt="Gambar"></img>
             <div class="input-group input-group-outline">

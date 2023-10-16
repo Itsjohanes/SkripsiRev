@@ -32,7 +32,7 @@ class MenilaiPretest extends CI_Controller {
             // Delete berdasarkan id
             $this->Menilaipretest_model->deleteHasilPretest($id);
             $this->session->set_flashdata('category_success', 'Hasil Pre-Test berhasil dihapus');
-            redirect('MenilaiPretest');
+            redirect('menilaipretest');
         
     }
     public function cetakExcel(){

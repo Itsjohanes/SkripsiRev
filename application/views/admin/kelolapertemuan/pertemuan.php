@@ -85,6 +85,18 @@
                 </div>
                 <div class="row">
                     <div class="col">
+                    <label for = "pertemuan">Apersepsi</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <div class="input-group input-group-outline">
+                        <textarea class="form-control" required name = "apersepsi" id = "apersepsi"></textarea>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
                     <label for = "pertemuan">Gambar</label>
                     </div>
                 </div>
@@ -104,7 +116,7 @@
                 <div class="row" ng-app="myApp" ng-init="
                 date1='01-01-2015 00:00:00';
                 date2='Thu Jan 01 2015 00:00:00 GMT-0500 (EST)';
-                date3='2023-01-01T00:00:00-0400';
+                date3='<?php echo date("Y-m-d H:i:s"); ?>';
                 date4='2015-01-01';">
                         <input ng-model="date3" name="dateline-tgs" datetime-picker date-format="yyyy-MM-dd HH:mm:ss"  size="10"  /> <br/> <br/>
                  </div>
@@ -144,6 +156,7 @@
                                     <th scope="col">Penjelasan</th>
                                     <th scope="col">Tujuan Pembelajaran</th>
                                     <th scope="col">KKTP</th>
+                                    <th scope="col">Apersepsi</th>
                                     <th scope="col">Gambar</th>
                                     <th scope="col">Dateline Tugas</th>
                                     <th scope="col">Aksi</th>
@@ -157,6 +170,7 @@
                                     <th scope="col">Penjelasan</th>
                                     <th scope="col">Tujuan Pembelajaran</th>
                                     <th scope="col">KKTP</th>
+                                    <th scope="col">Apersepsi</th>
                                     <th scope="col">Gambar</th>
                                     <th scope="col">Dateline Tugas</th>
                                     <th scope="col">Aksi</th>
@@ -180,6 +194,9 @@
                                         }
 
                                          echo '</ul>'; ?>
+                                        </td>
+                                        <td>
+                                        <?= $j['apersepsi'];?>
                                         </td>
                                         <td><img src="<?= base_url('assets/pertemuan/' . $j['gambar']) ?>" width = "150px" height = "100px" alt="Gambar"></img>
                                         <td><?= $j['dateline_tgs'];?></td>

@@ -63,6 +63,7 @@ class KelolaPertemuan extends CI_Controller {
             $tp = $this->input->post('tp');
             $dateline_tgs = $this->input->post('dateline-tgs');
             $kktp = $this->input->post('kktp');
+            $apersepsi = $this->input->post('apersepsi');
             if ($gambar) {
                 $config['allowed_types'] = 'jpg|jpeg|png';
                 $config['max_size'] = '2048';
@@ -78,7 +79,8 @@ class KelolaPertemuan extends CI_Controller {
                         'dateline_tgs'   => $dateline_tgs,
                         'aktif'        => 0,
                         'gambar' => $gambar,
-                        'kktp' => $kktp
+                        'kktp' => $kktp,
+                        'apersepsi' => $apersepsi
                     );
                     $this->Kelolapertemuan_model->tambahPertemuan($data);
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pertemuan berhasil ditambahkan</div>');
@@ -111,6 +113,7 @@ class KelolaPertemuan extends CI_Controller {
            $penjelasan = $this->input->post('penjelasan');
            $gambarLama = $this->input->post('gambar_lama');
            $gambar = $_FILES['gambar']['name'];
+           $apersepsi = $this->input->post('apersepsi');
            $kktp = $this->input->post('kktp');
            $dateline_tgs = $this->input->post('dateline-tgs');
             if ($gambar) {
@@ -126,37 +129,12 @@ class KelolaPertemuan extends CI_Controller {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertemuan gagal diubah</div>');
                     redirect('kelolaPertemuan');
                 }
-                $this->Kelolapertemuan_model->editPertemuan($id_pertemuan,$penjelasan,$gambar,$tp,$dateline_tgs,$kktp);
+                $this->Kelolapertemuan_model->editPertemuan($id_pertemuan,$penjelasan,$gambar,$tp,$dateline_tgs,$kktp,$apersepsi);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pertemuan berhasil diubah!</div>');
                 redirect('kelolapertemuan');
             }
 
            
     }
-    public function conference($id = ''){
-
-            $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
-            if($id_pertemuan){
-                $data['notifchat'] = $this->Chat_model->getChatData();
-                $data['title'] = "Conference Pertemuan ". $id;
-                $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-                $data['pertemuan'] = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
-                if($data['pertemuan']['aktif'] == '1'){
-                    $this->load->view('admin/template/header', $data);
-                    $this->load->view('admin/template/sidebar', $data);
-                    $this->load->view('admin/kelolapertemuan/conference', $data);
-                    $this->load->view('admin/template/footer');
-                }else{
-                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
-                    redirect('kelolapertemuan');
-                }    
-            }else{
-                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan tidak ada</div>');
-                    redirect('kelolapertemuan');
-                
-            }
-          
-         
-    }
-
+    
 }

@@ -15,8 +15,10 @@
               </div>
             </div>
             <div class="card-body">
+              <a class="mb-0 " href = "<?php echo base_url('menilaiapersepsi/' . $item['id_pertemuan']); ?>"> Apersepsi</a>              
               <a class="mb-0 " href = "<?php echo base_url('menilaipertemuan/' . $item['id_pertemuan']); ?>"> Tugas</a>
-               <a class="mb-0 " href = "<?php echo base_url('menilaiquiz/' . $item['id_pertemuan']); ?>"> Quiz Pertemuan:<?php echo $item['id_pertemuan'];?>  </a>
+              <a class="mb-0 " href = "<?php echo base_url('menilaiquiz/' . $item['id_pertemuan']); ?>"> Quiz</a>
+              <a class="mb-0 " href = "<?php echo base_url('menilairefleksi/' . $item['id_pertemuan']); ?>"> Refleksi:<?php echo $item['id_pertemuan'];?>  </a>
 
               <hr class="dark horizontal">
               <div class="d-flex ">
