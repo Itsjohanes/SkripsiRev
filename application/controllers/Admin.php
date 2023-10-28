@@ -33,10 +33,15 @@ class Admin extends CI_Controller
                 
             }
             if ($jumlahSiswa != 0) {
+                $data['jumlahsiswa'] = $jumlahSiswa;
+                $data['jumlahsiswapretest'] = $jumlahPretest;
+                $data['jumlahsiswaposttest'] = $jumlahPosttest;
+
                 $data['persentasepretest'] = ($jumlahPretest / $jumlahSiswa) * 100;
                 $data['persentaseposttest'] = ($jumlahPosttest / $jumlahSiswa) * 100;
                 for($i = 1;$i<=$jumlahPertemuan;$i++){
                     if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                        $data['jumlahsiswatugas'][$i] = $tugas[$i];
                         $data['persentasetugas'.$i] = ($tugas[$i] / $jumlahSiswa) * 100;
                     }
                 }
@@ -55,6 +60,7 @@ class Admin extends CI_Controller
               
                 for($i = 1;$i<=$jumlahPertemuan;$i++){
                     if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                        $data['jumlahsiswaquiz'][$i] = $quiz[$i];
                         $data['persentasequiz'.$i] = ($quiz[$i] / $jumlahSiswa) * 100;
                     }
                 }

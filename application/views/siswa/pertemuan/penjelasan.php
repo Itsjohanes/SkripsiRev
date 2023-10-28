@@ -7,7 +7,7 @@
                         <div>
                             <h1 class="text-uppercase fw-bold text-white mb-3">Beberapa penjelasan&nbsp;</h1>
                             <p class="mb-4">Beberapa aturan dan penjelasan multimedia ini.</p>
-                            <a class="btn btn-light fs-5 py-2 px-4" type="button" href="<?php echo base_url('pertemuan/') . $id; ?>">Lanjut</a>
+                            <a class="btn btn-light fs-5 py-2 px-4" type="button" href="<?php echo base_url('pertemuan/tugas/') . $id; ?>">Lanjut</a>
                         </div>
                     </div>
                 </div>

@@ -59,18 +59,6 @@
                     </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                    <label for = "pertemuan">KKTP</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                    <div class="input-group input-group-outline">
-                        <textarea class="form-control" required name = "kktp" id = "kktp"></textarea>
-                    </div>
-                    </div>
-                </div>
                  <div class="row">
                     <div class="col">
                     <label for = "pertemuan">Penjelasan</label>
@@ -155,7 +143,6 @@
                                     <th scope="col">Pertemuan</th>
                                     <th scope="col">Penjelasan</th>
                                     <th scope="col">Tujuan Pembelajaran</th>
-                                    <th scope="col">KKTP</th>
                                     <th scope="col">Apersepsi</th>
                                     <th scope="col">Gambar</th>
                                     <th scope="col">Dateline Tugas</th>
@@ -169,7 +156,6 @@
                                     <th scope="col">Pertemuan</th>
                                     <th scope="col">Penjelasan</th>
                                     <th scope="col">Tujuan Pembelajaran</th>
-                                    <th scope="col">KKTP</th>
                                     <th scope="col">Apersepsi</th>
                                     <th scope="col">Gambar</th>
                                     <th scope="col">Dateline Tugas</th>
@@ -185,11 +171,10 @@
                                         <th scope="row"><?= $i; ?></th>
                                         <td><?= $j['pertemuan']; ?></td>
                                         <td><?= $j['penjelasan']; ?></td>
-                                        <td><?= $j['tp'];?></td>
                                         <td>
                                         <?php  echo '<ul>' ;
-                                        $kktpItems = explode(',', $j['kktp']);
-                                        foreach ($kktpItems as $item) {
+                                        $tpItems = explode(',', $j['tp']);
+                                        foreach ($tp as $item) {
                                             echo '<li>' . htmlspecialchars($item) . '</li>';
                                         }
 

@@ -62,7 +62,6 @@ class KelolaPertemuan extends CI_Controller {
             $penjelasan = $this->input->post('penjelasan');
             $tp = $this->input->post('tp');
             $dateline_tgs = $this->input->post('dateline-tgs');
-            $kktp = $this->input->post('kktp');
             $apersepsi = $this->input->post('apersepsi');
             if ($gambar) {
                 $config['allowed_types'] = 'jpg|jpeg|png';
@@ -79,7 +78,6 @@ class KelolaPertemuan extends CI_Controller {
                         'dateline_tgs'   => $dateline_tgs,
                         'aktif'        => 0,
                         'gambar' => $gambar,
-                        'kktp' => $kktp,
                         'apersepsi' => $apersepsi
                     );
                     $this->Kelolapertemuan_model->tambahPertemuan($data);
@@ -114,7 +112,6 @@ class KelolaPertemuan extends CI_Controller {
            $gambarLama = $this->input->post('gambar_lama');
            $gambar = $_FILES['gambar']['name'];
            $apersepsi = $this->input->post('apersepsi');
-           $kktp = $this->input->post('kktp');
            $dateline_tgs = $this->input->post('dateline-tgs');
             if ($gambar) {
                 $config['allowed_types'] = 'jpg|jpeg|png';
@@ -129,7 +126,7 @@ class KelolaPertemuan extends CI_Controller {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pertemuan gagal diubah</div>');
                     redirect('kelolaPertemuan');
                 }
-                $this->Kelolapertemuan_model->editPertemuan($id_pertemuan,$penjelasan,$gambar,$tp,$dateline_tgs,$kktp,$apersepsi);
+                $this->Kelolapertemuan_model->editPertemuan($id_pertemuan,$penjelasan,$gambar,$tp,$dateline_tgs,$apersepsi);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pertemuan berhasil diubah!</div>');
                 redirect('kelolapertemuan');
             }

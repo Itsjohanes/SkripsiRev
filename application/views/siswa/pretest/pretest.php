@@ -1,4 +1,21 @@
+<style>
 
+/* Style untuk tombol submit */
+.btn-success {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #45a049;
+}
+
+</style>
 <div class="container mt-5">
   <div class="d-flex justify-content-center row">
     <div class="col-md-10 col-lg-10">
@@ -30,72 +47,39 @@
               echo "<tr><td></td><td><img src='" . base_url('assets/img/pretest/' . $nama) . "' class='img-fluid' alt='Responsive image'></td></tr>";
             }
             ?>
+        <?php
+        // Mendefinisikan array opsi
+        $options = ['A', 'B', 'C', 'D', 'E'];
+
+        // Mengacak array opsi
+        shuffle($options);
+
+        // Menampilkan opsi yang telah diacak
+        foreach ($options as $option) {
+            ?>
             <div class="ans ml-2">
-              <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="A" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'A')">
-                  <?php if (!empty($data['opsi_a'])) : ?>
-                       <?php if (file_exists('assets/img/pretest/' . $data['opsi_a'])) : ?>
-                       <img src="<?= base_url('assets/img/pretest/' . $data['opsi_a']); ?>" width="200px" alt="Gambar Opsi A">
-                    <?php else : ?>
-                      <?= nl2br(htmlspecialchars($data['opsi_a'])); ?>
-                    <?php endif; ?>
-                <?php endif; ?>
-              </label>
-            </div>
-            <div class="ans ml-2">
-              <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="B" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'B')">
-                  <?php if (!empty($data['opsi_b'])) : ?>
-                       <?php if (file_exists('assets/img/pretest/' . $data['opsi_b'])) : ?>
-                       <img src="<?= base_url('assets/img/pretest/' . $data['opsi_b']); ?>" width="200px" alt="Gambar Opsi B">
-                    <?php else : ?>
-                      <?= nl2br(htmlspecialchars($data['opsi_b'])); ?>
-                    <?php endif; ?>
-                <?php endif; ?>
-              </label>
-            </div>
-            <div class="ans ml-2">
-              <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="C" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'C')">
-                  <?php if (!empty($data['opsi_c'])) : ?>
-                       <?php if (file_exists('assets/img/pretest/' . $data['opsi_c'])) : ?>
-                       <img src="<?= base_url('assets/img/pretest/' . $data['opsi_c']); ?>" width="200px" alt="Gambar Opsi C">
-                    <?php else : ?>
-                      <?= nl2br(htmlspecialchars($data['opsi_c'])); ?>
-                    <?php endif; ?>
-                <?php endif; ?>
-              </label>
-            </div>
-            <div class="ans ml-2">
-              <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="D" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'D')">
-                  <?php if (!empty($data['opsi_d'])) : ?>
-                       <?php if (file_exists('assets/img/pretest/' . $data['opsi_d'])) : ?>
-                       <img src="<?= base_url('assets/img/pretest/' . $data['opsi_d']); ?>" width="200px" alt="Gambar Opsi D">
-                    <?php else : ?>
-                      <?= nl2br(htmlspecialchars($data['opsi_d'])); ?>
-                    <?php endif; ?>
-                <?php endif; ?>            
+                <label class="radio">
+                    <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="<?php echo $option; ?>" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, '<?php echo $option; ?>')">
+                    <?php
+                    $optionData = $data['opsi_' . strtolower($option)];
+                    if (!empty($optionData)) :
+                        if (file_exists('assets/img/pretest/' . $optionData)) :
+                            ?>
+                            <img src="<?= base_url('assets/img/pretest/' . $optionData); ?>" width="200px" alt="Gambar Opsi <?php echo $option; ?>">
+                        <?php else : ?>
+                            <?= nl2br(htmlspecialchars($optionData)); ?>
+                        <?php endif;
+                    endif; ?>
                 </label>
             </div>
-            <div class="ans ml-2">
-              <label class="radio">
-                <input name="pilihan[<?php echo $data['id_soal'] ?>]" type="radio" value="E" onclick="saveSelectedOption(<?php echo $data['id_soal'] ?>, 'E')">
-                  <?php if (!empty($data['opsi_e'])) : ?>
-                       <?php if (file_exists('assets/img/pretest/' . $data['opsi_e'])) : ?>
-                       <img src="<?= base_url('assets/img/pretest/' . $data['opsi_e']); ?>" width="200px" alt="Gambar Opsi E">
-                    <?php else : ?>
-                      <?= nl2br(htmlspecialchars($data['opsi_e'])); ?>
-                    <?php endif; ?>
-                <?php endif; ?>              
-              </label>
-            </div>
+        <?php } ?>
+
 
         <?php
         endforeach;
         ?>
 
-        <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
+          <div class="d-flex justify-content-center mt-4">
           <input type="button" value="Jawab" class="btn btn-success" onclick="submitForm()">
         </div>
         </form>

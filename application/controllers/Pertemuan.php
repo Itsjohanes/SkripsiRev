@@ -59,7 +59,7 @@ class Pertemuan extends CI_Controller {
             'jawaban' => $jawaban
         ];
         $this->db->insert('tb_hasilapersepsi', $data);
-        redirect('pertemuan/'.$id_pertemuan);
+        redirect('pertemuan/tugas/'.$id_pertemuan);
 
     }
     public function tp($id = ''){
@@ -97,18 +97,11 @@ class Pertemuan extends CI_Controller {
                 
                 //query aktif
                 if($status['aktif'] == '1'){
-                    //cek tb_hasilapersepsi apakah ada dengan data $id_siswa dan $id_pertemuan
-                    $id_siswa = $this->session->userdata('id');
-                    $data['hasilapersepsi'] = $this->db->get_where('tb_hasilapersepsi', ['id_siswa' => $id_siswa, 'id_pertemuan' => $id])->row_array();
-                    if($data['hasilapersepsi'] != null){
                         $this->load->view('siswa/template/header', $data);
                         $this->load->view('siswa/template/sidebar', $data);
                         $this->load->view('siswa/pertemuan/menu', $data);
                         $this->load->view('siswa/template/footer');
 
-                    }else{
-                        redirect('pertemuan/apersepsi/'.$id);
-                    }
                     
                 } else {
                     //tampilkan tulisan belum diaktifasi
@@ -256,12 +249,20 @@ class Pertemuan extends CI_Controller {
                 $data['youtube'] = $this->db->get_where('tb_youtube', ['id_pertemuan' => $id, 'kategori' => "Tugas"] )->result_array();
                 $data['tugas'] = $this->db->get_where('tb_tugas', ['id_pertemuan' => $id])->result_array();
                 $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+                $id_siswa = $this->session->userdata('id');
+                $hasilApersepsi = $this->db->get_where('tb_hasilapersepsi', ['id_siswa' => $id_siswa, 'id_pertemuan' => $id])->row_array();
                 $data['pertemuan'] = $id;
                 if($status['aktif'] == '1'){
-                    $this->load->view('siswa/template/header', $data);
-                    $this->load->view('siswa/template/sidebar', $data);
-                    $this->load->view('siswa/pertemuan/tugas', $data);
-                    $this->load->view('siswa/template/footer');
+                    if($hasilApersepsi != null){
+                        $this->load->view('siswa/template/header', $data);
+                        $this->load->view('siswa/template/sidebar', $data);
+                        $this->load->view('siswa/pertemuan/tugas', $data);
+                        $this->load->view('siswa/template/footer');
+
+                    }else{
+                        redirect('pertemuan/apersepsi/'.$id);
+                    }
+
                 }else{
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
                     redirect('materi');
@@ -274,6 +275,7 @@ class Pertemuan extends CI_Controller {
           
          
     }
+
 
 
     public function save_reply() {

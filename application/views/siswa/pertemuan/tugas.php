@@ -26,7 +26,7 @@
 </select>
 
 <div class="my-2">
-    <a class="btn btn-primary fs-9 py-2 px-4" role="button" href="<?php echo base_url('pertemuan/').$pertemuan;?>">Kembali</a>
+    <a class="btn btn-primary fs-9 py-2 px-4" role="button" href="<?php echo base_url('pertemuan/').$pertemuan;?>">Menu Lainnya</a>
 </div>
 
 <!-- Container untuk menampilkan konten PDF -->

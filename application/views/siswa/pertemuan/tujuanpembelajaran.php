@@ -28,19 +28,15 @@
 </style>
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">TP & KKTP dapat dibaca disini:</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Tujuan Pembelajaran dapat dibaca disini:</h6>
     </div>
     <div class="card-body">
         <div class="tp-section">
             <h6 class="section-title">Tujuan Pembelajaran</h6>
-            <?php echo $tp['tp']; ?>
-        </div>
-        <div class="kktp-section">
-            <h6 class="section-title">Kriteria Ketercapaian Tujuan Pembelajaran</h6>
-            <ol class="kktp-list">
+              <ol class="kktp-list">
                 <?php
-                $kktpItems = explode(',', $tp['kktp']);
-                foreach ($kktpItems as $item) {
+                $tpItems = explode(',', $tp['tp']);
+                foreach ($tpItems as $item) {
                     echo '<li>' . htmlspecialchars($item) . '</li>';
                 }
                 ?>

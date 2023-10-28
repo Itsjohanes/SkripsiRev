@@ -13,7 +13,7 @@
 
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">Selamat Datang, <?= $user['nama']; ?></h5>
+                    <h5 class="card-title">Selamat Datang Admin, <?= $user['nama']; ?></h5>
                 </div>
             </div>
         </div>
@@ -93,7 +93,14 @@
                 <h6 class="m-0 font-weight-bold text-primary">Presentase Tugas/Test</h6>
             </div>
             <div class="card-body">
-                <label>Mengerjakan Pre-Test (<span class="float-right"><?php echo $persentasepretest;  ?>%)</span></label>
+                <label>Mengerjakan Pre-Test <span class="float-right">(<?php if($jumlahsiswa > 0){
+                    echo  $jumlahsiswapretest.' dari '.$jumlahsiswa.' siswa selesai';
+                    
+
+
+                }else{
+                    echo "Belum ada siswa";
+                } ?>)</span></label>
                 <div class="progress mb-4">
                     <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $persentasepretest ?>%" aria-valuenow="<?php echo $persentasepretest ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
@@ -102,7 +109,13 @@
                         if($pertemuan[$i] != ''){
                            
                             $persentaseTugas = round(${"persentasetugas" . $i});
-                            echo '<label>Mengerjakan Tugas ' . $i . ' (<span class="float-right">' . $persentaseTugas . '%</span>)</label>';
+                            if($jumlahsiswa > 0){
+                                echo '<label>Mengerjakan Tugas ' . $i . ' (<span class="float-right">' . $jumlahsiswatugas[$i]. " dari ". $jumlahsiswa. ' siswa selesai '      . '</span>)</label>';
+                            }else{
+                                echo '<label>Mengerjakan Tugas ' . $i . ' (<span class="float-right">' . 'Belum ada siswa'      . '</span>)</label>';
+                                
+
+                            }
                             echo '<div class="progress mb-4">';
                             echo '<div class="progress-bar bg-success" role="progressbar" style="width: ' . $persentaseTugas . '%" aria-valuenow="' . $persentaseTugas . '" aria-valuemin="0" aria-valuemax="100"></div>';
                             echo '</div>';
@@ -118,7 +131,12 @@
                         if($pertemuan[$i] != ''){
                            
                             $persentasequiz = round(${"persentasequiz" . $i});
-                            echo '<label>Mengerjakan Quiz ' . $i . ' (<span class="float-right">' . $persentasequiz . '%</span>)</label>';
+                            if($jumlahsiswa > 0){
+                                echo '<label>Mengerjakan Quiz ' . $i . ' (<span class="float-right">' . $jumlahsiswaquiz[$i]. " dari ". $jumlahsiswa. ' siswa selesai ' . '</span>)</label>';
+                            }else{
+                                echo '<label>Mengerjakan Quiz ' . $i . ' (<span class="float-right">' . "Belum ada siswa" . '</span>)</label>';
+                         
+                            }
                             echo '<div class="progress mb-4">';
                             echo '<div class="progress-bar bg-success" role="progressbar" style="width: ' . $persentasequiz . '%" aria-valuenow="' . $persentasequiz . '" aria-valuemin="0" aria-valuemax="100"></div>';
                             echo '</div>';
@@ -129,7 +147,15 @@
                     }
 
                 ?>
-                <label>Mengerjakan Post-Test (<span class="float-right"><?php echo $persentaseposttest;  ?>%)</span></label>
+                <label>Mengerjakan Post-Test <span class="float-right">(<?php if($jumlahsiswa > 0){
+                    echo  $jumlahsiswaposttest.' dari '.$jumlahsiswa.' siswa selesai';
+                    
+
+
+                }else{
+                    echo "Belum ada siswa";
+                }
+                ?>)</span></label>
                 <div class="progress mb-4">
                     <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $persentaseposttest; ?>%" aria-valuenow="<?php echo $persentaseposttest; ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
@@ -180,14 +206,10 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
-        
         <!-- /.container-fluid -->
     </div>
     </div>
-
 </div>
 </div>
 <!-- End of Main Content -->

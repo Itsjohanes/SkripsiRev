@@ -87,7 +87,7 @@ input[type="radio"]:checked + .radio-button::before {
                     <label class="radio-button" for="<?= $data['id_soal'] . $option; ?>"></label>
                     <?php if (!empty($data[$optionKey])) : ?>
                       <?php if (file_exists('assets/img/quiz/' . $data[$optionKey])) : ?>
-                        <img src="<?= base_url('assets/img/quiz/' . $data[$optionKey]); ?>" width="150px" alt="Gambar Opsi <?= $option; ?>">
+                        <img src="<?= base_url('assets/img/quiz/' . $data[$optionKey]); ?>" width="500px" alt="Gambar Opsi <?= $option; ?>">
                       <?php else : ?>
                         <?= nl2br(htmlspecialchars($data[$optionKey])); ?>
                       <?php endif; ?>

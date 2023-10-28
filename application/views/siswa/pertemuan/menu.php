@@ -10,7 +10,7 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('pertemuan/tp/').$pertemuan;?>"> Tujuan Pembelajaran dan KKTP </a>
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/tp/').$pertemuan;?>"> Tujuan Pembelajaran</a>
               <hr class="dark horizontal">
               <div class="d-flex ">
               
