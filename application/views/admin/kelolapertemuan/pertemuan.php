@@ -174,7 +174,7 @@
                                         <td>
                                         <?php  echo '<ul>' ;
                                         $tpItems = explode(',', $j['tp']);
-                                        foreach ($tp as $item) {
+                                        foreach ($tpItems as $item) {
                                             echo '<li>' . htmlspecialchars($item) . '</li>';
                                         }
 
