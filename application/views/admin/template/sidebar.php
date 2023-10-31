@@ -292,57 +292,14 @@
               </a>
             </li>
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-envelope cursor-pointer"></i>
-                <span> <?php echo count($notifchat); ?> </span>
-              </a>
-              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <?php
-                    if ($notifchat == null) {
-
-                    ?>
-                      <div class="d-flex py-1">
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="text-sm font-weight-normal mb-1">
-                            <span class="font-weight-bold" id="notification-count">Belum ada Pesan</span>
-                          </h6>
-
-                        </div>
-                      </div>
-
-                    <?php
-                    } else {
-                    ?>
-                      <?php
-                      foreach ($notifchat as $s) {
-                      ?>
-                        <div class="d-flex py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="text-sm font-weight-normal mb-1">
-
-                              <div onclick="window.location.href='<?php echo base_url('adminchat/' . $s->id_pengirim); ?>';" class="font-weight-bold"> New message from <?php echo $s->nama; ?> </div>
-
-                            </h6>
-                            <p class="text-xs text-secondary mb-0">
-                              <i class="fa fa-clock me-1"></i>
-                              <?php echo $s->waktu; ?>
-                            </p>
-                          </div>
-                        </div>
-                    <?php
-                      }
-                    }
-                    ?>
-
-                  </a>
-                </li>
-
-
-              </ul>
+                <a href="#" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope cursor-pointer"></i>
+                    <span id="notification-count"><?php echo count($notifchat); ?></span>
+                </a>
+                <ul id="notification-list" class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                    <!-- Konten notifikasi chat akan diperbarui di sini menggunakan AJAX -->
+                </ul>
             </li>
-
             <li class="nav-item px-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0">
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
@@ -361,3 +318,55 @@
     </nav>
     <!-- End Navbar -->
 
+<script type="text/javascript">
+$(document).ready(function(){
+    function refreshChatData() {
+        $.ajax({
+            url: '<?php echo base_url("Notif/getChatNotifications"); ?>', // Ganti dengan URL ke metode controller Anda yang mengambil data notifikasi chat
+            type: 'GET',
+            dataType: 'json',
+success: function(data) {
+                // Update jumlah notifikasi
+                $('#notification-count').text(data.count);
+
+                // Bersihkan dan perbarui daftar notifikasi chat
+                $('#notification-list').empty();
+                if (data.notifications.length > 0) {
+                    $.each(data.notifications, function(index, notification) {
+                        var notificationHtml = '<li class="mb-2">';
+                        notificationHtml += '<a class="dropdown-item border-radius-md" href="javascript:;" onclick="redirectToChat(' + notification.id_pengirim + ')">';
+                        notificationHtml += '<div class="d-flex py-1">';
+                        notificationHtml += '<div class="d-flex flex-column justify-content-center">';
+                        notificationHtml += '<h6 class="text-sm font-weight-normal mb-1">';
+                        notificationHtml += '<span class="font-weight-bold">New message from ' + notification.nama + '</span>';
+                        notificationHtml += '</h6>';
+                        notificationHtml += '<p class="text-xs text-secondary mb-0">';
+                        notificationHtml += '<i class="fa fa-clock me-1"></i>' + notification.waktu;
+                        notificationHtml += '</p>';
+                        notificationHtml += '</div>';
+                        notificationHtml += '</div>';
+                        notificationHtml += '</a>';
+                        notificationHtml += '</li>';
+                        $('#notification-list').append(notificationHtml);
+                    });
+                } else {
+                    // Tampilkan pesan jika tidak ada notifikasi
+                    $('#notification-list').append('<li class="mb-2"><a class="dropdown-item border-radius-md" href="javascript:;">Belum ada pesan</a></li>');
+                }
+            },
+            complete: function() {
+                // Setelah permintaan selesai, atur waktu tunggu sebelum melakukan pemanggilan berikutnya
+                setTimeout(refreshChatData, 5000); // Pemanggilan setiap 5 detik (5000 milidetik)
+            }
+        });
+    }
+
+    // Fungsi untuk mengarahkan pengguna ke halaman obrolan dengan pengirim pesan tertentu
+    function redirectToChat(id_pengirim) {
+        window.location.href = '<?php echo base_url("adminchat/"); ?>' + id_pengirim;
+    }
+
+    // Panggil fungsi pertama kali saat halaman dimuat
+    refreshChatData();
+});
+</script>
