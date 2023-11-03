@@ -4,7 +4,7 @@
             <div class="card-header pb-0">
               <div class="row">
                 <div class="col-lg-6 col-7">
-                  <h6>Daftar Teman Satu Kelompok</h6>
+                  <h6>Daftar Teman Satu Kelompok <?php echo $kelompok['kelompok'];?></h6>
                   <p class="text-sm mb-0">
                   </p>
                 </div>

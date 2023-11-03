@@ -1,15 +1,46 @@
-<select id="selectMenu">
-  <option value="">Filter Menu</option>
-  <option value="pembukaan">Pembukaan</option>
-  <option value="orientasi">Orientasi Pada Masalah</option>
-  <option value="organisasi">Mengorganisasikan siswa untuk Belajar</option>
-  <option value="membimbing">Membimbing Pengalaman Individual dan Kelompok</option>
-  <option value="mengembangkan">Mengembangkan dan Menyajikan Hasil Karya</option>
-  <option value="analisis">Menganalisis dan Mengevaluasi Proses Pemecahan Masalah</option>
+<style>
+  #selectMenu {
+  background-color: #f1f1f1;
+  color: #333;
+  font-family: Arial, sans-serif;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-  <option value="penutup">Penutup</option>
+#selectMenu option {
+  background-color: #fff;
+  color: #333;
+}
 
-</select>
+#selectMenu option:hover {
+  background-color: #e0e0e0;
+}
+
+#selectMenu:focus {
+  outline: none;
+}
+
+/* Optional: Animasi */
+#selectMenu option {
+  transition: background-color 0.3s ease;
+}
+</style>
+<div class="form-group">
+  <select id="selectMenu">
+    <option value="">Filter Menu</option>
+    <option value="pembukaan">Pembukaan</option>
+    <option value="orientasi">Orientasi Pada Masalah</option>
+    <option value="organisasi">Mengorganisasikan siswa untuk Belajar</option>
+    <option value="membimbing">Membimbing Pengalaman Individual dan Kelompok</option>
+    <option value="mengembangkan">Mengembangkan dan Menyajikan Hasil Karya</option>
+    <option value="analisis">Menganalisis dan Mengevaluasi Proses Pemecahan Masalah</option>
+
+    <option value="penutup">Penutup</option>
+
+  </select>
+</div>
 
 
 

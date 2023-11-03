@@ -32,4 +32,8 @@ class Pertemuan_model extends CI_Model {
         return $this->db->get_where('tb_hasilrefleksi', ['id_pertemuan' => $id_pert,'id_siswa'=>$id_siswa])->row_array();
 
     }
+    public function getKelompokByIdUser($id)
+    {
+        return $this->db->get_where('tb_random', ['id_user' => $id])->row_array();
+    }
 }

@@ -310,6 +310,7 @@ class Pertemuan extends CI_Controller {
                 $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
                 $id_siswa = $this->session->userdata('id');
                 $hasilApersepsi = $this->db->get_where('tb_hasilapersepsi', ['id_siswa' => $id_siswa, 'id_pertemuan' => $id])->row_array();
+                $data['apersepsi'] = $this->db->get_where('tb_hasilapersepsi', ['id_siswa' => $id_siswa, 'id_pertemuan' => $id])->row_array();
                 $data['pertemuan'] = $id;
                 if($status['aktif'] == '1'){
                     if($hasilApersepsi != null){
@@ -580,23 +581,30 @@ class Pertemuan extends CI_Controller {
                 $hasilApersepsi = $this->db->get_where('tb_hasilapersepsi', ['id_siswa' => $id_siswa, 'id_pertemuan' => $id])->row_array();
                 if($hasilApersepsi != null){
                     if($hasilApersepsi['orientasi'] == 1){
+                        $hasiltugas =  $this->db->get_where('tb_hasiltugas', ['id_pertemuan' => $id, 'id_siswa' => $this->session->userdata('id')])->num_rows();
+                        
                         $data['quiz'] = $this->Quiz_model->getQuizCountBySiswaId($this->session->userdata('id'),$id);
-                    if ($data['quiz'] > 0) {
-                        $data['nilai'] = $this->Quiz_model->getNilai($id,$this->session->userdata('id'));
-                        $data['jawaban'] = $this->Quiz_model->getQuizAnswers($id, $this->session->userdata('id'));
-                        $this->load->view('siswa/template/header', $data);
-                        $this->load->view('siswa/template/sidebar', $data);
-                        $this->load->view('siswa/pertemuan/pembahasanquiz', $data);
-                        $this->load->view('siswa/template/footer');
+                            if($hasiltugas > 0){
+                            if ($data['quiz'] > 0) {
+                                $data['nilai'] = $this->Quiz_model->getNilai($id,$this->session->userdata('id'));
+                                $data['jawaban'] = $this->Quiz_model->getQuizAnswers($id, $this->session->userdata('id'));
+                                $this->load->view('siswa/template/header', $data);
+                                $this->load->view('siswa/template/sidebar', $data);
+                                $this->load->view('siswa/pertemuan/pembahasanquiz', $data);
+                                $this->load->view('siswa/template/footer');
+                            }else{
+                                $this->load->view('siswa/template/header', $data);
+                                $this->load->view('siswa/template/sidebar', $data);
+                                $this->load->view('siswa/pertemuan/quiz', $data);
+                                $this->load->view('siswa/template/footer');
+                            }
                     }else{
-                        $this->load->view('siswa/template/header', $data);
-                        $this->load->view('siswa/template/sidebar', $data);
-                        $this->load->view('siswa/pertemuan/quiz', $data);
-                        $this->load->view('siswa/template/footer');
+                        $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda belum mengumpulkan tugas</div>');
+                        redirect('pertemuan/'.$id);
                     }
-                    }else{
-                        redirect('pertemuan/tugas/'.$id);
-                    }
+                }else{
+                    redirect('pertemuan/tugas/'.$id);
+                }
             }else{
                 redirect('pertemuan/apersepsi/'.$id);
             }
@@ -723,7 +731,7 @@ class Pertemuan extends CI_Controller {
                     //jika data refleksi belum ada
             $id_siswa = $this->session->userdata('id');
             $hasilApersepsi = $this->db->get_where('tb_hasilapersepsi', ['id_siswa' => $id_siswa, 'id_pertemuan' => $id])->row_array();
-            
+        
             if($hasilApersepsi != null){
                 if($hasilApersepsi['orientasi'] == 1){
                     redirect('pertemuan/'.$id);
@@ -753,16 +761,24 @@ class Pertemuan extends CI_Controller {
                     $hasilApersepsi = $this->db->get_where('tb_hasilapersepsi', ['id_siswa' => $id_siswa, 'id_pertemuan' => $id])->row_array();
                     if($hasilApersepsi != null){
                         if($hasilApersepsi['orientasi'] == 1){
+                        $hasiltugas =  $this->db->get_where('tb_hasiltugas', ['id_pertemuan' => $id, 'id_siswa' => $this->session->userdata('id')])->num_rows();
                         $data['refleksi'] = $this->Pertemuan_model->getRefleksi($id, $this->session->userdata('id'));
                         if($data['refleksi']){
                                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Refleksi sudah dikerjakan</div>');
                                 redirect('pertemuan/'.$id);
 
                         }else{
-                            $this->load->view('siswa/template/header', $data);
-                            $this->load->view('siswa/template/sidebar', $data);
-                            $this->load->view('siswa/pertemuan/refleksi', $data);
-                            $this->load->view('siswa/template/footer');
+                            if(hasiltugas > 0){
+                                this->load->view('siswa/template/header', $data);
+                                $this->load->view('siswa/template/sidebar', $data);
+                                $this->load->view('siswa/pertemuan/refleksi', $data);
+                                $this->load->view('siswa/template/footer');
+
+                            }else{
+                                $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Anda belum mengumpulkan tugas kelompok</div>');
+                                redirect('pertemuan/tugas/'.$id);
+                            }
+
                         
                         }
                     }else{
@@ -790,7 +806,7 @@ class Pertemuan extends CI_Controller {
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = "Kelompok Belajar";
         $kelompok = $this->Materi_model->getKelompok($this->session->userdata('id'));
-
+        $data['kelompok'] = $this->Pertemuan_model->getKelompokByIdUser($this->session->userdata('id'));
         if($kelompok != '') {
             $data['siswa'] = $this->Materi_model->getSiswaByKelompok($kelompok['kelompok']);
         } else {
