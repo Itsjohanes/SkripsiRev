@@ -8,6 +8,8 @@ class Pertemuan extends CI_Controller {
         $this->load->model('Quiz_model');
         $this->load->library('user_agent');
         $this->load->model('Chat_model');
+        $this->load->model('Materi_model');
+
         checkRole(0);
 
     }
@@ -783,6 +785,45 @@ class Pertemuan extends CI_Controller {
 
 
     }
+    public function kelompok($id){
+        $data['notifchat'] = $this->Chat_model->getChatData();
+        $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+        $data['title'] = "Kelompok Belajar";
+        $kelompok = $this->Materi_model->getKelompok($this->session->userdata('id'));
+
+        if($kelompok != '') {
+            $data['siswa'] = $this->Materi_model->getSiswaByKelompok($kelompok['kelompok']);
+        } else {
+            $data['siswa'] = $this->Materi_model->getSiswaByKelompok(0);
+        }    
+        $data['pertemuan'] = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+        if($data['pertemuan']['aktif'] == '1'){
+            // Jika data refleksi belum ada
+            $id_siswa = $this->session->userdata('id');
+            $hasilApersepsi = $this->db->get_where('tb_hasilapersepsi', ['id_siswa' => $id_siswa, 'id_pertemuan' => $id])->row_array();
+
+            if($hasilApersepsi != null){
+                if($hasilApersepsi['orientasi'] == 1){
+                    //load
+                    $this->load->view('siswa/template/header', $data);
+                    $this->load->view('siswa/template/sidebar', $data);
+                    $this->load->view('siswa/pertemuan/kelompok', $data);
+                    $this->load->view('siswa/template/footer');
+                    
+                } else {
+                    redirect('pertemuan/tugas/'.$id);
+                }
+            } else {
+                redirect('pertemuan/apersepsi/'.$id);
+            }
+        } else {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+            redirect('materi');
+        }
+    }
+
+
+
     public function submitRefleksi(){
 
         $pemahaman = $this->input->post('pemahaman');

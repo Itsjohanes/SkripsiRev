@@ -235,7 +235,7 @@
                         notificationHtml += '<div class="d-flex py-1">';
                         notificationHtml += '<div class="d-flex flex-column justify-content-center">';
                         notificationHtml += '<h6 class="text-sm font-weight-normal mb-1">';
-                        notificationHtml += '<span class="font-weight-bold">New message from ' + notification.nama + '</span>';
+                        notificationHtml += '<span class="font-weight-bold">Pesan baru dari ' + notification.nama + '</span>';
                         notificationHtml += '</h6>';
                         notificationHtml += '<p class="text-xs text-secondary mb-0">';
                         notificationHtml += '<i class="fa fa-clock me-1"></i>' + notification.waktu;
