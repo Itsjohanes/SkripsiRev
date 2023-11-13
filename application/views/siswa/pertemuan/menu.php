@@ -27,6 +27,10 @@
   transition: background-color 0.3s ease;
 }
 </style>
+
+<?= $this->session->flashdata("pesan");
+                            ?>
+<div class="container-fluid py-4">
 <div class="form-group">
   <select id="selectMenu">
     <option value="">Filter Menu</option>

@@ -1,7 +1,4 @@
- <?= $this->session->flashdata("message");
-                            ?>
-<div class="container-fluid py-4">
-      
+
 
     <!-- Kirim Alert jika Pre-test sudah dikerjakan -->
     <?php if ($this->session->flashdata('pesan')) : ?>

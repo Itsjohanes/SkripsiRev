@@ -65,7 +65,7 @@
                     if (!empty($optionData)) :
                         if (file_exists('assets/img/pretest/' . $optionData)) :
                             ?>
-                            <img src="<?= base_url('assets/img/pretest/' . $optionData); ?>" width="200px" alt="Gambar Opsi <?php echo $option; ?>">
+                            <img src="<?= base_url('assets/img/pretest/' . $optionData); ?>"  width="500px" alt="Gambar Opsi <?php echo $option; ?>">
                         <?php else : ?>
                             <?= nl2br(htmlspecialchars($optionData)); ?>
                         <?php endif;
