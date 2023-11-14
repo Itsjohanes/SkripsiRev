@@ -69,7 +69,7 @@ class KelolaQuiz extends CI_Controller {
                 }
             }
             } else {
-                $opsiA = htmlspecialchars($this->input->post('a', true));
+                $opsiA = $this->input->post('a');
             }
             
 
@@ -90,7 +90,7 @@ class KelolaQuiz extends CI_Controller {
                 }
             }
             } else {
-                $opsiB = htmlspecialchars($this->input->post('b', true));
+                $opsiB = $this->input->post('b');
             }
 
 
@@ -111,7 +111,7 @@ class KelolaQuiz extends CI_Controller {
                 }
             }
             } else {
-                $opsiC = htmlspecialchars($this->input->post('c', true));
+                $opsiC = $this->input->post('c');
             }
 
 
@@ -133,7 +133,7 @@ class KelolaQuiz extends CI_Controller {
                 }
             }
             } else {
-                $opsiD = htmlspecialchars($this->input->post('d', true));
+                $opsiD = $this->input->post('d');
             }
             $gambarE = "";
             $opsiE = "";
@@ -152,7 +152,7 @@ class KelolaQuiz extends CI_Controller {
                 }
             }
             } else {
-                $opsiE = htmlspecialchars($this->input->post('e', true));
+                $opsiE = $this->input->post('e');
             }
 
            

@@ -55,7 +55,7 @@ class KelolaPretest extends CI_Controller {
                 $gambarA = $_FILES['a']['name'];
                 $opsiA = $gambarA;
             } else {
-                $opsiA = htmlspecialchars($this->input->post('a', true));
+                $opsiA = $this->input->post('a');
             }
             if ($gambarA != '') {
                 $config['upload_path'] = './assets/img/pretest/';
@@ -75,7 +75,7 @@ class KelolaPretest extends CI_Controller {
                 $gambarB = $_FILES['b']['name'];
                 $opsiB = $gambarB;
             } else {
-                $opsiB = htmlspecialchars($this->input->post('b', true));
+                $opsiB = $this->input->post('b');
             }
 
             if ($gambarB != '') {
@@ -95,7 +95,7 @@ class KelolaPretest extends CI_Controller {
                 $gambarC = $_FILES['c']['name'];
                 $opsiC = $gambarC;
             } else {
-                $opsiC = htmlspecialchars($this->input->post('c', true));
+                $opsiC = $this->input->post('c');
             }
 
             if ($gambarC != '') {
@@ -116,7 +116,7 @@ class KelolaPretest extends CI_Controller {
                 $gambarD = $_FILES['d']['name'];
                 $opsiD = $gambarD;
             } else {
-                $opsiD = htmlspecialchars($this->input->post('d', true));
+                $opsiD = $this->input->post('d');
             }
 
             if ($gambarD != '') {
@@ -137,7 +137,7 @@ class KelolaPretest extends CI_Controller {
                 $gambarE = $_FILES['e']['name'];
                 $opsiE = $gambarE;
             } else {
-                $opsiE = htmlspecialchars($this->input->post('e', true));
+                $opsiE = $this->input->post('e');
             }
 
             if ($gambarE != '') {
