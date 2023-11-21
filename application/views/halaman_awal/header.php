@@ -41,7 +41,7 @@
                     <li class="nav-item">
                         <a class="nav-link <?php if ($title == 'Home') {
                                                 echo 'active';
-                                            } ?>" href="<?= base_url('awal'); ?>">Home</a>
+                                            } ?>" href="<?= base_url('awal'); ?>">Beranda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php if ($title == 'Informasi') {

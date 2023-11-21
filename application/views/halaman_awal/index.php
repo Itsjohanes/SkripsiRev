@@ -14,9 +14,7 @@
           <div>
             <h1 class="text-uppercase fw-bold mb-3" style="color:white">Multimedia Interaktif</h1>
             <p class=" mb-4" style="color:white">
-              Multimedia Interaktif ini disusun oleh Johannes Alexander Putra sebagai
-              salah satu syarat kelulusan pada Program Studi Pendidikan Ilmu
-              Komputer S1
+              Multimedia Interaktif untuk Materi Algoritma dan Pemrograman
             </p>
             <a href="<?= base_url('auth'); ?> " class="btn btn-primary fs-5 me-2 py-2 px-4" type="button">
               Login</a><a href="<?= base_url('auth/register'); ?> " class="btn btn-light fs-5 py-2 px-4" type="button">

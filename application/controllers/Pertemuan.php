@@ -830,6 +830,7 @@ class Pertemuan extends CI_Controller {
         } else {
             $data['siswa'] = $this->Materi_model->getSiswaByKelompok(0);
         }    
+        $data['id'] = $id;
         $data['pertemuan'] = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
         $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
         if($id_pertemuan){

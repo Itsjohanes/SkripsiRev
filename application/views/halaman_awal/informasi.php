@@ -120,3 +120,27 @@
       </div>
     </div>
   </section>
+ <section class="py-4 py-xl-5">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-8 col-xl-6 text-center mx-auto">
+          <h2>Daftar Referensi/Asset yang digunakan</h2>
+          <p>
+            Di bawah ini adalah informasi referensi/asset yang digunakan
+          </p>
+          <ol>
+          <li>Asset karakter pada animasi diambil dari animaker.com</li>
+          <li>Logo Youtube diambil dari youtube.com</li>
+          <li>Logo Google Form diambil dari form.google.com</li>
+          <li>Logo Scratch diambil dari scratch.mit.edu</li>
+          <li>Flowchart diambil dari zenflowchart.com</li>
+          <li>IDE diambil dari nesabamedia.com</li>
+          <li>Refleksi diambil dari smpn4kra.sch.id</li>
+          <li>Incomplete diambil dari istockphoto.com</li>
+          <li>Task diambil dari Freepik.com</li>
+          <li>Test diambil dari icon-icons.com</li>
+          </ol>
+        </div>
+        
+      </div>
+</section>

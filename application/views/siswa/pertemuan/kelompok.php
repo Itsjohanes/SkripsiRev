@@ -1,4 +1,7 @@
       <div class="row mb-4">
+        <div class="back-button mt-4">
+            <a class="btn btn-primary fs-9 py-2 px-4" role="button" href="<?php echo base_url('pertemuan/') . $id; ?>">Kembali</a>
+        </div>
         <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
           <div class="card">
             <div class="card-header pb-0">

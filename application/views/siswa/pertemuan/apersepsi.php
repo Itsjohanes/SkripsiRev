@@ -42,7 +42,7 @@
 
         <div>
             <label for="soal">Soal Apersepsi:</label><br>
-            <?php echo $pertemuan['apersepsi']; ?>
+            <h5><?php echo $pertemuan['apersepsi']; ?></h5>
         </div>
 
         <label for="jawaban">Jawaban Apersepsi:</label><br>

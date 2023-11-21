@@ -74,7 +74,84 @@
                         </table>
                     </div>
                 </div>
+                <h3> Perbandingan Nilai Pretest-Posttest</h3>
+                <canvas id="nilaiChart" width="50" height="10"></canvas>
+
             </div>
         </div>
     </div>
+    
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Ambil data dari PHP
+    var dataFromPHP = <?php
+       $pretest1 = $pretest['memahami_masalah'];
+       $pretest2 = $pretest['merencanakan_pemecahan_masalah'];
+       $pretest3 = $pretest['melaksanakan_pemecahan_masalah'];
+       $pretest4 = $pretest['memeriksa_kembali'];
+                            
+       $posttest1 = $posttest['memahami_masalah'];
+       $posttest2 = $posttest['merencanakan_pemecahan_masalah'];
+       $posttest3 = $posttest['melaksanakan_pemecahan_masalah'];
+       $posttest4 = $posttest['memeriksa_kembali'];
+      $pretestData = [$pretest1, $pretest2, $pretest3, $pretest4];
+      $posttestData = [$posttest1, $posttest2, $posttest3, $posttest4];
+
+      // Jika data kosong, berikan nilai default
+      if (empty($pretestData)) {
+          $pretestData = [0, 0, 0, 0];
+      }
+
+      if (empty($posttestData)) {
+          $posttestData = [0, 0, 0, 0];
+      }
+
+      // Konversi data ke format JSON
+      $dataForView = [
+          'labels' => ['Memahami Masalah', 'Merencanakan Pemecahan Masalah', 'Melaksanakan Pemecahan Masalah', 'Melihat Kembali'],
+          'datasets' => [
+              [
+                  'label' => 'Pretest',
+                  'backgroundColor' => 'rgba(75, 192, 192, 0.2)',
+                  'borderColor' => 'rgba(75, 192, 192, 1)',
+                  'borderWidth' => 1,
+                  'data' => $pretestData,
+              ],
+              [
+                  'label' => 'Posttest',
+                  'backgroundColor' => 'rgba(255, 99, 132, 0.2)',
+                  'borderColor' => 'rgba(255, 99, 132, 1)',
+                  'borderWidth' => 1,
+                  'data' => $posttestData,
+              ],
+          ],
+      ];
+
+      echo json_encode($dataForView);
+    ?>;
+    
+    // Cek apakah ada data sebelum menggambar chart
+    if (dataFromPHP && dataFromPHP.datasets[0].data.length > 0 && dataFromPHP.datasets[1].data.length > 0) {
+      // Pengaturan chart
+      var options = {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      };
+
+      // Menggambar chart
+      var ctx = document.getElementById('nilaiChart').getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: dataFromPHP,
+        options: options,
+      });
+    } else {
+      // Tampilkan pesan atau tindakan lain jika data kosong
+      console.log('Data kosong. Tidak dapat menggambar chart.');
+    }
+  </script>
