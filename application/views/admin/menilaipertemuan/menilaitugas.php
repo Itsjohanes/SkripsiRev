@@ -43,6 +43,8 @@
                 <div id="inputContainer"></div>
             <div class="input-group input-group-outline">
                 <input type="hidden" class="form-control" id="nilai" name="nilai" value="<?php echo $pertemuan['nilai'];  ?>">
+                <input type="hidden" class="form-control" id="penilaian" name="penilaian" value="<?php echo $pertemuan['penilaian'];  ?>">
+
             </div>
 
 
@@ -66,7 +68,7 @@
 
 
 <script>
-        function generateInputs() {
+          function generateInputs() {
             var inputNumber = document.getElementById("inputNumber").value;
             var container = document.getElementById("inputContainer");
 
@@ -74,17 +76,17 @@
 
             for (var i = 1; i <= inputNumber; i++) {
                 var label = document.createElement("label");
-                label.innerHTML = "Nomor " + i + ": ";
+                label.innerHTML = "Skala " + i + ": ";
 
                 // Buat textbox
                 var textBox = document.createElement("input");
                 textBox.type = "text";
                 textBox.name = "input" + i + "_textbox";
-                textBox.placeholder = "Keterangan untuk Nomor " + i;
+                textBox.placeholder = "Keterangan untuk Skala " + i;
 
                 var radioContainer = document.createElement("div");
 
-                for (var j = 0; j <= 10; j++) {
+                for (var j = 1; j <= 10; j++) {
                     var radio = document.createElement("input");
                     radio.type = "radio";
                     radio.name = "input" + i + "_scale";
@@ -108,9 +110,10 @@
             }
         }
 
-        function calculateTotal() {
+         function calculateTotal() {
             var inputNumber = document.getElementById("inputNumber").value;
             var totalScore = 0;
+			var penilaian = " ";
 
             for (var i = 1; i <= inputNumber; i++) {
                 var selectedScale = document.querySelector('input[name="input' + i + '_scale"]:checked');
@@ -119,6 +122,7 @@
                 if (selectedScale && textBoxValue !== "") {
                     // Tambahkan nilai skala ke totalScore
                     totalScore += parseInt(selectedScale.value);
+					penilaian += (textBoxValue  + ": " + totalScore + " ");
                 } else {
                     // Jika skala tidak dipilih atau textbox kosong, mungkin ingin memberikan pesan kesalahan atau melakukan tindakan lainnya
                     alert("Harap isi keterangan dan pilih skala untuk setiap elemen");
@@ -128,9 +132,13 @@
 
             // Hitung total nilai sesuai dengan rumus yang diinginkan
             totalScore = (totalScore / (inputNumber * 10)) * 100;
-			document.getElementById("nilai").value = totalScore
+
+            // Masukkan nilai total ke dalam textbox dengan id "nilai"
+            document.getElementById("nilai").value = totalScore;
+			document.getElementById("penilaian").value = penilaian;
             // Agar form tidak mengirimkan permintaan ke server
             return false;
         }
+    
         
 </script>

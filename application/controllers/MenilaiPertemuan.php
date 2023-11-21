@@ -57,7 +57,9 @@ class MenilaiPertemuan extends CI_Controller {
             $nilai = $this->input->post('nilai');
             $komentar = $this->input->post('komentar');
             $pertemuan = $this->input->post('pertemuan');
+            $penilaian = $this->input->post('penilaian');
             $data = [
+                'penilaian' => $penilaian,
                 'nilai' => $nilai,
                 'komentar' => $komentar,
                 'scored_at' => date('Y-m-d H:i:s')
@@ -72,6 +74,7 @@ class MenilaiPertemuan extends CI_Controller {
     {
             // Menghapus by id
             $data = [
+                'penilaian' => null,
                 'nilai' => null,
                 'komentar' => null,
                 'scored_at' => null
