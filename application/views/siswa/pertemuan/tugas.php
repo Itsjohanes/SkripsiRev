@@ -30,10 +30,6 @@
         if($apersepsi['orientasi']  == 1 ){
             echo '<a class="btn btn-primary fs-9 py-2 px-4" role="button" href="' . base_url('pertemuan/') . $pertemuan . '">Kembali</a>';
 
-        }else{
-            echo '<a class="btn btn-primary fs-9 py-2 px-4" role="button" href="' . base_url('pertemuan/akses/') . $pertemuan . '" target="_blank">Menu Lainnya</a>';
-
-
         }
     ?>
 </div>
@@ -54,7 +50,7 @@
 <div class="video-container" id="videoContainer" style="display:none;">
     <?php foreach ($youtube as $v) : ?>
         <div class="embed-responsive embed-responsive-16by9">
-            <iframe width="1580px" height="720px" class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo $v['youtube']; ?>" allowfullscreen></iframe>
+            <iframe width="1080px" height="720px" class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo $v['youtube']; ?>" allowfullscreen></iframe>
         </div>
     <?php endforeach; ?>
 </div>

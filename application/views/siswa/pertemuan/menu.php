@@ -89,14 +89,32 @@
               </div>
             </div>
             <div class="card-body">
-              <a class="mb-0 " href = "<?php echo base_url('pertemuan/tugas/').$pertemuan;?>"> Tugas</a>
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/orientasi/').$pertemuan;?>">Orientasi</a>
               <hr class="dark horizontal">
               <div class="d-flex ">
               
               </div>
             </div>
           </div>
+          
         </div>
+        <div class="col-lg-4 mt-4 mb-2">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/menupertemuan/globalchat.png');?>" height="170"></img>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <a class="mb-0 " href = "<?php echo base_url('globalchat');?>"> Diskusi Bersama Melalui Global Chat </a>
+              <hr class="dark horizontal">
+              <div class="d-flex ">
+              
+              </div>
+            </div>
+          </div>
         </div>
         <div id="organisasi" class="row mt-4">
         <div class="col-12 text-center mt-3">
@@ -113,6 +131,25 @@
             </div>
             <div class="card-body">
               <a class="mb-0 " href = "<?php echo base_url('pertemuan/kelompok/').$pertemuan;?>"> Pembentukan Kelompok </a>
+              <hr class="dark horizontal">
+              <div class="d-flex ">
+              
+              </div>
+            </div>
+          </div>
+        </div>
+         <div class="col-lg-4 mt-4 mb-2">
+
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/menupertemuan/tugas.jpg');?>" height="170"></img>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <a class="mb-0 " href = "<?php echo base_url('pertemuan/tugas/').$pertemuan;?>"> Tugas / LKPD </a>
               <hr class="dark horizontal">
               <div class="d-flex ">
               
@@ -138,8 +175,8 @@
             </div>
           </div>
         </div>
-      </div>
 
+        
 
         <div id="membimbing" class="row mt-4">
             <div class="col-12 text-center mt-3">
@@ -294,14 +331,32 @@
               </div>
             </div>
           </div>
+          
         </div>
+        <div class="col-lg-4 mt-4 mb-2">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/menupertemuan/globalchat.png');?>" height="170"></img>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <a class="mb-0 " href = "<?php echo base_url('globalchat');?>"> Diskusi Bersama Melalui Global Chat </a>
+              <hr class="dark horizontal">
+              <div class="d-flex ">
+              
+              </div>
+            </div>
+          </div>
       </div>
       <div id="analisis" class="row mt-4">
             <div class="col-12 text-center mt-3">
             <h4>Menganalisis dan Mengevaluasi Proses Pemecahan Masalah</h4>
             </div>
          
-            <div class="col-lg-4 mt-4 mb-2">
+          <div class="col-lg-4 mt-4 mb-2">
           <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
               <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
@@ -318,7 +373,25 @@
               </div>
             </div>
           </div>
+          
         </div>
+         <div class="col-lg-4 mt-4 mb-2">
+          <div class="card z-index-2 ">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                <div class="chart">
+                  <img id="chart-bars" class="chart-canvas" src = "<?php echo base_url('assets/img/menupertemuan/globalchat.png');?>" height="170"></img>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <a class="mb-0 " href = "<?php echo base_url('globalchat');?>"> Diskusi Bersama Melalui Global Chat </a>
+              <hr class="dark horizontal">
+              <div class="d-flex ">
+              
+              </div>
+            </div>
+          </div>
       </div>
        <div id="penutup" class="row mt-4">
             <div class="col-12 text-center mt-3">

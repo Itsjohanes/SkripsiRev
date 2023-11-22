@@ -40,6 +40,9 @@
                             <option value="Materi" <?php echo ($materi['kategori'] == 'Materi') ? 'selected' : ''; ?>>
                                 Materi
                             </option>
+                            <option value="Materi" <?php echo ($materi['kategori'] == 'Orientasi') ? 'selected' : ''; ?>>
+                                Orientasi
+                            </option>
                         </select>
                     </div>
                 </div>

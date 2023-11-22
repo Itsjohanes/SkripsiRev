@@ -76,7 +76,7 @@ class Pertemuan extends CI_Controller {
             'orientasi' => 0
         ];
         $this->db->insert('tb_hasilapersepsi', $data);
-        redirect('pertemuan/tugas/'.$id_pertemuan);
+        redirect('pertemuan/orientasi/'.$id_pertemuan);
 
     }
     public function akses($id_pertemuan){
@@ -109,7 +109,7 @@ class Pertemuan extends CI_Controller {
                         $this->load->view('siswa/pertemuan/tujuanpembelajaran', $data);
                         $this->load->view('siswa/template/footer');
                     }else{
-                        redirect('pertemuan/tugas/'.$id);
+                        redirect('pertemuan/orientasi/'.$id);
                     }
                 }else{
                     redirect('pertemuan/apersepsi/'.$id);
@@ -148,7 +148,7 @@ class Pertemuan extends CI_Controller {
                             $this->load->view('siswa/pertemuan/menu', $data);
                             $this->load->view('siswa/template/footer');
                         }else{
-                            redirect('pertemuan/tugas/'.$id);
+                            redirect('pertemuan/orientasi/'.$id);
                         }
                     }else{
                         redirect('pertemuan/apersepsi/'.$id);
@@ -193,7 +193,7 @@ class Pertemuan extends CI_Controller {
                             $this->load->view('siswa/pertemuan/video', $data);
                             $this->load->view('siswa/template/footer');
                         }else{
-                            redirect('pertemuan/tugas/'.$id);
+                            redirect('pertemuan/orientasi/'.$id);
                         }
                     }else{
                         redirect('pertemuan/apersepsi/'.$id);
@@ -239,7 +239,7 @@ class Pertemuan extends CI_Controller {
                             $this->load->view('siswa/pertemuan/form', $data);
                             $this->load->view('siswa/template/footer');
                         }else{
-                            redirect('pertemuan/tugas/'.$id);
+                            redirect('pertemuan/orientasi/'.$id);
                         }
                     }else{
                         redirect('pertemuan/apersepsi/'.$id);
@@ -298,7 +298,7 @@ class Pertemuan extends CI_Controller {
                             $this->load->view('siswa/pertemuan/materipertemuan', $data);
                             $this->load->view('siswa/template/footer');
                         }else{
-                            redirect('pertemuan/tugas/'.$id);
+                            redirect('pertemuan/orientasi/'.$id);
                         }
                     }else{
                         redirect('pertemuan/apersepsi/'.$id);
@@ -331,6 +331,10 @@ class Pertemuan extends CI_Controller {
                 $data['apersepsi'] = $this->db->get_where('tb_hasilapersepsi', ['id_siswa' => $id_siswa, 'id_pertemuan' => $id])->row_array();
                 $data['pertemuan'] = $id;
                 if($status['aktif'] == '1'){
+
+
+                    
+
                     if($hasilApersepsi != null){
                         $this->load->view('siswa/template/header', $data);
                         $this->load->view('siswa/template/sidebar', $data);
@@ -354,6 +358,47 @@ class Pertemuan extends CI_Controller {
          
     }
 
+    public function orientasi($id = ''){
+
+            $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
+            if($id_pertemuan){
+                $data['notifchat'] = $this->Chat_model->getChatData();
+                $data['title'] = "Orientasi Pertemuan ". $id;
+                $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
+                $data['youtube'] = $this->db->get_where('tb_youtube', ['id_pertemuan' => $id, 'kategori' => "Orientasi"] )->result_array();
+                $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+                $id_siswa = $this->session->userdata('id');
+                $hasilApersepsi = $this->db->get_where('tb_hasilapersepsi', ['id_siswa' => $id_siswa, 'id_pertemuan' => $id])->row_array();
+                $data['apersepsi'] = $this->db->get_where('tb_hasilapersepsi', ['id_siswa' => $id_siswa, 'id_pertemuan' => $id])->row_array();
+                $data['pertemuan'] = $id;
+                if($status['aktif'] == '1'){
+                    if($hasilApersepsi != null){
+
+                        if($hasilApersepsi['orientasi'] == 1){
+                            $this->load->view('siswa/template/header', $data);
+                            $this->load->view('siswa/template/sidebar', $data);
+                            $this->load->view('siswa/pertemuan/orientasi', $data);
+                            $this->load->view('siswa/template/footer');
+                        }else{
+                            redirect('pertemuan/orientasi/'.$id);
+                        }
+                       
+                    }else{
+                        redirect('pertemuan/apersepsi/'.$id);
+                    }
+
+                }else{
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan belum aktif</div>');
+                    redirect('materi');
+                }    
+            }else{
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Pertemuan tidak ada</div>');
+                    redirect('materi');
+                
+            }
+          
+         
+    }
 
 
     public function save_reply() {
@@ -497,7 +542,7 @@ class Pertemuan extends CI_Controller {
                             $this->load->view('siswa/pertemuan/scratch', $data);
                             $this->load->view('siswa/template/footer');
                         }else{
-                            redirect('pertemuan/tugas/'.$id);
+                            redirect('pertemuan/orientasi/'.$id);
                         }
                     }else{
                         redirect('pertemuan/apersepsi/'.$id);
@@ -532,7 +577,7 @@ class Pertemuan extends CI_Controller {
                             $this->load->view('siswa/pertemuan/ide', $data);
                             $this->load->view('siswa/template/footer');
                         }else{
-                            redirect('pertemuan/tugas/'.$id);
+                            redirect('pertemuan/orientasi/'.$id);
                         }
                     }else{
                         redirect('pertemuan/apersepsi/'.$id);
@@ -567,7 +612,7 @@ class Pertemuan extends CI_Controller {
                             $this->load->view('siswa/pertemuan/flowchart', $data);
                             $this->load->view('siswa/template/footer');
                         }else{
-                            redirect('pertemuan/tugas/'.$id);
+                            redirect('pertemuan/orientasi/'.$id);
                         }
                     }else{
                         redirect('pertemuan/apersepsi/'.$id);
@@ -621,7 +666,7 @@ class Pertemuan extends CI_Controller {
                         redirect('pertemuan/'.$id);
                     }
                 }else{
-                    redirect('pertemuan/tugas/'.$id);
+                    redirect('pertemuan/orientasi/'.$id);
                 }
             }else{
                 redirect('pertemuan/apersepsi/'.$id);
@@ -755,7 +800,7 @@ class Pertemuan extends CI_Controller {
                     redirect('pertemuan/'.$id);
             
                 }else{
-                  redirect('pertemuan/tugas/'.$id);
+                  redirect('pertemuan/orientasi/'.$id);
                 }
               }else{
                   redirect('pertemuan/apersepsi/'.$id);
@@ -800,7 +845,7 @@ class Pertemuan extends CI_Controller {
                         
                         }
                     }else{
-                         redirect('pertemuan/tugas/'.$id);
+                         redirect('pertemuan/orientasi/'.$id);
                     }
                     }else{
                         redirect('pertemuan/apersepsi/'.$id);
@@ -848,7 +893,7 @@ class Pertemuan extends CI_Controller {
                     $this->load->view('siswa/template/footer');
                     
                 } else {
-                    redirect('pertemuan/tugas/'.$id);
+                    redirect('pertemuan/orientasi/'.$id);
                 }
             } else {
                 redirect('pertemuan/apersepsi/'.$id);

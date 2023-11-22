@@ -74,6 +74,9 @@
                             <option value="Materi">
                                 Materi
                             </option>
+                            <option value="Orientasi">
+                                Orientasi
+                            </option>
                         </select>
                     </div>
                     </div>
