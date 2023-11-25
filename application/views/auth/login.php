@@ -9,7 +9,7 @@
           >
             <div class="container-fluid ps-2 pe-0">
             
-Algoritma Pemrograman   </a>
+Algoritma dan Pemrograman   </a>
               <button
                 class="navbar-toggler shadow-none ms-2"
                 type="button"

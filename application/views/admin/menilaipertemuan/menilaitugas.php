@@ -36,8 +36,10 @@
             <div class="input-group input-group-outline">
                 <input type="text" class="form-control" id="tgl_penilaian" disabled name="tgl_penilaian" value="<?php echo $pertemuan['scored_at'];  ?>">
             </div>
-            <label for="link">Nilai</label>
-                <label for="inputNumber">Masukkan Angka:</label>
+            <img src = "<?php echo base_url('assets/img/petunjuk/penilaian.PNG');?>"></img>
+            <br>
+            <label for="link">Nilai Problem Solving</label>
+                <label for="inputNumber">(Masukkan Angka:)</label>
                 <input type="number" id="inputNumber" min="1" oninput="generateInputs()" name="inputNumber">
 
                 <div id="inputContainer"></div>
@@ -45,6 +47,17 @@
                 <input type="hidden" class="form-control" id="nilai" name="nilai" value="<?php echo $pertemuan['nilai'];  ?>">
                 <input type="hidden" class="form-control" id="penilaian" name="penilaian" value="<?php echo $pertemuan['penilaian'];  ?>">
 
+            </div>
+
+            <img src = "<?php echo base_url('assets/img/petunjuk/penilaian_sikap.PNG');?>"></img>
+            <br>
+            <label for="link">Nilai Sikap</label>
+                <label for="inputNumber2">(Masukkan Angka:)</label>
+                <input type="number" id="inputNumber2" min="1" oninput="generateInputs2()" name="inputNumber2">
+                <div id="inputContainer2"></div>
+            <div class="input-group input-group-outline">
+                <input type="hidden" class="form-control" id="nilai_sikap" name="nilai_sikap" value="<?php echo $pertemuan['nilai_sikap'];  ?>">
+                <input type="hidden" class="form-control" id="penilaian_sikap" name="penilaian_sikap" value="<?php echo $pertemuan['penilaian_sikap'];  ?>">
             </div>
 
 
@@ -68,7 +81,49 @@
 
 
 <script>
-          function generateInputs() {
+          function generateInputs2() {
+            var inputNumber = document.getElementById("inputNumber2").value;
+            var container = document.getElementById("inputContainer2");
+
+            container.innerHTML = '';
+
+            for (var i = 1; i <= inputNumber; i++) {
+                var label = document.createElement("label");
+                label.innerHTML = "Aspek"  + i + ": ";
+
+                // Buat textbox
+                var textBox = document.createElement("input");
+                textBox.type = "text";
+                textBox.name = "input2" + i + "_textbox";
+                textBox.placeholder = "Keterangan Kategori " + i;
+
+                var radioContainer = document.createElement("div");
+
+                for (var j = 1; j <= 4; j++) {
+                    var radio = document.createElement("input");
+                    radio.type = "radio";
+                    radio.name = "input2" + i + "_scale";
+                    radio.value = j;
+                    radio.id = "input2" + i + "_scale" + j;
+
+                    var radioLabel = document.createElement("label");
+                    radioLabel.innerHTML = j;
+                    radioLabel.setAttribute("for", "input2" + i + "_scale" + j);
+
+                    radioContainer.appendChild(radio);
+                    radioContainer.appendChild(radioLabel);
+                }
+
+                var lineBreak = document.createElement("br");
+
+                container.appendChild(label);
+                container.appendChild(textBox);  // Tambahkan textbox sebelum radio button
+                container.appendChild(radioContainer);
+                container.appendChild(lineBreak);
+            }
+        }
+
+        function generateInputs() {
             var inputNumber = document.getElementById("inputNumber").value;
             var container = document.getElementById("inputContainer");
 
@@ -76,17 +131,17 @@
 
             for (var i = 1; i <= inputNumber; i++) {
                 var label = document.createElement("label");
-                label.innerHTML = "Skala " + i + ": ";
+                label.innerHTML = "Soal " + i + ": ";
 
                 // Buat textbox
                 var textBox = document.createElement("input");
                 textBox.type = "text";
                 textBox.name = "input" + i + "_textbox";
-                textBox.placeholder = "Keterangan untuk Skala " + i;
+                textBox.placeholder = "Keterangan untuk Soal " + i;
 
                 var radioContainer = document.createElement("div");
 
-                for (var j = 1; j <= 10; j++) {
+                for (var j = 0; j <= 4; j++) {
                     var radio = document.createElement("input");
                     radio.type = "radio";
                     radio.name = "input" + i + "_scale";
@@ -110,10 +165,13 @@
             }
         }
 
+
          function calculateTotal() {
             var inputNumber = document.getElementById("inputNumber").value;
             var totalScore = 0;
 			var penilaian = " ";
+            var totalScore2 = 0;
+            var penilaian_sikap = " ";
 
             for (var i = 1; i <= inputNumber; i++) {
                 var selectedScale = document.querySelector('input[name="input' + i + '_scale"]:checked');
@@ -122,7 +180,7 @@
                 if (selectedScale && textBoxValue !== "") {
                     // Tambahkan nilai skala ke totalScore
                     totalScore += parseInt(selectedScale.value);
-					penilaian += (textBoxValue  + ": " + totalScore + " ");
+					penilaian += (textBoxValue  + ": " + selectedScale.value + " ");
                 } else {
                     // Jika skala tidak dipilih atau textbox kosong, mungkin ingin memberikan pesan kesalahan atau melakukan tindakan lainnya
                     alert("Harap isi keterangan dan pilih skala untuk setiap elemen");
@@ -131,11 +189,36 @@
             }
 
             // Hitung total nilai sesuai dengan rumus yang diinginkan
-            totalScore = (totalScore / (inputNumber * 10)) * 100;
+            totalScore = (totalScore / (inputNumber * 4)) * 100;
 
             // Masukkan nilai total ke dalam textbox dengan id "nilai"
             document.getElementById("nilai").value = totalScore;
 			document.getElementById("penilaian").value = penilaian;
+            // Agar form tidak mengirimkan permintaan ke server
+
+            var inputNumber = document.getElementById("inputNumber2").value;
+
+             for (var i = 1; i <= inputNumber; i++) {
+                var selectedScale = document.querySelector('input[name="input2' + i + '_scale"]:checked');
+                var textBoxValue = document.querySelector('input[name="input2' + i + '_textbox"]').value;
+
+                if (selectedScale && textBoxValue !== "") {
+                    // Tambahkan nilai skala ke totalScore
+                    totalScore2 += parseInt(selectedScale.value);
+					penilaian_sikap += (textBoxValue  + ": " + selectedScale.value + " ");
+                } else {
+                    // Jika skala tidak dipilih atau textbox kosong, mungkin ingin memberikan pesan kesalahan atau melakukan tindakan lainnya
+                    alert("Harap isi keterangan dan pilih skala untuk setiap elemen");
+                    return false;
+                }
+            }
+
+            // Hitung total nilai sesuai dengan rumus yang diinginkan
+            totalScore2 = (totalScore2 / (inputNumber * 4)) * 100;
+
+            // Masukkan nilai total ke dalam textbox dengan id "nilai"
+            document.getElementById("nilai_sikap").value = totalScore2;
+			document.getElementById("penilaian_sikap").value = penilaian_sikap;
             // Agar form tidak mengirimkan permintaan ke server
             return false;
         }

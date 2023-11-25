@@ -58,10 +58,17 @@
                             echo '<textarea class = "form-control" id="textArea" disabled name="text" rows="1">' . $hasiltugas['updated_at'] . '</textarea>';
                             echo '</div>';
                             echo '</div>';
+
                             echo '<div class="form-group">';
                             echo '<label for="textArea">Tanggal Penilaian</label>';
                             echo '<div class="input-group input-group-outline">';
                             echo '<textarea class = "form-control" id="textArea" disabled name="text" rows="1">' . $hasiltugas['scored_at'] . '</textarea>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<div class="form-group">';
+                            echo '<label for="textArea">Penilaian</label>';
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<textarea class = "form-control" id="textArea" disabled name="text" rows="1">' . $hasiltugas['penilaian'] . '</textarea>';
                             echo '</div>';
                             echo '</div>';
                             echo '<div class="form-group">';
@@ -70,6 +77,18 @@
                             echo '<textarea class = "form-control" id="textArea" disabled name="text" rows="1">' . $hasiltugas['nilai'] . '</textarea>';
                             echo '</div>';
                             echo '</div>';
+                            echo '<div class="form-group">';
+                            echo '<label for="textArea">Penilaian Sikap</label>';
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<textarea class = "form-control" id="textArea" disabled name="text" rows="1">' . $hasiltugas['penilaian_sikap'] . '</textarea>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<div class="form-group">';
+                            echo '<label for="textArea">Nilai</label>';
+                            echo '<div class="input-group input-group-outline">';
+                            echo '<textarea class = "form-control" id="textArea" disabled name="text" rows="1">' . $hasiltugas['nilai_sikap'] . '</textarea>';
+                            echo '</div>';
+                            echo '</div>';                            
                             echo '<div class="form-group">';
                             echo '<label for="textArea">Komentar</label>';
                             echo '<div class="input-group input-group-outline">';

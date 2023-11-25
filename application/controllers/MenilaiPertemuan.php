@@ -58,8 +58,12 @@ class MenilaiPertemuan extends CI_Controller {
             $komentar = $this->input->post('komentar');
             $pertemuan = $this->input->post('pertemuan');
             $penilaian = $this->input->post('penilaian');
+            $nilai_sikap = $this->input->post('nilai_sikap');
+            $penilaian_sikap = $this->input->post('penilaian_sikap');
             $data = [
                 'penilaian' => $penilaian,
+                'penilaian_sikap' => $penilaian_sikap,
+                'nilai_sikap' => $nilai_sikap,
                 'nilai' => $nilai,
                 'komentar' => $komentar,
                 'scored_at' => date('Y-m-d H:i:s')

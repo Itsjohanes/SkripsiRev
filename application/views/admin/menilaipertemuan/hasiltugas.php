@@ -37,6 +37,8 @@
                                     <th scope="col">Upload</th>
                                     <th scope="col">Nilai</th>
 									<th scope="col">Penilaian</th>
+                                    <th scope="col">Nilai Sikap</th>
+                                    <th scope="col">Penilaian Sikap</th>
                                     <th scope="col">Dikumpulkan Tanggal</th>
                                     <th scope="col">Diperbaiki Tanggal</th>
                                     <th scope="col">Dinilai Tanggal</th>
@@ -53,6 +55,8 @@
                                     <th scope="col">Upload</th>
                                     <th scope="col">Nilai</th>
                                     <th scope="col">Penilaian</th>
+                                    <th scope="col">Nilai Sikap</th>
+                                    <th scope="col">Penilaian Sikap</th>
                                     <th scope="col">Dikumpulkan Tanggal</th>
                                     <th scope="col">Diperbaiki Tanggal</th>
                                     <th scope="col">Dinilai Tanggal</th>
@@ -72,6 +76,8 @@
                                         
                                         <td><?= $j['nilai']; ?></td>
                                         <td><?= $j['penilaian']; ?></td>
+                                        <td><?= $j['nilai_sikap']; ?></td>
+                                        <td><?= $j['penilaian_sikap']; ?></td>
                                         <td><?= $j['created_at']; ?></td>
                                         <td><?= $j['updated_at']; ?></td>
                                         <td><?= $j['scored_at']; ?></td>
