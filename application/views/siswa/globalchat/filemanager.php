@@ -28,6 +28,8 @@
             background: #0056b3;
         }
     </style>
+<a class="btn btn-primary fs-9 py-2 px-4" role="button" href="javascript:history.back()">Kembali</a>
+
 <div class="row">
     <div class="col-12">
         <div class="card my-4">

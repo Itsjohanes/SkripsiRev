@@ -1,3 +1,6 @@
+ <?php
+    echo '<a class="btn btn-primary fs-9 py-2 px-4" role="button" href="' . base_url('pertemuan/') . $pertemuan['id_pertemuan'] . '">Kembali</a>';
+    ?>
 <div id="Container"
     style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
     <!--

@@ -24,7 +24,7 @@
 <div class="my-2">
     <?php 
         if($apersepsi['orientasi']  == 1 ){
-            echo '<a class="btn btn-primary fs-9 py-2 px-4" role="button" href="' . base_url('pertemuan/') . $pertemuan . '">Lanjut</a>';
+            echo '<a class="btn btn-primary fs-9 py-2 px-4" role="button" href="' . base_url('pertemuan/') . $pertemuan . '">Kembali</a>';
 
         }else{
             echo '<a class="btn btn-primary fs-9 py-2 px-4" role="button" href="' . base_url('pertemuan/akses/') . $pertemuan . '">Lanjut</a>';

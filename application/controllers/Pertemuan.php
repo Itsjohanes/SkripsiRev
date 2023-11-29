@@ -373,16 +373,10 @@ class Pertemuan extends CI_Controller {
                 $data['pertemuan'] = $id;
                 if($status['aktif'] == '1'){
                     if($hasilApersepsi != null){
-
-                        if($hasilApersepsi['orientasi'] == 1){
-                            $this->load->view('siswa/template/header', $data);
-                            $this->load->view('siswa/template/sidebar', $data);
-                            $this->load->view('siswa/pertemuan/orientasi', $data);
-                            $this->load->view('siswa/template/footer');
-                        }else{
-                            redirect('pertemuan/orientasi/'.$id);
-                        }
-                       
+                        $this->load->view('siswa/template/header', $data);
+                        $this->load->view('siswa/template/sidebar', $data);
+                        $this->load->view('siswa/pertemuan/orientasi', $data);
+                        $this->load->view('siswa/template/footer');
                     }else{
                         redirect('pertemuan/apersepsi/'.$id);
                     }
@@ -832,7 +826,7 @@ class Pertemuan extends CI_Controller {
                         }else{
                             $hasiltugas =  $this->db->get_where('tb_hasiltugas', ['id_pertemuan' => $id, 'id_siswa' => $this->session->userdata('id')])->num_rows();
                             if($hasiltugas > 0){
-                                this->load->view('siswa/template/header', $data);
+                                $this->load->view('siswa/template/header', $data);
                                 $this->load->view('siswa/template/sidebar', $data);
                                 $this->load->view('siswa/pertemuan/refleksi', $data);
                                 $this->load->view('siswa/template/footer');

@@ -7,6 +7,8 @@
     <title>Global Chat</title>
 </head>
 <body>
+   <a class="btn btn-primary fs-9 py-2 px-4" role="button" href="javascript:history.back()">Kembali</a>
+
     <h1>Global Chat</h1>
     <div class="chat-container">
         <div class="chat-messages"></div>
