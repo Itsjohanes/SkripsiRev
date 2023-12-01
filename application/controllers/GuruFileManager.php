@@ -2,13 +2,13 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class AdminFileManager extends CI_Controller
+class GuruFileManager extends CI_Controller
 {
     function __construct()
     {
         parent::__construct();
         $this->load->model('Chat_model');
-        $this->load->model('Admin_model');
+        $this->load->model('Guru_model');
         $this->load->library('user_agent');
 
         checkRole(1);
@@ -17,14 +17,14 @@ class AdminFileManager extends CI_Controller
     public function index($kelompok = '') {
         $data['title'] = "File Manager";
         $data['notifchat'] = $this->Chat_model->getChatData();
-        $data['user'] = $this->Admin_model->getUserByEmail($this->session->userdata('email'));
+        $data['user'] = $this->Guru_model->getUserByEmail($this->session->userdata('email'));
         $data['kelompok'] = $kelompok;
         $this->load->helper('url');
         $data['files'] = $this->get_files($kelompok);
-        $this->load->view('admin/template/header', $data);
-        $this->load->view('admin/template/sidebar', $data);
-        $this->load->view('admin/groupchat/filemanager', $data);
-        $this->load->view('admin/template/footer');
+        $this->load->view('guru/template/header', $data);
+        $this->load->view('guru/template/sidebar', $data);
+        $this->load->view('guru/groupchat/filemanager', $data);
+        $this->load->view('guru/template/footer');
     }
 
     public function upload($kelompok) {

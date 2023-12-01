@@ -15,7 +15,7 @@
                  <?php echo $user['nama']; ?>
               </h5>
               <p class="mb-0 font-weight-normal text-sm">
-                Administrator 
+                Guru 
               </p>
             </div>
           </div>
@@ -34,7 +34,7 @@
                       <h6 class="mb-0">Profile Information</h6>
                     </div>
                     <div class="col-md-4 text-end">
-                      <a href="<?php echo base_url('adminprofile/editprofile');?>">
+                      <a href="<?php echo base_url('guruprofile/editprofile');?>">
                         <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
                       </a>
                     </div>

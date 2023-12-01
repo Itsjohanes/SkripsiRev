@@ -23,10 +23,10 @@ class RandomKelompok extends CI_Controller {
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['siswa'] = $this->Kelolalistsiswa_model->getSiswa();
             $data['randoms'] = $this->Randomkelompok_model->getRandoms();
-            $this->load->view('admin/template/header', $data);
-            $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/randomkelompok/random', $data);
-            $this->load->view('admin/template/footer');
+            $this->load->view('guru/template/header', $data);
+            $this->load->view('guru/template/sidebar', $data);
+            $this->load->view('guru/randomkelompok/random', $data);
+            $this->load->view('guru/template/footer');
         
     }
 

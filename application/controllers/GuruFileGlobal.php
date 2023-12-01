@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class AdminFileGlobal extends CI_Controller
+class GuruFileGlobal extends CI_Controller
 {
     function __construct()
     {
@@ -20,10 +20,10 @@ class AdminFileGlobal extends CI_Controller
         $kelompokku = $this->Filemanager_model->getKelompokByIdUser($this->session->userdata('id'));
         $this->load->helper('url');
         $data['files'] = $this->get_files();
-        $this->load->view('admin/template/header', $data);
-        $this->load->view('admin/template/sidebar', $data);
-        $this->load->view('admin/globalchat/filemanager', $data);
-        $this->load->view('admin/template/footer');
+        $this->load->view('guru/template/header', $data);
+        $this->load->view('guru/template/sidebar', $data);
+        $this->load->view('guru/globalchat/filemanager', $data);
+        $this->load->view('guru/template/footer');
     }
 
     public function upload() {
@@ -53,7 +53,7 @@ class AdminFileGlobal extends CI_Controller
         if (file_exists($file_path)) {
             unlink($file_path);
         }
-        redirect('AdminFileGlobal');
+        redirect('GuruFileGlobal');
     }
 
 

@@ -16,10 +16,10 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <?php
-          if ($title == 'Home Admin') {
-            echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('admin') . '">';
+          if ($title == 'Home Guru') {
+            echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('guru') . '">';
           } else {
-            echo '<a class="nav-link text-white " href="' . base_url('admin') . '">';
+            echo '<a class="nav-link text-white " href="' . base_url('guru') . '">';
           }
           ?>
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -200,9 +200,9 @@
         <li class="nav-item">
           <?php
           if ($title == 'Chat') {
-            echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('adminchat/menu') . '">';
+            echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('guruchat/menu') . '">';
           } else {
-            echo '<a class="nav-link text-white " href="' . base_url('adminchat/menu') . '">';
+            echo '<a class="nav-link text-white " href="' . base_url('guruchat/menu') . '">';
           }
           ?> <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">chat</i>
@@ -213,9 +213,9 @@
         <li class="nav-item">
           <?php
           if ($title == 'Group Chat') {
-            echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('admingroupchat') . '">';
+            echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('gurugroupchat') . '">';
           } else {
-            echo '<a class="nav-link text-white " href="' . base_url('admingroupchat') . '">';
+            echo '<a class="nav-link text-white " href="' . base_url('gurugroupchat') . '">';
           }
           ?> <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">group</i>
@@ -227,9 +227,9 @@
         <li class="nav-item">
           <?php
           if ($title == 'Global Chat') {
-            echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('adminglobalchat') . '">';
+            echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('guruglobalchat') . '">';
           } else {
-            echo '<a class="nav-link text-white " href="' . base_url('adminglobalchat') . '">';
+            echo '<a class="nav-link text-white " href="' . base_url('guruglobalchat') . '">';
           }
           ?> <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">public</i>
@@ -244,9 +244,9 @@
         <li class="nav-item">
           <?php
           if ($title == 'Profile') {
-            echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('adminprofile') . '">';
+            echo '<a class="nav-link active text-white bg-gradient-primary" href="' . base_url('guruprofile') . '">';
           } else {
-            echo '<a class="nav-link text-white " href="' . base_url('adminprofile') . '">';
+            echo '<a class="nav-link text-white " href="' . base_url('guruprofile') . '">';
           }
           ?> <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">person</i>
@@ -307,7 +307,7 @@
             </li>
 
             <li class="nav-item d-flex align-items-center">
-              <a href="<?php echo base_url('adminprofile'); ?>" class="nav-link text-body font-weight-bold px-0">
+              <a href="<?php echo base_url('guruprofile'); ?>" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $user['nama']; ?> </span>
               </a>
@@ -363,7 +363,7 @@ success: function(data) {
 
     // Fungsi untuk mengarahkan pengguna ke halaman obrolan dengan pengirim pesan tertentu
     function redirectToChat(id_pengirim) {
-        window.location.href = '<?php echo base_url("adminchat/"); ?>' + id_pengirim;
+        window.location.href = '<?php echo base_url("guruchat/"); ?>' + id_pengirim;
     }
 
     // Panggil fungsi pertama kali saat halaman dimuat

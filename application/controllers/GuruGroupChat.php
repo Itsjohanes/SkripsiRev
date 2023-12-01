@@ -1,5 +1,5 @@
 <?php
-class AdminGroupChat extends CI_Controller
+class GuruGroupChat extends CI_Controller
 {
     public function __construct()
     {
@@ -17,15 +17,15 @@ class AdminGroupChat extends CI_Controller
         $data['notifchat'] = $this->Chat_model->getChatData();
         $data['title'] = "Group Chat";
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->view('admin/template/header', $data);
-        $this->load->view('admin/template/sidebar', $data);
-        $this->load->view('admin/groupchat/pilih', $data);
-        $this->load->view('admin/template/footer');
+        $this->load->view('guru/template/header', $data);
+        $this->load->view('guru/template/sidebar', $data);
+        $this->load->view('guru/groupchat/pilih', $data);
+        $this->load->view('guru/template/footer');
         
     }
      
 
-    public function fetchadmin_chat_messages($kelompok)
+    public function fetchguru_chat_messages($kelompok)
     {
          $id_user = $this->session->userdata('id');
          $query = $this->db->get_where('tb_random', ['id_user' => $id_user]);
@@ -34,7 +34,7 @@ class AdminGroupChat extends CI_Controller
         echo json_encode($chat_messages);
     }
    
-    public function saveadmin_message()
+    public function saveguru_message()
     {
 
 
@@ -59,10 +59,10 @@ class AdminGroupChat extends CI_Controller
         $data['kelompok'] = $this->input->post('kelompok');
         $kelompok = $this->input->post('kelompok');
         $data['chat_messages'] = $this->Chatgroup_model->get_chat_messages($kelompok);
-        $this->load->view('admin/template/header', $data);
-        $this->load->view('admin/template/sidebar', $data);
-        $this->load->view('admin/groupchat/group', $data);
-        $this->load->view('admin/template/footer');
+        $this->load->view('guru/template/header', $data);
+        $this->load->view('guru/template/sidebar', $data);
+        $this->load->view('guru/groupchat/group', $data);
+        $this->load->view('guru/template/footer');
         } else{
            redirect('siswa');
         }

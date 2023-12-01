@@ -8,7 +8,7 @@
 	function orang() {
 		$.ajax({
 			type: "post",
-			url: "<?= base_url() ?>adminchat/getallorang",
+			url: "<?= base_url() ?>guruchat/getallorang",
 			data: {
 				id: '<?= $id ?>'
 			},
@@ -48,7 +48,7 @@
 			var id_lawan = '<?= $data->id ?>'
 			$.ajax({
 				type: "post",
-				url: "<?= base_url() ?>adminchat/loadchat",
+				url: "<?= base_url() ?>guruchat/loadchat",
 				data: {
 					id_pengirim: '<?= $id ?>',
 					id_lawan: id_lawan
@@ -136,7 +136,7 @@
 			if (pesan != "") {
 				$.ajax({
 					type: "post",
-					url: "<?= base_url() ?>/adminchat/kirimpesan",
+					url: "<?= base_url() ?>/guruchat/kirimpesan",
 					data: {
 						id,
 						id_lawan,
@@ -185,7 +185,7 @@
 				if (result.isConfirmed) {
 					$.ajax({
 						type: "post",
-						url: "<?= base_url() ?>adminchat/logout",
+						url: "<?= base_url() ?>guruchat/logout",
 						// data: "data",
 						dataType: "json",
 						success: function(r) {
@@ -217,7 +217,7 @@
 
 		$('body').on('click', '.coba', function() {
 			var id = $(this).attr('data-id');
-			window.location.replace("<?= base_url() ?>adminchat/" + id);
+			window.location.replace("<?= base_url() ?>guruchat/" + id);
 
 		});
 

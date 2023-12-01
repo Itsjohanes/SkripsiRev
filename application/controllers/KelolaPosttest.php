@@ -20,10 +20,10 @@ class KelolaPosttest extends CI_Controller {
             $data['soal'] = $this->Kelolaposttest_model->getPosttest();
             $data['aktif'] = $this->db->get_where('tb_test', ['id_tes' => 2])->row_array();
            
-            $this->load->view('admin/template/header', $data);
-            $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/kelolaposttest/posttest', $data);
-            $this->load->view('admin/template/footer');
+            $this->load->view('guru/template/header', $data);
+            $this->load->view('guru/template/sidebar', $data);
+            $this->load->view('guru/kelolaposttest/posttest', $data);
+            $this->load->view('guru/template/footer');
         
     }
     public function aturWaktu(){
@@ -222,10 +222,10 @@ class KelolaPosttest extends CI_Controller {
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
             $data['soal'] = $this->Kelolaposttest_model->getPosttestById($id);
             $data['notifchat'] = $this->Chat_model->getChatData();
-            $this->load->view('admin/template/header', $data);
-            $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/kelolaposttest/editPostTest', $data);
-            $this->load->view('admin/template/footer');
+            $this->load->view('guru/template/header', $data);
+            $this->load->view('guru/template/sidebar', $data);
+            $this->load->view('guru/kelolaposttest/editPostTest', $data);
+            $this->load->view('guru/template/footer');
         
     }
 

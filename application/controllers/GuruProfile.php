@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class AdminProfile extends CI_Controller
+class GuruProfile extends CI_Controller
 {
     
     public function __construct()
@@ -17,10 +17,10 @@ class AdminProfile extends CI_Controller
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['title'] = "Profile";
             $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
-            $this->load->view('admin/template/header', $data);
-            $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/profile/profile', $data);
-            $this->load->view('admin/template/footer');
+            $this->load->view('guru/template/header', $data);
+            $this->load->view('guru/template/sidebar', $data);
+            $this->load->view('guru/profile/profile', $data);
+            $this->load->view('guru/template/footer');
     } 
 
     public function editProfile()
@@ -30,10 +30,10 @@ class AdminProfile extends CI_Controller
             $data['title'] = "Edit Profile";
             $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
 
-            $this->load->view('admin/template/header', $data);
-            $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/profile/editprofile', $data);
-            $this->load->view('admin/template/footer');
+            $this->load->view('guru/template/header', $data);
+            $this->load->view('guru/template/sidebar', $data);
+            $this->load->view('guru/profile/editprofile', $data);
+            $this->load->view('guru/template/footer');
         
     }
 
@@ -52,10 +52,10 @@ class AdminProfile extends CI_Controller
                 $data['notifchat'] = $this->Chat_model->getChatData();
                 $data['user'] = $this->Profile_model->getUserByEmail($this->session->userdata('email'));
 
-                $this->load->view('admin/template/header', $data);
-                $this->load->view('admin/template/sidebar', $data);
-                $this->load->view('admin/profile/editProfile', $data);
-                $this->load->view('admin/template/footer');
+                $this->load->view('guru/template/header', $data);
+                $this->load->view('guru/template/sidebar', $data);
+                $this->load->view('guru/profile/editProfile', $data);
+                $this->load->view('guru/template/footer');
             } else {
                 // Update data in the database
                 $data = [
@@ -65,7 +65,7 @@ class AdminProfile extends CI_Controller
                 $this->Profile_model->updateUser($this->session->userdata('email'), $data);
 
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulations! Your account has been edited.</div>');
-                redirect('adminprofile');
+                redirect('guruprofile');
             }
         
             

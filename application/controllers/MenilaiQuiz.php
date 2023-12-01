@@ -18,10 +18,10 @@ class MenilaiQuiz extends CI_Controller {
             $data['user'] = $this->Menilaiquiz_model->getUserByEmail($this->session->userdata('email'));
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['quiz'] = $this->Menilaiquiz_model->getHasilQuiz($id);
-            $this->load->view('admin/template/header', $data);
-            $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/menilaiquiz/hasilquiz', $data);
-            $this->load->view('admin/template/footer');
+            $this->load->view('guru/template/header', $data);
+            $this->load->view('guru/template/sidebar', $data);
+            $this->load->view('guru/menilaiquiz/hasilquiz', $data);
+            $this->load->view('guru/template/footer');
         
     }
     public function delete($id = ''){

@@ -13,7 +13,7 @@
         <div class="chat-input">
             <textarea id="message" rows="4" placeholder="Your Message"></textarea>
             <button id="send_message">Send</button>
-            <a href= <?php echo base_url('adminfileglobal');?> >File Manager</a>
+            <a href= <?php echo base_url('gurufileglobal');?> >File Manager</a>
 
         </div>
     </div>
@@ -24,7 +24,7 @@
             // Refresh chat messages every 2 seconds
             setInterval(function() {
                 $.ajax({
-                    url: '<?php echo base_url("adminglobalchat/fetch_chat_messages"); ?>',
+                    url: '<?php echo base_url("guruglobalchat/fetch_chat_messages"); ?>',
                     type: 'get',
                     dataType: 'json',
                     success: function(response) {
@@ -51,7 +51,7 @@
                 message = message.replace(/\n/g, '<br>');
 
                 $.ajax({
-                    url: '<?php echo base_url("adminglobalchat/save_message"); ?>',
+                    url: '<?php echo base_url("guruglobalchat/save_message"); ?>',
                     type: 'post',
                     data: {
                         message: message

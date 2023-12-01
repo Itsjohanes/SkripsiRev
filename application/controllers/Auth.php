@@ -18,7 +18,7 @@ class Auth extends CI_Controller
       $this->load->view('auth/footer');
     } else {
       if ($this->session->userdata('role') == 1) {
-        redirect('admin');
+        redirect('guru');
       } else {
         redirect('siswa');
       }
@@ -41,7 +41,7 @@ class Auth extends CI_Controller
         ];
         $this->session->set_userdata($data);
         if ($user['role'] == 1) {
-          redirect('admin');
+          redirect('guru');
         } else {
           redirect('siswa');
         }

@@ -24,10 +24,10 @@ class MenilaiRefleksi extends CI_Controller {
                 $data['user'] = $this->Menilairefleksi_model->getUserByEmail($this->session->userdata('email'));
                 $data['notifchat'] = $this->Chat_model->getChatData();
                 $data['refleksi'] = $this->Menilairefleksi_model->getHasilRefleksi($id);
-                $this->load->view('admin/template/header', $data);
-                $this->load->view('admin/template/sidebar', $data);
-                $this->load->view('admin/menilairefleksi/menilairefleksi', $data);
-                $this->load->view('admin/template/footer');
+                $this->load->view('guru/template/header', $data);
+                $this->load->view('guru/template/sidebar', $data);
+                $this->load->view('guru/menilairefleksi/menilairefleksi', $data);
+                $this->load->view('guru/template/footer');
             }else{
                 redirect('menilai');
             }

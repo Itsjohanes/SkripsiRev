@@ -20,10 +20,10 @@ class KelolaQuiz extends CI_Controller {
             $data['soal'] = $this->Kelolaquiz_model->getQuiz();
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
-            $this->load->view('admin/template/header', $data);
-            $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/kelolaquiz/quiz', $data);
-            $this->load->view('admin/template/footer');
+            $this->load->view('guru/template/header', $data);
+            $this->load->view('guru/template/sidebar', $data);
+            $this->load->view('guru/kelolaquiz/quiz', $data);
+            $this->load->view('guru/template/footer');
         
     }
 
@@ -225,10 +225,10 @@ class KelolaQuiz extends CI_Controller {
             $data['soal'] = $this->Kelolaquiz_model->getQuizById($id);
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
-            $this->load->view('admin/template/header', $data);
-            $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/kelolaquiz/editquiz', $data);
-            $this->load->view('admin/template/footer');
+            $this->load->view('guru/template/header', $data);
+            $this->load->view('guru/template/sidebar', $data);
+            $this->load->view('guru/kelolaquiz/editquiz', $data);
+            $this->load->view('guru/template/footer');
         
     }
 

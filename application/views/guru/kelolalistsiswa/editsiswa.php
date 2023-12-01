@@ -51,10 +51,10 @@
                                         <?php
                                             if($siswa['role'] == '0'){
                                                 echo '<option selected value = "0"> Siswa </option>';
-                                                echo '<option  value = "1"> Admin </option>';
+                                                echo '<option  value = "1"> Guru </option>';
                                             }else{
                                                 echo '<option  value = "0"> Siswa </option>';
-                                                echo '<option selected value = "1"> Admin </option>';
+                                                echo '<option selected value = "1"> Guru </option>';
                                             }
                                         ?>
                                         

@@ -1,5 +1,5 @@
 <?php
-class AdminGlobalChat extends CI_Controller
+class GuruGlobalChat extends CI_Controller
 {
     public function __construct()
     {
@@ -17,10 +17,10 @@ class AdminGlobalChat extends CI_Controller
         $data['chat_messages'] = $this->Chatglobal_model->get_chat_messages();
         $data['title'] = "Global Chat";
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->view('admin/template/header', $data);
-        $this->load->view('admin/template/sidebar', $data);
-        $this->load->view('admin/globalchat/global', $data);
-        $this->load->view('admin/template/footer');
+        $this->load->view('guru/template/header', $data);
+        $this->load->view('guru/template/sidebar', $data);
+        $this->load->view('guru/globalchat/global', $data);
+        $this->load->view('guru/template/footer');
 
     }
      public function fetch_chat_messages()

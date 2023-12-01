@@ -45,8 +45,8 @@
             <div class="card-body">
                 <div class="container mt-4">
                     <?php
-                     $base_url_upload = 'adminfilemanager/upload/'.$kelompok;
-                     $base_url_delete = 'adminfilemanager/delete/'.$kelompok.'/';
+                     $base_url_upload = 'gurufilemanager/upload/'.$kelompok;
+                     $base_url_delete = 'gurufilemanager/delete/'.$kelompok.'/';
                     ?>
                     <form action="<?= base_url($base_url_upload) ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group">
@@ -63,7 +63,7 @@
                     <h3>Daftar File:</h3>
                     <ul>
                         <?php foreach($files as $file): ?>
-                            <li><?= $file ?> <a href="<?= base_url($base_url_delete) . $file?>" class="btn btn-danger btn-sm hapus-btn"><i class="fas fa-trash-alt"></i> </a><a href="<?= base_url('adminfilemanager/download/'.$kelompok.'/'.$file) ?>" class="btn btn-success btn-sm"><i class="fas fa-download"></i> </a></li>
+                            <li><?= $file ?> <a href="<?= base_url($base_url_delete) . $file?>" class="btn btn-danger btn-sm hapus-btn"><i class="fas fa-trash-alt"></i> </a><a href="<?= base_url('gurufilemanager/download/'.$kelompok.'/'.$file) ?>" class="btn btn-success btn-sm"><i class="fas fa-download"></i> </a></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>

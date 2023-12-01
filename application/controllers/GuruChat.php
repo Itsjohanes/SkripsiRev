@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class AdminChat extends CI_Controller
+class GuruChat extends CI_Controller
 {
     private $role;
     public function __construct()
@@ -23,16 +23,16 @@ class AdminChat extends CI_Controller
             $data['data'] = $this->Chat_model->getDataById($no);
             $data['notifchat'] = $this->Chat_model->getChatData();
             if ($data['data'] == null) {
-                redirect('chat/menu');
+                redirect('guruchat/menu');
             } else {
                 $data['title']  = 'Chat';
                 $data['id'] = $this->session->userdata('id');
                 $data['nama'] = $this->session->userdata('nama');
                 $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
-                $this->load->view('admin/template/header', $data);
-                $this->load->view('admin/template/sidebar');
-                $this->load->view('admin/chat/chat', $data);
-                $this->load->view('admin/template/footer');
+                $this->load->view('guru/template/header', $data);
+                $this->load->view('guru/template/sidebar');
+                $this->load->view('guru/chat/chat', $data);
+                $this->load->view('guru/template/footer');
                 
             }
         
@@ -96,10 +96,10 @@ class AdminChat extends CI_Controller
 
             $data['title'] = 'Chat';
             
-            $this->load->view('admin/template/header', $data);
-            $this->load->view('admin/template/sidebar');
-            $this->load->view('admin/chat/menu');
-            $this->load->view('admin/template/footer');
+            $this->load->view('guru/template/header', $data);
+            $this->load->view('guru/template/sidebar');
+            $this->load->view('guru/chat/menu');
+            $this->load->view('guru/template/footer');
             
         
     }

@@ -68,7 +68,7 @@
 		function orang() {
 			$.ajax({
 				type: "post",
-				url: "<?= base_url() ?>adminchat/getallorang",
+				url: "<?= base_url() ?>guruchat/getallorang",
 				data: {
 					id: '<?= $id ?>'
 				},
@@ -99,7 +99,7 @@
 		}
 		$('body').on('click', '.coba', function(event) {
   var id = $(event.target).closest('.coba').data('id');
-  window.location.replace("<?= base_url() ?>adminchat/" + id);
+  window.location.replace("<?= base_url() ?>guruchat/" + id);
 });
 
 	});

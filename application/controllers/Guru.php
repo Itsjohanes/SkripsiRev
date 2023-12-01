@@ -2,12 +2,12 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Admin extends CI_Controller
+class Guru extends CI_Controller
 {
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Admin_model');
+        $this->load->model('Guru_model');
         $this->load->model('Kelolapertemuan_model');
         $this->load->model('Chat_model');
         checkRole(1);
@@ -15,20 +15,20 @@ class Admin extends CI_Controller
     }
     public function index()
     {
-            $data['title'] = "Home Admin";
-            $data['user'] = $this->Admin_model->getUserByEmail($this->session->userdata('email'));
-            $data['siswa'] = $this->Admin_model->getTotalStudents();
-            $data['pretest'] = $this->Admin_model->getTotalPretests();
-            $data['posttest'] = $this->Admin_model->getTotalPosttests();
-            $data['ranking'] = $this->Admin_model->getRanking();
-            $jumlahSiswa = $this->Admin_model->getTotalStudents();
-            $jumlahPretest = $this->Admin_model->getTotalHasilPretest();
-            $jumlahPosttest = $this->Admin_model->getTotalHasilPosttest();
+            $data['title'] = "Home Guru";
+            $data['user'] = $this->Guru_model->getUserByEmail($this->session->userdata('email'));
+            $data['siswa'] = $this->Guru_model->getTotalStudents();
+            $data['pretest'] = $this->Guru_model->getTotalPretests();
+            $data['posttest'] = $this->Guru_model->getTotalPosttests();
+            $data['ranking'] = $this->Guru_model->getRanking();
+            $jumlahSiswa = $this->Guru_model->getTotalStudents();
+            $jumlahPretest = $this->Guru_model->getTotalHasilPretest();
+            $jumlahPosttest = $this->Guru_model->getTotalHasilPosttest();
             
             $jumlahPertemuan = $this->Kelolapertemuan_model->getMax();
             for($i = 1;$i<=$jumlahPertemuan;$i++){
                 if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
-                    $tugas[$i] = $this->Admin_model->getTotalHasilTugas($i);
+                    $tugas[$i] = $this->Guru_model->getTotalHasilTugas($i);
                 }
                 
             }
@@ -52,7 +52,7 @@ class Admin extends CI_Controller
 
             for($i = 1;$i<=$jumlahPertemuan;$i++){
                 if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
-                    $quiz[$i] = $this->Admin_model->getTotalHasilQuiz($i);
+                    $quiz[$i] = $this->Guru_model->getTotalHasilQuiz($i);
                 }
                 
             }
@@ -84,11 +84,11 @@ class Admin extends CI_Controller
             }
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['jumlahpertemuan'] = $jumlahPertemuan;
-            $data['nilaiTertinggi'] = $this->Admin_model->getNilaiTertinggi();
-            $this->load->view('admin/template/header', $data);
-            $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/home/index', $data);
-            $this->load->view('admin/template/footer');
+            $data['nilaiTertinggi'] = $this->Guru_model->getNilaiTertinggi();
+            $this->load->view('guru/template/header', $data);
+            $this->load->view('guru/template/sidebar', $data);
+            $this->load->view('guru/home/index', $data);
+            $this->load->view('guru/template/footer');
         
     }
 }

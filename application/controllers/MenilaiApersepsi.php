@@ -24,10 +24,10 @@ class MenilaiApersepsi extends CI_Controller {
                 $data['user'] = $this->Menilaiapersepsi_model->getUserByEmail($this->session->userdata('email'));
                 $data['notifchat'] = $this->Chat_model->getChatData();
                 $data['refleksi'] = $this->Menilaiapersepsi_model->getHasilApersepsi($id);
-                $this->load->view('admin/template/header', $data);
-                $this->load->view('admin/template/sidebar', $data);
-                $this->load->view('admin/menilaiapersepsi/menilaiapersepsi', $data);
-                $this->load->view('admin/template/footer');
+                $this->load->view('guru/template/header', $data);
+                $this->load->view('guru/template/sidebar', $data);
+                $this->load->view('guru/menilaiapersepsi/menilaiapersepsi', $data);
+                $this->load->view('guru/template/footer');
             }else{
                 redirect('menilai');
             }
