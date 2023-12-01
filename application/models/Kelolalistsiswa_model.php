@@ -11,9 +11,11 @@ class Kelolalistsiswa_model extends CI_Model
 
     public function getSiswa()
     {
-        return $this->db->order_by('nama', 'ASC')
-            ->get_where('tb_akun', ['role' => "0"])
-            ->result_array();
+        return $this->db->query("SELECT akun.*, nilai.pretest 
+                                FROM tb_akun akun 
+                                JOIN tb_nilai nilai ON akun.id = nilai.id_siswa 
+                                WHERE akun.role = '0'
+                                ORDER BY akun.nama ASC")->result_array();
     }
 
     public function getSiswaById($id)

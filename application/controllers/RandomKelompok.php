@@ -30,43 +30,45 @@ class RandomKelompok extends CI_Controller {
         
     }
 
-    public function runRandom()
-    {
-            $siswa = $this->db->get_where('tb_akun', ['role' => "0"])->result_array();
-            $jumlahSiswa = count($siswa);
-            if(!$this->Randomkelompok_model->getRandoms()){
+public function runRandom()
+{
+    // Fetch students ordered by pretest score (descending)
+    $siswa = $this->db->query("SELECT akun.*, nilai.pretest 
+                               FROM tb_akun akun 
+                               JOIN tb_nilai nilai ON akun.id = nilai.id_siswa 
+                               WHERE akun.role = '0'
+                               ORDER BY nilai.pretest DESC")->result_array();
 
-            if ($this->input->server('REQUEST_METHOD') === 'POST') {
-                // Mengambil nilai jumlah kelompok dari POST
-                $jumlahKelompok = $this->input->post('jumlah_kelompok');
+    $jumlahSiswa = count($siswa);
 
-                if (!is_numeric($jumlahKelompok) || $jumlahKelompok <= 0) {
-                    echo "Jumlah kelompok harus merupakan bilangan positif. Silakan coba lagi.";
-                    exit;
-                }
+    if (!$this->Randomkelompok_model->getRandoms()) {
 
-                $siswaPerKelompok = ceil($jumlahSiswa / $jumlahKelompok);
-                shuffle($siswa); // Mengacak urutan siswa secara acak
-                $siswa = array_chunk($siswa, $siswaPerKelompok);
-                $i = 1;
-                $assignedKelompok = [];
-                foreach ($siswa as $siswas) {
-                    $kelompokIndex = $i % $jumlahKelompok;
-                    if ($kelompokIndex == 0) {
-                        $kelompokIndex = $jumlahKelompok;
-                    }
-                    foreach ($siswas as $siswa1) {
-                        $data = [
-                            'id_user' => $siswa1['id'],
-                            'kelompok' => $kelompokIndex,
-                            'nama' => $siswa1['nama']
-                        ];
-                        $this->Randomkelompok_model->insertRandom($data);
-                        $assignedKelompok[] = $kelompokIndex;
-                    }
-                    $i++;
-                }
-                $folderPath = './uploads/';
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+            // Mengambil nilai jumlah kelompok dari POST
+            $jumlahKelompok = $this->input->post('jumlah_kelompok');
+
+            if (!is_numeric($jumlahKelompok) || $jumlahKelompok <= 0) {
+                echo "Jumlah kelompok harus merupakan bilangan positif. Silakan coba lagi.";
+                exit;
+            }
+
+            $siswa = array_values($siswa); // Reset array keys to start from 0
+            $siswaPerKelompok = ceil($jumlahSiswa / $jumlahKelompok);
+            $i = 0;
+            $assignedKelompok = [];
+            foreach ($siswa as $siswa1) {
+                $kelompokIndex = ($i % $jumlahKelompok) + 1;
+                $data = [
+                    'id_user' => $siswa1['id'],
+                    'kelompok' => $kelompokIndex,
+                    'nama' => $siswa1['nama']
+                ];
+                $this->Randomkelompok_model->insertRandom($data);
+                $assignedKelompok[] = $kelompokIndex;
+                $i++;
+            }
+
+             $folderPath = './uploads/';
                 for ($i = 1; $i <= $jumlahKelompok; $i++) {
                 $folderName = $i;
                 // Path lengkap ke folder yang akan dibuat
@@ -86,15 +88,16 @@ class RandomKelompok extends CI_Controller {
                     // Folder sudah ada
                     echo "Folder '$folderName' sudah ada.<br>";
                 }
-    }
             }
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kelompok Berhasil ditambahkan!</div>');
-            }else{
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Kelompok sudah ada!</div>');
-            }
-            redirect('randomkelompok');
-        
+        }
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kelompok Berhasil ditambahkan!</div>');
+    } else {
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Kelompok sudah ada!</div>');
     }
+    redirect('randomkelompok');
+}
+
+
 
     public function deleteRandom()
     {

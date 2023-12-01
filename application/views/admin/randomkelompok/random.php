@@ -21,6 +21,7 @@
                             <th scope="col">No</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Pretest</th>
 
 
                         </tr>
@@ -30,6 +31,8 @@
                             <th scope="col">No</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Pretest</th>
+
                             
 
                         </tr>
@@ -41,8 +44,8 @@
                                 <th scope="row"><?= $i; ?></th>
                                 <td><?= $s['nama']; ?></td>
                                 <td><?= $s['email']; ?></td>
-
-
+                                <!-- get nilai siswa from tb_nilai where id -->
+                                <td><?= $s['pretest']; ?></td>
 
                             </tr>
                             <?php $i++; ?>
