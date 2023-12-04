@@ -26,10 +26,10 @@ class Menilai extends CI_Controller {
             $data['user'] = $this->Menilai_model->getUserByEmail($this->session->userdata('email'));
             $data['materi'] = $this->Menilai_model->getMateri();
             $data['pertemuan'] = $this->Kelolapertemuan_model->getPertemuan();
-            $this->load->view('admin/template/header', $data);
-            $this->load->view('admin/template/sidebar', $data);
-            $this->load->view('admin/menilai/menilai', $data);
-            $this->load->view('admin/template/footer');
+            $this->load->view('guru/template/header', $data);
+            $this->load->view('guru/template/sidebar', $data);
+            $this->load->view('guru/menilai/menilai', $data);
+            $this->load->view('guru/template/footer');
        
     }
 

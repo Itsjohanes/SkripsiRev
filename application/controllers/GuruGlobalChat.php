@@ -1,5 +1,5 @@
 <?php
-class GuruGlobalChat extends CI_Controller
+class Guruglobalchat extends CI_Controller
 {
     public function __construct()
     {

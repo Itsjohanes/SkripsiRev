@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class GuruFileGlobal extends CI_Controller
+class Gurufileglobal extends CI_Controller
 {
     function __construct()
     {
@@ -53,7 +53,7 @@ class GuruFileGlobal extends CI_Controller
         if (file_exists($file_path)) {
             unlink($file_path);
         }
-        redirect('GuruFileGlobal');
+        redirect('Gurufileglobal');
     }
 
 

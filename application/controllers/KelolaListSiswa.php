@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class KelolaListSiswa extends CI_Controller
+class Kelolalistsiswa extends CI_Controller
 {
 
     public function __construct()

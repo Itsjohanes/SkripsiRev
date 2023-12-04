@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class GuruFileManager extends CI_Controller
+class Gurufilemanager extends CI_Controller
 {
     function __construct()
     {

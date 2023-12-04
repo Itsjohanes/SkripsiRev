@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class GuruChat extends CI_Controller
+class Guruchat extends CI_Controller
 {
     private $role;
     public function __construct()

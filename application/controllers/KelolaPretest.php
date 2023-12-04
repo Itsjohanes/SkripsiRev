@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class KelolaPretest extends CI_Controller {
+class Kelolapretest extends CI_Controller {
 
     function __construct()
     {

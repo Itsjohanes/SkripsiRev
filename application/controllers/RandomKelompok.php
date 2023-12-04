@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class RandomKelompok extends CI_Controller {
+class Randomkelompok extends CI_Controller {
 
     public function __construct()
     {
@@ -106,17 +106,22 @@ public function runRandom()
             // Path ke direktori tempat folder-folder disimpan
             $folderPath = './uploads/';
             $folders = scandir($folderPath);
-             // Hapus setiap folder
+
+            // Hapus setiap folder kecuali folder "global"
             foreach ($folders as $folder) {
                 // Hanya proses folder yang bukan . (current directory) atau .. (parent directory)
                 if ($folder != "." && $folder != "..") {
-                    // Hapus folder dan isinya rekursif
-                    $this->deleteFolder($folderPath . $folder);
+                    // Periksa apakah folder adalah "global"
+                    if ($folder != "global") {
+                        // Hapus folder dan isinya rekursif
+                        $this->deleteFolder($folderPath . $folder);
+                    }
                 }
             }
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kelompok berhasil dihapus</div>');
 
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kelompok berhasil dihapus</div>');
             redirect('randomkelompok');
+
         
     }
 

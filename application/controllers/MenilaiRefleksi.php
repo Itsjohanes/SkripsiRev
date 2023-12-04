@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MenilaiRefleksi extends CI_Controller {
+class Menilairefleksi extends CI_Controller {
 
     public function __construct()
     {

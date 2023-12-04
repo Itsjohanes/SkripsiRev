@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class KelolaMateri extends CI_Controller {
+class Kelolamateri extends CI_Controller {
 
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Kelolamateri_model'); // Load the KelolaMateri_model
+        $this->load->model('Kelolamateri_model'); // Load the Kelolamateri_model
         $this->load->model('Kelolapertemuan_model');
         $this->load->model('Chat_model');
         checkRole(1);

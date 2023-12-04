@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class FileManager extends CI_Controller
+class Filemanager extends CI_Controller
 {
     function __construct()
     {
@@ -31,7 +31,7 @@ class FileManager extends CI_Controller
     $config['allowed_types'] = 'json|zip'; // Perhatikan tanda kutip di dalam karakter pipa
     $this->load->library('upload', $config);
     if ($this->upload->do_upload('file')) {
-        redirect('FileManager');
+        redirect('Filemanager');
     } else {
         echo $this->upload->display_errors();
     }
@@ -43,7 +43,7 @@ class FileManager extends CI_Controller
         if (file_exists($file_path)) {
             unlink($file_path);
         }
-        redirect('FileManager');
+        redirect('Filemanager');
     }
 
     private function get_files($kelompok) {

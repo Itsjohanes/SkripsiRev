@@ -1,5 +1,5 @@
 <?php
-class GroupChat extends CI_Controller
+class Groupchat extends CI_Controller
 {
     
     public function __construct()

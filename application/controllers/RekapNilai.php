@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class RekapNilai extends CI_Controller
+class Rekapnilai extends CI_Controller
 {
     function __construct()
     {

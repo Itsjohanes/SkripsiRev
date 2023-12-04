@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class KelolaYoutube extends CI_Controller {
+class Kelolayoutube extends CI_Controller {
 
     public function __construct()
     {

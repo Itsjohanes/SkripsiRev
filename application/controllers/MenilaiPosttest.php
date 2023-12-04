@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-class MenilaiPosttest extends CI_Controller {
+class Menilaiposttest extends CI_Controller {
 
     public function __construct()
     {

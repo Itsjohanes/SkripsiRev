@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class FileGlobal extends CI_Controller
+class Fileglobal extends CI_Controller
 {
     function __construct()
     {
@@ -31,7 +31,7 @@ class FileGlobal extends CI_Controller
     $config['allowed_types'] = 'pdf';
     $this->load->library('upload', $config);
         if ($this->upload->do_upload('file')) {
-            redirect('FileGlobal');
+            redirect('Fileglobal');
         } else {
             echo $this->upload->display_errors();
         }
