@@ -149,7 +149,8 @@ class Posttest extends CI_Controller
             $hasil = number_format($score, 2);
 
             $id = $this->session->userdata('id');
-
+            //hitung lama waktu mengerjakan
+            
             $data = [
                 'id_siswa' => $id,
                 'jawaban' => $str_jawaban,

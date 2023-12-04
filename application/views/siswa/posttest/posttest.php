@@ -36,6 +36,7 @@
             <div class="question bg-white p-3 border-bottom">
               <input type="hidden" name="id_posttest[]" value="<?php echo $data['id_soal']; ?>">
               <input type="hidden" name="jumlah" value="<?php echo $jumlah; ?>">
+
             </div>
             <div class="d-flex flex-row align-items-center question-title">
               <h6 class="mt-1 ml-2"><?php echo $no; ?>.</h6>
