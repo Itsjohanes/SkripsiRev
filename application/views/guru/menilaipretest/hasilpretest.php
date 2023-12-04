@@ -43,7 +43,8 @@
                                     <th scope="col">Merencanakan Pemecahan Masalah</th>
                                     <th scope="col">Melaksanakan Pemecahan Masalah</th>
                                     <th scope="col">Memeriksa Kembali</th>
-                                    <th scope="col">Timestamp</th>
+                                    <th scope="col">Mulai</th>
+                                    <th scope="col">Kumpul</th>
                                     <th scope="col">Action</th>
 
 
@@ -65,7 +66,7 @@
                                         <td><?= $j['merencanakan_pemecahan_masalah']; ?></td>
                                         <td><?= $j['melaksanakan_pemecahan_masalah']; ?></td>
                                         <td><?= $j['memeriksa_kembali']; ?></td>
-
+                                        <td><?= $j['masuk'];?></td>
                                         <td><?= $j['created_at'];?></td>
                                         <td>
                                             <a class="btn btn-danger hapus-btn" href="<?= base_url('menilaipretest/hapushasilpretest/') . $j['id_hasiltest']; ?>"><i class="fas fa-trash-alt"></i></a>

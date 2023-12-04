@@ -36,6 +36,7 @@
             <div class="question bg-white p-3 border-bottom">
               <input type="hidden" name="id_posttest[]" value="<?php echo $data['id_soal']; ?>">
               <input type="hidden" name="jumlah" value="<?php echo $jumlah; ?>">
+              <input type = "hidden" id="waktu_masuk" name = "waktu_masuk"></input> 
 
             </div>
             <div class="d-flex flex-row align-items-center question-title">
@@ -140,7 +141,6 @@
 
     // Tampilkan waktu pada elemen dengan id 'timer'
     document.getElementById('timer').innerHTML = minutes + ' menit ' + seconds + ' detik';
-    document.getElementById('timer2').innerHTML = minutes + ' menit ' + seconds + ' detik';
 
     if (timeLeftPosttest === 0) {
       clearInterval(timerId);
@@ -160,4 +160,5 @@
   }
 
   startTimer();
+
 </script>

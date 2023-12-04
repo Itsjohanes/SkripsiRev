@@ -13,12 +13,14 @@ class Menilaipretest_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('tb_hasilprepost');
-        $this->db->where('id_test', 1);
+        $this->db->where('tb_hasilprepost.id_test', 1); // Specify the table alias or table name
         $this->db->join('tb_akun', 'tb_akun.id = tb_hasilprepost.id_siswa');
+        $this->db->join('tb_attempttest', 'tb_attempttest.id_siswa = tb_hasilprepost.id_siswa AND tb_attempttest.id_test = tb_hasilprepost.id_test', 'left');
         $this->db->order_by('tb_akun.nama', 'asc');
 
         return $this->db->get()->result_array();
     }
+
 
     public function deleteHasilPretest($id)
     {

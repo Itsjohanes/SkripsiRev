@@ -37,6 +37,22 @@ class Posttest_model extends CI_Model
     {
         return $this->db->get_where('tb_test', ['id_tes' => 2])->row_array();
     }
+    public function saveAttemptPosttest(){
+        $data = [
+            "id_siswa" => $this->session->userdata('id'),
+            "id_test" => 2,
+            "masuk" => date('Y-m-d H:i:s')
+        ];
+        $this->db->insert('tb_attempttest', $data);
+    }
+    public function getAttemptPosttest(){
+        $this->db->where('id_siswa', $this->session->userdata('id'));
+        $this->db->where('id_test', 2);
+        $this->db->order_by('masuk', 'DESC');
+        $this->db->limit(1);
+        $result = $this->db->get('tb_attempttest')->row_array();
+        return $result;
+    }
 
     public function checkAnswer($nomor, $jawaban)
     {

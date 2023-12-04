@@ -53,6 +53,11 @@ class Posttest extends CI_Controller
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Post-Test belum aktif</div>');
                     redirect('Materi');
                 } else {
+                    //simpan attempt jika belum ada
+                    $cek = $this->Posttest_model->getAttemptPosttest();
+                    if(empty($cek)){
+                        $this->Posttest_model->saveAttemptPosttest();
+                    }
                     $this->load->view('siswa/template/header', $data);
                     $this->load->view('siswa/template/sidebar', $data);
                     $this->load->view('siswa/posttest/posttest', $data);
@@ -150,7 +155,7 @@ class Posttest extends CI_Controller
 
             $id = $this->session->userdata('id');
             //hitung lama waktu mengerjakan
-            
+
             $data = [
                 'id_siswa' => $id,
                 'jawaban' => $str_jawaban,

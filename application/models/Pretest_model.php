@@ -21,6 +21,22 @@ class Pretest_model extends CI_Model
         $result = $this->db->get('tb_test')->row_array();
         return $result;
     }
+    public function saveAttemptPretest(){
+        $data = [
+            "id_siswa" => $this->session->userdata('id'),
+            "id_test" => 1,
+            "masuk" => date('Y-m-d H:i:s')
+        ];
+        $this->db->insert('tb_attempttest', $data);
+    }
+    public function getAttemptPretest(){
+        $this->db->where('id_siswa', $this->session->userdata('id'));
+        $this->db->where('id_test', 1);
+        $this->db->order_by('masuk', 'DESC');
+        $this->db->limit(1);
+        $result = $this->db->get('tb_attempttest')->row_array();
+        return $result;
+    }
 
     public function getPretestQuestionCount()
     {
