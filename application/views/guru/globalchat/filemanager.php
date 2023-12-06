@@ -39,8 +39,8 @@
             <div class="card-body">
                 <div class="container mt-4">
                     <?php
-                    $base_url_upload = 'AdminFileGlobal/upload/';
-                    $base_url_delete = 'AdminFileGlobal/delete/';
+                    $base_url_upload = 'gurufileglobal/upload/';
+                    $base_url_delete = 'gurufileglobal/delete/';
 
                     ?>
                     <form action="<?= base_url($base_url_upload) ?>" method="post" enctype="multipart/form-data">

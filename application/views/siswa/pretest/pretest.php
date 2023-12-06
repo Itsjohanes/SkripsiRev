@@ -39,7 +39,7 @@
             </div>
             <div class="d-flex flex-row align-items-center question-title">
               <h6 class="mt-1 ml-2"><?php echo $no; ?>.</h6>
-              <h6 class="mt-1 ml-2"><?php echo $data['soal']; ?></h6>
+              <p style="text-align: justify;" class="mt-1 ml-2"><?php echo $data['soal']; ?></p>
             </div>
             <?php
             if (!empty($data['gambar'])) {

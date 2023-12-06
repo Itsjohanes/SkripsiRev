@@ -68,7 +68,7 @@ input[type="radio"]:checked + .radio-button::before {
               <input type="hidden" name="jumlah" value="<?= $jumlah; ?>">
 
               <div class="question-text mb-3">
-                <h6><?= $no; ?>. <?= $data['soal']; ?></h6>
+                <p style="text-align: justify;"><?= $no; ?>. <?= $data['soal']; ?></p>
               </div>
 
               <?php if (!empty($data['gambar'])) : ?>

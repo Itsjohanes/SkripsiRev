@@ -53,7 +53,7 @@
           <div class="question bg-white p-3 border-bottom mb-3">
             <!-- Tampilkan soal -->
             <div class="question-text mb-3">
-              <h6><?= $no; ?>. <?= $data['soal']; ?></h6>
+              <p style="text-align: justify;"><?= $no; ?>. <?= $data['soal']; ?></p>
             </div>
 
             <!-- Tampilkan gambar jika ada -->

@@ -53,7 +53,7 @@ class Gurufileglobal extends CI_Controller
         if (file_exists($file_path)) {
             unlink($file_path);
         }
-        redirect('Gurufileglobal');
+        redirect('gurufileglobal');
     }
 
 
