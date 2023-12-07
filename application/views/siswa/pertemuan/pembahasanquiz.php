@@ -53,6 +53,18 @@
           <div class="question bg-white p-3 border-bottom mb-3">
             <!-- Tampilkan soal -->
             <div class="question-text mb-3">
+              <p ><?= "Indikator Pemecahan Masalah: "; ?>
+              <?php
+               if($data['id_ps'] == 1){
+                echo "Memahami masalah";
+               }else if($data['id_ps'] == 2){
+                echo "Merencanakan Pemecahan Masalah";
+               }else if($data['id_ps'] == 3){
+                echo "Melaksanakan Pemecahan Masalah";
+               }else if($data['id_ps']==4){
+                echo "Melihat Kembali";
+               }
+              ?></p>
               <p style="text-align: justify;"><?= $no; ?>. <?= $data['soal']; ?></p>
             </div>
 

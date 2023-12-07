@@ -17,7 +17,10 @@
                                 <td>
                                     <?php
                                     if ($pretest != null) {
-                                        echo $pretest['score'];
+                                        echo $pretest['score']."&nbsp"; 
+                                        echo '<a href="' . base_url('rapot/pretest') . '" class="btn btn-info mb-2" style="padding: 5px 10px; font-size: 12px;"><i class="material-icons opacity-10">info</i></a>';
+
+
                                     } else {
                                         echo "Belum Mengikuti Pretest";
                                     }
@@ -29,7 +32,8 @@
                                 <td>
                                     <?php
                                     if ($posttest != null) {
-                                        echo $posttest['score'];
+                                        echo $posttest['score']."&nbsp"; 
+                                        echo '<a href="' . base_url('rapot/posttest') . '" class="btn btn-info mb-2" style="padding: 5px 10px; font-size: 12px;"><i class="material-icons opacity-10">info</i></a>';
                                     } else {
                                         echo "Belum Mengikuti Posttest";
                                     }
@@ -45,8 +49,11 @@
                                     if ($quiz[$i] != null) {
                                         if ($quiz[$i]['nilai'] == null) {
                                             echo "Belum Dinilai";
+
                                         } else {
-                                            echo $quiz[$i]['nilai'];
+                                            echo $quiz[$i]['nilai']."&nbsp"; 
+                                            echo '<a href="' . base_url('rapot/quiz/') .$i. '" class="btn btn-info mb-2" style="padding: 5px 10px; font-size: 12px;"><i class="material-icons opacity-10">info</i></a>';
+
                                         }
                                     } else {
                                         echo "Belum Dikerjakan";
@@ -62,6 +69,8 @@
                                             echo "Belum Dinilai";
                                         } else {
                                             echo $tugas[$i]['nilai'];
+                                            echo '<a href="' . base_url('rapot/tugas/') .$i. '" class="btn btn-info mb-2" style="padding: 5px 10px; font-size: 12px;"><i class="material-icons opacity-10">info</i></a>';
+
                                         }
                                     } else {
                                         echo "Belum Dikerjakan";

@@ -29,7 +29,7 @@ class Rapot extends CI_Controller
                 }
 
             }
-             for($i = 1; $i<=$maxPertemuan; $i++){
+            for($i = 1; $i<=$maxPertemuan; $i++){
                 if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
                     $quiz[$i] = $this->Rapot_model->getQuizBySiswaIdAndPertemuan($this->session->userdata('id'), $i);
                 }
@@ -55,6 +55,60 @@ class Rapot extends CI_Controller
             $this->load->view('siswa/template/header', $data);
             $this->load->view('siswa/template/sidebar', $data);
             $this->load->view('siswa/rapot/rapot', $data);
+            $this->load->view('siswa/template/footer');
+        
+    }
+    public function pretest()
+    {
+        
+            $data['title'] = "Report Pretest";
+            $data['notifchat'] = $this->Chat_model->getChatData();
+            $data['user'] = $this->Rapot_model->getUserByEmail($this->session->userdata('email'));
+            $data['pretest'] = $this->Rapot_model->getPretestBySiswaId($this->session->userdata('id'));
+            $this->load->view('siswa/template/header', $data);
+            $this->load->view('siswa/template/sidebar', $data);
+            $this->load->view('siswa/rapot/pretest', $data);
+            $this->load->view('siswa/template/footer');
+        
+    }
+    public function posttest()
+    {
+        
+            $data['title'] = "Report Posttest";
+            $data['notifchat'] = $this->Chat_model->getChatData();
+            $data['user'] = $this->Rapot_model->getUserByEmail($this->session->userdata('email'));
+            $data['posttest'] = $this->Rapot_model->getPosttestBySiswaId($this->session->userdata('id'));
+            $this->load->view('siswa/template/header', $data);
+            $this->load->view('siswa/template/sidebar', $data);
+            $this->load->view('siswa/rapot/posttest', $data);
+            $this->load->view('siswa/template/footer');
+        
+    }
+    public function quiz($id = '')
+    {
+        
+            $data['title'] = "Report Quiz";
+            $data['notifchat'] = $this->Chat_model->getChatData();
+            $data['user'] = $this->Rapot_model->getUserByEmail($this->session->userdata('email'));
+            $data['quiz'] = $this->Rapot_model->getQuizBySiswaIdAndPertemuan($this->session->userdata('id'), $id);
+
+            $this->load->view('siswa/template/header', $data);
+            $this->load->view('siswa/template/sidebar', $data);
+            $this->load->view('siswa/rapot/quiz', $data);
+            $this->load->view('siswa/template/footer');
+        
+    }
+    public function tugas($id = '')
+    {
+        
+            $data['title'] = "Report Tugas";
+            $data['notifchat'] = $this->Chat_model->getChatData();
+            $data['user'] = $this->Rapot_model->getUserByEmail($this->session->userdata('email'));
+            $data['tugas'] = $this->Rapot_model->getTugasBySiswaIdAndPertemuan($this->session->userdata('id'), $id);
+
+            $this->load->view('siswa/template/header', $data);
+            $this->load->view('siswa/template/sidebar', $data);
+            $this->load->view('siswa/rapot/tugas', $data);
             $this->load->view('siswa/template/footer');
         
     }
