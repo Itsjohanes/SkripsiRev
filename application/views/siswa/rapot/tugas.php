@@ -22,18 +22,53 @@
                     <div class="card-body">
                         <table class="table">
                             <tr>
-                                <th>Penilaian</th>
+                                <th>Memahami Masalah</th>
                                 <td>
                                     <?php
                                     if ($tugas != null) {
-                                        echo $tugas['penilaian'];
-                                    } else{
-                                        echo "Belum Mengerjakan Tugas";
+                                        echo $tugas['memahami_masalah'];
+                                    } else {
+                                        echo "Belum Mengikuti Posttest";
                                     }
                                     ?>
                                 </td>
                             </tr>
-                            
+                            <tr>
+                                <th>Merencanakan Pemecahan Masalah</th>
+                                <td>
+                                    <?php
+                                    if ($tugas != null) {
+                                        echo $tugas['merencanakan_pemecahan_masalah'];
+                                    } else {
+                                        echo "Belum Mengikuti Posttest";
+                                    }
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Melaksanakan Pemecahan Masalah</th>
+                                <td>
+                                    <?php
+                                    if ($tugas != null) {
+                                        echo $tugas['melaksanakan_pemecahan_masalah'];
+                                    } else {
+                                        echo "Belum Mengikuti Posttest";
+                                    }
+                                    ?>
+                                </td>
+                            <tr>
+                                 <tr>
+                                <th>Melihat Kembali Pemecahan Masalah</th>
+                                <td>
+                                    <?php
+                                    if ($tugas != null) {
+                                        echo $tugas['memeriksa_kembali'];
+                                    } else {
+                                        echo "Belum Mengikuti Posttest";
+                                    }
+                                    ?>
+                                </td>
+                            <tr>
                         </table>
                     </div>
                 </div>

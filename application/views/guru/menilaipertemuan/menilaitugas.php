@@ -14,6 +14,8 @@
     <div class="card-body">
         <?php echo form_open_multipart('menilaipertemuan/runmenilai'); ?>
         <div class="form-group">
+            <input type="hidden" class="form-control" id="nilaips" name="nilaips" >
+             <input type="hidden" class="form-control" id="indikatorps" name="indikatorps" >
 
             <input type="hidden" class="form-control" id="id_hasiltugas" name="id_hasiltugas" value="<?php echo $pertemuan['id_hasiltugas'];  ?>">
             <input type="hidden" class="form-control" id="pertemuan" name="pertemuan" value="<?php echo $pertemuan['id_pertemuan'];  ?>">
@@ -140,6 +142,25 @@
                 textBox.placeholder = "Keterangan untuk Soal " + i;
 
                 var radioContainer = document.createElement("div");
+                
+                // Buat drop-down (select)
+                var dropdown = document.createElement("select");
+                dropdown.name = "input" + i + "_dropdown";
+
+                // Daftar opsi untuk drop-down
+                var options = ["memahami_masalah", "merencanakan_pemecahan_masalah", "melaksanakan_pemecahan_masalah", "memeriksa_kembali"];
+
+                // Tambahkan opsi-opsi ke dalam drop-down
+                for (var k = 0; k < options.length; k++) {
+                    var option = document.createElement("option");
+                    option.value = options[k];
+                    option.text = options[k];
+                    dropdown.appendChild(option);
+                }
+
+
+
+
 
                 for (var j = 0; j <= 4; j++) {
                     var radio = document.createElement("input");
@@ -159,7 +180,8 @@
                 var lineBreak = document.createElement("br");
 
                 container.appendChild(label);
-                container.appendChild(textBox);  // Tambahkan textbox sebelum radio button
+                container.appendChild(textBox);  
+                container.appendChild(dropdown);
                 container.appendChild(radioContainer);
                 container.appendChild(lineBreak);
             }
@@ -172,14 +194,20 @@
 			var penilaian = " ";
             var totalScore2 = 0;
             var penilaian_sikap = " ";
+            var nilaips = "";
+            var indikatorps = "";
 
             for (var i = 1; i <= inputNumber; i++) {
                 var selectedScale = document.querySelector('input[name="input' + i + '_scale"]:checked');
                 var textBoxValue = document.querySelector('input[name="input' + i + '_textbox"]').value;
+                var dropdown  = document.querySelector('select[name="input' + i + '_dropdown"]');
+                var selectedText = dropdown.options[dropdown.selectedIndex].text;
 
                 if (selectedScale && textBoxValue !== "") {
                     // Tambahkan nilai skala ke totalScore
                     totalScore += parseInt(selectedScale.value);
+                    nilaips += (selectedScale.value + ',');
+                    indikatorps += (selectedText + ',');
 					penilaian += (textBoxValue  + ": " + selectedScale.value + " ");
                 } else {
                     // Jika skala tidak dipilih atau textbox kosong, mungkin ingin memberikan pesan kesalahan atau melakukan tindakan lainnya
@@ -194,6 +222,8 @@
             // Masukkan nilai total ke dalam textbox dengan id "nilai"
             document.getElementById("nilai").value = totalScore;
 			document.getElementById("penilaian").value = penilaian;
+            document.getElementById("nilaips").value = nilaips;
+            document.getElementById("indikatorps").value = indikatorps;
             // Agar form tidak mengirimkan permintaan ke server
 
             var inputNumber = document.getElementById("inputNumber2").value;

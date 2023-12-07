@@ -37,6 +37,10 @@
                                     <th scope="col">Upload</th>
                                     <th scope="col">Nilai</th>
 									<th scope="col">Penilaian</th>
+                                    <th scope="col">Memahami Masalah</th>
+                                    <th scope="col">Merencanakan Penyelesaian Masalah</th>
+                                    <th scope="col">Melaksanakan Penyelesaian Masalah</th>
+                                    <th scope="col">Memeriksa Kembali</th>
                                     <th scope="col">Nilai Sikap</th>
                                     <th scope="col">Penilaian Sikap</th>
                                     <th scope="col">Dikumpulkan Tanggal</th>
@@ -55,6 +59,10 @@
                                     <th scope="col">Upload</th>
                                     <th scope="col">Nilai</th>
                                     <th scope="col">Penilaian</th>
+                                     <th scope="col">Memahami Masalah</th>
+                                    <th scope="col">Merencanakan Penyelesaian Masalah</th>
+                                    <th scope="col">Melaksanakan Penyelesaian Masalah</th>
+                                    <th scope="col">Memeriksa Kembali</th>                                   
                                     <th scope="col">Nilai Sikap</th>
                                     <th scope="col">Penilaian Sikap</th>
                                     <th scope="col">Dikumpulkan Tanggal</th>
@@ -76,6 +84,10 @@
                                         
                                         <td><?= $j['nilai']; ?></td>
                                         <td><?= $j['penilaian']; ?></td>
+                                        <td><?= $j['memahami_masalah']; ?></td>
+                                        <td><?= $j['merencanakan_pemecahan_masalah']; ?></td>
+                                        <td><?= $j['melaksanakan_pemecahan_masalah']; ?></td>
+                                        <td><?= $j['memeriksa_kembali']; ?></td>
                                         <td><?= $j['nilai_sikap']; ?></td>
                                         <td><?= $j['penilaian_sikap']; ?></td>
                                         <td><?= $j['created_at']; ?></td>
