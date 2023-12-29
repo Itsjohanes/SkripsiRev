@@ -43,6 +43,13 @@
         <div>
             <label for="soal">Soal Apersepsi:</label><br>
             <h5><?php echo $pertemuan['apersepsi']; ?></h5>
+            <h6>Hint untuk mengingatkan:</h6>
+            <div class="video-container" id="videoContainer">
+                <?php foreach ($youtube as $v) : ?>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="450px" height="300px" class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo $v['youtube']; ?>" allowfullscreen></iframe>
+                    </div>
+                <?php endforeach; ?>
         </div>
 
         <label for="jawaban">Jawaban Apersepsi:</label><br>
@@ -51,3 +58,4 @@
         <input type="submit" value="Kirim">
         <?php echo form_close(); ?>
     </div>
+                        </div>

@@ -53,6 +53,7 @@ public function runRandom()
             }
 
             $siswa = array_values($siswa); // Reset array keys to start from 0
+            
             $siswaPerKelompok = ceil($jumlahSiswa / $jumlahKelompok);
             $i = 0;
             $assignedKelompok = [];

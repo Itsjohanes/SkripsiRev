@@ -45,6 +45,7 @@ class Pertemuan extends CI_Controller {
         $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
         $data['id'] = $id;
         $status = $this->db->get_where('tb_pertemuan', ['id_pertemuan' => $id])->row_array(); 
+        $data['youtube'] = $this->db->get_where('tb_youtube', ['id_pertemuan' => $id, 'kategori' => "Orientasi"] )->result_array();
         $data['pertemuan'] = $status;
         $id_pertemuan = $this->Pertemuan_model->getPertemuanById($id);
         if($id_pertemuan){
