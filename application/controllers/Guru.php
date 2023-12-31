@@ -32,6 +32,29 @@ class Guru extends CI_Controller
                 }
                 
             }
+            for($i = 1;$i<=$jumlahPertemuan;$i++){
+                if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                    $quiz[$i] = $this->Guru_model->getTotalHasilQuiz($i);
+                }
+            }
+            $data['jumlahsiswa'] = 0;
+            $data['jumlahsiswapretest'] = 0;
+            $data['jumlahsiswaposttest'] = 0;
+            $data['persentasepretest'] = 0;
+            $data['persentaseposttest'] = 0;
+            
+
+            for($i = 1;$i<=$jumlahPertemuan;$i++){
+                    if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
+                        $data['jumlahsiswatugas'][$i] = 0;
+                        $data['persentasetugas'.$i] = 0;
+                        $data['jumlahsiswaquiz'][$i] = 0;
+                        $data['persentasequiz'.$i] = 0;
+                    }
+
+            }
+
+
             if ($jumlahSiswa != 0) {
                 $data['jumlahsiswa'] = $jumlahSiswa;
                 $data['jumlahsiswapretest'] = $jumlahPretest;
@@ -45,30 +68,15 @@ class Guru extends CI_Controller
                         $data['persentasetugas'.$i] = ($tugas[$i] / $jumlahSiswa) * 100;
                     }
                 }
-              
-            } else {
-                $data['persentasetugas'.$i] = 0 * 100;
-            }
-
-            for($i = 1;$i<=$jumlahPertemuan;$i++){
-                if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
-                    $quiz[$i] = $this->Guru_model->getTotalHasilQuiz($i);
-                }
-                
-            }
-            if ($jumlahSiswa != 0) {
-              
                 for($i = 1;$i<=$jumlahPertemuan;$i++){
                     if($this->Kelolapertemuan_model->getPertemuanbyId($i) != null){
                         $data['jumlahsiswaquiz'][$i] = $quiz[$i];
                         $data['persentasequiz'.$i] = ($quiz[$i] / $jumlahSiswa) * 100;
                     }
                 }
+            
               
-            } else {
-                $data['persentasequiz'.$i] = 0 * 100;
             }
-
             $pertemuan = $this->Kelolapertemuan_model->getPertemuan();
             $data['pertemuan'] = array();
 

@@ -7,7 +7,7 @@
                   document.write(new Date().getFullYear())
                 </script>,
                 made with <i class="fa fa-heart"></i> by
-                <a href="https://www.johanesalexanderputra.my.id" class="font-weight-bold" target="_blank">Johannes Alexander Putra</a>
+               Johannes Alexander Putra</a>
                
               </div>
             </div>

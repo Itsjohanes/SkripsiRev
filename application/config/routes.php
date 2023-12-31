@@ -56,7 +56,7 @@ $route['default_controller'] = 'awal';
 $route['dua'] = 'Chat/dua';
 $route['chat'] = 'Chat';
 $route['chat/(:num)'] = 'Chat';
-
+$route['guruchat/(:num)'] = 'Guruchat';
 $route['login'] = 'Chat/login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

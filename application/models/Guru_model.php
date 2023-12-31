@@ -17,6 +17,7 @@ class Guru_model extends CI_Model
 
     public function getTotalStudents()
     {
+        
         return $this->db->get_where('tb_akun', ['role' => 0])->num_rows();
     }
 
