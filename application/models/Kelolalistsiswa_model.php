@@ -3,6 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Kelolalistsiswa_model extends CI_Model
 {
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('Kelolapertemuan_model');
+    }
 
     public function getUserByEmail($email)
     {
@@ -11,11 +15,29 @@ class Kelolalistsiswa_model extends CI_Model
 
     public function getSiswa()
     {
-        return $this->db->query("SELECT akun.*, nilai.pretest 
-                                FROM tb_akun akun 
-                                JOIN tb_nilai nilai ON akun.id = nilai.id_siswa 
-                                WHERE akun.role = '0'
-                                ORDER BY akun.nama ASC")->result_array();
+        $this->db->select_max('id_pertemuan');
+        $query = $this->db->get('tb_pertemuan');
+        $result = $query->row_array();
+        $jumlahPertemuan = $result['id_pertemuan'];
+        $string = "tb_akun.*, tb_nilai.pretest, tb_nilai.posttest";
+        for ($i = 1; $i <= $jumlahPertemuan; $i++) {
+            if ($this->Kelolapertemuan_model->getPertemuanbyId($i) != null) {
+                $string = $string . ",tb_nilai.tugas_" . $i . "";
+            }
+        }
+        for ($i = 1; $i <= $jumlahPertemuan; $i++) {
+            if ($this->Kelolapertemuan_model->getPertemuanbyId($i) != null) {
+                $string = $string . ", tb_nilai.quiz_" . $i . "";
+            }
+        }
+        $this->db->select($string);
+        $this->db->from('tb_nilai');
+        //joinkan dengan table tb_akun
+        $this->db->join('tb_akun', 'tb_nilai.id_siswa = tb_akun.id');
+        $this->db->order_by('nama', 'asc');
+        //get array
+        $siswa = $this->db->get()->result_array();
+        return $siswa;
     }
 
     public function getSiswaById($id)

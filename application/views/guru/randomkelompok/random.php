@@ -22,7 +22,23 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Email</th>
                             <th scope="col">Pretest</th>
-
+                            <th scope="col">Posttest</th>
+                             <?php
+                                for ($i = 1; $i <= $jumlahTugas; $i++) {
+                                    if($pertemuan[$i] != null){
+                                         echo "<th scope='col'>Tugas " . $i . "</th>";
+                                     }
+                                            
+                                    }
+                                    ?>
+                            <?php
+                              for ($i = 1; $i <= $jumlahTugas; $i++) {
+                                    if($pertemuan[$i] != null){
+                                      echo "<th scope='col'>Quiz " . $i . "</th>";
+                                    }
+                                            
+                                    }
+                              ?>                           
 
                         </tr>
                     </thead>
@@ -32,8 +48,23 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Email</th>
                             <th scope="col">Pretest</th>
-
-                            
+                            <th scope="col">Posttest</th>    
+                              <?php
+                                for ($i = 1; $i <= $jumlahTugas; $i++) {
+                                    if($pertemuan[$i] != null){
+                                         echo "<th scope='col'>Tugas " . $i . "</th>";
+                                     }
+                                            
+                                    }
+                                    ?>
+                            <?php
+                              for ($i = 1; $i <= $jumlahTugas; $i++) {
+                                    if($pertemuan[$i] != null){
+                                      echo "<th scope='col'>Quiz " . $i . "</th>";
+                                    }
+                                            
+                                    }
+                              ?>                             
 
                         </tr>
                     </tfoot>
@@ -46,7 +77,21 @@
                                 <td><?= $s['email']; ?></td>
                                 <!-- get nilai siswa from tb_nilai where id -->
                                 <td><?= $s['pretest']; ?></td>
-
+                                <td><?= $s['posttest']; ?></td>
+                                        <?php
+                                            for ($i = 1; $i <= $jumlahTugas; $i++) {
+                                                if($pertemuan[$i] != null){
+                                                    echo "<td>" . $s['tugas_' . $i] . "</td>";
+                                                }
+                                        }
+                                        ?>
+                                        <?php
+                                            for ($i = 1; $i <= $jumlahTugas; $i++) {
+                                                if($pertemuan[$i] != null){
+                                                    echo "<td>" . $s['quiz_' . $i] . "</td>";
+                                                }
+                                        }
+                                        ?>                                
                             </tr>
                             <?php $i++; ?>
                         <?php endforeach; ?>

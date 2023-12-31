@@ -19,6 +19,22 @@ class Randomkelompok extends CI_Controller {
             $query = $this->db->select_max('kelompok')->get('tb_random');
             $result = $query->row();
             $maxKelompok = $result->kelompok;
+            //pertemuan
+            $data['jumlahTugas'] = $this->Kelolapertemuan_model->getMax();
+
+            $pertemuan = $this->Kelolapertemuan_model->getPertemuan();
+            
+            $data['pertemuan'] = array();
+            foreach ($pertemuan as $item) {
+                $data['pertemuan'][$item['id_pertemuan']] = $item;
+            }
+            $totalPertemuan = $data['jumlahTugas'];
+            for ($i = 1; $i <= $totalPertemuan; $i++) {
+                if (!isset($data['pertemuan'][$i])) {
+                    $data['pertemuan'][$i] = null;
+                }
+            }  
+            //lainnya
             $data['jumkel'] = $maxKelompok;
             $data['notifchat'] = $this->Chat_model->getChatData();
             $data['user'] = $this->db->get_where('tb_akun', ['email' => $this->session->userdata('email')])->row_array();
