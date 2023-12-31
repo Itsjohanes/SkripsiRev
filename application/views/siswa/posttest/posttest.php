@@ -141,6 +141,7 @@
 
     // Tampilkan waktu pada elemen dengan id 'timer'
     document.getElementById('timer').innerHTML = minutes + ' menit ' + seconds + ' detik';
+    document.getElementById('timer2').innerHTML = minutes + ' menit ' + seconds + ' detik';
 
     if (timeLeftPosttest === 0) {
       clearInterval(timerId);

@@ -45,7 +45,7 @@
                     ?>
                     <form action="<?= base_url($base_url_upload) ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="file">Pilih File [PDF anda yang berisi PPT]:</label>
+                            <label for="file">Pilih File [PDF/Zip]:</label>
                             <div class="input-group input-group-outline">
                                  <input type="file" class="form-control custom-file-input" name="file" accept=".pdf" required>
                             </div>

@@ -28,7 +28,7 @@ class Gurufileglobal extends CI_Controller
 
     public function upload() {
     $config['upload_path'] = './uploads/global/';
-    $config['allowed_types'] = 'pdf';
+    $config['allowed_types'] = 'pdf|zip';
     $this->load->library('upload', $config);
         if ($this->upload->do_upload('file')) {
             redirect('FileGlobal');
