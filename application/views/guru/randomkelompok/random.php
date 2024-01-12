@@ -69,10 +69,10 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        <?php $i = 1; ?>
+                        <?php $j = 1; ?>
                         <?php foreach ($siswa as $s) : ?>
                             <tr>
-                                <th scope="row"><?= $i; ?></th>
+                                <th scope="row"><?= $j; ?></th>
                                 <td><?= $s['nama']; ?></td>
                                 <td><?= $s['email']; ?></td>
                                 <!-- get nilai siswa from tb_nilai where id -->
@@ -93,7 +93,7 @@
                                         }
                                         ?>                                
                             </tr>
-                            <?php $i++; ?>
+                            <?php $j++; ?>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
@@ -109,9 +109,29 @@
 
     <a type="button" name="random" href="<?= base_url(); ?>randomkelompok/deleterandom" class=" btn btn-danger hapus-btn"><i class="fas fa-user-times"></i></a>
 
+<form method="POST" action="<?php echo site_url('randomkelompok/tambahKelompok'); ?>">
+    <select name="siswa" id="siswa">
+        <?php
+        foreach ($siswa as $namaSiswa) {
+            echo "<option value=\"" . $namaSiswa['id'] . "\">" . $namaSiswa['nama'] . "</option>";
+        }
+        ?>
+    </select>
 
+    <br>
+
+    <label for="jumlah_kelompok">Kelompok (1-50):</label>
+    <input type="number" name="jumlah_kelompok" id="jumlah_kelompok" min="1" max="50" required>
+
+    <br>
+
+    <input type="submit" class = "btn btn-success" value="Tambah Kelompok">
+</form>
 
     <?php
+     
+      
+    
 
 
     if (empty($randoms)) {
@@ -119,7 +139,6 @@
     } else {
         $jumlahKelompok = $jumkel;
         $randoms = $this->db->get('tb_random')->result_array();
-
         for ($k = 1; $k <= $jumlahKelompok; $k++) {
          echo '<div class="container-fluid py-4">';
          echo '<div class="row">';
@@ -138,6 +157,7 @@
         echo "<th scope='col'>ID</th>";
         echo "<th scope='col'>Nama Siswa</th>";
         echo "<th scope='col'>Kelompok</th>";
+        echo "<th scope='col'>Aksi</th>";
         echo "</tr>";
         echo "</thead>";
         echo "<tfoot>";
@@ -146,6 +166,7 @@
         echo "<th scope='col'>ID</th>";
         echo "<th scope='col'>Nama Siswa</th>";
         echo "<th scope='col'>Kelompok</th>";
+        echo "<th scope='col'>Aksi</th>";
         echo "</tr>";
         echo "</tfoot>";
         echo "<tbody>";
@@ -157,6 +178,8 @@
                 echo "<td>" . $s['id_user'] . "</td>";
                 echo "<td>" . $s['nama'] . "</td>";
                 echo "<td>" . $s['kelompok'] . "</td>";
+                echo "<td><a type='button' name='random' href='" . base_url() . "randomkelompok/deleterandombyid/" . $s['id_random'] . "' class='btn btn-danger hapus-btn'><i class='fas fa-user-times'></i></a></td>";
+
                 echo "</tr>";
                 $i++;
             }

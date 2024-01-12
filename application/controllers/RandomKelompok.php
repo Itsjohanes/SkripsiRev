@@ -82,7 +82,7 @@ public function runRandom()
         $this->db->order_by('nama', 'asc');
         //get array
         $siswa = $this->db->get()->result_array();
-    $jumlahSiswa = count($siswa);
+         $jumlahSiswa = count($siswa);
 
     if (!$this->Randomkelompok_model->getRandoms()) {
 
@@ -183,6 +183,24 @@ public function runRandom()
             // Hapus folder itu sendiri
             rmdir($folderPath);
         }
+    }
+    public function tambahKelompok(){
+        $siswa = $this->input->post('siswa');
+        $jumlah_kelompok = $this->input->post('jumlah_kelompok');
+        $data = [
+            'id_user' => $siswa,
+            'kelompok' => $jumlah_kelompok,
+            'nama' => $this->Kelolalistsiswa_model->getSiswaById($siswa)['nama']
+        ];
+        //inputkan ke tb_random
+        $this->Randomkelompok_model->insertRandom($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kelompok Berhasil ditambahkan!</div>');
+        redirect('randomkelompok');
+    }
+    public function deleterandombyid($id){
+        $this->Randomkelompok_model->deleteRandombyId($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kelompok Berhasil dihapus!</div>');
+        redirect('randomkelompok');
     }
 
 }

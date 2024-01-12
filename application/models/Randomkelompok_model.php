@@ -18,4 +18,8 @@ class Randomkelompok_model extends CI_Model {
         $this->db->empty_table('tb_random');
         $this->db->empty_table('tb_groupchat');
     }
+    public function deleteRandombyId($id){
+        $this->db->where('id_random', $id);
+        $this->db->delete('tb_random');
+    }
 }

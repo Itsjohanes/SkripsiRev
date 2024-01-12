@@ -41,7 +41,7 @@
                     </div>
                     </div>
                     
-                    <form id="myForm" method="post" action="<?php echo base_url('kelolaPosttest/posttesthandler');?>">
+                    <form id="myForm" method="post" action="<?php echo base_url('kelolaposttest/posttesthandler');?>">
                     <label class="switch">
                     <?php
                     if($aktif['aktif'] == 1){

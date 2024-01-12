@@ -20,7 +20,7 @@ if (!function_exists('checkRole')) {
         }
         if($role == '0'){
             if ($CI->session->userdata('role') !== '0') {
-                redirect('admin');
+                redirect('guru');
             }
         }
        

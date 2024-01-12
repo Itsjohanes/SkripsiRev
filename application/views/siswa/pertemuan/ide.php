@@ -10,12 +10,11 @@
             </div>
         </div>
         <div class="card-body">
-            <div
-                data-pym-src="https://www.jdoodle.com/plugin"
-                data-language="cpp"
-                data-version-index="3" 
-                data-libs="cppstdc++"
-            ></div>
+            
+        <div data-pym-src="https://www.jdoodle.com/plugin" data-language="cpp"  data-version-index="4" >
+            Optional default code goes here
+        </div>
+    
         </div>
 
     </div>
